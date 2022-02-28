@@ -15,7 +15,8 @@ function ShowInTotalsProposal() {
 
   //copy range AB25:AB842
   //paste range AA25:AA842
-  copyAndPaste("AB25:AB842", "AA25:AA842");
+  //copy the formula back over from AB range to AA range
+  sheet.getRange("AB20:AB838").copyTo(sheet.getRange("AA20:AA838"));
 
   //select D13 and clear contents
   sheet.getRange("D13").clearContent();
