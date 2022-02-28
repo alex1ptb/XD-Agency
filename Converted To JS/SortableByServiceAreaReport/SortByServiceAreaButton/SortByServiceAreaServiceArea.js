@@ -7,8 +7,8 @@ function SortByServiceAreaServiceArea() {
   // '
 
   // '
-  ss = SpreadsheetApp.getActiveSpreadsheet();
-  sheet = ss.getSheetByName("SortableByServiceAreaReport");
+  let ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getSheetByName("SortableByServiceAreaReport");
   let range = sheet.getRange("A8:P2387");
 
   range.sort([

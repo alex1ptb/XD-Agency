@@ -3,8 +3,8 @@
  */
 
 function ShowInTotalButton() {
-  ss = SpreadsheetApp.getActiveSpreadsheet();
-  sheet = ss.getActiveSheet();
+  let ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getActiveSheet();
   //Copy and paste display values from range AA20:AA838 to the range E20:E838
   copyAndPaste("AA20:AA217", "E20:E217");
   //Copy and paste display values from range AD20:AD217 to the range F20:F217

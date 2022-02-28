@@ -21,7 +21,7 @@ function SortClientSummaryReport() {
 
   let ss = SpreadsheetApp.getActiveSpreadsheet();
   let clientSheet = ss.getSheetByName("ClientSummaryReport");
-  range = clientSheet.getRange("A7:R1127");
+  let range = clientSheet.getRange("A7:R1127");
   range.sort([
     { column: 18, ascending: false },
     { column: 1, ascending: true },

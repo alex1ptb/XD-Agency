@@ -14,9 +14,9 @@ function SortBy3rdPartyDeliverable() {
   //Sort by Column B Ascending
   //Sort by Column E Ascending
   {
-    var ss = SpreadsheetApp.getActiveSpreadsheet();
-    var sheet = ss.getSheetByName("SortableBy3rdPartyReport");
-    var range = sheet.getRange("A7:R8844");
+    let ss = SpreadsheetApp.getActiveSpreadsheet();
+    let sheet = ss.getSheetByName("SortableBy3rdPartyReport");
+    let range = sheet.getRange("A7:R8844");
     range.sort([
       {
         column: 18,

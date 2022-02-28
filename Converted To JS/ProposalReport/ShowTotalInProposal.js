@@ -3,7 +3,7 @@ function ShowInTotalsProposal() {
   //' ShowInTotalsProposal Macro
   //'
   //target sheet: Proposal
-  ss = SpreadsheetApp.getActiveSpreadsheet();
+  let ss = SpreadsheetApp.getActiveSpreadsheet();
   let sheet = ss.getSheetByName("Proposal");
   //copy range AA25:AA222
   //paste range E25:E222

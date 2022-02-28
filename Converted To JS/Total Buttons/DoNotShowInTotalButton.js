@@ -2,8 +2,8 @@
  * @OnlyCurrentDoc
  */
 function DoNotShowInTotalButton() {
-  ss = SpreadsheetApp.getActiveSpreadsheet();
-  sheet = ss.getActiveSheet();
+  let ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getActiveSheet();
   // copy the display values of the
   //Copy the display values shown and paste over the formulas that are currently providing the display values
   copyAndPaste("AA20:AA838", "AA20:AA838");
