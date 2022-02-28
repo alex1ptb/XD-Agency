@@ -12,7 +12,7 @@ function SortBy3rdPartyCategory() {
   let ss = SpreadsheetApp.getActiveSpreadsheet();
   let sheet = ss.getSheetByName("SortableBy3rdPartyReport");
   let range = sheet.getRange("A7:R8844");
-  range.Sort([
+  range.sort([
     {
       column: 18,
       ascending: false,
