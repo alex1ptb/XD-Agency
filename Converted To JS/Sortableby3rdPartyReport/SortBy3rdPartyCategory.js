@@ -1,3 +1,6 @@
+/**
+ * @OnlyCurrentDoc
+ */
 function SortBy3rdPartyCategory() {
   // '
   // ' SortBy3rdPartyCategory Macro

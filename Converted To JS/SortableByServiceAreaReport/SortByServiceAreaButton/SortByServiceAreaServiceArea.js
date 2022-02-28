@@ -1,3 +1,6 @@
+/**
+ * @OnlyCurrentDoc
+ */
 function SortByServiceAreaServiceArea() {
   // '
   // ' SortByServiceAreaServiceArea Macro

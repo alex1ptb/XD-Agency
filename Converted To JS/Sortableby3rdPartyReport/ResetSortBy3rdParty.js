@@ -1,3 +1,6 @@
+/**
+ * @OnlyCurrentDoc
+ */
 function Reset3rdPartySortableReport() {
   //'
   //' Reset3rdPartySortableReport Macro
