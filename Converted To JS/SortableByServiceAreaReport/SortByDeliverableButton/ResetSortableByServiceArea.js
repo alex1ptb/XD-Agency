@@ -1,3 +1,6 @@
+/**
+ * @OnlyCurrentDoc
+ */
 function ResetSortableByServiceArea() {
   // '
   // ' ResetSortableByServiceArea Macro

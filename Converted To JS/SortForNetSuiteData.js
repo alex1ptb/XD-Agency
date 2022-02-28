@@ -1,3 +1,6 @@
+/**
+ * @OnlyCurrentDoc
+ */
 function SortForNetSuiteData() {
   // '
   // ' SortForNetSuiteData Macro

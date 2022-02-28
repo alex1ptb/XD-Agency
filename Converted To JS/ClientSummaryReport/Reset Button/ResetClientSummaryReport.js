@@ -1,3 +1,6 @@
+/**
+ * @OnlyCurrentDoc
+ */
 function ResetClientSummaryReport() {
   //Name of the sheet: Client Summary Report
   //Range to sort: A7:R11225
