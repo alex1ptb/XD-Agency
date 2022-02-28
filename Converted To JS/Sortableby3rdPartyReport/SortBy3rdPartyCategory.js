@@ -9,10 +9,10 @@ function SortBy3rdPartyCategory() {
   // '
   //Sort by column R Descending
   //Sort by column C Ascending
-  ss = SpreadsheetApp.getActiveSpreadsheet();
-  sheet = ss.getSheetByName("SortableBy3rdPartyReport");
-  range = sheet.getRange("A7:R8844");
-  range.Sort([
+  let ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getSheetByName("SortableBy3rdPartyReport");
+  let range = sheet.getRange("A7:R8844");
+  range.sort([
     {
       column: 18,
       ascending: false,

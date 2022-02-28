@@ -3,6 +3,8 @@
  */
 function sortByColumn(column, order, range, sheet) {
   //column is the column number to sort by
-  range = sheet.getRange(range);
-  range.sort({ column, order });
+  let ss = SpreadsheetApp.getActiveSpreadsheet()
+  let targetSheet = ss.getActiveSheet()
+  let targetRange = targetSheet.getRange(range);
+  targetRange.sort({ column, order });
 }
