@@ -1,25 +1,24 @@
-Sub SortBy3rdPartyVendorName()
-'
-' SortBy3rdPartyVendorName Macro
-'
+function SortBy3rdPartyVendorName() {
+  //'
+  //' SortBy3rdPartyVendorName Macro
+  //'
+  //'
+  //target sheet: SortableBy3rdPartyReport
+  //Sort Range A7:R8844
+  //Sort by column R Descending
+  //Sort by column F Ascending
 
-'
-    Range("A6:R6").Select
-    Range(Selection, Selection.End(xlDown)).Select
-    ActiveWorkbook.Worksheets("SortableBy3rdPartyReport").Sort.SortFields.Clear
-    ActiveWorkbook.Worksheets("SortableBy3rdPartyReport").Sort.SortFields.Add Key _
-        :=Range("R7:R8844"), SortOn:=xlSortOnValues, Order:=xlDescending, _
-        DataOption:=xlSortNormal
-    ActiveWorkbook.Worksheets("SortableBy3rdPartyReport").Sort.SortFields.Add Key _
-        :=Range("F7:F8844"), SortOn:=xlSortOnValues, Order:=xlAscending, _
-        DataOption:=xlSortNormal
-    With ActiveWorkbook.Worksheets("SortableBy3rdPartyReport").Sort
-        .SetRange Range("A6:R8844")
-        .Header = xlYes
-        .MatchCase = False
-        .Orientation = xlTopToBottom
-        .SortMethod = xlPinYin
-        .Apply
-    End With
-    Range("F6").Select
-End Sub
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getSheetByName("SortableBy3rdPartyReport");
+  var range = sheet.getRange("A7:R8844");
+  range.sort([
+    {
+      column: 18,
+      ascending: false,
+    },
+    {
+      column: 6,
+      ascending: true,
+    },
+  ]);
+}
