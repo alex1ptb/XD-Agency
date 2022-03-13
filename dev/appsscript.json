@@ -18,5 +18,10 @@
   "runtimeVersion": "V8",
   "executionApi": {
     "access": "ANYONE"
-  }
+  },
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/bigquery",
+    "https://www.googleapis.com/auth/spreadsheets.currentonly",
+    "https://www.googleapis.com/auth/drive.readonly"
+  ]
 }

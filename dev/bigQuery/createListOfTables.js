@@ -9,6 +9,7 @@
 //target sheet ChooseAgent
 //target cell A10
 function createListOfTables() {
+  console.log("createListOfTables");
   let spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
   let sheet = spreadsheet.getSheetByName("ChooseAgent");
   let cell = sheet.getRange("A1");
@@ -31,4 +32,6 @@ function createListOfTables() {
     .build();
   //set validation to cell A10
   cell.setDataValidation(buildValidation);
+  console.log("done");
+  return String(names);
 }
