@@ -1,17 +1,14 @@
 /*
   Goal: Get the names of the tables in the dataset and put them in the drop down on the current deliverable sheet 
-
+  //////
   Current Test sheet: ChooseAgent
-  Current Test cell: A10
+  Current Test cell: A1
   Current dataset id: Rates
 */
 
-//target sheet ChooseAgent
-//target cell A10
 function createListOfTables() {
-  console.log("createListOfTables");
-  let spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-  let sheet = spreadsheet.getSheetByName("ChooseAgent");
+  // let spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.spreadsheet.getSheetByName("ChooseAgent");
   let cell = sheet.getRange("A1");
   //bigquery proejct id = "xd-agency"
   const projectId = "xd-agency";
@@ -32,6 +29,4 @@ function createListOfTables() {
     .build();
   //set validation to cell A10
   cell.setDataValidation(buildValidation);
-  console.log("done");
-  return String(names);
 }
