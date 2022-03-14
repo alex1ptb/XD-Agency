@@ -1,36 +1,39 @@
-//guery the dataset for each table
-//for each table in the dataset get the contents of the table
-//for each row in the table get the contents of the row
-//return the contents of the table as an array of objects
-//push this array of objects to an array of arrays of the tables in the dataset
-//use the table name as the key for the array of arrays
+// getCurrentXdaRates = () => {
+//   let datasetId = "Rates";
+//   let tables = getTableList();
+//   //for each table query the table and return the data
+//   let tableArray = [];
+//   tables.tables.forEach((table) => {
+//     const tableName = table.id.split(".")[1];
+//     //replace colon with .
+//     let tableId = table.id;
 
-function queryData() {
-  //bigquery dataset id = "xd-agency:Rates"
-  const datasetId = "Rates";
-  //query bigquery for list of table names from dataset Rates
-  // List all tables in the dataset
-  const tables = BigQuery.Tables.list(projectId, datasetId);
-  let names = [];
-  tables.tables.forEach((table) => {
-    names.push(table.id.split(".")[1]);
-  });
-  //   return names;
-
-  //for each table in the dataset get the contents of the table
-  //for each row in the table get the contents of the row
-  //return the contents of the table as an array of objects
-  //push this array of objects to an array of arrays of the tables in the dataset
-  //use the table name as the key for the array of arrays
-  let tableData = {};
-  names.forEach((name) => {
-    let query = `SELECT * FROM \`${projectId}.${datasetId}.${name}\``;
-    let rows = BigQuery.Jobs.query(query);
-    let data = [];
-    rows.rows.forEach((row) => {
-      data.push(row);
-    });
-    tableData[name] = data;
-  });
-  return tableData;
-}
+//     //using regex replace the : with .
+//     tableId = tableId.replace(/:/g, ".");
+//     const tableQuery = BigQuery.Jobs.query(
+//       {
+//         query: `SELECT role,xda_2022_standard FROM \`${projectId}.${datasetId}.${tableName}\`
+//         where xda_2022_standard is not null
+//         order by role`,
+//         useLegacySql: false,
+//       },
+//       projectId
+//     );
+//     let rows = [];
+//     //push the rows into an array
+//     tableQuery.rows.forEach((row) => {
+//       let rowArray = [];
+//       rowArray.push(row.f[0].v);
+//       rowArray.push(row.f[1].v);
+//       rows.push(rowArray);
+//     });
+//     //push the table name and data into an array
+//     tableArray.push({
+//       tableId: tableName,
+//       tableData: rows,
+//     });
+//   });
+//   //target the table with the id of "Measurement"
+//   //return each table and its data
+//   return tableArray;
+// };

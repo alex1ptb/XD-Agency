@@ -1,7 +1,7 @@
 /**
  * Loads a CSV into BigQuery
  */
-//similar tutorial found here: https://www.youtube.com/watch?v=MonQPFuFKSk&t=79s
+//similar found here: https://www.youtube.com/watch?v=MonQPFuFKSk&t=79s
 
 function loadCsv() {
   // Replace this value with the project ID listed in the Google
