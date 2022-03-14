@@ -1,5 +1,5 @@
 /*
-  Getting all tables in the dataset and returning them as an array or object
+  Getting all tables in the dataset and returning them as an object
   Current dataset id: Rates
 */
 
