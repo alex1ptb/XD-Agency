@@ -12,5 +12,7 @@ function getXdaRates() {
   }
   //get the data from the properties
   let xdaRates = JSON.parse(scriptProperties.getProperty("xdaRates"));
+
+  //return the data
   return xdaRates;
 }

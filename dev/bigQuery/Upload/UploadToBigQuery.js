@@ -10,8 +10,7 @@ function loadCsv() {
   // Create a dataset in the BigQuery UI (https://bigquery.cloud.google.com)
   // and enter its ID below.
   const datasetId = "Role_Prices";
-  // Sample CSV file of Google Trends data conforming to the schema below.
-  // https://docs.google.com/file/d/0BwzA1Orbvy5WMXFLaTR1Z1p2UDg/edit
+  //file id from Drive
   const csvFileId = "1AUIU4P9OWOqVsiCRERQzLAWbLvG2xiCEpX5BzeWZXqc";
 
   //get active spreadsheet and do the following for each sheet

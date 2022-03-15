@@ -2,6 +2,8 @@
  * @OnlyCurrentDoc
  */
 
+// THIS ENTIRE THING NEEDS TO BE REFACTORED AND REWRITTEN
+
 //target sheet D1 and create a new tab with the number incremented by 1
 //copy the contents of sheet D1 to the new tab
 
@@ -62,15 +64,6 @@ function createNewDeliverableTab() {
         .getRange(1, 1, sheet.getLastRow(), sheet.getLastColumn())
         .getFontWeights()
     );
-  //copy conditional formatting of sheet D1 to the new tab
-  //   newSheet
-  //     .getRange(1, 1, sheet.getLastRow(), sheet.getLastColumn())
-  //     .setConditionalFormats(
-  //       sheet
-  //         .getRange(1, 1, sheet.getLastRow(), sheet.getLastColumn())
-  //         .getConditionalFormats()
-  //     );
-
   //copy the borders of sheet D1 to the new tab
   newSheet
     .getRange(1, 1, sheet.getLastRow(), sheet.getLastColumn())

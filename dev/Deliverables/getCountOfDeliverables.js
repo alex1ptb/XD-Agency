@@ -2,13 +2,11 @@
  * @OnlyCurrentDoc
  */
 
-//Function to count the number of deliverables
-
+//Function to count the number of deliverables tabs in the spreadsheet
 function getCountOfDeliverables() {
   //grab all sheets within the spreadsheet
   let ss = SpreadsheetApp.getActiveSpreadsheet();
   let sheets = ss.getSheets();
-
   //Count all sheets that start with D# (where # is a number)
   let count = 0;
   for (let i = 0; i < sheets.length; i++) {

@@ -7,8 +7,7 @@ function checkForRoleUpdate() {
   let lastRow = sheet.getLastRow();
   //if the last row is has a value then a role has been chos
   if (sheet.getRange(lastRow, 1).getDisplayValue() != "Pick a Category") {
-    console.log('it does NOT say pick a category')
-    //get XdaRates[displayValue is the table ID] and return the tableData array
+    //get XdaRates[displayValue is the table ID and return the tableData array
     let xdaRates = getXdaRates();
     let tableData = xdaRates.filter(
       (table) => table.tableId == sheet.getRange(lastRow, 1).getDisplayValue()
@@ -24,12 +23,11 @@ function checkForRoleUpdate() {
       .build();
     let cell = sheet.getRange(lastRow, 1);
     cell.setDataValidation(buildValidation);
-
     //check what the role is
     getCategoryOfRole();
     //put "End of Section" in the last row
   } else {
-    console.log("no category choosen")
-    return
+    console.log("no category choosen");
+    return;
   }
 }

@@ -10,6 +10,7 @@ getCurrentXdaRates = () => {
 
     //using regex replace the : with .
     tableId = tableId.replace(/:/g, ".");
+    //query the table for the data wanted
     const tableQuery = BigQuery.Jobs.query(
       {
         query: `SELECT role,xda_2022_standard FROM \`${projectId}.${datasetId}.${tableName}\`
@@ -19,6 +20,7 @@ getCurrentXdaRates = () => {
       },
       projectId
     );
+    //create array to hold the data
     let rows = [];
     //push the rows into an array
     tableQuery.rows.forEach((row) => {
