@@ -12,4 +12,5 @@ function onOpen() {
   ui.createMenu("Create Deliverable")
     .addItem("Create Deliverable", "createNewDeliverableTab")
     .addToUi();
+  getXdaRates()
 }
