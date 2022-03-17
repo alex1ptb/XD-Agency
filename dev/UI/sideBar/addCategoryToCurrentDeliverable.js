@@ -3,6 +3,7 @@
     first, we get the xdaRates tableIds 
     filter through the xdaRates tableIds,
     go through column A and if the tableId matches any row in the range of Column A then remove it from the array 
+    return a filtered list of tableIds that are not on the sheet
 */
 function filterAlreadyChoosenCategories() {
   let sheet =
@@ -33,6 +34,7 @@ function filterAlreadyChoosenCategories() {
   if (tableIds.length == 0) return "no matches";
   return tableIds;
 }
+
 /*
     This will check the tables from xdaRates. --variable xdaRates
     it will check the current sheet and see if any values from column A match the tableId from xdaRates. it will push all matched tables to an array --variable matchedTable
