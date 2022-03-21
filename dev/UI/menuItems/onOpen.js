@@ -16,5 +16,8 @@ function onOpen() {
       "addCategoryToCurrentDeliverable"
     )
     .addToUi();
+  //I probably need to move the below funciton elsewhere
   getXdaRates();
+
+  createSidebar();
 }
