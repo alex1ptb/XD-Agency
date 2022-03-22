@@ -1,12 +1,23 @@
 <!-- html template for sidebar on deliverable sheets -->
 <html>
   <head>
+    <script>
+      //when a category is clicked, call function to add clicked value to sheet
+      function addCategory(category) {
+        SpreadsheetApp.getUi().alert(category);
+        google.script.run.withSuccessHandler().addDeliverableCategory(category);
+      }
+
+      document.getElementsByClassName("li_category").onclick = function () {
+        addCategory(this.innerHTML);
+      };
+    </script>
     <title>Deliverable Sidebar</title>
     <!-- <link rel="stylesheet" type="text/css" href="../css/deliverableSidebar.css"> -->
   </head>
   <body>
-    <ul>
-      <li class="categories"></li>
+    <ul class="categories">
+      <li></li>
       <!-- call function for list -->
     </ul>
   </body>

@@ -11,13 +11,8 @@ function onOpen() {
   var ui = SpreadsheetApp.getUi();
   ui.createMenu("Deliverables")
     .addItem("Create Deliverable", "createNewDeliverableTab")
-    .addItem(
-      "Add Category to Current Deliverable",
-      "addCategoryToCurrentDeliverable"
-    )
+    .addItem("Add Category to Current Deliverable", "createSidebar")
     .addToUi();
   //I probably need to move the below funciton elsewhere
   getXdaRates();
-
-  createSidebar();
 }
