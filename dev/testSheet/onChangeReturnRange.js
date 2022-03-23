@@ -1,4 +1,6 @@
 // create function that gives back the range of the edited sheet
+
+///This got changed. The current function acturally adds in a new row, and puts in the Pick a Title value for the dropdown section of job titles
 function onChangeReturnRange(e) {
   const sheet = SpreadsheetApp.getActiveSheet();
   console.log(sheet.getName());
@@ -26,7 +28,6 @@ function onEdit(e) {
       //make sure the previous display value was "Pick a Job Title"
       //alert oldValue;
       if (oldValue === "Pick a Job Title") {
-        SpreadsheetApp.getUi().alert(oldValue);
         //copy the row and paste it below the current row
 
         // sheet.copyRowTo(row, row + 1);
