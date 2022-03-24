@@ -2,7 +2,7 @@ function getXdaRates() {
   //set variable for getScriptProperties
   let scriptProperties = PropertiesService.getScriptProperties();
   //delete properties.xdaRates;
-  scriptProperties.deleteProperty("xdaRates");
+  // scriptProperties.deleteProperty("xdaRates");
   //check if properties exsits
   if (scriptProperties.getProperty("xdaRates") == null) {
     console.log(`no properties found. Creating now`);

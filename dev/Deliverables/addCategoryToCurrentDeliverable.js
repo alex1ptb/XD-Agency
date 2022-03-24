@@ -11,7 +11,7 @@ function addCategoryToCurrentDeliverable(category) {
   let newRow = lastRow + 1;
 
   //copy from A1 to Q8 and append to the end of the sheet
-  deliverableLayout();
+  deliverableLayout(category);
 
   //add the category to the current sheet
   sheet.getRange(newRow, 1).setValue(category);

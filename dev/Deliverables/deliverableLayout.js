@@ -3,7 +3,7 @@
 
 //for now I am just going to use a copyTo function using range A1 to Q8
 
-function deliverableLayout() {
+function deliverableLayout(category) {
   let ss = SpreadsheetApp.getActiveSpreadsheet();
   let sheet = ss.getSheetByName("ChooseAgent");
   let lastRow = sheet.getLastRow();
@@ -14,4 +14,8 @@ function deliverableLayout() {
   //paste range after last row
   let pasteRange = sheet.getRange(lastRow + 1, 1, 8, 16);
   copyRange.copyTo(pasteRange);
+  //get the range of the copyRange and set the name of the range to the category
+  let range = sheet.getRange(lastRow + 1, 1, 8, 16);
+  //set the name of the range to the category
+  SpreadsheetApp.getActive().setNamedRange(category, range);
 }
