@@ -1,13 +1,3 @@
-//function to return name range of the currently selected row
-// function getNamedRange(e) {
-//   const sheet = SpreadsheetApp.getActiveSheet();
-//   const activeRange = e.range;
-//   const namedRange = sheet.getNamedRange(activeRange.getA1Notation());
-//   //alert named range
-//   SpreadsheetApp.getUi().alert(namedRange);
-//   return namedRange;
-// }
-
 //This gets the sale rate for the job choosen.
 function getSaleRate(e) {
   const namedRange = getNamedRange(e);
