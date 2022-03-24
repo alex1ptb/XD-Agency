@@ -2,6 +2,8 @@
  * @OnlyCurrentDoc
  */
 
+//I need to change this function to account for if the user changes the name of the deliverable tab
+
 //Function to count the number of deliverables tabs in the spreadsheet
 function getCountOfDeliverables() {
   //grab all sheets within the spreadsheet

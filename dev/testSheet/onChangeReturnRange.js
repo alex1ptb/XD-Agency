@@ -1,23 +1,9 @@
-// create function that gives back the range of the edited sheet
-
-///This got changed. The current function acturally adds in a new row, and puts in the Pick a Title value for the dropdown section of job titles
-// function onChangeReturnRange(e) {
-//   const sheet = SpreadsheetApp.getActiveSheet();
-//   console.log(sheet.getName());
-//   const activeRange = e.range;
-//   console.log(sheet.activeRange);
-//   SpreadsheetApp.getUi().alert(activeRange);
-//   return activeRange;
-// }
-
 //when the sheet is changed, check if cell has dropdown menu, if so, copy the row and paste it below the current row
 function onEdit(e) {
   //check if the cell has a dropdown menu
   const sheet = SpreadsheetApp.getActiveSheet();
   const activeRange = e.range;
   const oldValue = e.oldValue;
-
-  // SpreadsheetApp.getUi().alert(e.getName());
 
   //get the row of the cell that was edited
   const row = activeRange.getRow();
