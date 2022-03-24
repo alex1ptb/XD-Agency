@@ -10,8 +10,16 @@ const projectId = "xd-agency";
 function onOpen() {
   var ui = SpreadsheetApp.getUi();
   ui.createMenu("Deliverables")
+    //create deliverable Tab
     .addItem("Create Deliverable", "createNewDeliverableTab")
-    .addItem("Add Category to Current Deliverable", "createSidebar")
+    .addItem(
+      "Add Category to Current Deliverable",
+      "createDeliverableCategorySidebar"
+    )
+    .addItem(
+      "Add 3rd Party Costs to Current Deliverable",
+      "createthirdPartyCostsSidebar"
+    )
     .addToUi();
   //I probably need to move the below funciton elsewhere
   getXdaRates();

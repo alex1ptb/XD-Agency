@@ -1,3 +1,7 @@
+/* only this document
+@
+*/
+
 const scriptProperties = PropertiesService.getScriptProperties();
 
 function getScriptProperties() {
