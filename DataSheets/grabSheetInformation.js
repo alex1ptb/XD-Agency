@@ -1,22 +1,34 @@
 /*
  @OnlyCurrentDoc
 */
-
-//test variable -- id of the spreadsheet
-
-const spreadsheetId = "1tAJVIBvZ69JeM_S2sIZmppr1cnuHOTTMWpAwfjjaZTY";
-
-//this function will handle grabbing the data from the spreadsheet
-//and uploading it to BigQuery
-function grabSheetInformation(spreadsheetId) {
+function getSpreadsheet(spreadsheetId) {
   let ss = "";
   if (spreadsheetId == null) {
-    ss = SpreadsheetApp.getActiveSpreadsheet();
+    return (ss = SpreadsheetApp.getActiveSpreadsheet());
   } else {
-    ss = SpreadsheetApp.openById(spreadsheetId);
+    return (ss = SpreadsheetApp.openById(spreadsheetId));
   }
+}
+//this function will handle grabbing the data from the spreadsheet
+//and uploading it to BigQuery
+function grabSheetInformation(ss) {
   //the name of the spreadsheet will be the name of the dataset
-  const datasetId = ss.getName();
+  let datasetId = ss.getName();
+  console.log(`datasetId: ${datasetId}`);
+
+  //make datasetID a valid BigQuery dataset ID
+  datasetId = datasetId.replace(/\s/g, "_");
+  //replace ampersand with "_and_"
+  datasetId = datasetId.replace(/&/g, "_and_");
+  //if datasetId doesn't exist, create it
+  try {
+    console.log("dataset exists");
+    BigQuery.Datasets.get(projectNumber, datasetId);
+  } catch (err) {
+    console.log(`dataset doesn't exist. err: ${err} \n creating dataset`);
+    BigQuery.Datasets.insert(projectNumber, datasetId);
+  }
+
   //the table will be the name of the sheet
   const sheets = ss.getSheets();
   // create an array of the sheets names in the spreadsheet
@@ -47,42 +59,4 @@ function grabSheetInformation(spreadsheetId) {
   }
   Logger.log(data[0]);
   return data;
-}
-
-//write the data to bigquery
-function writeToBigQuery(data) {
-  const datasetId = data[0].datasetId;
-
-  //if dataset doesn't exist, create it
-  const dataset = BigQuery.Dataset(datasetId);
-  if (!dataset.exists()) {
-    dataset.create();
-  }
-
-  //create a table for each sheet
-  for (let i = 0; i < data.length; i++) {
-    const tableId = data[i].sheetName;
-    const table = dataset.table(tableId);
-    if (!table.exists()) {
-      table.create({
-        schema: {
-          fields: data[i].headers,
-        },
-      });
-    }
-    //insert the data into the table
-    const rows = data[i].rows;
-    for (let j = 1; j < rows.length; j++) {
-      table.insert(rows[j]);
-    }
-  }
-
-  //for each object in the data array create a table in bigquery
-
-  for (let i = 0; i < data.length; i++) {
-    const sheetName = data[i].sheetName;
-    const data = data[i].rows;
-
-    //
-  }
 }

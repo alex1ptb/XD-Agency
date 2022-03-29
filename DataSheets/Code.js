@@ -10,9 +10,12 @@
 */
 
 function uploadSpreadsheetToBigQuery() {
-  const projectId = "659831782100";
   //get each sheet in the spreadsheet
   const ss = SpreadsheetApp.getActiveSpreadsheet();
+  /////////////////////////
+  //Data set - break this out into a function
+  // const datasetId = ss.getName();
+
   let datasetId = ss.getName();
 
   //make datasetID a valid BigQuery dataset ID
@@ -22,9 +25,9 @@ function uploadSpreadsheetToBigQuery() {
 
   //if datasetId doesn't exist, create it
   try {
-    BigQuery.Datasets.get(projectId, datasetId);
+    BigQuery.Datasets.get(projectNumber, datasetId);
   } catch (err) {
-    BigQuery.Datasets.insert(projectId, datasetId);
+    BigQuery.Datasets.insert(projectNumber, datasetId);
   }
 
   for (let i = 0; i < ss.getNumSheets(); i++) {
@@ -44,7 +47,7 @@ function uploadSpreadsheetToBigQuery() {
 
     let table = {
       tableReference: {
-        projectId: projectId,
+        projectId: projectNumber,
         datasetId: datasetId,
         tableId: tableId,
       },
@@ -54,11 +57,11 @@ function uploadSpreadsheetToBigQuery() {
     };
     //if table exists, delete it
     try {
-      BigQuery.Tables.remove(projectId, datasetId, tableId);
+      BigQuery.Tables.remove(projectNumber, datasetId, tableId);
       // BigQuery.Tables.
     } catch (err) {
       Logger.log(`error: ${err}`);
-      table = BigQuery.Tables.insert(table, projectId, datasetId);
+      table = BigQuery.Tables.insert(table, projectNumber, datasetId);
     }
     // Create the table.
     Logger.log("Table created: %s", table.id);
@@ -74,7 +77,7 @@ function uploadSpreadsheetToBigQuery() {
       configuration: {
         load: {
           destinationTable: {
-            projectId: projectId,
+            projectId: projectNumber,
             datasetId: datasetId,
             tableId: tableId,
           },
@@ -87,7 +90,7 @@ function uploadSpreadsheetToBigQuery() {
 
     // Load the data.
     try {
-      job = BigQuery.Jobs.insert(job, projectId, data);
+      job = BigQuery.Jobs.insert(job, projectNumber, data);
       Logger.log("Job created: %s", job.id);
     } catch (err) {
       Logger.log(`error: ${err}`);
