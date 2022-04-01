@@ -1,6 +1,6 @@
 function uploadData() {
   //data has already checked if dataset id exists and has created if not
-  //noew we check if table exists and create if not
+  //now we check if table exists and create if not
 
   //loop through the data array
   for (let i = 0; i < data.length; i++) {
@@ -24,6 +24,7 @@ function uploadData() {
         tableId: tableId,
       },
       schema: {
+        //need to change this to be header names from the spreadsheet
         fields: [{ name: "Role", type: "STRING" }],
       },
     };
