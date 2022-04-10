@@ -4,8 +4,10 @@ function uploadData() {
 
   //loop through the data array
   for (let i = 0; i < data.length; i++) {
-    //create the table
+    //create the table using the sheet name
     let tableId = data[i].sheetName;
+
+    // *****REGEX****
     //make sure tableId is a valid BigQuery table ID
     tableId = tableId.replace(/\s/g, "_");
     //replace ampersand with "_and_"
@@ -16,6 +18,8 @@ function uploadData() {
     }
     //regex to handle slashes and replace them with underscores
     tableId = tableId.replace(/\//g, "_");
+    // ****END REGEX****
+
     //create the table
     let table = {
       tableReference: {

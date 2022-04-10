@@ -7,6 +7,7 @@ const projectId = "xd-agency";
 const projectNumber = "659831782100";
 //test variable -- id of the spreadsheet
 const spreadsheetId = "1tAJVIBvZ69JeM_S2sIZmppr1cnuHOTTMWpAwfjjaZTY";
+//constant variables for the codebase
 const ss = getSpreadsheet(spreadsheetId);
 const data = grabSheetInformation(ss);
 ////////

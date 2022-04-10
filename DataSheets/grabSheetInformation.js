@@ -9,6 +9,7 @@ function getSpreadsheet(spreadsheetId) {
     return (ss = SpreadsheetApp.openById(spreadsheetId));
   }
 }
+
 //this function will handle grabbing the data from the spreadsheet
 //and uploading it to BigQuery
 function grabSheetInformation(ss) {
@@ -20,6 +21,7 @@ function grabSheetInformation(ss) {
   datasetId = datasetId.replace(/\s/g, "_");
   //replace ampersand with "_and_"
   datasetId = datasetId.replace(/&/g, "_and_");
+
   //if datasetId doesn't exist, create it
   try {
     console.log("dataset exists");
