@@ -1,0 +1,33 @@
+<!-- html template for sidebar on deliverable sheets -->
+<html>
+  <head>
+    <script>
+      //when a category is clicked, call function to add clicked value to sheet
+      function addCategory(category) {
+        SpreadsheetApp.getUi().alert(category);
+        google.script.run.withSuccessHandler().addDeliverableCategory(category);
+      }
+
+      document.getElementsByClassName("li_category").onclick = function () {
+        addCategory(this.innerHTML);
+      };
+    </script>
+    <title>3rd Party Categories Sidebar</title>
+
+    <style>
+      li {
+        /* no styling on links */
+        list-style: none;
+        /* add some spacing between buttons */
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Click on required 3rd party category to add to current deliverable.</h3>
+    <ul class="categories">
+      <li></li>
+      <!-- call function for list -->
+    </ul>
+  </body>
+</html>
