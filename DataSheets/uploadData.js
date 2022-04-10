@@ -19,12 +19,13 @@ function uploadData() {
     //regex to handle slashes and replace them with underscores
     tableId = tableId.replace(/\//g, "_");
     // ****END REGEX****
+    console.log(`tableId after regex handling: ${tableId}`);
 
     //create the table
     let table = {
       tableReference: {
         projectId: projectNumber,
-        datasetId: datasetId,
+        datasetId: data[i].datasetId,
         tableId: tableId,
       },
       schema: {
@@ -32,14 +33,20 @@ function uploadData() {
         fields: [{ name: "Role", type: "STRING" }],
       },
     };
+    console.log(`table: ${table}`);
+    console.log(`inserting table or deleting if it exists`);
     //if table exists, delete it
     try {
-      BigQuery.Tables.remove(projectNumber, datasetId, tableId);
-      // BigQuery.Tables.
+      BigQuery.Tables.remove(projectNumber, data[i].datasetId, tableId);
+      console.log(`table ${tableId} deleted`);
     } catch (err) {
       Logger.log(`error: ${err}`);
-      table = BigQuery.Tables.insert(table, projectNumber, datasetId);
-      //create the table
+    }
+    try {
+      table = BigQuery.Tables.insert(table, projectNumber, data[i].datasetId);
+      console.log(`table ${tableId} created`);
+    } catch {
+      console.log(`table ${tableId} already exists. error ${err}`);
     }
   }
 }

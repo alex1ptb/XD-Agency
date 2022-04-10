@@ -1,3 +1,5 @@
+//THIS IS A THROW-AWAY FUNCTION.  IT IS NOT USED IN THE APP.
+
 //add top row to every sheet in spreadsheet. Name the first column "Role"
 function createHeaderRow(spreadsheetId) {
   if (spreadsheetId === undefined) {

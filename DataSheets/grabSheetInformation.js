@@ -1,6 +1,9 @@
 /*
  @OnlyCurrentDoc
 */
+
+//The following functions are used to grab the current information from the spreadhsheet for uploading to bigquery
+
 function getSpreadsheet(spreadsheetId) {
   let ss = "";
   if (spreadsheetId == null) {
