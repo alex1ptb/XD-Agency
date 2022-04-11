@@ -45,16 +45,18 @@ function uploadSpreadsheetToBigQuery() {
     //regex to handle slashes and replace them with underscores
     tableId = tableId.replace(/\//g, "_");
 
+    // create table object for BigQuery
     let table = {
       tableReference: {
         projectId: projectNumber,
-        datasetId: datasetId,
+        datasetId: data[i].datasetId,
         tableId: tableId,
       },
       schema: {
         fields: [{ name: "Role", type: "STRING" }],
       },
     };
+
     //if table exists, delete it
     try {
       BigQuery.Tables.remove(projectNumber, datasetId, tableId);
@@ -66,6 +68,8 @@ function uploadSpreadsheetToBigQuery() {
     // Create the table.
     Logger.log("Table created: %s", table.id);
 
+    //change the following code
+    //probably need to move this
     let csvFileId = "1tAJVIBvZ69JeM_S2sIZmppr1cnuHOTTMWpAwfjjaZTY";
     // ss.getSheets()[i].getSheetId
     // Load CSV data from Drive and convert to the correct format for upload.

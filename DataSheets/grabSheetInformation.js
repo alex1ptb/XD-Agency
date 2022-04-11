@@ -18,7 +18,7 @@ function getSpreadsheet(spreadsheetId) {
 function grabSheetInformation(ss) {
   //the name of the spreadsheet will be the name of the dataset
   let datasetId = ss.getName();
-  console.log(`datasetId: ${datasetId}`);
+  // console.log(`datasetId: ${datasetId}`);
 
   //make datasetID a valid BigQuery dataset ID
   datasetId = datasetId.replace(/\s/g, "_");
@@ -38,8 +38,10 @@ function grabSheetInformation(ss) {
   const sheets = ss.getSheets();
   // create an array of the sheets names in the spreadsheet
   const sheetNames = [];
+  let sheetID = "";
   for (let i = 0; i < sheets.length; i++) {
     sheetNames.push(sheets[i].getName());
+    sheetID = sheets[i].getSheetId();
   }
   //create an array of the rows in the spreadsheet
   const rows = [];
@@ -56,6 +58,7 @@ function grabSheetInformation(ss) {
   const data = [];
   for (let i = 0; i < sheets.length; i++) {
     data.push({
+      sheetID: sheetID,
       datasetId: datasetId,
       sheetName: sheetNames[i],
       headers: headers[i],
