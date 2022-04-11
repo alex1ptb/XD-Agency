@@ -12,6 +12,9 @@ function filterAlreadyChoosenCategories() {
   let sheet =
     SpreadsheetApp.getActiveSpreadsheet().getSheetByName("ChooseAgent");
   let lastRow = sheet.getLastRow();
+  if (lastRow == 0) {
+    lastRow = 1;
+  }
   let xdaRates = getXdaRates();
   let tableIds = [];
   //go through xdaRates and get the tableIds and push to tableIds array

@@ -8,6 +8,9 @@ function addCategoryToCurrentDeliverable(category) {
 
   //find the last row and add one to it
   let lastRow = sheet.getLastRow();
+  if (lastRow == 0) {
+    lastRow = 1;
+  }
   let newRow = lastRow + 1;
 
   //copy from A1 to Q8 and append to the end of the sheet
