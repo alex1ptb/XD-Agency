@@ -17,7 +17,7 @@ function addCategoryToCurrentDeliverable(category) {
   sheet.getRange(newRow, 1).setValue(category);
 
   //refresh the sidebar
-  createSidebar();
+  createDeliverableCategorySidebar();
 
   //add in pick a job title
   checkForRoleUpdate(newRow);
