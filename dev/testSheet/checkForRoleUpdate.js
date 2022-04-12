@@ -8,7 +8,7 @@ function checkForRoleUpdate(newRow) {
   //look at the last row
 
   const lastRow = sheet.getLastRow();
-  console.log(lastRow);
+  console.log(`console log from checkForRole Update -- lastRow: ${lastRow}`);
   //if the last row is has a value then a role has been chos
   if (sheet.getRange(newRow, 1).getDisplayValue() != "Pick a Category") {
     //get XdaRates[displayValue is the table ID and return the tableData array
@@ -68,7 +68,6 @@ function checkForRoleUpdate(newRow) {
 
       //check what the role is
       //put category choice at the bottom again?
-      //should probably change this to be a static area as I don't want users to create multiple "Measurement" categories or other categories
       setCategoryRoleDropDown();
       //put "End of Section" in the last row
     }

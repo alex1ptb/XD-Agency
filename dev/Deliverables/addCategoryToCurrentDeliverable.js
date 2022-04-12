@@ -23,7 +23,7 @@ function addCategoryToCurrentDeliverable(category) {
   createDeliverableCategorySidebar();
 
   //add in pick a job title
-  checkForRoleUpdate(newRow);
+  // checkForRoleUpdate(newRow);
 
   //refresh the current sheet
   sheet.setName(sheetName);

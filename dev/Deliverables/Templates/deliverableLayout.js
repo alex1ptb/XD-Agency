@@ -5,38 +5,22 @@
 
 function deliverableLayout(category) {
   let ss = SpreadsheetApp.getActiveSpreadsheet();
-  let templateSheet = ss.getSheetByName("ChooseCategoryTemplate");
+  let templateSheet = ss.getSheetByName("Deliverable_Template");
   let sheet = ss.getActiveSheet();
   let lastRow = sheet.getLastRow();
+  console.log(`lastRow: ${lastRow}`);
   if (lastRow == 0) {
     lastRow = 1;
   }
-  //   let lastColumn = sheet.getLastColumn();
-  let firstRow = [
-    "",
-    "QTY",
-    "Total",
-    "HRS",
-    "Total",
-    "HRS",
-    "Sell Rate",
-    "Total Sell",
-    "Margin",
-    "NOTES:",
-    "Enter Pad Hours",
-    "Notes for Rod",
-    "PO#",
-    "ENTER ACTUAL HOURS",
-    "VARIANCE",
-  ];
+  console.log(`lastRow after check: ${lastRow}`);
 
   //copy from A1 to Q8 and append to the end of the sheet
-  let copyRange = templateSheet.getRange(1, 1, 8, 16);
+  let copyRange = templateSheet.getRange("Main_Category_Template");
   //paste range after last row
   let pasteRange = sheet.getRange(lastRow + 1, 1, 8, 16);
+  //copy the range to the new range on the active sheet
   copyRange.copyTo(pasteRange);
-  //get the range of the copyRange and set the name of the range to the category
-  let range = sheet.getRange(lastRow + 1, 1, 8, 16);
-  //set the name of the range to the category
-  SpreadsheetApp.getActive().setNamedRange(category, range);
+
+  //give the new range a name
+  SpreadsheetApp.getActiveSpreadsheet().setNamedRange(category, pasteRange);
 }
