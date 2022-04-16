@@ -12,15 +12,19 @@ function deliverableLayout(category) {
   if (lastRow == 0) {
     lastRow = 1;
   }
-  console.log(`lastRow after check: ${lastRow}`);
 
   //copy from A1 to Q8 and append to the end of the sheet
   let copyRange = templateSheet.getRange("Main_Category_Template");
   //paste range after last row
   let pasteRange = sheet.getRange(lastRow + 1, 1, 8, 16);
+  let startRow = lastRow + 1;
+  console.log(`startRow; ${JSON.stringify(startRow)}`);
   //copy the range to the new range on the active sheet
   copyRange.copyTo(pasteRange);
 
   //give the new range a name
-  SpreadsheetApp.getActiveSpreadsheet().setNamedRange(category, pasteRange);
+  SpreadsheetApp.getActiveSpreadsheet().setNamedRange(
+    `${sheet.getName()}_${category}_Main_Category`,
+    sheet.getRange(startRow, 1, 8, ss.getLastColumn())
+  );
 }
