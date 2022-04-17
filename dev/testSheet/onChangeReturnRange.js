@@ -34,8 +34,8 @@ function onEdit(e) {
         //set the value of column 6 to 0
         sheet.getRange(row + 1, 6).setValue(0);
       }
-      //get the sale rate for the job
-      getSaleRate(e);
     }
+    //get the sale rate for the job
+    getSaleRate(e);
   }
 }

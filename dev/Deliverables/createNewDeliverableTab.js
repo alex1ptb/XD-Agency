@@ -1,12 +1,6 @@
 /**
  * @OnlyCurrentDoc
  */
-
-// THIS ENTIRE THING NEEDS TO BE REFACTORED AND REWRITTEN
-
-//target sheet D1 and create a new tab with the number incremented by 1
-//copy the contents of sheet D1 to the new tab
-
 function createNewDeliverableTab() {
   var ui = SpreadsheetApp.getUi();
   //Found a tutorial I can follow

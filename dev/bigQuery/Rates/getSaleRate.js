@@ -1,7 +1,10 @@
 //This gets the sale rate for the job choosen.
 function getSaleRate(e) {
+  console.log("inside getSaleRate");
   const namedRange = getNamedRange(e);
-  // getNamedRange(e);
+  //parse the namedRange to give the first word after the first _ is found
+  let words = namedRange.split("_");
+  let target = words[1];
   const sheet = SpreadsheetApp.getActiveSheet();
   const activeRange = e.range;
 
@@ -16,12 +19,11 @@ function getSaleRate(e) {
     //get the value of the job title
     const jobTitle = sheet.getRange(row, 1).getValue();
     // const test = sheet.getRange(row, 1).getActive().getName();
-    // Logger.log(`test: ${test}`);
     const tables = getXDATable();
 
     //loop through the tables array and find the tableId that matches the namedRange
     for (let i = 0; i < tables.length; i++) {
-      if (tables[i].tableId === namedRange) {
+      if (tables[i].tableId === target) {
         //return the tableData
         const tableData = tables[i].tableData;
         //loop through the tableData and find the job title that matches the job title from the cell that was edited
@@ -31,6 +33,7 @@ function getSaleRate(e) {
             const saleRate = tableData[j][1];
             //set the value of column 6 to the sale rate
             sheet.getRange(row, 6).setValue(saleRate);
+            console.log(saleRate);
           }
         }
       }
