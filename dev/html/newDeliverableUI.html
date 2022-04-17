@@ -47,7 +47,13 @@
           // console.log(inputs[i].id);
         }
       }
-      console.log(arrayOfCheckedCategories);
+      var title = document.getElementById("deliverableName").value;
+      console.log(`title: ${title}`);
+      console.log(`array of categories: ${arrayOfCheckedCategories}`);
+      google.script.run
+        .withSuccessHandler()
+        .makeNewDeliverablefromUserInput(title, arrayOfCheckedCategories);
+      google.script.host.close();
     }
   </script>
 </html>

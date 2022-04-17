@@ -4,11 +4,10 @@
 
 function checkForRoleUpdate(newRow) {
   let spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-  let sheet = spreadsheet.getSheetByName("ChooseAgent");
+  let sheet = spreadsheet.getActiveSheet();
   //look at the last row
 
-  const lastRow = sheet.getLastRow();
-  console.log(`console log from checkForRole Update -- lastRow: ${lastRow}`);
+  let lastRow = sheet.getLastRow();
   //if the last row is has a value then a role has been chos
   if (sheet.getRange(newRow, 1).getDisplayValue() != "Pick a Category") {
     //get XdaRates[displayValue is the table ID and return the tableData array
@@ -61,14 +60,16 @@ function checkForRoleUpdate(newRow) {
       let roleIndex = roles.indexOf(
         sheet.getRange(lastRow, 1).getDisplayValue()
       );
+
+      // NO IDEA WHAT I WAS DOING HERE, commeneted it out and things are running smoothly. Before it was giving me an error with 1 as the returing results. Soooo,,,,yeah
       //set the next cell to the cell
-      sheet
-        .getRange(lastRow + 1, 1)
-        .setValue(tableData[0].tableData[roleIndex][1]);
+      // sheet
+      //   .getRange(lastRow + 1, 1)
+      //   .setValue(tableData[0].tableData[roleIndex][1]);
 
       //check what the role is
       //put category choice at the bottom again?
-      setCategoryRoleDropDown();
+      // setCategoryRoleDropDown();
       //put "End of Section" in the last row
     }
   } else {
