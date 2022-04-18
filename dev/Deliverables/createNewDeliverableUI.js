@@ -1,7 +1,7 @@
 /**
  * @OnlyCurrentDoc
  */
-function createNewDeliverableTab() {
+function createNewDeliverableUI() {
   var ui = SpreadsheetApp.getUi();
   //Found a tutorial I can follow
   //https://yagisanatode.com/2018/06/10/google-apps-script-getting-input-data-from-a-dialog-box-in-google-sheets/
@@ -43,7 +43,6 @@ function createNewDeliverableTab() {
   //append ending of form
   html.append(`</form>`);
 
-  //dont know what this part is doing currently
   var dialog = ui.showModalDialog(
     html,
     "Input the Name of deliverable and choose starting categories"

@@ -9,8 +9,7 @@
 
 ////Go through tableIDs and remove already choosen tableIDs found on current sheet and return the remaining tableIDs
 function filterAlreadyChoosenCategories() {
-  let sheet =
-    SpreadsheetApp.getActiveSpreadsheet().getSheetByName("ChooseAgent");
+  let sheet = SpreadsheetApp.getActiveSheet();
   let lastRow = sheet.getLastRow();
   if (lastRow == 0) {
     lastRow = 1;

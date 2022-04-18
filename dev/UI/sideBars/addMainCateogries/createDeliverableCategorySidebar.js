@@ -2,8 +2,8 @@
 //target ChooseAgent sheet
 
 function createDeliverableCategorySidebar() {
-  let spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-  let sheet = spreadsheet.getSheetByName("ChooseAgent");
+  // let spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  // let sheet = spreadsheet.getSheetByName("ChooseAgent");
 
   //create sidebar from template
   let sidebar = HtmlService.createTemplateFromFile("html/deliverableSidebar");

@@ -7,17 +7,53 @@ function makeNewDeliverablefromUserInput(title, categories) {
   //now to pull template sections from templateSheet and input them into the new sheet
   //first grab the header template
   //copy header section to sheet
-  let copyRange = templateSheet.getRange("Deliverable_Template_Header");
-  copyRange.copyTo(sheet.getRange(1, 1));
-  // *****I NEED TO ADD IN HAVING THIS BE A NAMED RANGE
+  let copyHeader = templateSheet.getRange("Deliverable_Template_Header");
+  copyHeader.copyTo(sheet.getRange(1, 1));
+  //grab the range that was copied over
+  let headerRange = sheet.getRange(
+    1,
+    1,
+    sheet.getLastRow(),
+    sheet.getLastColumn()
+  );
+
+  //set the header range name to {title}_Header
+  SpreadsheetApp.getActiveSpreadsheet().setNamedRange(
+    `${title}_Main_Category_Header`,
+    headerRange
+  );
+  console.log(`headerRange: ${headerRange}`);
 
   //now add in the categories
-
   categories.forEach((category) => {
+    console.log(`adding category: ${category}`);
     let lastRow = sheet.getLastRow();
     deliverableLayout(category);
     let newRow = lastRow + 1;
     sheet.getRange(newRow, 1).setValue(category);
-    checkForRoleUpdate(newRow);
+    checkForRoleUpdate(category);
   });
+
+  //now to add in the footer
+  let copyFooter = templateSheet.getRange(
+    "Deliverable_Template_Main_Category_Footer"
+  );
+  console.log(`copyFooter: ${copyFooter}`);
+  //get number of rows in the template footer
+  let footerRows = copyFooter.getNumRows();
+  let footerCols = copyFooter.getNumColumns();
+
+  //set variable for start of footer section
+  let footerStart = sheet.getLastRow() + 1;
+
+  copyFooter.copyTo(sheet.getRange(footerStart, 1));
+
+  //get range of footer section
+  let footerRange = sheet.getRange(footerStart, 1, footerRows, footerCols);
+
+  //set the footer range name to {title}_Main_Category_Footer
+  SpreadsheetApp.getActiveSpreadsheet().setNamedRange(
+    `${title}_Main_Category_Footer`,
+    footerRange
+  );
 }

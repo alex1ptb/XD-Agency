@@ -12,7 +12,7 @@ function onOpen() {
   var ui = SpreadsheetApp.getUi();
   ui.createMenu("Deliverables")
     //create deliverable Tab
-    .addItem("Create Deliverable", "createNewDeliverableTab")
+    .addItem("Create Deliverable", "createNewDeliverableUI")
     .addItem(
       "Add Category to Current Deliverable",
       "createDeliverableCategorySidebar"
