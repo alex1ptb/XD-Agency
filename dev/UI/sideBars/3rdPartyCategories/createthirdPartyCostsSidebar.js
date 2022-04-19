@@ -1,15 +1,17 @@
-//create sidebar for deliverable options
-//target ChooseAgent sheet
+// sidebar for 3rd party categories
 
-function createDeliverableCategorySidebar() {
-  // let spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-  // let sheet = spreadsheet.getSheetByName("ChooseAgent");
+function createthirdPartyCostsSidebar() {
+  // create sidebar with 3rd party categories
+  let spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = spreadsheet.getSheetByName("ChooseAgent");
 
   //create sidebar from template
-  let sidebar = HtmlService.createTemplateFromFile("html/deliverableSidebar");
+  let sidebar = HtmlService.createTemplateFromFile(
+    "html/thirdPartyCategoriesSidebar"
+  );
   //get html from sidebar
   let html = sidebar.evaluate();
-  html.setTitle("Category Options");
+  html.setTitle("3rd Party Category Options");
   html.setWidth(300);
   html.setHeight(300);
 
@@ -25,7 +27,6 @@ function createDeliverableCategorySidebar() {
       `<li class="li_category"><button onclick="google.script.run.addCategoryToCurrentDeliverable('${category}')">${category}</button></li>`
     );
   }
-
   //show sidebar
   SpreadsheetApp.getUi().showSidebar(html);
 }

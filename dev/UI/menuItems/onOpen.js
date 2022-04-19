@@ -4,6 +4,7 @@
 
 //constant variables for the entire spreadsheet
 const projectId = "xd-agency";
+const ss = SpreadsheetApp.getActiveSpreadsheet();
 
 ////////
 //create onOpen function to create a menu ui
@@ -11,7 +12,7 @@ function onOpen() {
   var ui = SpreadsheetApp.getUi();
   ui.createMenu("Deliverables")
     //create deliverable Tab
-    .addItem("Create Deliverable", "createNewDeliverableTab")
+    .addItem("Create Deliverable", "createNewDeliverableUI")
     .addItem(
       "Add Category to Current Deliverable",
       "createDeliverableCategorySidebar"
