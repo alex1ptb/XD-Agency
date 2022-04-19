@@ -80,14 +80,33 @@ function deliverableLayout(category) {
     sheet.getRange(thirdRow, 1, 1, pasteRange.getNumColumns())
   );
 
-  // //the 6th row of pasteRange should be named {sheetName}_{category}_Freelancer_Roles
-  // //set variable for 6th row of new named range
+  //replace text for targeting
+  var textFinder = sheet
+    .createTextFinder("XD_Agents_Information_Template")
+    .matchFormulaText(true);
+
+  //replace text for targeting
+  textFinder.replaceAllWith(`${sheet.getName()}_${category}_XD_Roles`);
+
+  //set the formula for the 3rd column of the first row after named range
+  //the 6th row of pasteRange should be named {sheetName}_{category}_Freelancer_Roles
+  //set variable for 6th row of new named range
   let sixthRow = pasteRange.getRow() + 5;
 
-  // //set the named range for the roles
+  //set the named range for the roles
   SpreadsheetApp.getActiveSpreadsheet().setNamedRange(
     `${sheet.getName()}_${category}_Freelancer_Roles`,
     sheet.getRange(sixthRow, 1, 1, pasteRange.getNumColumns())
   );
+
+  //replace text for targeting
+  var textFinder = sheet
+    .createTextFinder("Freelance_Information_XD_Template")
+    .matchFormulaText(true);
+
+  //replace text for targeting
+  textFinder.replaceAllWith(`${sheet.getName()}_${category}_Freelancer_Roles`);
+  //get the last row of the range
+
   console.log("deliverableLayout function complete");
 }
