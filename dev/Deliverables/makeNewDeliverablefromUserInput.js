@@ -4,8 +4,6 @@ function makeNewDeliverablefromUserInput(title, categories) {
   console.log(`inside server creating sheet named: ${title}`);
   ss.insertSheet(title);
   let sheet = ss.getActiveSheet();
-  //now to pull template sections from templateSheet and input them into the new sheet
-  //first grab the header template
   //copy header section to sheet
   let copyHeader = templateSheet.getRange("Deliverable_Template_Header");
   copyHeader.copyTo(sheet.getRange(1, 1));
@@ -22,11 +20,9 @@ function makeNewDeliverablefromUserInput(title, categories) {
     `${title}_Main_Category_Header`,
     headerRange
   );
-  console.log(`headerRange: ${headerRange}`);
 
   //now add in the categories
   categories.forEach((category) => {
-    console.log(`adding category: ${category}`);
     let lastRow = sheet.getLastRow();
     deliverableLayout(category);
     let newRow = lastRow + 1;
@@ -38,22 +34,25 @@ function makeNewDeliverablefromUserInput(title, categories) {
   let copyFooter = templateSheet.getRange(
     "Deliverable_Template_Main_Category_Footer"
   );
-  console.log(`copyFooter: ${copyFooter}`);
-  //get number of rows in the template footer
-  let footerRows = copyFooter.getNumRows();
-  let footerCols = copyFooter.getNumColumns();
 
-  //set variable for start of footer section
-  let footerStart = sheet.getLastRow() + 1;
-
-  copyFooter.copyTo(sheet.getRange(footerStart, 1));
+  copyFooter.copyTo(sheet.getRange(sheet.getLastRow() + 1, 1));
 
   //get range of footer section
-  let footerRange = sheet.getRange(footerStart, 1, footerRows, footerCols);
+  let footerRange = sheet.getRange(
+    sheet.getLastRow() + 1,
+    1,
+    copyFooter.getNumRows(),
+    copyFooter.getNumColumns()
+  );
 
   //set the footer range name to {title}_Main_Category_Footer
   SpreadsheetApp.getActiveSpreadsheet().setNamedRange(
     `${title}_Main_Category_Footer`,
     footerRange
   );
+
+  //run function to add the sheetName to all of the sheets that need it
+  // addSheetToProjectInformationSummarySheet(title);
+  updateNamedRange("ProjectInformationSummary_Deliverables", title);
+  updateNamedRange("PriceByDeliverable_Deliverables", title);
 }

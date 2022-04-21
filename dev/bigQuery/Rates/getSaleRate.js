@@ -1,6 +1,6 @@
 //This gets the sale rate for the job choosen.
 function getSaleRate(e) {
-  console.log("inside getSaleRate");
+  // console.log("inside getSaleRate");
   const namedRange = getNamedRange(e);
   //parse the namedRange to give the first word after the first _ is found
   let words = namedRange.split("_");
@@ -33,7 +33,7 @@ function getSaleRate(e) {
             const saleRate = tableData[j][1];
             //set the value of column 6 to the sale rate
             sheet.getRange(row, 6).setValue(saleRate);
-            console.log(saleRate);
+            // console.log(saleRate);
           }
         }
       }
