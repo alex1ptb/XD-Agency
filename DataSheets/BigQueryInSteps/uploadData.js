@@ -110,7 +110,9 @@ function upload_to_BigQ(
 
     try {
       table = BigQuery.Tables.insert(table, projectId, datasetId);
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
 
     var data = file.getBlob().setContentType("application/octet-stream");
 
@@ -154,7 +156,11 @@ function upload_to_BigQ(
         },
       };
     } //end if schema_bq
-    job = BigQuery.Jobs.insert(job, projectId, data);
+    try {
+      job = BigQuery.Jobs.insert(job, projectId, data);
+    } catch (e) {
+      console.log(e);
+    }
 
     file.setTrashed(true); // delete the file
   } //end while
