@@ -1,10 +1,6 @@
 // sidebar for 3rd party categories
 
 function createthirdPartyCostsSidebar() {
-  // create sidebar with 3rd party categories
-  let spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-  let sheet = spreadsheet.getSheetByName("ChooseAgent");
-
   //create sidebar from template
   let sidebar = HtmlService.createTemplateFromFile(
     "html/thirdPartyCategoriesSidebar"

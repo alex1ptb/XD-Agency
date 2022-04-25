@@ -4,7 +4,12 @@
 */
 
 function getTableList(data) {
-  let datasetId = (data = "") ? data : "Rates";
+  let datasetId = data;
+  //console.log(`datasetId: ${datasetId}`);
+  //if data is not defined, use "Rates" as the dataset id
+  if (!datasetId) {
+    datasetId = "Rates";
+  }
   let tables = BigQuery.Tables.list(projectId, datasetId);
   return tables;
 }

@@ -24,13 +24,6 @@ function getXDATable() {
   //parse value as an array of objects
   let values = JSON.parse(value);
   return values;
-
-  //go through array of objects and find the one with the key:value of tableId:Account
-  try {
-    // return value[0];
-  } catch (e) {
-    return e;
-  }
 }
 
 function getProperties() {
