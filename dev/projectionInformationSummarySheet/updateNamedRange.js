@@ -3,7 +3,6 @@
 
 //create a function to insert row after namedRange
 function updateNamedRange(namedRange, title) {
-  console.log(`inside updateNamedRange`);
   const range = ss.getRangeByName(namedRange);
   const sheetName = range.getSheet().getName();
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheetName);
@@ -50,33 +49,3 @@ function addNewSheet(title) {
   //return the new sheet
   return newSheet;
 }
-
-//
-
-// function addSheetToProjectInformationSummarySheet(title) {
-//   console.log(`inside addSheetToProjectInformationSummarySheet`);
-//   //get the ProjectInformationSummary namedRange
-//   let namedRange = SpreadsheetApp.getActiveSpreadsheet().getRangeByName(
-//     "ProjectInformationSummary_Deliverables"
-//   );
-//   console.log(`range: ${namedRange.getA1Notation()}`);
-//   //get the range of the namedRange
-//   let range = namedRange;
-//   //insert a row at the end of the range
-//   range.insertRowAfter(range.getLastRow());
-//   //update named range to include the new row
-//   let newRange = range.getRange(
-//     range.getRow(), //get first row
-//     range.getColumn(), //get first column
-//     range.getLastRow() + 1, //get last row + 1
-//     range.getLastColumn() //get last column
-//   );
-//   //set the namedRange to the new range
-//   SpreadsheetApp.getActiveSpreadsheet().setNamedRange(
-//     "ProjectInformationSummary_Deliverables",
-//     newRange
-//   );
-//   //add the title to the new row
-//   newRange.getCell(newRange.getLastRow(), 1).setValue(title);
-//   console.log(`finished addSheetToProjectInformationSummarySheet`);
-// }

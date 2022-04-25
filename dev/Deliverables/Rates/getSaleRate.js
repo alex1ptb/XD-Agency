@@ -4,7 +4,7 @@ function getSaleRate(e) {
   const namedRange = getNamedRange(e);
   //parse the namedRange to give the first word after the first _ is found
   let words = namedRange.split("_");
-  let target = words[1];
+  let target = words[1]; //this would be the target category
   const sheet = SpreadsheetApp.getActiveSheet();
   const activeRange = e.range;
 

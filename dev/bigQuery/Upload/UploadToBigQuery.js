@@ -9,9 +9,13 @@ function loadCsv() {
   const projectId = "659831782100";
   // Create a dataset in the BigQuery UI (https://bigquery.cloud.google.com)
   // and enter its ID below.
-  const datasetId = "Role_Prices";
+  //name of datasetId is the name of the spreadsheet
+  const datasetId = SpreadsheetApp.getActiveSpreadsheet().getName();
+  // const datasetId = "Role_Prices";
+  //**** CHANGE THIS TO BE DYNAMIC */
   //file id from Drive
-  const csvFileId = "1AUIU4P9OWOqVsiCRERQzLAWbLvG2xiCEpX5BzeWZXqc";
+  // const csvFileId = "1AUIU4P9OWOqVsiCRERQzLAWbLvG2xiCEpX5BzeWZXqc";
+  let csvFileId = "";
 
   //get active spreadsheet and do the following for each sheet
   //
@@ -28,18 +32,18 @@ function loadCsv() {
       },
       schema: {
         fields: [
-          { name: "Role", type: "STRING" },
-          { name: "XDA_2022_Standard", type: "INTEGER" },
-          { name: "XDA_2021_Standard", type: "INTEGER" },
-          { name: "MBUSA_2022", type: "INTEGER" },
-          { name: "Porsche_2020", type: "INTEGER" },
-          { name: "Porsche_2019", type: "INTEGER" },
-          { name: "ACCENTURE_2021", type: "INTEGER" },
-          { name: "CISCO_2022", type: "INTEGER" },
-          { name: "Old_2019_MBUSA", type: "INTEGER" },
+          // { name: "Role", type: "STRING" },
+          // { name: "XDA_2022_Standard", type: "INTEGER" },
+          // { name: "XDA_2021_Standard", type: "INTEGER" },
+          // { name: "MBUSA_2022", type: "INTEGER" },
+          // { name: "Porsche_2020", type: "INTEGER" },
+          // { name: "Porsche_2019", type: "INTEGER" },
+          // { name: "ACCENTURE_2021", type: "INTEGER" },
+          // { name: "CISCO_2022", type: "INTEGER" },
+          // { name: "Old_2019_MBUSA", type: "INTEGER" },
         ],
-      },
-    };
+      }, // end schema
+    }; // end table
 
     try {
       //if table exists, delete it
