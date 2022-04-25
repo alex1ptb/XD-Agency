@@ -1,0 +1,161 @@
+//for each sheet run the upload function
+// function upload() {
+//   const sheet = SpreadsheetApp.getActiveSheet();
+//   const project_id = "xd-agency";
+//   const data_set_id = SpreadsheetApp.getActiveSpreadsheet().getName();
+//   const table_id = sheet.getName();
+//   const range = sheet.getDataRange();
+//   const writeDisposition = "WRITE_EMPTY";
+//   const has_header = true;
+//   const schema_bq = {
+//     //string Role
+//     fields: [{ name: "Role", type: "STRING" }],
+//   }; //end schema_bq
+//   // "automatic";
+
+//make a function to loop through the sheets and upload them to BigQuery
+function upload_each_sheet() {
+  const sheets = SpreadsheetApp.getActiveSpreadsheet().getSheets();
+  for (let i = 0; i < sheets.length; i++) {
+    const project_id = "xd-agency";
+    const sheet = sheets[i];
+    const range = sheet.getDataRange();
+    const data = range.getValues();
+    const data_set_id = SpreadsheetApp.getActiveSpreadsheet().getName();
+    const table_id = sheet.getName();
+    const writeDisposition = "WRITE_EMPTY";
+    const has_header = true;
+    const schema_bq = {
+      //string Role
+      fields: [{ name: "Role", type: "STRING" }],
+    }; //end schema_bq
+
+    upload_to_BigQ(
+      range,
+      project_id,
+      data_set_id,
+      table_id,
+      writeDisposition,
+      has_header,
+      schema_bq
+    ); //end upload_to_BigQ
+  } //end upload
+}
+
+function upload_to_BigQ(
+  range,
+  projectId,
+  datasetId,
+  tableId,
+  writeDisposition,
+  has_header,
+  schema_bq
+) {
+  if (typeof writeDisposition == "undefined") {
+    writeDisposition = "WRITE_EMPTY";
+  }
+
+  if (typeof has_header == "undefined" || has_header == true) {
+    has_header = 1;
+  } else {
+    has_header = 0;
+  }
+
+  var data = range.getValues(); //get the data from the sheet
+  var csvFile = undefined; //create a variable to hold the csv file
+
+  if (data.length > 1) {
+    var csv = ""; //create a variable to hold the csv data
+    for (var row = 0; row < data.length; row++) {
+      //loop through the rows
+      for (var col = 0; col < data[row].length; col++) {
+        //loop through the columns
+        if (data[row][col].toString().indexOf(",") != -1) {
+          //if there is a comma in the data cell value (i.e. it is a string) then surround it with double quotes (") and escape any double quotes within the string with another double quote (")
+          data[row][col] = '"' + data[row][col] + '"';
+        } //end if
+      } //end for col
+      // join each row's columns
+      // add a carriage return to end of each row, except for the last one
+      if (row < data.length - 1) {
+        csv += data[row].join(",") + "\r\n"; //add carriage return to end of each row
+      } else {
+        csv += data[row]; //last row
+      }
+    }
+    csvFile = csv;
+  }
+
+  //   return csvFile;
+
+  var csv_name = "temp_" + new Date().getTime() + ".csv";
+
+  DriveApp.createFile(csv_name, csvFile);
+
+  var files = DriveApp.getFilesByName(csv_name);
+  while (files.hasNext()) {
+    //loop through the files
+    var file = files.next(); //get the file
+    var table = {
+      tableReference: {
+        projectId: projectId,
+        datasetId: datasetId,
+        tableId: tableId,
+      },
+      schema: {
+        //string Role
+        fields: [{ name: "Role", type: "STRING" }],
+      },
+    };
+
+    try {
+      table = BigQuery.Tables.insert(table, projectId, datasetId);
+    } catch (e) {}
+
+    var data = file.getBlob().setContentType("application/octet-stream");
+
+    if (
+      typeof schema_bq == "undefined" ||
+      schema_bq == false ||
+      schema_bq == "automatic"
+    ) {
+      // Create the data upload job.
+      var job = {
+        configuration: {
+          load: {
+            destinationTable: {
+              projectId: projectId,
+              datasetId: datasetId,
+              tableId: tableId,
+            },
+            skipLeadingRows: has_header,
+            autodetect: true,
+            writeDisposition: writeDisposition,
+          },
+        },
+      };
+    } else {
+      // Create the data upload job.
+      var job = {
+        configuration: {
+          load: {
+            destinationTable: {
+              projectId: projectId,
+              datasetId: datasetId,
+              tableId: tableId,
+            },
+            skipLeadingRows: has_header,
+            schema: {
+              //string Role
+              fields: [{ name: "Role", type: "STRING" }],
+            },
+            writeDisposition: writeDisposition,
+          },
+        },
+      };
+    } //end if schema_bq
+    job = BigQuery.Jobs.insert(job, projectId, data);
+
+    file.setTrashed(true); // delete the file
+  } //end while
+} //end upload_to_BigQ
