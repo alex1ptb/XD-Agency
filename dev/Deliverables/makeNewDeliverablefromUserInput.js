@@ -113,6 +113,7 @@ function makeNewDeliverablefromUserInput(title, categories) {
       `${title}_Third_Party_Categories_Footer`,
       thirdPartyFooterRange
     );
+
     //end of add in Third_Party_Categories
   }
   //call the function to add in the Third_Party_Categories
