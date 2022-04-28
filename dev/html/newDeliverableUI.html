@@ -52,7 +52,8 @@
       console.log(`array of categories: ${arrayOfCheckedCategories}`);
       google.script.run
         .withSuccessHandler()
-        .makeNewDeliverablefromUserInput(title, arrayOfCheckedCategories);
+        .testing(title, arrayOfCheckedCategories);
+      // .makeNewDeliverablefromUserInput(title, arrayOfCheckedCategories);
       google.script.host.close();
     }
   </script>

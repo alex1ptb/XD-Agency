@@ -34,18 +34,14 @@ function getSaleRate(e) {
             //set the value of column 6 to the sale rate
             sheet.getRange(row, 6).setValue(saleRate);
             // console.log(saleRate);
+          } //if the value is "Pick a Job Title", the display value of column 6 is 0
+          else {
+            if (value === "Pick a Job Title") {
+              sheet.getRange(row, 6).setValue(0);
+            }
           }
         }
       }
     }
-
-    //I am thinking that I should have this run differently in the future, using callbacks and hash tables of the job titles and their sale rates.
-
-    //if the value is "Pick a Job Title", the display value of column 6 is 0
-    if (value === "Pick a Job Title") {
-      sheet.getRange(row, 6).setValue(0);
-    }
-
-    //check which job title the user selected and search script properties for the sale rate
   }
 }

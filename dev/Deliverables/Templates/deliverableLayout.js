@@ -1,17 +1,35 @@
 //this function will be used when addCategoryToCurrentDeliverable is called
 //it will add in the layout that is currently being used for the deliverable
 
-function deliverableLayout(category) {
+//partition is where the category will be added
+function deliverableLayout(category, partition) {
   let ss = SpreadsheetApp.getActiveSpreadsheet();
   let templateSheet = ss.getSheetByName("Deliverable_Template");
   let sheet = ss.getActiveSheet();
-
+  console.log(`partition: ${partition}`);
   //copy range Main_Category_Template
-  let copyRange = templateSheet.getRange("Main_Category_Template");
+  let copyRange = templateSheet.getRange(
+    `Deliverable_Template_Category_${partition}_Section`
+  );
+
+  // //see if there are named ranges inside the copy range
+  //   let namedRanges = copyRange.getNamedRanges();
+  //   if (namedRanges.length > 0) {
+  //     //loop through the named ranges and replace the name with the category name
+  //     namedRanges.forEach((namedRange) => {
+  //       let range = namedRange.getRange();
+  //       let newName = namedRange
+  //         .getName()
+  //         .replace("Deliverable_Template", `${title}`)
+  //         .replace("Category", `${category}`);
+  //         ;
+  //       console.log(`Renaming named range: ${namedRange.getName()} to ${newName}`);
+  //       ss.setNamedRange(newName, range);
+  //     });
 
   //check if footerRange exists
   let footerRange = ss.getRangeByName(
-    `${sheet.getName()}_Main_Category_Footer`
+    `${sheet.getName()}_Footer_${partition}_Section`
   );
 
   //if footerRange exists, insert rows above the footer equal to the number of rows found in the copyRange
@@ -23,7 +41,9 @@ function deliverableLayout(category) {
     //insert the rows above the footer and do not have merged cells
     sheet.insertRowsBefore(footerRow, numRows);
     //get new footerRange
-    footerRange = ss.getRangeByName(`${sheet.getName()}_Main_Category_Footer`);
+    footerRange = ss.getRangeByName(
+      `${sheet.getName()}_Footer_${partition}_Section`
+    );
     //get the first row of the footerRange
     footerRow = footerRange.getRow();
     //get the starting row of the inserted rows
@@ -38,7 +58,7 @@ function deliverableLayout(category) {
     copyRange.copyTo(sheet.getRange(sheet.getLastRow() + 1, 1));
   }
   //set the range name to ${sheetName}_{category}_Main_Category
-  let rangeName = `${sheet.getName()}_${category}_Main_Category`;
+  let rangeName = `${sheet.getName()}_${category}_${partition}_Section`;
   //get the range in the sheet to set the name
   let range = sheet.getRange(
     startRow,
@@ -52,7 +72,7 @@ function deliverableLayout(category) {
 
   //get range of new named Range
   let pasteRange = ss.getRangeByName(
-    `${sheet.getName()}_${category}_Main_Category`
+    `${sheet.getName()}_${category}_${partition}_Section`
   );
 
   //the third row of pasteRange should be named {sheetName}_{category}_XD_Roles
@@ -61,7 +81,7 @@ function deliverableLayout(category) {
 
   // //set the named range for the roles
   SpreadsheetApp.getActiveSpreadsheet().setNamedRange(
-    `${sheet.getName()}_${category}_XD_Roles`,
+    `${sheet.getName()}_${category}_${partition}_Roles`,
     sheet.getRange(thirdRow, 1, 1, pasteRange.getNumColumns())
   );
 
@@ -71,7 +91,9 @@ function deliverableLayout(category) {
     .matchFormulaText(true);
 
   //replace text for targeting
-  textFinder.replaceAllWith(`${sheet.getName()}_${category}_XD_Roles`);
+  textFinder.replaceAllWith(
+    `${sheet.getName()}_${category}_${partition}_Roles`
+  );
 
   //set the formula for the 3rd column of the first row after named range
   //the 6th row of pasteRange should be named {sheetName}_{category}_Freelancer_Roles
@@ -79,11 +101,12 @@ function deliverableLayout(category) {
   let sixthRow = pasteRange.getRow() + 5;
 
   //set the named range for the roles
-  SpreadsheetApp.getActiveSpreadsheet().setNamedRange(
-    `${sheet.getName()}_${category}_Freelancer_Roles`,
-    sheet.getRange(sixthRow, 1, 1, pasteRange.getNumColumns())
-  );
-
+  if (partition == "XD") {
+    SpreadsheetApp.getActiveSpreadsheet().setNamedRange(
+      `${sheet.getName()}_${category}_Freelancer_Roles`,
+      sheet.getRange(sixthRow, 1, 1, pasteRange.getNumColumns())
+    );
+  }
   //replace text for targeting
   var textFinder = sheet
     .createTextFinder("Freelance_Information_XD_Template")
@@ -92,4 +115,10 @@ function deliverableLayout(category) {
   //replace text for targeting
   textFinder.replaceAllWith(`${sheet.getName()}_${category}_Freelancer_Roles`);
   //get the last row of the range
+  let deleteSection = ss.getRangeByName(
+    `${sheet.getName()}_Category_${partition}_Section`
+  );
+  if (deleteSection != null) {
+    ss.deleteRows(deleteSection.getRow(), deleteSection.getNumRows());
+  }
 }

@@ -24,10 +24,10 @@ function updateNamedRange(namedRange, title) {
   ss.setNamedRange(namedRange, newRange);
 
   //if namedRange is ProjectInformationSummary_Deliverables, then add the title to the new row
-  if (namedRange === "ProjectInformationSummary_Deliverables") {
-    sheet.getRange(newRange.getLastRow(), newRange.getColumn()).setValue(title);
-  }
-  if (namedRange === "PriceByDeliverable_Deliverables") {
+  if (
+    namedRange === "ProjectInformationSummary_Deliverables" ||
+    namedRange === "PriceByDeliverable_Deliverables"
+  ) {
     sheet.getRange(newRange.getLastRow(), newRange.getColumn()).setValue(title);
   }
 }
