@@ -1,5 +1,7 @@
 // let sheet = ss.getSheetByName("Test");
 // let title = "Test";
+
+//This is the main function when adding a new deliverable sheet
 function testing(title, categories) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   ss.insertSheet(title);
@@ -45,16 +47,24 @@ function testing(title, categories) {
 
   copyOver(title);
   NamedRanges(sheet);
+  //update ProjectInformationSummary and PriceByDeliverable named ranges to include the new sheet
+  //ProjectInformationSummary -- Insert Sheet Title when deliverable is created
+  updateNamedRange("ProjectInformationSummary_Deliverables");
+  //get last row of named range and add title to the new row
+  let updateRange = ss.getRangeByName("ProjectInformationSummary_Deliverables");
+  updateRange.getSheet().getRange(updateRange.getLastRow(), 2).setValue(title);
+  //PriceByDeliverable -- Insert Sheet Title when deliverable is created
+  updateNamedRange("PriceByDeliverable_Deliverables");
+  //get last row of named range and add title to the new row
+  updateRange = ss.getRangeByName("PriceByDeliverable_Deliverables");
+  updateRange.getSheet().getRange(updateRange.getLastRow(), 2).setValue(title);
 
   categories.forEach((category) => {
-    let lastRow = sheet.getLastRow();
     deliverableLayout(category, "XD");
-    let newRow = lastRow + 1;
-    sheet.getRange(newRow, 1).setValue(category);
     checkForRoleUpdate(category, "XD");
     checkForRoleUpdate(category, "ThirdParty");
   });
 
-  updateNamedRange("ProjectInformationSummary_Deliverables", title);
-  updateNamedRange("PriceByDeliverable_Deliverables", title);
+  // updateNamedRange("ProjectInformationSummary_Deliverables", title);
+  // updateNamedRange("PriceByDeliverable_Deliverables", title);
 }

@@ -48,8 +48,8 @@
         }
       }
       var title = document.getElementById("deliverableName").value;
-      console.log(`title: ${title}`);
-      console.log(`array of categories: ${arrayOfCheckedCategories}`);
+      // console.log(`title: ${title}`);
+      // console.log(`array of categories: ${arrayOfCheckedCategories}`);
       google.script.run
         .withSuccessHandler()
         .testing(title, arrayOfCheckedCategories);
