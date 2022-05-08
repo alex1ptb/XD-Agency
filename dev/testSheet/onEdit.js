@@ -1,27 +1,36 @@
 //when the sheet is changed, check if cell has dropdown menu, if so, copy the row and paste it below the current row
 function onEdit(e) {
+  console.log(`e: ${JSON.stringify(e)}`);
+  if (!isNaN(e.value)) {
+    console.log(`value is a number`);
+    return;
+  }
+  console.log(`onEdit: ${e.value} -- value`);
   //get named ranges this cell belongs to
-  const namedRanges = getNamedRange(e);
-  const namedRangesArray = namedRanges.split(",");
-  console.log(`onEdit: namedRangesArray: ${namedRangesArray}`);
+  const namedRangesArray = getNamedRange(e).split(",");
   const sheet = SpreadsheetApp.getActiveSheet();
   const sheetName = e.range.getSheet().getName();
   const activeRange = e.range;
   const oldValue = e.oldValue;
   const row = activeRange.getRow();
   const col = activeRange.getColumn();
+
   //first column in range is jobTitle
   const jobTitle = activeRange.getSheet().getRange(row, 1).getValue();
-  const name = activeRange.getSheet().getRange(row, 2).getValue();
+  let name = activeRange.getSheet().getRange(row, 2).getValue();
+  if (name == null || name == undefined) {
+    name = "";
+  }
+  console.log(`onEdit: name: ${name} -- value`);
 
   for (let i = 0; i < namedRangesArray.length; i++) {
     //if the named range has Section in it then ignore it
     if (namedRangesArray[i].includes("Section")) {
       //target 2nd word
       serviceCategory = namedRangesArray[i].split("_")[1];
-      console.log(`onEdit: serviceCategory: ${serviceCategory}`);
+      // console.log(`onEdit: serviceCategory: ${serviceCategory}`);
       partition = namedRangesArray[i].split("_")[2];
-      console.log(`onEdit: partition: ${partition}`);
+      // console.log(`onEdit: partition: ${partition}`);
       continue;
     } else {
       rangeName = namedRangesArray[i];
@@ -52,88 +61,67 @@ function onEdit(e) {
   //ClientSummaryReport -- Insert from when Role is choosen
   //Title,Category,Name,Role,3rd Party Category, 3rd Party Description/Name, 3rd Party Vendor Name,Notes
 
-  function updateClientSummaryReport(e) {
+  function updateClientSummaryReport() {
+    console.log(`start updateClientSummaryReport function`);
+    console.log(`service category: ${serviceCategory}`);
+    console.log(`partition: ${partition}`);
+    console.log(`jobTitle: ${jobTitle}`);
+    // const jobTitle = activeRange.getSheet().getRange(row, 1).getValue();
+    console.log(`name: ${name}`);
     //if value is "Pick a Job Title" then return
     if (e.value === "Pick a Job Title") {
       return;
     }
+    //if value is a number then return
 
-    //check report range to see if info already exists
     const reportRange = ss.getRangeByName("ClientSummaryReportRange");
     const reportRangeValues = reportRange.getValues();
 
-    //check the first column and see if it matches sheetName
     for (let i = 0; i < reportRangeValues.length; i++) {
-      if (reportRangeValues[i][0] === sheetName) {
-        //if partition is "XD" or "Freelancer" then check column 2 for match of serviceCategory
-        if (partition === "XD" || partition === "Freelancer") {
-          console.log(`partition is ${partition}`);
+      //if partition is "XD" or "Freelancer" then check column 2 for match of serviceCategory
+      if (partition === "XD" || partition === "Freelancer") {
+        console.log(`partition is XD or Freelancer`);
+        if (reportRangeValues[i][0] === sheetName) {
           if (reportRangeValues[i][1] === serviceCategory) {
-            console.log(
-              `serviceCategory is ${serviceCategory} and a match has been found`
-            );
-            //if match, check column 4 for match of jobTitle
-            if (reportRangeValues[i][3] === jobTitle) {
-              console.log(`jobTitle is ${jobTitle} and a match has been found`);
-              if (reportRangeValues[i][3] === oldValue) {
-                console.log(
-                  `updateClientSummaryReport: oldValue: ${oldValue} matches jobTitle: ${jobTitle} and `
-                );
-                ss.getRangeByName("ClientSummaryReportRange")
-                  .offset(i, 4, 1, 1)
-                  .setValue(e.value);
-                return;
-              }
-              //if match, check column C for match of oldValue
-              else if (reportRangeValues[i][2] === oldValue) {
-                console.log(
-                  `updateClientSummaryReport: reportRangeValues[i][2]: ${reportRangeValues[i][2]} matches oldValue: ${oldValue}  `
-                );
-                //if match, update the row with new value
-                ss.getRangeByName("ClientSummaryReportRange")
-                  .offset(i, 2, 1, 1)
-                  .setValue(e.value);
-                console.log(`updateClientSummaryReport: updated row: ${i + 1}`);
-                console.log(
-                  `updateClientSummaryReport: updated value: ${e.value}`
-                );
-                return;
-              } //end if match old value column 2
-            } //end if jobTitle match
+            if (reportRangeValues[i][3] === oldValue) {
+              ss.getRangeByName("ClientSummaryReportRange")
+                .offset(i, 3, 1, 1)
+                .setValue(e.value);
+              return;
+            }
+            if (reportRangeValues[i][2] === oldValue) {
+              ss.getRangeByName("ClientSummaryReportRange")
+                .offset(i, 2, 1, 1)
+                .setValue(e.value);
+              return;
+            } //end if match old value column 2
+            // } //end if jobTitle match
           } //end if serviceCategory matches column 1
         } //end if partition is XD or Freelancer
-        //if partition is "ThirdParty" then check column 5 for match of serviceCategory
-        if (partition === "ThirdParty") {
-          if (reportRangeValues[i][5] === serviceCategory) {
-            //if match, check column 4 for match of jobTitle
-            if (reportRangeValues[i][6] === oldValue) {
-              console.log(`updating column 6`);
+      }
+      /////////////////////
+      //if partition is "ThirdParty" then check column 5 for match of serviceCategory
+      if (partition === "ThirdParty") {
+        let vendorName = activeRange.getSheet().getRange(row, 3).getValue();
+        if (reportRangeValues[i][4] === serviceCategory) {
+          // console.log(`service category: ${serviceCategory} found in column 4`);
+          //if match, check column 4 for match of jobTitle
+          if (reportRangeValues[i][5] === oldValue) {
+            console.log(`jobTitle: ${jobTitle} found in column 5`);
+            if (reportRangeValues[i][6] === vendorName) {
               ss.getRangeByName("ClientSummaryReportRange")
-                .offset(i, 6, 1, 1)
+                .offset(i, 5, 1, 1)
                 .setValue(e.value);
               return;
-              //if match, check column C for match of oldValue
-              // if (reportRangeValues[i][6] === oldValue) {
-              //   //if match, update the row with new value
-              //   ss.getRangeByName("ClientSummaryReportRange")
-              //     .offset(i, 6, 1, 1)
-              //     .setValue(e.value);
-              //   // reportRange.getRange(i + 1, 3).setValue(e.value);
-              //   //end of function
-            } else if (reportRangeValues[i][7] === oldValue) {
-              console.log(`updating column 7`);
-              //if match, update the row with new value
-              ss.getRangeByName("ClientSummaryReportRange")
-                .offset(i, 7, 1, 1)
-                .setValue(e.value);
-              // reportRange.getRange(i + 1, 3).setValue(e.value);
-              //end of function
-              return;
-            } //end of if value matches column 7
-          } //end of if value matches column 5
+            }
+          }
         } //end of if value matches column 5
-      } //end of if value matches column 1
-    } //end for loop
+      } //end of if value matches column 5
+    } //end of if value matches column 1
+    console.log(`end of for loop`);
+    // } //end for loop
+    // } //end checkRangeForMatch function
+    // checkRangeForMatch(e);
     const targetRange = ss.getRange("ClientSummaryReportRange");
     updateNamedRange("ClientSummaryReportRange");
     //clear the last row
@@ -142,11 +130,10 @@ function onEdit(e) {
       .clearContent();
 
     const section = serviceCategory;
-    const name = e.range.getSheet().getRange(e.range.getRow(), 2).getValue();
+    // let name = e.range.getSheet().getRange(e.range.getRow(), 2).getValue();
     const role = e.range.getValue();
 
     //update the ClientSummaryReport with the new values
-    console.log(`updating Title: ${sheetName}`);
     //target first cell of named range
 
     //check if the row already exists
@@ -181,39 +168,52 @@ function onEdit(e) {
 
     //SortableBy3rdPartyReport -- Insert when 3rd party role is choosen
     //SortableByServiceAreaReport -- Insert when Role is Choosen
-    console.log(`updating ClientSummaryReport`);
+    console.log(`end updating ClientSummaryReport`);
     //end updateClientSummaryReport function
   } // end updateClientSummaryReport
 
   updateClientSummaryReport(e);
 
   function updateSortableByServiceAreaReport(e) {
+    console.log(`start updateSortableByServiceAreaReport function`);
     //check if partition is "XD" or "Freelancer"
     // partition = namedRangesArray[i].split("_")[2];
     if (partition === "XD" || partition === "Freelancer") {
+      console.log(`partition: ${partition}`);
       //get ServiceAreaReport range
-      // ServiceAreaReport
       const serviceRange = ss.getRangeByName("ServiceAreaReport");
       const serviceValues = serviceRange.getValues();
+      console.log(`service values: ${serviceValues}`);
       for (let i = 0; i < serviceValues.length; i++) {
         //check if sheet name is in the SortableByServiceAreaReport range "ServiceAreaReport"
         if (serviceValues[i][0] === sheetName) {
           //match has been found now check if service area is the same
           if (serviceValues[i][1] === serviceCategory) {
-            //match found, now check if role is the same
-            if (serviceValues[i][3] === jobTitle) {
-              //match found, now check if name is the same
-              if (serviceValues[i][2] === oldValue) {
-                //match found, now update the value
+            if (serviceValues[i][3] === oldValue) {
+              console.log(`jobTitle: ${jobTitle} matched`);
+              if (serviceValues[i][2] === name) {
+                console.log(
+                  `Updating Category: ${serviceCategory} for: ${name}`
+                );
                 ss.getRangeByName("ServiceAreaReport")
                   .offset(i, 3, 1, 1)
                   .setValue(e.value);
                 return;
-              } //end if match
-            } //end if jobTitle matches
+              }
+            }
+            //match found, now check if name is the same
+            if (serviceValues[i][2] === oldValue) {
+              console.log(`changing name: ${oldValue} to ${e.value}`);
+              //match found, now update the value
+              ss.getRangeByName("ServiceAreaReport")
+                .offset(i, 2, 1, 1)
+                .setValue(e.value);
+              return;
+            } //end if match
+            // } //end if jobTitle matches
           } //end if matches service category
         } //end if matches sheet name
-      } // end of for loop
+      } // end of for loop if the partition is "XD" or "Freelancer"
 
       //if we have made it this far then the row does not exist so we need to add it
       updateNamedRange("ServiceAreaReport");
@@ -244,5 +244,58 @@ function onEdit(e) {
       //   .setValue(jobTitle);
     } //end of check if partition is XD or Freelancer
   } //end updateSortableByServiceAreaReport
+
   updateSortableByServiceAreaReport(e);
+
+  //update SortableBy3rdPartyReport
+  function updateSortableBy3rdPartyReport(e) {
+    if (partition !== "ThirdParty") {
+      return;
+    }
+    console.log(`start updateSortableBy3rdPartyReport function`);
+    const serviceRange = ss.getRangeByName("SortableByThirdPartyReportRange");
+    const serviceValues = serviceRange.getValues();
+    console.log(`service values: ${serviceValues}`);
+    for (let i = 0; i < serviceValues.length; i++) {
+      //check if sheet name is in the SortableByServiceAreaReport range "ServiceAreaReport"
+      if (serviceValues[i][0] === sheetName) {
+        console.log(`sheet name matched`);
+        //match has been found now check if service area is the same
+        if (serviceValues[i][1] === serviceCategory) {
+          if (serviceValues[i][2] === oldValue) {
+            console.log(`jobTitle: ${jobTitle} matched`);
+            if (serviceValues[i][2] === name) {
+              console.log(`Updating Category: ${serviceCategory} for: ${name}`);
+              ss.getRangeByName("ServiceAreaReport")
+                .offset(i, 3, 1, 1)
+                .setValue(e.value);
+              return;
+            }
+          }
+        }
+      } //end if matches sheet name
+    } // end of for loop if the partition is "XD" or "Freelancer"
+    console.log(`no match found`);
+    updateNamedRange("SortableByThirdPartyReportRange");
+    //now a new row has been added so we need to put the new values in the new row
+    let targetRange = ss.getRange("SortableByThirdPartyReportRange");
+    //sheet name
+    targetRange
+      .getSheet()
+      .getRange(targetRange.getLastRow(), 1)
+      .setValue(sheetName);
+    //service area
+    targetRange
+      .getSheet()
+      .getRange(targetRange.getLastRow(), 2)
+      .setValue(serviceCategory);
+    //name
+    targetRange
+      .getSheet()
+      .getRange(targetRange.getLastRow(), 3)
+      .setValue(jobTitle);
+    //role
+    targetRange.getSheet().getRange(targetRange.getLastRow(), 4).setValue(name);
+  }
+  updateSortableBy3rdPartyReport(e);
 } //end onEdit function

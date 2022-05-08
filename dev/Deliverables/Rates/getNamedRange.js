@@ -20,6 +20,6 @@ function getNamedRange(e) {
       : false;
   });
   if (r.length == 0) return;
-  console.log(r.map((f) => f.getName()).join(","));
+  // console.log(r.map((f) => f.getName()).join(","));
   return r.map((f) => f.getName()).join(",");
 }
