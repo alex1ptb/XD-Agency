@@ -27,7 +27,7 @@ function upload_each_sheet() {
     const has_header = true;
     const schema_bq = {
       //string Role
-      fields: [{ name: "Role", type: "STRING" }],
+      // fields: [{ name: "Role", type: "STRING" }],
     }; //end schema_bq
 
     upload_to_BigQ(
@@ -94,6 +94,7 @@ function upload_to_BigQ(
 
   var files = DriveApp.getFilesByName(csv_name);
   while (files.hasNext()) {
+    console.log(`files has Next`);
     //loop through the files
     var file = files.next(); //get the file
     var table = {
@@ -104,7 +105,7 @@ function upload_to_BigQ(
       },
       schema: {
         //string Role
-        fields: [{ name: "Role", type: "STRING" }],
+        // fields: [{ name: "Role", type: "STRING" }],
       },
     };
 
@@ -121,6 +122,7 @@ function upload_to_BigQ(
       schema_bq == false ||
       schema_bq == "automatic"
     ) {
+      console.log("schema_bq is undefined");
       // Create the data upload job.
       var job = {
         configuration: {
@@ -149,7 +151,7 @@ function upload_to_BigQ(
             skipLeadingRows: has_header,
             schema: {
               //string Role
-              fields: [{ name: "Role", type: "STRING" }],
+              // fields: [{ name: "Role", type: "STRING" }],
             },
             writeDisposition: writeDisposition,
           },
