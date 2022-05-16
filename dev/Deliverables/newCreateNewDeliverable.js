@@ -4,8 +4,13 @@
 //This is the main function when adding a new deliverable sheet
 function testing(title, categories) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
-  ss.insertSheet(title);
+  //if title already exists, return alert, else create new sheet
+  if (ss.getSheetByName(title)) {
+    SpreadsheetApp.getUi().alert("Deliverable Name Already Exists");
+    return;
+  }
 
+  ss.insertSheet(title);
   let sheet = ss.getSheetByName(title);
 
   //copy over entire template to new sheet
