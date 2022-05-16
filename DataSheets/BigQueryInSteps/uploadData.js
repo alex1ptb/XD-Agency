@@ -25,10 +25,10 @@ function upload_each_sheet() {
     const table_id = sheet.getName();
     const writeDisposition = "WRITE_EMPTY";
     const has_header = true;
-    const schema_bq = {
-      //string Role
-      // fields: [{ name: "Role", type: "STRING" }],
-    }; //end schema_bq
+    // const schema_bq = {
+    //   //string Role
+    //   // fields: [{ name: "Role", type: "STRING" }],
+    // }; //end schema_bq
 
     upload_to_BigQ(
       range,
@@ -51,17 +51,23 @@ function upload_to_BigQ(
   has_header,
   schema_bq
 ) {
+  console.log("uploading to BigQuery");
   if (typeof writeDisposition == "undefined") {
     writeDisposition = "WRITE_EMPTY";
+    i;
   }
 
   if (typeof has_header == "undefined" || has_header == true) {
+    console.log("has_header is true");
     has_header = 1;
   } else {
     has_header = 0;
+    console.log("has_header is false");
   }
 
   var data = range.getValues(); //get the data from the sheet
+  console.log("data is: " + data);
+  console.log(`data length is: ${data.length}`);
   var csvFile = undefined; //create a variable to hold the csv file
 
   if (data.length > 1) {
@@ -89,10 +95,14 @@ function upload_to_BigQ(
   //   return csvFile;
 
   var csv_name = "temp_" + new Date().getTime() + ".csv";
-
-  DriveApp.createFile(csv_name, csvFile);
-
+  try {
+    DriveApp.createFile(csv_name, csvFile);
+    console.log(`file ${csv_name} created`);
+  } catch (e) {
+    console.log(`error creating file: ${e}`);
+  }
   var files = DriveApp.getFilesByName(csv_name);
+  console.log(`original files: ${files}`);
   while (files.hasNext()) {
     console.log(`files has Next`);
     //loop through the files
@@ -103,12 +113,12 @@ function upload_to_BigQ(
         datasetId: datasetId,
         tableId: tableId,
       },
-      schema: {
-        //string Role
-        // fields: [{ name: "Role", type: "STRING" }],
-      },
+      // schema: {
+      //   //string Role
+      //   // fields: [{ name: "Role", type: "STRING" }],
+      // },
     };
-
+    console.log(`table is: ${table}`);
     try {
       table = BigQuery.Tables.insert(table, projectId, datasetId);
     } catch (e) {
