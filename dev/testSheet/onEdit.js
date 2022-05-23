@@ -1,11 +1,11 @@
 //when the sheet is changed, check if cell has dropdown menu, if so, copy the row and paste it below the current row
 function onEdit(e) {
-  console.log(`e: ${JSON.stringify(e)}`);
+  // console.log(`e: ${JSON.stringify(e)}`);
   if (!isNaN(e.value)) {
     console.log(`value is a number`);
     return;
   }
-  console.log(`onEdit: ${e.value} -- value`);
+  // console.log(`onEdit: ${e.value} -- value`);
   //get named ranges this cell belongs to
   const namedRangesArray = getNamedRange(e).split(",");
   const sheet = SpreadsheetApp.getActiveSheet();
@@ -14,14 +14,49 @@ function onEdit(e) {
   const oldValue = e.oldValue;
   const row = activeRange.getRow();
   const col = activeRange.getColumn();
-
   //first column in range is jobTitle
   const jobTitle = activeRange.getSheet().getRange(row, 1).getValue();
+  //second column is always names of the person for the job
   let name = activeRange.getSheet().getRange(row, 2).getValue();
   if (name == null || name == undefined) {
     name = "";
   }
-  console.log(`onEdit: name: ${name} -- value`);
+  // console.log(`onEdit: name: ${name} -- value`);
+  ////////////////////////////////////////////
+
+  //Get payRate of person in this row
+
+  //**************************/
+  //reworking this as I need to target this in a different manner. So the following is currently useless at this time
+  // if (name) {
+  //   console.log(`onEdit: name: ${name} -- value`);
+  //   let rate = "";
+  //   //match name to PayRates properties and return value
+  //   //payRates returns an array of person and pay
+  //   const payRates = getPayRatesProperties();
+  //   // console.log(`payRates: ${JSON.stringify(payRates[0].tableData)}`);
+  //   // we need to match the name to the payRates array
+  //   payRates[0].tableData.forEach((person) => {
+  //     if (person[0] === name) {
+  //       //need to return the payRate
+  //       console.log(`match: ${JSON.stringify(person)}`);
+  //       rate = person[1];
+  //       return rate;
+  //     }
+  //   });
+
+  //   return rate;
+  // }
+
+  //END of useless portion
+  ////////////////////////////////////////////
+
+  ////////////////////////////////////////////
+  //NEW METHOD
+  //So I need to target every role that is within the value of XDA in the name of the named range.
+  //first get every namedRange on the currently active sheet
+  const namedRanges = getNamedRange();
+  console.log(`namedRanges: ${JSON.stringify(namedRanges)}`);
 
   for (let i = 0; i < namedRangesArray.length; i++) {
     //if the named range has Section in it then ignore it
@@ -34,7 +69,7 @@ function onEdit(e) {
       continue;
     } else {
       rangeName = namedRangesArray[i];
-      console.log(`onEdit: rangeName: ${rangeName}`);
+      // console.log(`onEdit: rangeName: ${rangeName}`);
     }
   }
 
@@ -63,11 +98,11 @@ function onEdit(e) {
 
   function updateClientSummaryReport() {
     console.log(`start updateClientSummaryReport function`);
-    console.log(`service category: ${serviceCategory}`);
-    console.log(`partition: ${partition}`);
-    console.log(`jobTitle: ${jobTitle}`);
+    // console.log(`service category: ${serviceCategory}`);
+    // console.log(`partition: ${partition}`);
+    // console.log(`jobTitle: ${jobTitle}`);
     // const jobTitle = activeRange.getSheet().getRange(row, 1).getValue();
-    console.log(`name: ${name}`);
+    // console.log(`name: ${name}`);
     //if value is "Pick a Job Title" then return
     if (e.value === "Pick a Job Title") {
       return;
@@ -80,7 +115,7 @@ function onEdit(e) {
     for (let i = 0; i < reportRangeValues.length; i++) {
       //if partition is "XD" or "Freelancer" then check column 2 for match of serviceCategory
       if (partition === "XD" || partition === "Freelancer") {
-        console.log(`partition is XD or Freelancer`);
+        // console.log(`partition is XD or Freelancer`);
         if (reportRangeValues[i][0] === sheetName) {
           if (reportRangeValues[i][1] === serviceCategory) {
             if (reportRangeValues[i][3] === oldValue) {
@@ -118,7 +153,6 @@ function onEdit(e) {
         } //end of if value matches column 5
       } //end of if value matches column 5
     } //end of if value matches column 1
-    console.log(`end of for loop`);
     // } //end for loop
     // } //end checkRangeForMatch function
     // checkRangeForMatch(e);
@@ -179,22 +213,22 @@ function onEdit(e) {
     //check if partition is "XD" or "Freelancer"
     // partition = namedRangesArray[i].split("_")[2];
     if (partition === "XD" || partition === "Freelancer") {
-      console.log(`partition: ${partition}`);
+      // console.log(`partition: ${partition}`);
       //get ServiceAreaReport range
       const serviceRange = ss.getRangeByName("ServiceAreaReport");
       const serviceValues = serviceRange.getValues();
-      console.log(`service values: ${serviceValues}`);
+      // console.log(`service values: ${serviceValues}`);
       for (let i = 0; i < serviceValues.length; i++) {
         //check if sheet name is in the SortableByServiceAreaReport range "ServiceAreaReport"
         if (serviceValues[i][0] === sheetName) {
           //match has been found now check if service area is the same
           if (serviceValues[i][1] === serviceCategory) {
             if (serviceValues[i][3] === oldValue) {
-              console.log(`jobTitle: ${jobTitle} matched`);
+              // console.log(`jobTitle: ${jobTitle} matched`);
               if (serviceValues[i][2] === name) {
-                console.log(
-                  `Updating Category: ${serviceCategory} for: ${name}`
-                );
+                // console.log(
+                // `Updating Category: ${serviceCategory} for: ${name}`
+                // );
                 ss.getRangeByName("ServiceAreaReport")
                   .offset(i, 3, 1, 1)
                   .setValue(e.value);
@@ -203,7 +237,7 @@ function onEdit(e) {
             }
             //match found, now check if name is the same
             if (serviceValues[i][2] === oldValue) {
-              console.log(`changing name: ${oldValue} to ${e.value}`);
+              // console.log(`changing name: ${oldValue} to ${e.value}`);
               //match found, now update the value
               ss.getRangeByName("ServiceAreaReport")
                 .offset(i, 2, 1, 1)
@@ -255,17 +289,17 @@ function onEdit(e) {
     console.log(`start updateSortableBy3rdPartyReport function`);
     const serviceRange = ss.getRangeByName("SortableByThirdPartyReportRange");
     const serviceValues = serviceRange.getValues();
-    console.log(`service values: ${serviceValues}`);
+    // console.log(`service values: ${serviceValues}`);
     for (let i = 0; i < serviceValues.length; i++) {
       //check if sheet name is in the SortableByServiceAreaReport range "ServiceAreaReport"
       if (serviceValues[i][0] === sheetName) {
-        console.log(`sheet name matched`);
+        // console.log(`sheet name matched`);
         //match has been found now check if service area is the same
         if (serviceValues[i][1] === serviceCategory) {
           if (serviceValues[i][2] === oldValue) {
             console.log(`jobTitle: ${jobTitle} matched`);
             if (serviceValues[i][2] === name) {
-              console.log(`Updating Category: ${serviceCategory} for: ${name}`);
+              // console.log(`Updating Category: ${serviceCategory} for: ${name}`);
               ss.getRangeByName("ServiceAreaReport")
                 .offset(i, 3, 1, 1)
                 .setValue(e.value);
@@ -275,7 +309,7 @@ function onEdit(e) {
         }
       } //end if matches sheet name
     } // end of for loop if the partition is "XD" or "Freelancer"
-    console.log(`no match found`);
+    // console.log(`no match found`);
     updateNamedRange("SortableByThirdPartyReportRange");
     //now a new row has been added so we need to put the new values in the new row
     let targetRange = ss.getRange("SortableByThirdPartyReportRange");

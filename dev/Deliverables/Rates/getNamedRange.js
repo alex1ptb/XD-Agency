@@ -4,6 +4,13 @@
 
 //get the named range that the edited cell belongs to
 function getNamedRange(e) {
+  if (!e) {
+    //return all named ranges of the active sheet
+    return console.log(SpreadsheetApp.getActiveSpreadsheet().getNamedRanges());
+    // SpreadsheetApp.getActiveSpreadsheet()
+    //   .getActiveSheet()
+    //   .getNamedRanges();
+  }
   const range = e.range;
   const sheet = SpreadsheetApp.getActiveSheet();
   const r = sheet.getNamedRanges().filter((r) => {
