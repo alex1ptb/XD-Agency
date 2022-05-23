@@ -6,10 +6,22 @@
 function getNamedRange(e) {
   if (!e) {
     //return all named ranges of the active sheet
-    return console.log(SpreadsheetApp.getActiveSpreadsheet().getNamedRanges());
-    // SpreadsheetApp.getActiveSpreadsheet()
-    //   .getActiveSheet()
-    //   .getNamedRanges();
+    const namedRanges = SpreadsheetApp.getActiveSpreadsheet().getNamedRanges();
+    //name of active sheet
+    const sheetName = SpreadsheetApp.getActiveSpreadsheet()
+      .getActiveSheet()
+      .getName();
+    console.log(`sheet name: ${sheetName}`);
+    //create new array filtered to only include named ranges that are in the active sheet
+    const namedRangesInSheet = namedRanges.filter((range) =>
+      // console.log(range.);
+      range.getName().startsWith(sheetName)
+    );
+
+    namedRangesInSheet.forEach((namedRange) => {
+      console.log(namedRange.getName());
+    });
+    return namedRangesInSheet;
   }
   const range = e.range;
   const sheet = SpreadsheetApp.getActiveSheet();

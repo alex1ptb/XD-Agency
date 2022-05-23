@@ -1,5 +1,6 @@
 //when the sheet is changed, check if cell has dropdown menu, if so, copy the row and paste it below the current row
 function onEdit(e) {
+  removeDeadReferences();
   // console.log(`e: ${JSON.stringify(e)}`);
   if (!isNaN(e.value)) {
     console.log(`value is a number`);
@@ -7,7 +8,11 @@ function onEdit(e) {
   }
   // console.log(`onEdit: ${e.value} -- value`);
   //get named ranges this cell belongs to
-  const namedRangesArray = getNamedRange(e).split(",");
+  activeSheetNamedRanges = () =>
+    SpreadsheetApp.getActiveSpreadsheet()
+      .getNamedRanges()
+      .filter((range) => range.getName().startsWith(sheet.getName()));
+  const eNamedRangesArray = getNamedRange(e).split(",");
   const sheet = SpreadsheetApp.getActiveSheet();
   const sheetName = e.range.getSheet().getName();
   const activeRange = e.range;
@@ -21,54 +26,52 @@ function onEdit(e) {
   if (name == null || name == undefined) {
     name = "";
   }
-  // console.log(`onEdit: name: ${name} -- value`);
-  ////////////////////////////////////////////
-
-  //Get payRate of person in this row
-
-  //**************************/
-  //reworking this as I need to target this in a different manner. So the following is currently useless at this time
-  // if (name) {
-  //   console.log(`onEdit: name: ${name} -- value`);
-  //   let rate = "";
-  //   //match name to PayRates properties and return value
-  //   //payRates returns an array of person and pay
-  //   const payRates = getPayRatesProperties();
-  //   // console.log(`payRates: ${JSON.stringify(payRates[0].tableData)}`);
-  //   // we need to match the name to the payRates array
-  //   payRates[0].tableData.forEach((person) => {
-  //     if (person[0] === name) {
-  //       //need to return the payRate
-  //       console.log(`match: ${JSON.stringify(person)}`);
-  //       rate = person[1];
-  //       return rate;
-  //     }
-  //   });
-
-  //   return rate;
-  // }
-
-  //END of useless portion
-  ////////////////////////////////////////////
 
   ////////////////////////////////////////////
-  //NEW METHOD
-  //So I need to target every role that is within the value of XDA in the name of the named range.
-  //first get every namedRange on the currently active sheet
-  const namedRanges = getNamedRange();
-  console.log(`namedRanges: ${JSON.stringify(namedRanges)}`);
+  //function to add up every named range that includes "SheetName_parameter_Roles"
+  function updateTotalsOnActiveSheet(targetsection) {
+    const sections = activeSheetNamedRanges().filter((range) => {
+      //create new array filtered to only include named ranges that are in the active sheet
 
-  for (let i = 0; i < namedRangesArray.length; i++) {
+      return range.getName().includes(targetsection);
+    });
+    //go through and target the ones that end with "_Roles"
+    const rolesInSheet = sections.filter((range) => {
+      return range.getName().endsWith("_Roles");
+    });
+    return rolesInSheet;
+  }
+  try {
+    console.log(
+      `updateFunction: ${updateTotalsOnActiveSheet("XD").filter((range) => {
+        console.log(`range name: ${range.getName()}`);
+
+        console.log(
+          `range:${SpreadsheetApp.getActive()
+            .getRangeByName(range.getName())
+            .getValues()}`
+        );
+        //total hours is column 4
+        //for each row in range, multiply total hours (in column 4) by the payRate of the person (in column 2)
+        //get the total hours for every row (column 4) and log it
+      })}`
+    );
+  } catch (e) {
+    console.log(e);
+  }
+  ////////////////////////////////////////////
+
+  for (let i = 0; i < eNamedRangesArray.length; i++) {
     //if the named range has Section in it then ignore it
-    if (namedRangesArray[i].includes("Section")) {
+    if (eNamedRangesArray[i].includes("Section")) {
       //target 2nd word
-      serviceCategory = namedRangesArray[i].split("_")[1];
+      serviceCategory = eNamedRangesArray[i].split("_")[1];
       // console.log(`onEdit: serviceCategory: ${serviceCategory}`);
-      partition = namedRangesArray[i].split("_")[2];
+      partition = eNamedRangesArray[i].split("_")[2];
       // console.log(`onEdit: partition: ${partition}`);
       continue;
     } else {
-      rangeName = namedRangesArray[i];
+      rangeName = eNamedRangesArray[i];
       // console.log(`onEdit: rangeName: ${rangeName}`);
     }
   }
