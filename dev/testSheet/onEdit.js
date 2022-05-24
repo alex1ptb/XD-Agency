@@ -7,7 +7,7 @@ function onEdit(e) {
     return;
   }
   // console.log(`onEdit: ${e.value} -- value`);
-  //get named ranges this cell belongs to
+  //get all named ranges this cell belongs to
   activeSheetNamedRanges = () =>
     SpreadsheetApp.getActiveSpreadsheet()
       .getNamedRanges()
@@ -28,51 +28,12 @@ function onEdit(e) {
   }
 
   ////////////////////////////////////////////
-  //function to add up every named range that includes "SheetName_parameter_Roles"
-  function getTargetSectionRanges(targetsection) {
-    const sections = activeSheetNamedRanges().filter((range) => {
-      //create new array filtered to only include named ranges that are in the active sheet
-      return range.getName().includes(targetsection);
-    });
-    //go through and target the ones that end with "_Roles"
-    const rolesInSheet = sections.filter((range) => {
-      return range.getName().endsWith("_Roles");
-    });
-    return rolesInSheet;
-  }
-  try {
-    let totalPayforSection = [];
-    getTargetSectionRanges("XD").filter((range) => {
-      let values = SpreadsheetApp.getActive()
-        .getRangeByName(range.getName())
-        .getValues();
-      let hourPerRow = values.map((value) => value[4]);
-      let names = values.map((value) => value[1]);
-      for (i = 0; i <= names.length; i++) {
-        if (names[i] === "Choose XD Agent Member" || names[i] === undefined) {
-          return;
-        } else {
-          let rate = lookUpPayRate(names[i]);
-          if (rate === undefined) {
-            return;
-          } else {
-            // console.log(`rate: ${rate}`);
-            // console.log(`hourPerRow[i]: ${hourPerRow[i]}`);
-            let pay = multiplyPayRate(rate, hourPerRow[i]);
-            console.log(`pay: ${pay}`);
-            totalPayforSection.push(pay);
-            // console.log(`totalPayforSection: ${totalPayforSection}`);
-          }
-        }
-      }
-    }); //end of getTargetSectionRanges
-    console.log(`totalPayforSection: ${totalPayforSection}`);
-    console.log(`total: ${totalPayforSection.reduce((a, b) => a + b)}`);
-  } catch (e) {
-    console.log(`try, catch failed: ${e}`);
-  }
+  let XDAStaffCost = TotalCost("XD");
+  console.log(`XDAStaffCost: ${XDAStaffCost}`);
   ////////////////////////////////////////////
 
+  ////////////////////////////////////////////
+  //creating serviceCateogry and partition arrays
   for (let i = 0; i < eNamedRangesArray.length; i++) {
     //if the named range has Section in it then ignore it
     if (eNamedRangesArray[i].includes("Section")) {
@@ -87,6 +48,7 @@ function onEdit(e) {
       // console.log(`onEdit: rangeName: ${rangeName}`);
     }
   }
+  ////////////////////////////////////////////
 
   //if the column is the first column, check if the cell has a dropdown menu
   if (col === 1) {

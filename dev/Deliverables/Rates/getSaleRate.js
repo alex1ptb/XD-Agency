@@ -35,13 +35,10 @@ function getSaleRate(e) {
           //loop through the tableData and find the job title that matches the job title from the cell that was edited
           for (let j = 0; j < tableData.length; j++) {
             if (tableData[j][0] === jobTitle) {
-              console.log(`match found: ${tableData[j][1]}`);
               //return the sale rate
               const saleRate = tableData[j][1];
-              console.log(`saleRate: ${saleRate}`);
               //set the value of column 6 to the sale rate
               sheet.getRange(row, 6).setValue(saleRate);
-              // console.log(saleRate);
             } //if the value is "Pick a Job Title", the display value of column 6 is 0
             else {
               if (value === "Pick a Job Title") {
