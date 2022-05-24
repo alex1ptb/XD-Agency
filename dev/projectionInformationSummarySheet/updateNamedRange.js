@@ -22,30 +22,4 @@ function updateNamedRange(namedRange) {
   );
   //set the namedRange to the new range
   ss.setNamedRange(namedRange, newRange);
-
-  //if namedRange is ProjectInformationSummary_Deliverables, then add the title to the new row
-  // if (
-  //   namedRange === "ProjectInformationSummary_Deliverables" ||
-  //   namedRange === "PriceByDeliverable_Deliverables"
-  // ) {
-  //   sheet.getRange(newRange.getLastRow(), newRange.getColumn()).setValue(title);
-  // }
 }
-
-// //
-
-// //create an array of all the sheets in the spreadsheet
-// function getAllSheets() {
-//   const sheets = SpreadsheetApp.getActiveSpreadsheet().getSheets();
-//   return sheets;
-// }
-
-// //create a function to add a new sheet to the spreadsheet
-// function addNewSheet(title) {
-//   //get the active spreadsheet
-//   const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-//   //create a new sheet
-//   const newSheet = spreadsheet.insertSheet(title);
-//   //return the new sheet
-//   return newSheet;
-// }

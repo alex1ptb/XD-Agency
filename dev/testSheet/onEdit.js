@@ -29,10 +29,9 @@ function onEdit(e) {
 
   ////////////////////////////////////////////
   //function to add up every named range that includes "SheetName_parameter_Roles"
-  function updateTotalsOnActiveSheet(targetsection) {
+  function getTargetSectionRanges(targetsection) {
     const sections = activeSheetNamedRanges().filter((range) => {
       //create new array filtered to only include named ranges that are in the active sheet
-
       return range.getName().includes(targetsection);
     });
     //go through and target the ones that end with "_Roles"
@@ -42,22 +41,35 @@ function onEdit(e) {
     return rolesInSheet;
   }
   try {
-    console.log(
-      `updateFunction: ${updateTotalsOnActiveSheet("XD").filter((range) => {
-        console.log(`range name: ${range.getName()}`);
-
-        console.log(
-          `range:${SpreadsheetApp.getActive()
-            .getRangeByName(range.getName())
-            .getValues()}`
-        );
-        //total hours is column 4
-        //for each row in range, multiply total hours (in column 4) by the payRate of the person (in column 2)
-        //get the total hours for every row (column 4) and log it
-      })}`
-    );
+    let totalPayforSection = [];
+    getTargetSectionRanges("XD").filter((range) => {
+      let values = SpreadsheetApp.getActive()
+        .getRangeByName(range.getName())
+        .getValues();
+      let hourPerRow = values.map((value) => value[4]);
+      let names = values.map((value) => value[1]);
+      for (i = 0; i <= names.length; i++) {
+        if (names[i] === "Choose XD Agent Member" || names[i] === undefined) {
+          return;
+        } else {
+          let rate = lookUpPayRate(names[i]);
+          if (rate === undefined) {
+            return;
+          } else {
+            // console.log(`rate: ${rate}`);
+            // console.log(`hourPerRow[i]: ${hourPerRow[i]}`);
+            let pay = multiplyPayRate(rate, hourPerRow[i]);
+            console.log(`pay: ${pay}`);
+            totalPayforSection.push(pay);
+            // console.log(`totalPayforSection: ${totalPayforSection}`);
+          }
+        }
+      }
+    }); //end of getTargetSectionRanges
+    console.log(`totalPayforSection: ${totalPayforSection}`);
+    console.log(`total: ${totalPayforSection.reduce((a, b) => a + b)}`);
   } catch (e) {
-    console.log(e);
+    console.log(`try, catch failed: ${e}`);
   }
   ////////////////////////////////////////////
 
@@ -89,23 +101,17 @@ function onEdit(e) {
         sheet.getRange(row + 1, 1).setValue("Pick a Job Title");
         //set the value of column 6 to 0
         sheet.getRange(row + 1, 6).setValue(0);
+        return;
       }
+      //get the sale rate for the job
+      console.log(`getting sale rate for job: ${jobTitle}`);
+      getSaleRate(e);
+      return;
     }
   }
-  //get the sale rate for the job
-  getSaleRate(e);
-
-  //update reports with relevant info
-  //ClientSummaryReport -- Insert from when Role is choosen
-  //Title,Category,Name,Role,3rd Party Category, 3rd Party Description/Name, 3rd Party Vendor Name,Notes
 
   function updateClientSummaryReport() {
     console.log(`start updateClientSummaryReport function`);
-    // console.log(`service category: ${serviceCategory}`);
-    // console.log(`partition: ${partition}`);
-    // console.log(`jobTitle: ${jobTitle}`);
-    // const jobTitle = activeRange.getSheet().getRange(row, 1).getValue();
-    // console.log(`name: ${name}`);
     //if value is "Pick a Job Title" then return
     if (e.value === "Pick a Job Title") {
       return;
