@@ -49,7 +49,7 @@ function lookUpPayRate(name) {
 multiplyPayRate = (payRate, hours) => {
   if (payRate === undefined || hours === undefined) {
     console.log(`payRate or hours is undefined`);
-    return;
+    return 0;
   }
   if (payRate) {
     console.log(`multiplyPayRate: ${payRate} * ${hours}`);
@@ -74,27 +74,39 @@ function getTargetSectionRanges(targetsection) {
 ////////////////////////////////////////////
 
 ////////////////////////////////////////////
+//function to add up every named range that includes "SheetName_parameter_Roles"
 function TotalCost(targetsection) {
   let totalPayforSection = [];
   getTargetSectionRanges(targetsection).filter((range) => {
     let values = SpreadsheetApp.getActive()
       .getRangeByName(range.getName())
       .getValues();
-    let hourPerRow = values.map((value) => value[4]);
-    let names = values.map((value) => value[1]);
-    for (i = 0; i <= names.length; i++) {
-      let rate = lookUpPayRate(names[i]);
-      if (rate == undefined) {
-        return;
-      } else {
-        let pay = multiplyPayRate(rate, hourPerRow[i]);
-        if (pay) {
-          totalPayforSection.push(pay);
+    //If it is Freelancer then target the 10th column to push to totalPayForSection array
+    if (range.getName().includes("Freelancer")) {
+      values.forEach((row) => {
+        totalPayforSection.push(row[9]);
+      });
+    } else {
+      //if XD
+      let hourPerRow = values.map((value) => value[4]);
+      let names = values.map((value) => value[1]);
+      for (i = 0; i <= names.length; i++) {
+        let rate = lookUpPayRate(names[i]);
+        if (rate == undefined) {
+          return;
+        } else {
+          let pay = multiplyPayRate(rate, hourPerRow[i]);
+          if (pay) {
+            totalPayforSection.push(pay);
+          }
         }
       }
     }
-    console.log(`totalPayforSection: ${totalPayforSection}`);
   });
-  return (totalPayforSection = totalPayforSection.reduce((a, b) => a + b));
+  if (totalPayforSection.length > 0) {
+    return (totalPayforSection = totalPayforSection.reduce((a, b) => a + b));
+  } else {
+    return 0;
+  }
 } //end of getTargetSectionRanges
 ////////////////////////////////////////////

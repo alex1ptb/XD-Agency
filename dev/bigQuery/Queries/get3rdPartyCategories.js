@@ -9,8 +9,6 @@ function get3rdPartyCategories() {
     const tableName = table.id.split(".")[1];
     //replace colon with .
     let tableId = table.id;
-    //console.log(`tableName: ${tableName}`);
-    //console.log(`tableId: ${tableId}`);
     //using regex replace the : with .
     tableId = tableId.replace(/:/g, ".");
     //query the table for the data wanted
@@ -22,26 +20,22 @@ function get3rdPartyCategories() {
       },
       projectId
     );
-    // console.log(tableQuery)
     //create array to hold the data
     let rows = [];
     //push the rows into an array
     tableQuery.rows.forEach((row) => {
       let rowArray = [];
       rowArray.push(row.f[0].v); //role
-      // console.log( `tableQuery Row value: ${row}`)
-      // rowArray.push(row.f[1].v); //xda_2022_standard
       rows.push(rowArray);
-      // console.log(`rows: ${rows}`)
     });
     //push the table name and data into an array
     tableArray.push({
       tableId: tableName,
       tableData: rows,
-    })
+    });
     console.log(`tableArray: ${tableArray}`);
   });
   //return each table and its data
-  console.log(tableArray)
+  console.log(tableArray);
   return tableArray;
-};
+}

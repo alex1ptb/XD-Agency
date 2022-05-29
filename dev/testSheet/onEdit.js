@@ -2,10 +2,6 @@
 function onEdit(e) {
   removeDeadReferences();
   // console.log(`e: ${JSON.stringify(e)}`);
-  if (!isNaN(e.value)) {
-    console.log(`value is a number`);
-    return;
-  }
   // console.log(`onEdit: ${e.value} -- value`);
   //get all named ranges this cell belongs to
   activeSheetNamedRanges = () =>
@@ -28,12 +24,18 @@ function onEdit(e) {
   }
 
   ////////////////////////////////////////////
-  let XDAStaffCost = TotalCost("XD");
+  //update header sections
+  let XDAStaffCost = TotalCost("XD"); //in getPayRates.js
   console.log(`XDAStaffCost: ${XDAStaffCost}`);
+  sheet.getRange("K5").setValue(XDAStaffCost);
+
+  let FreelanceCost = TotalCost("Freelancer"); //in getPayRates.js
+  console.log(`FreelanceCost: ${FreelanceCost}`);
+  sheet.getRange("L5").setValue(FreelanceCost);
   ////////////////////////////////////////////
 
   ////////////////////////////////////////////
-  //creating serviceCateogry and partition arrays
+  //creating serviceCategory and partition arrays
   for (let i = 0; i < eNamedRangesArray.length; i++) {
     //if the named range has Section in it then ignore it
     if (eNamedRangesArray[i].includes("Section")) {
@@ -50,6 +52,7 @@ function onEdit(e) {
   }
   ////////////////////////////////////////////
 
+  ////////////////////////////////////////////
   //if the column is the first column, check if the cell has a dropdown menu
   if (col === 1) {
     //if there is a dropdown menu, copy the row and paste it below the current row
@@ -71,7 +74,9 @@ function onEdit(e) {
       return;
     }
   }
+  ////////////////////////////////////////////
 
+  ////////////////////////////////////////////
   function updateClientSummaryReport() {
     console.log(`start updateClientSummaryReport function`);
     //if value is "Pick a Job Title" then return

@@ -1,4 +1,6 @@
 function removeDeadReferences() {
+  console.log(`removeDeadReferences() is off`);
+  return;
   var activeSS = SpreadsheetApp.getActiveSpreadsheet();
 
   var sheets = activeSS.getSheets();
