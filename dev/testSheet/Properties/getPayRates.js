@@ -69,6 +69,7 @@ function getTargetSectionRanges(targetsection) {
   const rolesInSheet = sections.filter((range) => {
     return range.getName().endsWith("_Roles");
   });
+  console.log(`rolesInSheet: ${JSON.stringify(rolesInSheet)}`);
   return rolesInSheet;
 }
 ////////////////////////////////////////////
@@ -76,19 +77,46 @@ function getTargetSectionRanges(targetsection) {
 ////////////////////////////////////////////
 //function to add up every named range that includes "SheetName_parameter_Roles"
 function TotalCost(targetsection) {
+  const spreadSheetName = SpreadsheetApp.getActiveSheet().getName();
   let totalPayforSection = [];
+  let freelanceHours = [];
+  let totalStaffHours = [];
   getTargetSectionRanges(targetsection).filter((range) => {
-    let values = SpreadsheetApp.getActive()
-      .getRangeByName(range.getName())
-      .getValues();
-    //If it is Freelancer then target the 10th column to push to totalPayForSection array
+    try {
+      values = SpreadsheetApp.getActive()
+        .getRangeByName(range.getName())
+        .getValues();
+    } catch (e) {
+      console.log(e);
+      return;
+    }
+    //////////////////////////////////////////
+    //get total freelance hours
     if (range.getName().includes("Freelancer")) {
+      values.map((row) => {
+        freelanceHours.push(row[8]);
+      });
+      console.log(`freelanceHours: ${JSON.stringify(freelanceHours)}`);
+      //If it is Freelancer then target the 10th column to push to totalPayForSection array
       values.forEach((row) => {
         totalPayforSection.push(row[9]);
       });
-    } else {
+      console.log(
+        `totalPayforSection inside Freelancer Statement: ${JSON.stringify(
+          totalPayforSection
+        )}`
+      );
+      console.log(`freelanceHours: ${JSON.stringify(freelanceHours)}`);
+
+      //////////////////////////////////////////
+    } //end if Freelancer
+    else {
       //if XD
-      let hourPerRow = values.map((value) => value[4]);
+      console.log(`inside else XD: ${range.getName()}`);
+      let hourPerRow = values.map((value) => {
+        value[4];
+        totalStaffHours.push(value[4]);
+      });
       let names = values.map((value) => value[1]);
       for (i = 0; i <= names.length; i++) {
         let rate = lookUpPayRate(names[i]);
@@ -99,10 +127,32 @@ function TotalCost(targetsection) {
           if (pay) {
             totalPayforSection.push(pay);
           }
-        }
-      }
-    }
-  });
+        } //end if
+      } //end for loop
+    } //end of else
+  }); //end of filter
+  if (freelanceHours.length > 0) {
+    let fHours = freelanceHours.reduce((a, b) => {
+      return a + b;
+    });
+    // SheetName_Footer_Freelancer_TotalFreelanceHours
+    SpreadsheetApp.getActive()
+      .getRangeByName(
+        `${spreadSheetName}_Footer_Freelancer_TotalFreelanceHours`
+      )
+      .setValue(fHours);
+  }
+  if (totalStaffHours.length > 0) {
+    console.log(`totalStaffHours: ${JSON.stringify(totalStaffHours)}`);
+    let tHours = totalStaffHours.reduce((a, b) => {
+      return a + b;
+    });
+    //SheetName_Footer_XD_TotalStaffHours
+    SpreadsheetApp.getActive()
+      .getRangeByName(`${spreadSheetName}_Footer_XD_TotalStaffHours`)
+      .setValue(tHours);
+  }
+
   if (totalPayforSection.length > 0) {
     return (totalPayforSection = totalPayforSection.reduce((a, b) => a + b));
   } else {

@@ -125,8 +125,8 @@ function testing(title, categories) {
     `${title}_Footer_ThirdParty_TotalSell`
   );
   findAndReplace(
-    "Deliverable_Template_Footer_XD_TotalFreelanceHours",
-    `${title}_Footer_XD_TotalFreelanceHours`
+    "Deliverable_Template_Footer_Freelancer_TotalFreelanceHours",
+    `${title}_Footer_Freelancer_TotalFreelanceHours`
   );
   ///////////////////////////////////////////
   // updateNamedRange("ProjectInformationSummary_Deliverables", title);
