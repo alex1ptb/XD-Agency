@@ -1,26 +1,13 @@
-function checkForRoleUpdate(category, partition) {
+function checkForThirdPartyRoleUpdate(category) {
   let sheet = SpreadsheetApp.getActiveSheet();
   //get the range by name of the ${sheetName}_${category}_Main_Category}
   let range = SpreadsheetApp.getActiveSpreadsheet().getRangeByName(
-    `${sheet.getName()}_${category}_${partition}_Section`
+    `${sheet.getName()}_${category}_Main_Category`
   );
 
-  if (range == null) {
-    range = SpreadsheetApp.getActiveSpreadsheet().getRangeByName(
-      `${sheet.getName()}_Category_${partition}_Section`
-    );
-  }
-
-  let rates = "";
-
-  if (partition == "XD") {
-    rates = getXdaRates();
-  }
-  if (partition == "ThirdParty") {
-    rates = getThirdPartyRoles();
-  }
+  let xdaRates = getXdaRates();
   //go through xda rates and find the tableId that matches the displayValue then get the data from that table
-  let tableData = rates.filter((table) => {
+  let tableData = xdaRates.filter((table) => {
     if (table.tableId == null) {
       return;
     }
@@ -56,9 +43,8 @@ function checkForRoleUpdate(category, partition) {
       .build();
     let cell = sheet.getRange(targetRow, 1);
     cell.setDataValidation(buildValidation);
-    if (partition == "XD") {
-      cell = sheet.getRange(targetRow + 3, 1);
-      cell.setDataValidation(buildValidation);
-    }
+
+    cell = sheet.getRange(targetRow + 3, 1);
+    cell.setDataValidation(buildValidation);
   }
 }

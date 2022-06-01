@@ -27,11 +27,11 @@ function grabSheetInformation(ss) {
 
   //if datasetId doesn't exist, create it
   try {
-    console.log("dataset exists");
     BigQuery.Datasets.get(projectNumber, datasetId);
+    console.log("dataset exists");
   } catch (err) {
-    console.log(`dataset doesn't exist. err: ${err} \n creating dataset`);
     BigQuery.Datasets.insert(projectNumber, datasetId);
+    console.log(`dataset doesn't exist. err: ${err} \n creating dataset`);
   }
 
   //the table will be the name of the sheet

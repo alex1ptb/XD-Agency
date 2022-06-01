@@ -13,13 +13,18 @@ function onOpen() {
   ui.createMenu("Deliverables")
     //create deliverable Tab
     .addItem("Create Deliverable", "createNewDeliverableUI")
-    .addItem(
-      "Add Category to Current Deliverable",
-      "createDeliverableCategorySidebar"
-    )
-    .addItem(
-      "Add 3rd Party Costs to Current Deliverable",
-      "createthirdPartyCostsSidebar"
+    //sub menu for deliverable categories
+    .addSubMenu(
+      ui
+        .createMenu("Edit Current Deliverable")
+        .addItem(
+          "Add Category to Current Deliverable",
+          "createDeliverableCategorySidebar"
+        )
+        .addItem(
+          "Add 3rd Party Costs to Current Deliverable",
+          "createthirdPartyCostsSidebar"
+        )
     )
     .addToUi();
   //I probably need to move the below funciton elsewhere

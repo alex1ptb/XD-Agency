@@ -4,6 +4,25 @@
 
 //get the named range that the edited cell belongs to
 function getNamedRange(e) {
+  if (!e) {
+    //return all named ranges of the active sheet
+    const namedRanges = SpreadsheetApp.getActiveSpreadsheet().getNamedRanges();
+    //name of active sheet
+    const sheetName = SpreadsheetApp.getActiveSpreadsheet()
+      .getActiveSheet()
+      .getName();
+    console.log(`sheet name: ${sheetName}`);
+    //create new array filtered to only include named ranges that are in the active sheet
+    const namedRangesInSheet = namedRanges.filter((range) =>
+      // console.log(range.);
+      range.getName().startsWith(sheetName)
+    );
+
+    namedRangesInSheet.forEach((namedRange) => {
+      console.log(namedRange.getName());
+    });
+    return namedRangesInSheet;
+  }
   const range = e.range;
   const sheet = SpreadsheetApp.getActiveSheet();
   const r = sheet.getNamedRanges().filter((r) => {
@@ -20,6 +39,6 @@ function getNamedRange(e) {
       : false;
   });
   if (r.length == 0) return;
-  console.log(r.map((f) => f.getName()).join(","));
+  // console.log(r.map((f) => f.getName()).join(","));
   return r.map((f) => f.getName()).join(",");
 }

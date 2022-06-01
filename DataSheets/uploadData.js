@@ -1,8 +1,5 @@
 function uploadData() {
   const datasetId = data[0].datasetId;
-  //data has already checked if dataset id exists and has created if not
-  //now we check if table exists and create if not
-
   //loop through the data array
   for (let i = 0; i < data.length; i++) {
     //create the table using the sheet name
