@@ -1,6 +1,6 @@
 //This gets the sale rate for the job choosen.
 function getSaleRate(e) {
-  // console.log("inside getSaleRate");
+  console.log("inside getSaleRate");
   const namedRange = getNamedRange(e);
   // console.log(`namedRange: ${namedRange}`);
   //parse the namedRange to give the first word after the first _ is found
@@ -24,7 +24,6 @@ function getSaleRate(e) {
     if (partition == "XD" || partition == "Freelancer") {
       // console.log(`inside if`);
       tables = getXdaRates();
-      // console.log(`tables: ${JSON.stringify(tables)}`);
       //loop through the tables array and find the tableId that matches the namedRange
       for (let i = 0; i < tables.length; i++) {
         if (tables[i].tableId === category) {

@@ -61,14 +61,24 @@ function deliverableLayout(category, partition) {
     copyRange.getNumColumns()
   );
   SpreadsheetApp.getActiveSpreadsheet().setNamedRange(rangeName, range);
+  //////////////////////////////////////////
+
+  //////////////////////////////////////////
   //add the category to the first cell of the range
   sheet.getRange(startRow, 1).setValue(category);
+  if (partition == "XD") {
+    let targetRow = startRow + 2;
+    EmployeeDataValidation(targetRow, sheet);
+  }
+  //////////////////////////////////////////
 
+  //////////////////////////////////////////
   //get range of new named Range
   let pasteRange = ss.getRangeByName(
     `${sheet.getName()}_${category}_${partition}_Section`
   );
 
+  //////////////////////////////////////////
   //the third row of pasteRange should be named {sheetName}_{category}_XD_Roles
   //set variable for 3rd row of new named range
   let thirdRow = pasteRange.getRow() + 2;
@@ -78,17 +88,24 @@ function deliverableLayout(category, partition) {
     `${sheet.getName()}_${category}_${partition}_Roles`,
     sheet.getRange(thirdRow, 1, 1, pasteRange.getNumColumns())
   );
+  //////////////////////////////////////////
 
+  //////////////////////////////////////////
   //update Deliverable_Template_Category_Freelancer_SubTotalQty
   SpreadsheetApp.getActiveSpreadsheet().setNamedRange(
     `${sheet.getName()}_${category}_${partition}_SubTotalQty`,
     sheet.getRange(pasteRange.getLastRow(), 3)
   );
+
+  //////////////////////////////////////////
   //update Deliverable_Template_Category_XD_TotalHours
   //update Deliverable_Template_Category_XD_TotalSell
   //////////////////////////////////////////
   //set the formula for the 3rd column of the first row after named range
   //the 6th row of pasteRange should be named {sheetName}_{category}_Freelancer_Roles
+  //////////////////////////////////////////
+
+  //////////////////////////////////////////
   //set variable for 6th row of new named range
   let sixthRow = pasteRange.getRow() + 5;
 
@@ -99,6 +116,7 @@ function deliverableLayout(category, partition) {
       sheet.getRange(sixthRow, 1, 1, pasteRange.getNumColumns())
     );
   }
+  //////////////////////////////////////////
 
   //////////////////////////////////////////
   //I dont believe this deleteSection is needed anymore

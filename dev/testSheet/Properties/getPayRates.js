@@ -83,6 +83,7 @@ function TotalCost(targetsection) {
   let totalFreelancePay = [];
   let freelanceHours = [];
   let totalStaffHours = [];
+  //get the target section ranges
   getTargetSectionRanges(targetsection).filter((range) => {
     //////////////////////////////////////////
     try {
@@ -93,37 +94,28 @@ function TotalCost(targetsection) {
       console.log(`error with ${range.getName()} values: ${e}`);
       return;
     }
-    // console.log(`rangeName: ${range.getName()}`);
-    // console.log(`values: ${JSON.stringify(values)}`);
-
     //////////////////////////////////////////
     //get total freelance hours
     if (range.getName().includes("Freelancer")) {
       values.map((row) => {
-        freelanceHours.push(row[8]);
-        totalFreelancePay.push(row[6]);
-        totalPayforSection.push(row[9]);
+        freelanceHours.push(row[8]); // Total Freelance Hours
+        totalFreelancePay.push(row[6]); //Total Sell
+        totalPayforSection.push(row[9]); // Total Freelance Cost
       });
-      console.log(
-        `freelanceHours: ${JSON.stringify(
-          freelanceHours
-        )} \n totalFreelancePay: ${JSON.stringify(
-          totalFreelancePay
-        )} \n totalPayforSection: ${JSON.stringify(totalPayforSection)}`
-      );
       //////////////////////////////////////////
     } //end if Freelancer
     else {
       //////////////////////////////////////////
       //if XD
       let staffSell = values.map((value) => {
-        value[6];
+        value[6]; //XD Total Sell
         totalStaffSell.push(value[6]);
       });
       let hourPerRow = values.map((value) => {
-        value[4];
+        value[4]; //XD Total Hours
         totalStaffHours.push(value[4]);
       });
+      //Look up names
       let names = values.map((value) => value[1]);
       for (i = 0; i <= names.length; i++) {
         let rate = lookUpPayRate(names[i]);
@@ -131,6 +123,18 @@ function TotalCost(targetsection) {
           return;
         } else {
           let pay = multiplyPayRate(rate, hourPerRow[i]);
+
+          console.log(`range name: ${range.getName()}`);
+          //Total Sell (left of margin cell) - pay / Total Sell
+          // console.log(`value in column 5: $${values[i][6]}`);
+          // let margin = values[i][6] - pay;
+          // console.log(`margin value - pay: ${margin}`);
+          console.log(`pay: ${pay}`);
+          //update "Margin" column 7 with (pay - staffSell / pay)
+          console.log(
+            `updated margin with: ${names[i]} ${pay} - ${staffSell[i]} / ${pay}`
+          );
+
           // pay-sell/pay
           if (pay) {
             let margin = (pay - staffSell / pay).toFixed(2);
