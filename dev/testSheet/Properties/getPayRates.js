@@ -83,6 +83,7 @@ function TotalCost(targetsection) {
   let totalFreelancePay = [];
   let freelanceHours = [];
   let totalStaffHours = [];
+  //get the target section ranges
   getTargetSectionRanges(targetsection).filter((range) => {
     //////////////////////////////////////////
     try {
@@ -93,32 +94,22 @@ function TotalCost(targetsection) {
       console.log(`error with ${range.getName()} values: ${e}`);
       return;
     }
-    // console.log(`rangeName: ${range.getName()}`);
-    // console.log(`values: ${JSON.stringify(values)}`);
-
     //////////////////////////////////////////
     //get total freelance hours
     if (range.getName().includes("Freelancer")) {
       values.map((row) => {
-        freelanceHours.push(row[8]);
-        totalFreelancePay.push(row[6]);
-        totalPayforSection.push(row[9]);
+        freelanceHours.push(row[8]); // Total Freelance Hours
+        totalFreelancePay.push(row[6]); //Total Sell
+        totalPayforSection.push(row[9]); // Total Freelance Cost
       });
-      console.log(
-        `freelanceHours: ${JSON.stringify(
-          freelanceHours
-        )} \n totalFreelancePay: ${JSON.stringify(
-          totalFreelancePay
-        )} \n totalPayforSection: ${JSON.stringify(totalPayforSection)}`
-      );
       //////////////////////////////////////////
     } //end if Freelancer
     else {
       //////////////////////////////////////////
       //if XD
       let staffSell = values.map((value) => {
-        value[6];
-        totalStaffSell.push(value[6]);
+        value[6]; //XD Total Sell
+        totalStaffSell.push(value[6]); 
       });
       let hourPerRow = values.map((value) => {
         value[4];

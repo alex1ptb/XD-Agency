@@ -24,7 +24,6 @@ function getSaleRate(e) {
     if (partition == "XD" || partition == "Freelancer") {
       // console.log(`inside if`);
       tables = getXdaRates();
-      // console.log(`tables: ${JSON.stringify(tables)}`);
       //loop through the tables array and find the tableId that matches the namedRange
       for (let i = 0; i < tables.length; i++) {
         if (tables[i].tableId === category) {
