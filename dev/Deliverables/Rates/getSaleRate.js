@@ -14,8 +14,6 @@ function getSaleRate(e) {
   const row = activeRange.getRow();
   const value = activeRange.getValue();
 
-  //see what namedRanged the row is in
-
   //if value is not "Pick a Job Title", get the sale rate for the job
   if (value !== "Pick a Job Title") {
     // console.log(`not Pick a Job Title`);
@@ -37,6 +35,7 @@ function getSaleRate(e) {
             if (tableData[j][0] === jobTitle) {
               //return the sale rate
               const saleRate = tableData[j][1];
+              console.log(`saleRate: ${saleRate}`);
               //set the value of column 6 to the sale rate
               sheet.getRange(row, 6).setValue(saleRate);
             } //if the value is "Pick a Job Title", the display value of column 6 is 0

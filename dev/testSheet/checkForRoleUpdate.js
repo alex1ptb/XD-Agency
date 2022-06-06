@@ -48,6 +48,9 @@ function checkForRoleUpdate(category, partition) {
     let roles = [];
     //go through and pull out all job titles and push to array
     for (let i = 0; i < tableData[0].tableData.length; i++) {
+      console.log(
+        `tableData[0].tableData[i].jobTitle: ${tableData[0].tableData[i].jobTitle}`
+      );
       roles.push(tableData[0].tableData[i][0]);
     }
     //create and set the validation
