@@ -39,7 +39,8 @@ function lookUpPayRate(name) {
   if (payRate[0] === undefined) {
     return 0;
   } else {
-    // console.log(`payRate found: ${JSON.stringify(payRate)}`);
+    console.log(`payRate found: ${JSON.stringify(payRate)}`);
+    console.log(`payRate: ${payRate[0][1]}`);
     return payRate[0][1];
   }
 }
@@ -83,6 +84,7 @@ function TotalCost(targetsection) {
   let totalFreelancePay = [];
   let freelanceHours = [];
   let totalStaffHours = [];
+
   //get the target section ranges
   getTargetSectionRanges(targetsection).filter((range) => {
     //////////////////////////////////////////
@@ -115,6 +117,7 @@ function TotalCost(targetsection) {
         value[4]; //XD Total Hours
         totalStaffHours.push(value[4]);
       });
+      console.log(`totalStaffHours: ${totalStaffHours}`);
       //Look up names
       let names = values.map((value) => value[1]);
       for (i = 0; i <= names.length; i++) {
@@ -122,22 +125,19 @@ function TotalCost(targetsection) {
         if (rate == undefined) {
           return;
         } else {
-          let pay = multiplyPayRate(rate, hourPerRow[i]);
-
-          console.log(`range name: ${range.getName()}`);
-          //Total Sell (left of margin cell) - pay / Total Sell
-          // console.log(`value in column 5: $${values[i][6]}`);
-          // let margin = values[i][6] - pay;
-          // console.log(`margin value - pay: ${margin}`);
-          console.log(`pay: ${pay}`);
-          //update "Margin" column 7 with (pay - staffSell / pay)
-          console.log(
-            `updated margin with: ${names[i]} ${pay} - ${staffSell[i]} / ${pay}`
-          );
-
-          // pay-sell/pay
+          let pay = multiplyPayRate(rate, totalStaffHours[i]);
           if (pay) {
-            let margin = (pay - staffSell / pay).toFixed(2);
+            let margin = (
+              (totalStaffSell[i] - pay) /
+              totalStaffSell[i]
+            ).toFixed(2);
+            //update range with margin at row[7]
+            SpreadsheetApp.getActive()
+              .getRangeByName(range.getName())
+              //target the row
+              .offset(i, 7, 1, 1)
+              .setValue(margin);
+            console.log(`margin: ${margin}`);
             totalPayforSection.push(pay);
           }
         } //end if
@@ -146,18 +146,18 @@ function TotalCost(targetsection) {
   }); //end of filter
   //////////////////////////////////////////
   //update total pay and hours sections
-  console.log(`totalStaffSell: ${JSON.stringify(totalStaffSell)}`);
+  // console.log(`totalStaffSell: ${JSON.stringify(totalStaffSell)}`);
   if (totalStaffSell.length > 0) {
     let sSell = totalStaffSell.reduce((a, b) => {
       return a + b;
     });
-    console.log(`sSell: ${sSell}`);
+    // console.log(`sSell: ${sSell}`);
     // Test_Footer_XD_TotalStaffSell
     SpreadsheetApp.getActive()
       .getRangeByName(`${spreadSheetName}_Footer_XD_TotalStaffSell`)
       .setValue(sSell);
   }
-  console.log(`totalFreelancePay: ${JSON.stringify(totalFreelancePay)}`);
+  // console.log(`totalFreelancePay: ${JSON.stringify(totalFreelancePay)}`);
   if (totalFreelancePay.length > 0) {
     let fPay = totalFreelancePay.reduce((a, b) => {
       return a + b;
@@ -165,7 +165,7 @@ function TotalCost(targetsection) {
     SpreadsheetApp.getActive()
       .getRangeByName(`${spreadSheetName}_Footer_Freelancer_TotalFreelanceSell`)
       .setValue(fPay);
-    console.log(`fPay: ${fPay}`);
+    // console.log(`fPay: ${fPay}`);
   }
   if (freelanceHours.length > 0) {
     let fHours = freelanceHours.reduce((a, b) => {
@@ -179,7 +179,7 @@ function TotalCost(targetsection) {
       .setValue(fHours);
   }
   if (totalStaffHours.length > 0) {
-    console.log(`totalStaffHours: ${JSON.stringify(totalStaffHours)}`);
+    // console.log(`totalStaffHours: ${JSON.stringify(totalStaffHours)}`);
     let tHours = totalStaffHours.reduce((a, b) => {
       return a + b;
     });
