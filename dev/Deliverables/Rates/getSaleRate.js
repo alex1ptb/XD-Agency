@@ -1,6 +1,6 @@
 //This gets the sale rate for the job choosen.
 function getSaleRate(e) {
-  // console.log("inside getSaleRate");
+  console.log("inside getSaleRate");
   const namedRange = getNamedRange(e);
   // console.log(`namedRange: ${namedRange}`);
   //parse the namedRange to give the first word after the first _ is found

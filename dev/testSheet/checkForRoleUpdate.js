@@ -1,4 +1,5 @@
 function checkForRoleUpdate(category, partition) {
+  console.log(`checkForRoleUpdate`);
   let sheet = SpreadsheetApp.getActiveSheet();
   //get the range by name of the ${sheetName}_${category}_Main_Category}
   let range = SpreadsheetApp.getActiveSpreadsheet().getRangeByName(
@@ -19,7 +20,7 @@ function checkForRoleUpdate(category, partition) {
   if (partition == "ThirdParty") {
     rates = getThirdPartyRoles();
   }
-  //go through xda rates and find the tableId that matches the displayValue then get the data from that table
+  //go through rates and find the tableId that matches the displayValue then get the data from that table
   let tableData = rates.filter((table) => {
     if (table.tableId == null) {
       return;
@@ -59,9 +60,14 @@ function checkForRoleUpdate(category, partition) {
       .build();
     let cell = sheet.getRange(targetRow, 1);
     cell.setDataValidation(buildValidation);
+
     if (partition == "XD") {
       cell = sheet.getRange(targetRow + 3, 1);
       cell.setDataValidation(buildValidation);
+      console.log(
+        `partition is xd,\n targetRow: ${targetRow} \n sheet: ${sheet}`
+      );
+      EmployeeDataValidation(targetRow, sheet);
     }
   }
 }

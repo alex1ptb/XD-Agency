@@ -61,6 +61,7 @@ function onEdit(e) {
       //make sure the previous display value was "Pick a Job Title"
       if (oldValue === "Pick a Job Title") {
         // console.log(`onEdit -- updating rangeName: ${rangeName}`);
+        getSaleRate(e);
         updateNamedRange(rangeName);
         //set the value of the first cell as "Pick a Job Title"
         sheet.getRange(row + 1, 1).setValue("Pick a Job Title");
@@ -140,7 +141,7 @@ function onEdit(e) {
       .clearContent();
 
     const section = serviceCategory;
-    // let name = e.range.getSheet().getRange(e.range.getRow(), 2).getValue();
+    let name = e.range.getSheet().getRange(e.range.getRow(), 2).getValue();
     const role = e.range.getValue();
 
     //update the ClientSummaryReport with the new values

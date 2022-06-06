@@ -109,12 +109,13 @@ function TotalCost(targetsection) {
       //if XD
       let staffSell = values.map((value) => {
         value[6]; //XD Total Sell
-        totalStaffSell.push(value[6]); 
+        totalStaffSell.push(value[6]);
       });
       let hourPerRow = values.map((value) => {
-        value[4];
+        value[4]; //XD Total Hours
         totalStaffHours.push(value[4]);
       });
+      //Look up names
       let names = values.map((value) => value[1]);
       for (i = 0; i <= names.length; i++) {
         let rate = lookUpPayRate(names[i]);
@@ -122,6 +123,18 @@ function TotalCost(targetsection) {
           return;
         } else {
           let pay = multiplyPayRate(rate, hourPerRow[i]);
+
+          console.log(`range name: ${range.getName()}`);
+          //Total Sell (left of margin cell) - pay / Total Sell
+          // console.log(`value in column 5: $${values[i][6]}`);
+          // let margin = values[i][6] - pay;
+          // console.log(`margin value - pay: ${margin}`);
+          console.log(`pay: ${pay}`);
+          //update "Margin" column 7 with (pay - staffSell / pay)
+          console.log(
+            `updated margin with: ${names[i]} ${pay} - ${staffSell[i]} / ${pay}`
+          );
+
           // pay-sell/pay
           if (pay) {
             let margin = (pay - staffSell / pay).toFixed(2);
