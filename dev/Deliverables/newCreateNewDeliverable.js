@@ -85,14 +85,12 @@ function testing(title, categories) {
 
   ///////////////////////////////////////////
 
+  ///////////////////////////////////////////
+  //find and replace
   findAndReplace(
     "Deliverable_Template_Footer_ThirdParty_TotalActualAmount",
     `${title}_Footer_ThirdParty_TotalActualAmount`
   );
-  // findAndReplace(
-  //   "Deliverable_Template_Footer_XD_TotalHours",
-  //   `${title}_Footer_XD_TotalHours`
-  // );
   findAndReplace(
     "Deliverable_Template_Footer_XD_TotalHours",
     `${title}_Footer_XD_TotalHours`
@@ -128,6 +126,8 @@ function testing(title, categories) {
     "Deliverable_Template_Footer_Freelancer_TotalFreelanceHours",
     `${title}_Footer_Freelancer_TotalFreelanceHours`
   );
+  ///////////////////////////////////////////
+
   ///////////////////////////////////////////
   // updateNamedRange("ProjectInformationSummary_Deliverables", title);
   // updateNamedRange("PriceByDeliverable_Deliverables", title);

@@ -24,17 +24,6 @@ function onEdit(e) {
   }
 
   ////////////////////////////////////////////
-  //update header sections
-  let XDAStaffCost = TotalCost("XD"); //in getPayRates.js
-  console.log(`XDAStaffCost: ${XDAStaffCost}`);
-  sheet.getRange("K5").setValue(XDAStaffCost);
-
-  let FreelanceCost = TotalCost("Freelancer"); //in getPayRates.js
-  console.log(`FreelanceCost: ${FreelanceCost}`);
-  sheet.getRange("L5").setValue(FreelanceCost);
-  ////////////////////////////////////////////
-
-  ////////////////////////////////////////////
   //creating serviceCategory and partition arrays
   for (let i = 0; i < eNamedRangesArray.length; i++) {
     //if the named range has Section in it then ignore it
@@ -75,6 +64,28 @@ function onEdit(e) {
       return;
     }
   }
+  ////////////////////////////////////////////
+
+  ////////////////////////////////////////////
+  //update header sections
+  let XDAStaffCost = TotalCost("XD"); //in getPayRates.js
+  console.log(`XDAStaffCost: ${XDAStaffCost}`);
+  sheet.getRange("K5").setValue(XDAStaffCost);
+
+  let FreelanceCost = TotalCost("Freelancer"); //in getPayRates.js
+  console.log(`FreelanceCost: ${FreelanceCost}`);
+  sheet.getRange("L5").setValue(FreelanceCost);
+  ////////////////////////////////////////////
+
+  ////////////////////////////////////////////
+  //Update total section in footer for the margin
+  let CostCombined = XDAStaffCost + FreelanceCost;
+  let TotalSell = SpreadsheetApp.getActiveSpreadsheet()
+    .getRangeByName(`${sheetName}_Footer_XD_TotalSell`)
+    .getValue();
+  SpreadsheetApp.getActiveSpreadsheet()
+    .getRangeByName(`${sheetName}_Footer_XD_TotalMarginPercentage`)
+    .setValue((TotalSell - CostCombined) / TotalSell);
   ////////////////////////////////////////////
 
   ////////////////////////////////////////////
