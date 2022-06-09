@@ -1,8 +1,6 @@
-// let sheet = ss.getSheetByName("Test");
-// let title = "Test";
-
 ///////////////////////////////////////////
 //This is the main function when adding a new deliverable sheet
+//I haven't changed the name of function to addDeliverable
 function testing(title, categories) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   //if title already exists, return alert, else create new sheet
@@ -29,8 +27,9 @@ function testing(title, categories) {
   ///////////////////////////////////////////
   //copy over named ranges to new sheet
   function NamedRanges(sheet) {
-    //get all named ranges then filter for the ones that are in the template sheet
+    //get named ranges in active sheet
     var rangeList = SpreadsheetApp.getActive().getNamedRanges();
+
     rangeList.forEach(
       function (namedRange) {
         var range = namedRange.getRange();
@@ -51,9 +50,8 @@ function testing(title, categories) {
             ss.setNamedRange(newName, newRange);
           } catch (e) {
             console.log(
-              `Error renaming named range: ${namedRange.getName()} to ${newName}`
+              `Error renaming named range: ${namedRange.getName()} to ${newName}\n${e}`
             );
-            console.log(e);
           }
         } //end of if
       } //end of forEach
@@ -61,22 +59,16 @@ function testing(title, categories) {
   } //end of NamedRanges
   ///////////////////////////////////////////
 
-  copyOver(title);
+  copyOver(title); //copy over entire template to new sheet
+
+  NamedRanges(sheet); //copy over named ranges to new sheet
 
   ///////////////////////////////////////////
-  NamedRanges(sheet);
-  //update ProjectInformationSummary and PriceByDeliverable named ranges to include the new sheet
-  //ProjectInformationSummary -- Insert Sheet Title when deliverable is created
-  updateNamedRange("ProjectInformationSummary_Deliverables");
-  //get last row of named range and add title to the new row
-  let updateRange = ss.getRangeByName("ProjectInformationSummary_Deliverables");
-  updateRange.getSheet().getRange(updateRange.getLastRow(), 2).setValue(title);
-  //PriceByDeliverable -- Insert Sheet Title when deliverable is created
-  updateNamedRange("PriceByDeliverable_Deliverables");
-  //get last row of named range and add title to the new row
-  updateRange = ss.getRangeByName("PriceByDeliverable_Deliverables");
-  updateRange.getSheet().getRange(updateRange.getLastRow(), 2).setValue(title);
+  //${title}_Title_Header set value to title
+  ss.getRangeByName(`${title}_Title_Header`).setValue(title);
+  ///////////////////////////////////////////
 
+  ///////////////////////////////////////////
   categories.forEach((category) => {
     deliverableLayout(category, "XD");
     checkForRoleUpdate(category, "XD");
@@ -123,11 +115,63 @@ function testing(title, categories) {
     `${title}_Footer_ThirdParty_TotalSell`
   );
   findAndReplace(
+    "Deliverable_Template_ThirdParty_CostWithContTotal",
+    `${title}_ThirdParty_CostWithContTotal`
+  );
+  findAndReplace(
     "Deliverable_Template_Footer_Freelancer_TotalFreelanceHours",
     `${title}_Footer_Freelancer_TotalFreelanceHours`
   );
   ///////////////////////////////////////////
 
+  ///////////////////////////////////////////
+  //update ProjectInformationSummary and PriceByDeliverable named ranges to include the new sheet
+
+  //ProjectInformationSummary -- Insert Sheet Title when deliverable is created
+  //get values of  ProjectInformationSummary_Deliverables and check if the array contains the sheet title
+  let ProjectInformationSummary_Deliverables = ss
+    .getRangeByName("ProjectInformationSummary_Deliverables")
+    .getValues();
+  try {
+    console.log(
+      `ProjectInformationSummary_Deliverables: ${ProjectInformationSummary_Deliverables}`
+    );
+  } catch (e) {
+    console.log(`nope: ${e}`);
+  }
+  //check if the array contains the sheet title
+  let truthy = ProjectInformationSummary_Deliverables.includes(title);
+  console.log(`truthy: ${truthy}`);
+  if (!ProjectInformationSummary_Deliverables.includes(title)) {
+    console.log(
+      "ProjectInformationSummary_Deliverables does not contain title"
+    );
+    updateNamedRange("ProjectInformationSummary_Deliverables"); //update ProjectInformationSummary_Deliverables
+
+    //get last row of named range and add title to the new row
+    let updateRange = ss.getRangeByName(
+      "ProjectInformationSummary_Deliverables"
+    );
+    updateRange
+      .getSheet()
+      .getRange(updateRange.getLastRow(), 2)
+      .setValue(title);
+    ///////////////////////////////////////////
+
+    ///////////////////////////////////////////
+    //PriceByDeliverable -- Insert Sheet Title when deliverable is created
+    updateNamedRange("PriceByDeliverable_Deliverables");
+    //get last row of named range and add title to the new row
+    updateRange = ss.getRangeByName("PriceByDeliverable_Deliverables");
+    updateRange
+      .getSheet()
+      .getRange(updateRange.getLastRow(), 2)
+      .setValue(title);
+  } else {
+    console.log(
+      "Deliverable already exists, not adding to ProjectInformationSummary_Deliverables"
+    );
+  }
   ///////////////////////////////////////////
   // updateNamedRange("ProjectInformationSummary_Deliverables", title);
   // updateNamedRange("PriceByDeliverable_Deliverables", title);

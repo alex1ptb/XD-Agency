@@ -28,5 +28,4 @@ function onOpen() {
     )
     .addToUi();
   //I probably need to move the below funciton elsewhere
-  getXdaRates();
 }

@@ -8,18 +8,23 @@ function add3rdPartyToCurrentDeliverable(category) {
   let sheetName = sheet.getName();
   //copy from A1 to Q8 and append to the end of the sheet
   deliverableLayout(category, "ThirdParty");
-  console.log(
-    `end of deliverableLayout function in addCategoryToCurrentDeliverable`
-  );
 
   //refresh the sidebar
   createthirdPartyCostsSidebar();
 
   //add in pick a job title
   checkForRoleUpdate(category, "ThirdParty");
-  console.log(
-    `end of checkForRoleUpdate function in addCategoryToCurrentDeliverable`
+  // Deliverable_Template_Category_ThirdParty_Section
+  findAndReplace(
+    `Deliverable_Template_Category_ThirdParty_Section`,
+    `${sheetName}_${category}_ThirdParty_Section`
   );
+  findAndReplace(
+    `Deliverable_Template_Category_ThirdParty_Role`,
+    `${sheetName}_${category}_ThirdParty_Roles`
+  );
+  // Deliverable_Template_Category_ThirdParty_Section
   //refresh the current sheet
   sheet.setName(sheetName);
+  console.log(`end of add3rdPartyToCurrentDeliverable function`);
 }
