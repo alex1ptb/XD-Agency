@@ -2,7 +2,7 @@
 function getSaleRate(e) {
   console.log("inside getSaleRate");
   const namedRange = getNamedRange(e);
-  // console.log(`namedRange: ${namedRange}`);
+  console.log(`namedRange: ${namedRange}`);
   //parse the namedRange to give the first word after the first _ is found
   let words = namedRange.split(",").pop().split("_");
   let category = words[1]; //this would be the target category

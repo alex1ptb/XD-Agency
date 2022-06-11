@@ -61,8 +61,9 @@ multiplyPayRate = (payRate, hours) => {
 
 ////////////////////////////////////////////
 //function to add up every named range that includes "SheetName_parameter_Roles"
-function getTargetSectionRanges(targetsection) {
-  const sections = activeSheetNamedRanges().filter((range) => {
+function getAllRolesForTargetPartition(targetsection, activeSheetNamedRanges) {
+  console.log(`getTargetSectionRanges: ${targetsection}`);
+  const sections = activeSheetNamedRanges.filter((range) => {
     //create new array filtered to only include named ranges that are in the active sheet
     return range.getName().includes(targetsection);
   });
@@ -77,8 +78,8 @@ function getTargetSectionRanges(targetsection) {
 
 ////////////////////////////////////////////
 //function to add up every named range that includes "SheetName_parameter_Roles"
-function TotalCost(targetsection) {
-  const spreadSheetName = SpreadsheetApp.getActiveSheet().getName();
+function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {
+  console.log(`TotalCost function started for: ${targetsection}`);
   let totalPayforSection = [];
   let totalStaffSell = [];
   let total3rdPartyExtendedCost = [];
@@ -88,21 +89,27 @@ function TotalCost(targetsection) {
   let totalStaffHours = [];
 
   //get the target section ranges filter them into each array
-  getTargetSectionRanges(targetsection).filter((range) => {
+  getAllRolesForTargetPartition(
+    targetsection,
+    activeSheetNamedRanges,
+    ss
+  ).filter((range) => {
     //////////////////////////////////////////
     //for each range get the data
     try {
-      values = SpreadsheetApp.getActive()
-        .getRangeByName(range.getName())
-        .getValues();
+      activeRowValues = ss.getRangeByName(range.getName()).getValues();
+      // activeRowValues = SpreadsheetApp.getActiveSpreadSheet()
+      //   .getRangeByName(range.getName())
+      //   .getValues();
     } catch (e) {
-      console.log(`error with ${range.getName()} values: ${e}`);
+      console.log(`error with ${range.getName()} activeRowValues. Error: ${e}`);
       return;
     }
+
     //////////////////////////////////////////
     //get total freelance hours
     if (range.getName().includes("Freelancer")) {
-      values.map((row) => {
+      activeRowValues.map((row) => {
         freelanceHours.push(row[8]); // Total Freelance Hours
         totalFreelancePay.push(row[6]); //Total Sell
         totalPayforSection.push(row[9]); // Total Freelance Cost
@@ -111,7 +118,7 @@ function TotalCost(targetsection) {
     //////////////////////////////////////////
     //get total third party hours
     if (range.getName().includes("ThirdParty")) {
-      values.map((row) => {
+      activeRowValues.map((row) => {
         totalPayforSection.push(row[11]); // Total Freelance Cost
         total3rdPartyExtendedCost.push(row[7]);
         total3rdPartyExtendedCostWithCont.push(row[9]);
@@ -122,7 +129,7 @@ function TotalCost(targetsection) {
       //////////////////////////////////////////
       //if XD
       let names = [];
-      values.map((value) => {
+      activeRowValues.map((value) => {
         totalStaffSell.push(value[6]); //Total Sell
         totalStaffHours.push(value[4]); //Total Hours
         names.push(value[1]); //Name
@@ -141,8 +148,7 @@ function TotalCost(targetsection) {
               totalStaffSell[i]
             ).toFixed(2);
             //update range with margin at row[7]
-            SpreadsheetApp.getActive()
-              .getRangeByName(range.getName())
+            ss.getRangeByName(range.getName())
               //target the row
               .offset(i, 7, 1, 1)
               .setValue(margin);
@@ -165,27 +171,25 @@ function TotalCost(targetsection) {
     });
     // console.log(`sSell: ${sSell}`);
     // Test_Footer_XD_TotalStaffSell
-    SpreadsheetApp.getActive()
-      .getRangeByName(`${spreadSheetName}_Footer_XD_TotalStaffSell`)
-      .setValue(sSell);
+    ss.getRangeByName(`${sheetName}_Footer_XD_TotalStaffSell`).setValue(sSell);
   }
   if (totalStaffHours.length > 0) {
     let tHours = totalStaffHours.reduce((a, b) => {
       return a + b;
     });
     //SheetName_Footer_XD_TotalStaffHours
-    SpreadsheetApp.getActive()
-      .getRangeByName(`${spreadSheetName}_Footer_XD_TotalStaffHours`)
-      .setValue(tHours);
+    ss.getRangeByName(`${sheetName}_Footer_XD_TotalStaffHours`).setValue(
+      tHours
+    );
   }
   //// Freelancer
   if (totalFreelancePay.length > 0) {
     let fPay = totalFreelancePay.reduce((a, b) => {
       return a + b;
     });
-    SpreadsheetApp.getActive()
-      .getRangeByName(`${spreadSheetName}_Footer_Freelancer_TotalFreelanceSell`)
-      .setValue(fPay);
+    ss.getRangeByName(
+      `${sheetName}_Footer_Freelancer_TotalFreelanceSell`
+    ).setValue(fPay);
     // console.log(`fPay: ${fPay}`);
   }
   if (freelanceHours.length > 0) {
@@ -193,11 +197,9 @@ function TotalCost(targetsection) {
       return a + b;
     });
     // SheetName_Footer_Freelancer_TotalFreelanceHours
-    SpreadsheetApp.getActive()
-      .getRangeByName(
-        `${spreadSheetName}_Footer_Freelancer_TotalFreelanceHours`
-      )
-      .setValue(fHours);
+    ss.getRangeByName(
+      `${sheetName}_Footer_Freelancer_TotalFreelanceHours`
+    ).setValue(fHours);
   }
   //// XDA Footer
   //total sell - total pay / total sell = margin
@@ -214,9 +216,9 @@ function TotalCost(targetsection) {
       })
     ).toFixed(2);
     //SheetName_Footer_XD_TotalStaffMargin
-    SpreadsheetApp.getActive()
-      .getRangeByName(`${spreadSheetName}_Footer_XD_TotalStaffMargin`)
-      .setValue(sMargin);
+    ss.getRangeByName(`${sheetName}_Footer_XD_TotalStaffMargin`).setValue(
+      sMargin
+    );
   }
 
   if (totalFreelancePay.length > 0 && totalPayforSection.length > 0) {
@@ -232,11 +234,9 @@ function TotalCost(targetsection) {
       })
     ).toFixed(2);
     //SheetName_Footer_Freelancer_TotalFreelanceMargin
-    SpreadsheetApp.getActive()
-      .getRangeByName(
-        `${spreadSheetName}_Footer_Freelancer_TotalFreelanceMargin`
-      )
-      .setValue(fMargin);
+    ss.getRangeByName(
+      `${sheetName}_Footer_Freelancer_TotalFreelanceMargin`
+    ).setValue(fMargin);
   }
 
   ////3rd Party
@@ -245,9 +245,9 @@ function TotalCost(targetsection) {
       return a + b;
     });
     //SheetName_Footer_ThirdParty_ExtendedCostTotal
-    SpreadsheetApp.getActive()
-      .getRangeByName(`${spreadSheetName}_Footer_ThirdParty_ExtendedCostTotal`)
-      .setValue(t3rdPartyExtendedCost);
+    ss.getRangeByName(
+      `${sheetName}_Footer_ThirdParty_ExtendedCostTotal`
+    ).setValue(t3rdPartyExtendedCost);
   }
   if (total3rdPartyExtendedCostWithCont.length > 0) {
     let t3rdPartyExtendedCostWithCont =
@@ -255,9 +255,9 @@ function TotalCost(targetsection) {
         return a + b;
       });
     //SheetName_ThirdParty_CostWithContTotal
-    SpreadsheetApp.getActive()
-      .getRangeByName(`${spreadSheetName}_ThirdParty_CostWithContTotal`)
-      .setValue(t3rdPartyExtendedCostWithCont);
+    ss.getRangeByName(`${sheetName}_ThirdParty_CostWithContTotal`).setValue(
+      t3rdPartyExtendedCostWithCont
+    );
   }
 
   //////////////////////////////////////////

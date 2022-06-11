@@ -1,44 +1,53 @@
 //when the sheet is changed, check if cell has dropdown menu, if so, copy the row and paste it below the current row
 function onEdit(e) {
-  removeDeadReferences();
+  // removeDeadReferences();
   // console.log(`e: ${JSON.stringify(e)}`);
   // console.log(`onEdit: ${e.value} -- value`);
   //get all named ranges this cell belongs to
-  activeSheetNamedRanges = () =>
-    SpreadsheetApp.getActiveSpreadsheet()
-      .getNamedRanges()
-      .filter((range) => range.getName().startsWith(sheet.getName()));
-  const eNamedRangesArray = getNamedRange(e).split(",");
-  const sheet = SpreadsheetApp.getActiveSheet();
-  const sheetName = e.range.getSheet().getName();
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
   const activeRange = e.range;
+  const sheet = SpreadsheetApp.getActiveSheet();
+  console.log(`first edit on sheet: ${sheet.getName()}`);
+  const activeSheetNamedRanges = sheet.getNamedRanges();
+  const sheetName = sheet.getName();
   const oldValue = e.oldValue;
   const row = activeRange.getRow();
   const col = activeRange.getColumn();
+  //*************
+  ////////
+  /////// */
+  const activeSectionRanges = GetClosestNamedRange(
+    activeSheetNamedRanges,
+    activeRange
+  ).split(",");
+  console.log(`eNamedRangesArray: ${activeSectionRanges}`);
   //first column in range is jobTitle
-  const jobTitle = activeRange.getSheet().getRange(row, 1).getValue();
+  const jobTitle = sheet.getRange(row, 1).getValue();
   //second column is always names of the person for the job
-  let name = activeRange.getSheet().getRange(row, 2).getValue();
+  let name = sheet.getRange(row, 2).getValue();
   if (name == null || name == undefined) {
     name = "";
   }
 
   ////////////////////////////////////////////
   //creating serviceCategory and partition arrays
-  for (let i = 0; i < eNamedRangesArray.length; i++) {
+  for (let i = 0; i < activeSectionRanges.length; i++) {
     //if the named range has Section in it then ignore it
-    if (eNamedRangesArray[i].includes("Section")) {
+    if (activeSectionRanges[i].includes("Section")) {
       //target 2nd word
-      serviceCategory = eNamedRangesArray[i].split("_")[1];
+      serviceCategory = activeSectionRanges[i].split("_")[1];
       // console.log(`onEdit: serviceCategory: ${serviceCategory}`);
-      partition = eNamedRangesArray[i].split("_")[2];
+      partition = activeSectionRanges[i].split("_")[2];
       // console.log(`onEdit: partition: ${partition}`);
       continue;
     } else {
-      rangeName = eNamedRangesArray[i];
+      rangeName = activeSectionRanges[i];
       // console.log(`onEdit: rangeName: ${rangeName}`);
     }
   }
+  console.log(`serviceCategory: ${serviceCategory}`);
+  console.log(`partition: ${partition}`);
+  console.log(`ActiveRangeName: ${rangeName}`);
   ////////////////////////////////////////////
 
   ////////////////////////////////////////////
@@ -68,33 +77,62 @@ function onEdit(e) {
 
   ////////////////////////////////////////////
   //update header sections
-  let XDAStaffCost = TotalCost("XD"); //in getPayRates.js
-  console.log(`XDAStaffCost: ${XDAStaffCost}`);
-  sheet.getRange("K5").setValue(XDAStaffCost);
-
-  let FreelanceCost = TotalCost("Freelancer"); //in getPayRates.js
-  console.log(`FreelanceCost: ${FreelanceCost}`);
-  sheet.getRange("L5").setValue(FreelanceCost);
+  let XDAStaffCost = TotalCost("XD", activeSheetNamedRanges, ss, sheetName); //in getPayRates.js
+  let FreelanceCost = TotalCost(
+    "Freelancer",
+    activeSheetNamedRanges,
+    ss,
+    sheetName
+  ); //in getPayRates.js
+  try {
+    sheet.getRange("K5").setValue(XDAStaffCost);
+    console.log(`XDAStaffCost: ${XDAStaffCost}`);
+  } catch (e) {
+    console.log(`XDAStaffCost Error: ${e}`);
+  }
+  try {
+    FreelanceCost = TotalCost(
+      "Freelancer",
+      activeSheetNamedRanges,
+      ss,
+      sheetName
+    ); //in getPayRates.js
+    console.log(`FreelanceCost: ${FreelanceCost}`);
+    sheet.getRange("L5").setValue(FreelanceCost);
+  } catch (e) {
+    console.log(`FreelanceCost Error: ${e}`);
+  }
   ////////////////////////////////////////////
 
   ////////////////////////////////////////////
   //Update total section in footer for the margin
   let CostCombined = XDAStaffCost + FreelanceCost;
-  let TotalSell = SpreadsheetApp.getActiveSpreadsheet()
+  let TotalSell = ss
     .getRangeByName(`${sheetName}_Footer_XD_TotalSell`)
     .getValue();
-  SpreadsheetApp.getActiveSpreadsheet()
-    .getRangeByName(`${sheetName}_Footer_XD_TotalMarginPercentage`)
-    .setValue((TotalSell - CostCombined) / TotalSell);
+  ss.getRangeByName(`${sheetName}_Footer_XD_TotalMarginPercentage`).setValue(
+    (TotalSell - CostCombined) / TotalSell
+  );
   ////////////////////////////////////////////
 
   ////////////////////////////////////////////
   //update total for ThirdParty cost
-  let ThirdPartyCost = TotalCost("ThirdParty"); //in getPayRates.js
-  console.log(`ThirdPartyCost: ${ThirdPartyCost}`);
-  SpreadsheetApp.getActiveSpreadsheet()
-    .getRangeByName(`${sheetName}_Footer_ThirdParty_TotalSell`)
-    .setValue(ThirdPartyCost);
+  try {
+    let ThirdPartyCost = TotalCost(
+      "ThirdParty",
+      activeSheetNamedRanges,
+      ss,
+      sheetName
+    ); //in getPayRates.js
+    ss.getRangeByName(`${sheetName}_Footer_ThirdParty_TotalSell`).setValue(
+      ThirdPartyCost
+    );
+    console.log(
+      `ThirdPartyCost: ${ThirdPartyCost} has been added to the footer`
+    );
+  } catch (e) {
+    console.log(`ThirdPartyCost Error: ${e}`);
+  }
   ////////////////////////////////////////////
 
   updateSortableByServiceAreaReport(

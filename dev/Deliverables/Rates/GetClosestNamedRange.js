@@ -3,24 +3,9 @@
 //https://stackoverflow.com/questions/71582384/based-on-the-edited-cell-how-do-i-return-the-namedrange-the-cell-belongs-in?noredirect=1#comment126515389_71582384
 
 //get the named range that the edited cell belongs to
-function getNamedRange(e) {
-  if (!e) {
-    //return all named ranges of the active sheet
-    // const namedRanges = SpreadsheetApp.getActiveSpreadsheet().getNamedRanges();
-    // //name of active sheet
-    // const sheetName = SpreadsheetApp.getActiveSpreadsheet()
-    //   .getActiveSheet()
-    //   .getName();
-    // console.log(`sheet name: ${sheetName}`);
-    //create new array filtered to only include named ranges that are in the active sheet
-    const namedRangesInSheet = SpreadsheetApp.getActiveSpreadsheet()
-      .getActiveSheet()
-      .getNamedRanges();
-    return namedRangesInSheet;
-  }
-  const range = e.range; //get the range of the edited cell
-  const sheet = SpreadsheetApp.getActiveSheet(); //get the active sheet
-  const r = sheet.getNamedRanges().filter((r) => {
+function GetClosestNamedRange(activeSheetNamedRanges, activeRange) {
+  const range = activeRange;
+  const r = activeSheetNamedRanges.filter((r) => {
     const temp = r.getRange();
     const startRow = temp.getRow();
     const endRow = startRow + temp.getNumRows();
