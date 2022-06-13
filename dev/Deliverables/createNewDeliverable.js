@@ -2,6 +2,7 @@
 //This is the main function when adding a new deliverable sheet
 //I haven't changed the name of function to addDeliverable
 function testing(title, categories) {
+  console.log(`started creating new deliverable: ${title}`);
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   //if title already exists, return alert, else create new sheet
   if (ss.getSheetByName(title)) {

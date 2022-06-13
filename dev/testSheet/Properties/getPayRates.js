@@ -1,10 +1,8 @@
 ////////////////////////////////////////////
 function getPayRatesProperties() {
-  // console.log("getPayRatesProperties");
   //set variable for getScriptProperties
   let scriptProperties = PropertiesService.getScriptProperties();
-  //delete properties.xdaRates;
-  //check if properties exsits
+  //check if properties exists
   if (scriptProperties.getProperty("PayRates") == null) {
     console.log(`no properties found. Creating now`);
     //if not create it
@@ -20,10 +18,12 @@ function getPayRatesProperties() {
 
 ////////////////////////////////////////////
 function lookUpPayRate(name) {
-  // console.log(`looking up ${name}`);
+  if (name === "Choose XD Agent Member" || name === undefined) {
+    return 0;
+  }
+  console.log(`lookUpPayRate: ${name}`);
   //get the data from the properties
   let payRates = getPayRatesProperties();
-  // console.log(`payRates: ${JSON.stringify(payRates)}`);
   //find the payrate by matching the name to the first payrate array value
   let payRate = payRates[0].tableData.filter((payRate) => {
     if (payRate[0] === name) {
@@ -39,8 +39,6 @@ function lookUpPayRate(name) {
   if (payRate[0] === undefined) {
     return 0;
   } else {
-    // console.log(`payRate found: ${JSON.stringify(payRate)}`);
-    // console.log(`payRate: ${payRate[0][1]}`);
     return payRate[0][1];
   }
 }
@@ -48,12 +46,11 @@ function lookUpPayRate(name) {
 
 ////////////////////////////////////////////
 multiplyPayRate = (payRate, hours) => {
+  console.log(`multiplyPayRate: ${payRate} x ${hours}`);
   if (payRate === undefined || hours === undefined) {
-    // console.log(`payRate or hours is undefined`);
     return 0;
   }
   if (payRate) {
-    // console.log(`multiplyPayRate: ${payRate} * ${hours}`);
     return payRate * hours;
   }
 };
@@ -71,7 +68,6 @@ function getAllRolesForTargetPartition(targetsection, activeSheetNamedRanges) {
   const rolesInSheet = sections.filter((range) => {
     return range.getName().endsWith("_Roles");
   });
-  // console.log(`rolesInSheet: ${JSON.stringify(rolesInSheet)}`);
   return rolesInSheet;
 }
 ////////////////////////////////////////////
@@ -98,9 +94,7 @@ function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {
     //for each range get the data
     try {
       activeRowValues = ss.getRangeByName(range.getName()).getValues();
-      // activeRowValues = SpreadsheetApp.getActiveSpreadSheet()
-      //   .getRangeByName(range.getName())
-      //   .getValues();
+      console.log(`activeRowValues found: ${activeRowValues}`);
     } catch (e) {
       console.log(`error with ${range.getName()} activeRowValues. Error: ${e}`);
       return;
@@ -109,6 +103,7 @@ function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {
     //////////////////////////////////////////
     //get total freelance hours
     if (range.getName().includes("Freelancer")) {
+      console.log(`freelance found`);
       activeRowValues.map((row) => {
         freelanceHours.push(row[8]); // Total Freelance Hours
         totalFreelancePay.push(row[6]); //Total Sell
@@ -143,15 +138,6 @@ function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {
         } else {
           let pay = multiplyPayRate(rate, totalStaffHours[i]);
           if (pay) {
-            let margin = (
-              (totalStaffSell[i] - pay) /
-              totalStaffSell[i]
-            ).toFixed(2);
-            //update range with margin at row[7]
-            ss.getRangeByName(range.getName())
-              //target the row
-              .offset(i, 7, 1, 1)
-              .setValue(margin);
             totalPayforSection.push(pay);
           }
         } //end if
@@ -163,7 +149,6 @@ function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {
 
   //////////////////////////////////////////
   //update total pay and hours sections
-  // console.log(`totalStaffSell: ${JSON.stringify(totalStaffSell)}`);
   ////  XDA
   if (totalStaffSell.length > 0) {
     let sSell = totalStaffSell.reduce((a, b) => {
