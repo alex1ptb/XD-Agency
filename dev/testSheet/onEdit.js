@@ -91,7 +91,7 @@ function onEdit(e) {
   //if the 2nd column is updated for XD then update the margin for the row
   if ((col === 2 || col === 3 || col === 4) && rangeName.includes("XD")) {
     console.log(
-      `updating margin for XD \n jobTitle: ${jobTitle} \n name: ${name} \n col: ${col}`
+      `updating margin for the following \njobTitle: ${jobTitle} \nname: ${name} \nrow: ${row} \ncol: ${col}`
     );
     let payRate = lookUpPayRate(name);
     let hours = sheet.getRange(row, 5).getValue();
@@ -104,7 +104,6 @@ function onEdit(e) {
 
   ////////////////////////////////////////////
   //update header sections
-  //need to update this to only run if the partition is XD
   let XDAStaffCost = TotalCost("XD", activeSheetNamedRanges, ss, sheetName); //in getPayRates.js
   let FreelanceCost = TotalCost(
     "Freelancer",
@@ -112,33 +111,14 @@ function onEdit(e) {
     ss,
     sheetName
   ); //in getPayRates.js
-  let CostCombined = XDAStaffCost + FreelanceCost;
   try {
     sheet.getRange("K5").setValue(XDAStaffCost);
     console.log(`XDAStaffCost: ${XDAStaffCost}`);
-  } catch (e) {
-    console.log(`XDAStaffCost Error: ${e}`);
-  }
-  try {
     sheet.getRange("L5").setValue(FreelanceCost);
     console.log(`FreelanceCost: ${FreelanceCost}`);
   } catch (e) {
     console.log(`FreelanceCost Error: ${e}`);
-  }
-  ////////////////////////////////////////////
-
-  ////////////////////////////////////////////
-  //Update total section in footer for the margin
-  try {
-    let TotalSell = ss
-      .getRangeByName(`${sheetName}_Footer_XD_TotalSell`)
-      .getValue();
-    ss.getRangeByName(`${sheetName}_Footer_XD_TotalMarginPercentage`).setValue(
-      (TotalSell - CostCombined) / TotalSell
-    );
-    console.log(`TotalSell has been set: ${TotalSell}`);
-  } catch (e) {
-    console.log(`TotalSell Error: ${e}`);
+    console.log(`XDAStaffCost Error: ${e}`);
   }
   ////////////////////////////////////////////
 
@@ -154,14 +134,25 @@ function onEdit(e) {
     ss.getRangeByName(`${sheetName}_Footer_ThirdParty_TotalSell`).setValue(
       ThirdPartyCost
     );
-    console.log(
-      `ThirdPartyCost: ${ThirdPartyCost} has been added to the footer`
-    );
   } catch (e) {
     console.log(`ThirdPartyCost Error: ${e}`);
   }
   ////////////////////////////////////////////
 
+  ////////////////////////////////////////////
+  //Update total section in footer for the margin
+  let CostCombined = XDAStaffCost + FreelanceCost;
+  try {
+    let TotalSell = ss
+      .getRangeByName(`${sheetName}_Footer_XD_TotalSell`)
+      .getValue();
+    ss.getRangeByName(`${sheetName}_Footer_XD_TotalMarginPercentage`).setValue(
+      ((TotalSell - CostCombined) / TotalSell).toFixed(2) + "%"
+    );
+  } catch (e) {
+    console.log(`Total Margin Percentage Error: ${e}`);
+  }
+  ////////////////////////////////////////////
   // updateSortableByServiceAreaReport(
   //   e,
   //   sheetName,

@@ -18,7 +18,11 @@ function getPayRatesProperties() {
 
 ////////////////////////////////////////////
 function lookUpPayRate(name) {
-  if (name === "Choose XD Agent Member" || name === undefined) {
+  if (
+    name === "Choose XD Agent Member" ||
+    name === undefined ||
+    name === "Insert Freelance Name"
+  ) {
     return 0;
   }
   console.log(`lookUpPayRate: ${name}`);
@@ -46,7 +50,9 @@ function lookUpPayRate(name) {
 
 ////////////////////////////////////////////
 multiplyPayRate = (payRate, hours) => {
-  console.log(`multiplyPayRate: ${payRate} x ${hours}`);
+  if (payRate === 0 || hours === 0) {
+    return 0;
+  }
   if (payRate === undefined || hours === undefined) {
     return 0;
   }
@@ -62,18 +68,17 @@ function getAllRolesForTargetPartition(targetsection, activeSheetNamedRanges) {
   console.log(`getTargetSectionRanges: ${targetsection}`);
   const sections = activeSheetNamedRanges.filter((range) => {
     //create new array filtered to only include named ranges that are in the active sheet
-    return range.getName().includes(targetsection);
+    return range.getName().includes(`${targetsection}_Roles`);
   });
-  //go through and target the ones that end with "_Roles"
-  const rolesInSheet = sections.filter((range) => {
-    return range.getName().endsWith("_Roles");
-  });
-  return rolesInSheet;
+  return sections;
 }
 ////////////////////////////////////////////
 
 ////////////////////////////////////////////
 //function to add up every named range that includes "SheetName_parameter_Roles"
+
+// function getTotalOfAllSections(ss,)
+
 function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {
   console.log(`TotalCost function started for: ${targetsection}`);
   let totalPayforSection = [];
@@ -90,6 +95,7 @@ function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {
     activeSheetNamedRanges,
     ss
   ).filter((range) => {
+    console.log(`running get all roles for ${targetsection}`);
     //////////////////////////////////////////
     //for each range get the data
     try {
@@ -102,7 +108,7 @@ function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {
 
     //////////////////////////////////////////
     //get total freelance hours
-    if (range.getName().includes("Freelancer")) {
+    if (range.getName().includes("Freelancer_Roles")) {
       console.log(`freelance found`);
       activeRowValues.map((row) => {
         freelanceHours.push(row[8]); // Total Freelance Hours
@@ -112,7 +118,7 @@ function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {
     } //end if Freelancer
     //////////////////////////////////////////
     //get total third party hours
-    if (range.getName().includes("ThirdParty")) {
+    if (range.getName().includes("ThirdParty_Roles")) {
       activeRowValues.map((row) => {
         totalPayforSection.push(row[11]); // Total Freelance Cost
         total3rdPartyExtendedCost.push(row[7]);
@@ -120,9 +126,10 @@ function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {
       });
     } //end if Freelancer
     //////////////////////////////////////////
-    else {
+    if (range.getName().includes("XD_Roles")) {
       //////////////////////////////////////////
       //if XD
+      console.log(`xd found`);
       let names = [];
       activeRowValues.map((value) => {
         totalStaffSell.push(value[6]); //Total Sell
@@ -201,9 +208,9 @@ function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {
       })
     ).toFixed(2);
     //SheetName_Footer_XD_TotalStaffMargin
-    ss.getRangeByName(`${sheetName}_Footer_XD_TotalStaffMargin`).setValue(
-      sMargin
-    );
+    ss.getRangeByName(`${sheetName}_Footer_XD_TotalStaffMargin`)
+      .setValue(sMargin)
+      .setNumberFormat("0.00%");
   }
 
   if (totalFreelancePay.length > 0 && totalPayforSection.length > 0) {
@@ -219,9 +226,9 @@ function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {
       })
     ).toFixed(2);
     //SheetName_Footer_Freelancer_TotalFreelanceMargin
-    ss.getRangeByName(
-      `${sheetName}_Footer_Freelancer_TotalFreelanceMargin`
-    ).setValue(fMargin);
+    ss.getRangeByName(`${sheetName}_Footer_Freelancer_TotalFreelanceMargin`)
+      .setValue(fMargin)
+      .setNumberFormat("0.00%");
   }
 
   ////3rd Party
