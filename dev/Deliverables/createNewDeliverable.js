@@ -141,14 +141,18 @@ function testing(title, categories) {
     console.log(`nope: ${e}`);
   }
   //check if the array contains the sheet title
-  let truthy = ProjectInformationSummary_Deliverables.includes(title);
-  console.log(`truthy: ${truthy}`);
-  if (!ProjectInformationSummary_Deliverables.includes(title)) {
-    console.log(
-      "ProjectInformationSummary_Deliverables does not contain title"
-    );
-    updateNamedRange("ProjectInformationSummary_Deliverables"); //update ProjectInformationSummary_Deliverables
-
+  //if it does then do not update "ProjectInformationSummary_Deliverables" range
+  //for each in array, check if title is in the array
+  let found = false;
+  ProjectInformationSummary_Deliverables.forEach((row) => {
+    if (row.includes(title)) {
+      found = true;
+      return;
+    }
+  }); //end of forEach
+  if (found == true) {
+    //update ProjectInformationSummary_Deliverables
+    updateNamedRange("ProjectInformationSummary_Deliverables");
     //get last row of named range and add title to the new row
     let updateRange = ss.getRangeByName(
       "ProjectInformationSummary_Deliverables"
@@ -157,23 +161,10 @@ function testing(title, categories) {
       .getSheet()
       .getRange(updateRange.getLastRow(), 2)
       .setValue(title);
-    ///////////////////////////////////////////
-
-    ///////////////////////////////////////////
-    //PriceByDeliverable -- Insert Sheet Title when deliverable is created
-    updateNamedRange("PriceByDeliverable_Deliverables");
-    //get last row of named range and add title to the new row
-    updateRange = ss.getRangeByName("PriceByDeliverable_Deliverables");
-    updateRange
-      .getSheet()
-      .getRange(updateRange.getLastRow(), 2)
-      .setValue(title);
-  } else {
-    console.log(
-      "Deliverable already exists, not adding to ProjectInformationSummary_Deliverables"
-    );
   }
-  ///////////////////////////////////////////
-  // updateNamedRange("ProjectInformationSummary_Deliverables", title);
-  // updateNamedRange("PriceByDeliverable_Deliverables", title);
-}
+} //end of createDeliverable
+///////////////////////////////////////////
+
+///////////////////////////////////////////
+// updateNamedRange("ProjectInformationSummary_Deliverables", title);
+// updateNamedRange("PriceByDeliverable_Deliverables", title);

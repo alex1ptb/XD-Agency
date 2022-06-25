@@ -4,7 +4,6 @@ function onEdit(e) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const activeRange = e.range;
   const sheet = SpreadsheetApp.getActiveSheet();
-  //get all named ranges this cell belongs to
   const activeSheetNamedRanges = sheet.getNamedRanges();
   const sheetName = sheet.getName();
   const oldValue = e.oldValue;
