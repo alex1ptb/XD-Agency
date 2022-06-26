@@ -130,38 +130,46 @@ function testing(title, categories) {
 
   //ProjectInformationSummary -- Insert Sheet Title when deliverable is created
   //get values of  ProjectInformationSummary_Deliverables and check if the array contains the sheet title
-  let ProjectInformationSummary_Deliverables = ss
-    .getRangeByName("ProjectInformationSummary_Deliverables")
-    .getValues();
   try {
+    updateRangeOfDeliverables(title);
+    console.log("updated ProjectInformationSummary_Deliverables");
+  } catch (error) {
     console.log(
-      `ProjectInformationSummary_Deliverables: ${ProjectInformationSummary_Deliverables}`
+      `error with updating ProjectInformationSummary_Deliverables: ${error}`
     );
-  } catch (e) {
-    console.log(`nope: ${e}`);
   }
+  // let ProjectInformationSummary_Deliverables = ss
+  //   .getRangeByName("ProjectInformationSummary_Deliverables")
+  //   .getValues();
+  // try {
+  //   console.log(
+  //     `ProjectInformationSummary_Deliverables: ${ProjectInformationSummary_Deliverables}`
+  //   );
+  // } catch (e) {
+  //   console.log(`nope: ${e}`);
+  // }
   //check if the array contains the sheet title
   //if it does then do not update "ProjectInformationSummary_Deliverables" range
   //for each in array, check if title is in the array
-  let found = false;
-  ProjectInformationSummary_Deliverables.forEach((row) => {
-    if (row.includes(title)) {
-      found = true;
-      return;
-    }
-  }); //end of forEach
-  if (found == true) {
-    //update ProjectInformationSummary_Deliverables
-    updateNamedRange("ProjectInformationSummary_Deliverables");
-    //get last row of named range and add title to the new row
-    let updateRange = ss.getRangeByName(
-      "ProjectInformationSummary_Deliverables"
-    );
-    updateRange
-      .getSheet()
-      .getRange(updateRange.getLastRow(), 2)
-      .setValue(title);
-  }
+  // let found = false;
+  // ProjectInformationSummary_Deliverables.forEach((row) => {
+  //   if (row.includes(title)) {
+  //     found = true;
+  //     return;
+  //   }
+  // }); //end of forEach
+  // if (found == true) {
+  //   //update ProjectInformationSummary_Deliverables
+  //   updateNamedRange("ProjectInformationSummary_Deliverables");
+  //   //get last row of named range and add title to the new row
+  //   let updateRange = ss.getRangeByName(
+  //     "ProjectInformationSummary_Deliverables"
+  //   );
+  //   updateRange
+  //     .getSheet()
+  //     .getRange(updateRange.getLastRow(), 2)
+  //     .setValue(title);
+  // }
 } //end of createDeliverable
 ///////////////////////////////////////////
 
