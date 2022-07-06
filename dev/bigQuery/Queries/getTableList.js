@@ -3,6 +3,7 @@
   Current dataset id: Rates
 */
 
+//Current concerns, OAuth issue with depreciated API, need to update the scope and see whats going on within the new API call
 function getTableList(data) {
   let datasetId = data;
   //console.log(`datasetId: ${datasetId}`);

@@ -1,4 +1,4 @@
-function getXdaRates() {
+function getXdaRates(ratesSelected) {
   //set variable for getScriptProperties
   let scriptProperties = PropertiesService.getScriptProperties();
   //delete properties.xdaRates;
@@ -8,7 +8,7 @@ function getXdaRates() {
     //if not create it
     scriptProperties.setProperty(
       "xdaRates",
-      JSON.stringify(getCurrentXdaRates())
+      JSON.stringify(getCurrentXdaRates(ratesSelected))
     );
   }
   //get the data from the properties

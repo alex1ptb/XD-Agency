@@ -12,6 +12,14 @@ function updateRangeOfDeliverables(deliverableTitle) {
   let targetSheet = sheet.getSheetByName(sheetName);
   //shift range down by row
   targetSheet.getRange("B18:O18").insertCells(SpreadsheetApp.Dimension.ROWS);
+  //update direct bill area
+  targetSheet
+    .getRange("T18")
+    .insertCells(SpreadsheetApp.Dimension.ROWS)
+    .setValue(`=INDIRECT("'"&B18&"'!Q5")`);
+  //   targetSheet.getRange("T18").setValue(`=INDIRECT("'"&B!18!&"'!Q5")`);
+  //   targetSheet.getRange("T19").copyTo(targetSheet.getRange("T18"));
+
   //named range that needs to be updated
   let namedRange = "ProjectInformationSummary_Deliverables";
   //get the range of the named range

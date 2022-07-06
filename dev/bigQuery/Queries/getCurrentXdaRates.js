@@ -1,6 +1,40 @@
-getCurrentXdaRates = () => {
+function getCurrentXdaRates(ratesSelected) {
+  if (
+    ratesSelected == null ||
+    ratesSelected == undefined ||
+    ratesSelected == "" ||
+    ratesSelected == "XDA Standard"
+  ) {
+    ratesSelected = "xda_2022_standard";
+  }
+
+  switch (ratesSelected) {
+    case "2019 MBUSA":
+      ratesSelected = "old_2019_mbusa";
+      break;
+    case "2020 Porche":
+      ratesSelected = "_2020_porsche";
+      break;
+    case "2022 MBUSA":
+      ratesSelected = "_2022_mbusa";
+      break;
+    case "2019 Porche":
+      ratesSelected = "_2019_porsche";
+      break;
+    case "2021 Accenture":
+      ratesSelected = "_2021_accenture";
+      break;
+    case "2022 Cisco":
+      ratesSelected = "cisco_2022";
+      break;
+    case "2021 XDA Standard":
+      ratesSelected = "xda_2021_standard";
+      break;
+  }
+
   let datasetId = "Rates";
-  let tables = getTableList();
+
+  let tables = getTableList(datasetId);
   //for each table query the table and return the data
   let tableArray = [];
 
@@ -15,14 +49,14 @@ getCurrentXdaRates = () => {
     //query the table for the data wanted
     const tableQuery = BigQuery.Jobs.query(
       {
-        query: `SELECT role,xda_2022_standard FROM \`${projectId}.${datasetId}.${tableName}\`
-        where xda_2022_standard is not null
+        query: `SELECT role,${ratesSelected} FROM \`${projectId}.${datasetId}.${tableName}\`
+        where ${ratesSelected} is not null
         order by role`,
         useLegacySql: false,
       },
       projectId
     );
-    console.log(`tableQuery: ${tableQuery}`)
+    console.log(`tableQuery: ${tableQuery}`);
     //create array to hold the data
     let rows = [];
     //push the rows into an array
@@ -40,4 +74,4 @@ getCurrentXdaRates = () => {
   });
   //return each table and its data
   return tableArray;
-};
+}

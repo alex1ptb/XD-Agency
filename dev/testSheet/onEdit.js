@@ -22,6 +22,19 @@ function onEdit(e) {
     name = "";
   }
 
+  //if active range name is rate_card_section, then do this
+  if (activeSectionRanges[1] == "rate_card_section") {
+    console.log(`changing rate card`);
+    //get the value of the cell
+    const value = activeRange.getValue();
+    console.log(`value of cell for rate card: ${value}`);
+    PropertiesService.getScriptProperties().setProperty(
+      "xdaRates",
+      JSON.stringify(getCurrentXdaRates(value))
+    );
+    return;
+  }
+
   ////////////////////////////////////////////
   //creating activeCategory and partition arrays
   //This breaks down the named ranges into activeCategory and partition as well as the active range
@@ -40,9 +53,9 @@ function onEdit(e) {
       // console.log(`onEdit: rangeName: ${rangeName}`);
     }
   }
-  console.log(`activeCategory: ${activeCategory}`);
-  console.log(`partition: ${partition}`);
-  console.log(`ActiveRangeName: ${rangeName}`);
+  // console.log(`activeCategory: ${activeCategory}`);
+  // console.log(`partition: ${partition}`);
+  // console.log(`ActiveRangeName: ${rangeName}`);
   ////////////////////////////////////////////
 
   ////////////////////////////////////////////
@@ -151,6 +164,9 @@ function onEdit(e) {
   } catch (e) {
     console.log(`Total Margin Percentage Error: ${e}`);
   }
+
+  updateCategoryInformation(ss, activeCategory);
+
   ////////////////////////////////////////////
   // updateSortableByServiceAreaReport(
   //   e,

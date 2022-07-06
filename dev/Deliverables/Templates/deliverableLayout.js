@@ -4,6 +4,7 @@
 //partition is where the category will be added
 function deliverableLayout(category, partition) {
   //////////////////////////////////////////
+  console.log(`deliverableLayout: ${category}`);
   let ss = SpreadsheetApp.getActiveSpreadsheet();
   let templateSheet = ss.getSheetByName("Deliverable_Template");
   let sheet = ss.getActiveSheet();
@@ -16,8 +17,8 @@ function deliverableLayout(category, partition) {
   let footerRange = ss.getRangeByName(
     `${sheet.getName()}_Footer_${partition}_Section`
   );
-  console.log(`footerRange: ${JSON.stringify(footerRange)}`);
-  console.log(`copyRange: ${JSON.stringify(copyRange)}`);
+  // console.log(`footerRange: ${JSON.stringify(footerRange)}`);
+  // console.log(`copyRange: ${JSON.stringify(copyRange)}`);
   //////////////////////////////////////////
 
   //////////////////////////////////////////
@@ -60,7 +61,7 @@ function deliverableLayout(category, partition) {
     copyRange.getNumRows(),
     copyRange.getNumColumns()
   );
-  SpreadsheetApp.getActiveSpreadsheet().setNamedRange(rangeName, range);
+  ss.setNamedRange(rangeName, range);
   //////////////////////////////////////////
 
   //////////////////////////////////////////
@@ -84,7 +85,7 @@ function deliverableLayout(category, partition) {
   let thirdRow = pasteRange.getRow() + 2;
 
   // //set the named range for the roles
-  SpreadsheetApp.getActiveSpreadsheet().setNamedRange(
+  ss.setNamedRange(
     `${sheet.getName()}_${category}_${partition}_Roles`,
     sheet.getRange(thirdRow, 1, 1, pasteRange.getNumColumns())
   );
@@ -92,11 +93,55 @@ function deliverableLayout(category, partition) {
 
   //////////////////////////////////////////
   //update Deliverable_Template_Category_Freelancer_SubTotalQty
-  SpreadsheetApp.getActiveSpreadsheet().setNamedRange(
+  ss.setNamedRange(
     `${sheet.getName()}_${category}_${partition}_SubTotalQty`,
     sheet.getRange(pasteRange.getLastRow(), 3)
   );
 
+  //update Deliverable_Template_XD_SubTotalQty
+  ss.setNamedRange(
+    `${sheet.getName()}_${category}_XD_SubTotalQty`,
+    sheet.getRange(thirdRow + 1, 3)
+  );
+
+  //update Deliverable_Template_Category_XD_SubTotalHours
+  ss.setNamedRange(
+    `${sheet.getName()}_${category}_XD_SubTotalHours`,
+    sheet.getRange(thirdRow + 1, 5)
+  );
+
+  //update Deliverable_Template_Category_XD_SubTotalSell
+  ss.setNamedRange(
+    `${sheet.getName()}_${category}_XD_SubTotalSell`,
+    sheet.getRange(thirdRow + 1, 7)
+  );
+
+  //update Deliverable_Template_Category_XD_SubTotalActualHours
+  ss.setNamedRange(
+    `${sheet.getName()}_${category}_XD_SubTotalActualHours`,
+    sheet.getRange(thirdRow + 1, 16)
+  );
+
+  //update Deliverable_Template_Category_XD_SubTotalVariance
+  ss.setNamedRange(
+    `${sheet.getName()}_${category}_XD_SubTotalVariance`,
+    sheet.getRange(thirdRow + 1, 17)
+  );
+
+  ss.setNamedRange(
+    `${sheet.getName()}_${category}_XD_Freelancer_SubTotalSell`,
+    sheet.getRange(thirdRow + 4, 7)
+  );
+
+  ss.setNamedRange(
+    `${sheet.getName()}_${category}_XD_Freelancer_SubTotalQty`,
+    sheet.getRange(thirdRow + 4, 3)
+  );
+
+  ss.setNamedRange(
+    `${sheet.getName()}_${category}_XD_Freelancer_SubTotalHours`,
+    sheet.getRange(thirdRow + 4, 9)
+  );
   //////////////////////////////////////////
   //update Deliverable_Template_Category_XD_TotalHours
   //update Deliverable_Template_Category_XD_TotalSell
@@ -111,7 +156,7 @@ function deliverableLayout(category, partition) {
 
   //set the named range for the roles
   if (partition == "XD") {
-    SpreadsheetApp.getActiveSpreadsheet().setNamedRange(
+    ss.setNamedRange(
       `${sheet.getName()}_${category}_Freelancer_Roles`,
       sheet.getRange(sixthRow, 1, 1, pasteRange.getNumColumns())
     );
@@ -119,14 +164,18 @@ function deliverableLayout(category, partition) {
   //////////////////////////////////////////
 
   //////////////////////////////////////////
-  //I dont believe this deleteSection is needed anymore
-  // //get the last row of the range
+  //This deletes the first appearance of the section, ensuring the place holder is removed. This is necessary for when a new Deliverable is created and the user is choosing new categories to add.
   let deleteSection = ss.getRangeByName(
     `${sheet.getName()}_Category_${partition}_Section`
   );
   if (deleteSection != null) {
     ss.deleteRows(deleteSection.getRow(), deleteSection.getNumRows());
   }
+  //////////////////////////////////////////
+
+  //////////////////////////////////////////
+  //hard code updating specific namedRanges
+
   //////////////////////////////////////////
 
   //////////////////////////////////////////

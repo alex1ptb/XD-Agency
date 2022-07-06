@@ -25,7 +25,7 @@ function lookUpPayRate(name) {
   ) {
     return 0;
   }
-  console.log(`lookUpPayRate: ${name}`);
+  // console.log(`lookUpPayRate: ${name}`);
   //get the data from the properties
   let payRates = getPayRatesProperties();
   //find the payrate by matching the name to the first payrate array value
@@ -65,7 +65,7 @@ multiplyPayRate = (payRate, hours) => {
 ////////////////////////////////////////////
 //function to add up every named range that includes "SheetName_parameter_Roles"
 function getAllRolesForTargetPartition(targetsection, activeSheetNamedRanges) {
-  console.log(`getTargetSectionRanges: ${targetsection}`);
+  // console.log(`getTargetSectionRanges: ${targetsection}`);
   const sections = activeSheetNamedRanges.filter((range) => {
     //create new array filtered to only include named ranges that are in the active sheet
     return range.getName().includes(`${targetsection}_Roles`);
@@ -80,7 +80,7 @@ function getAllRolesForTargetPartition(targetsection, activeSheetNamedRanges) {
 // function getTotalOfAllSections(ss,)
 
 function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {
-  console.log(`TotalCost function started for: ${targetsection}`);
+  // console.log(`TotalCost function started for: ${targetsection}`);
   let totalPayforSection = [];
   let totalStaffSell = [];
   let total3rdPartyExtendedCost = [];
@@ -95,12 +95,12 @@ function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {
     activeSheetNamedRanges,
     ss
   ).filter((range) => {
-    console.log(`running get all roles for ${targetsection}`);
+    // console.log(`running get all roles for ${targetsection}`);
     //////////////////////////////////////////
     //for each range get the data
     try {
       activeRowValues = ss.getRangeByName(range.getName()).getValues();
-      console.log(`activeRowValues found: ${activeRowValues}`);
+      // console.log(`activeRowValues found: ${activeRowValues}`);
     } catch (e) {
       console.log(`error with ${range.getName()} activeRowValues. Error: ${e}`);
       return;
@@ -109,7 +109,7 @@ function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {
     //////////////////////////////////////////
     //get total freelance hours
     if (range.getName().includes("Freelancer_Roles")) {
-      console.log(`freelance found`);
+      // console.log(`freelance found`);
       activeRowValues.map((row) => {
         freelanceHours.push(row[8]); // Total Freelance Hours
         totalFreelancePay.push(row[6]); //Total Sell
@@ -129,7 +129,7 @@ function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {
     if (range.getName().includes("XD_Roles")) {
       //////////////////////////////////////////
       //if XD
-      console.log(`xd found`);
+      // console.log(`xd found`);
       let names = [];
       activeRowValues.map((value) => {
         totalStaffSell.push(value[6]); //Total Sell
