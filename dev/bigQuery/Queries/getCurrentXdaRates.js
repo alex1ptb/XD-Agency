@@ -1,9 +1,9 @@
-function getCurrentXdaRates(ratesSelected) {
+function getCurrentXdaRates(projectID, ratesSelected) {
   if (
     ratesSelected == null ||
     ratesSelected == undefined ||
     ratesSelected == "" ||
-    ratesSelected == "XDA Standard"
+    ratesSelected == "2022 XDA Standard"
   ) {
     ratesSelected = "xda_2022_standard";
   }
@@ -34,38 +34,51 @@ function getCurrentXdaRates(ratesSelected) {
 
   let datasetId = "Rates";
 
-  let tables = getTableList(datasetId);
+  try {
+    tables = getTableList(projectID, datasetId);
+  } catch (e) {
+    console.log(`error with getting tables in current rates: ${e}`);
+  }
   //for each table query the table and return the data
   let tableArray = [];
 
   tables.tables.forEach((table) => {
-    // console.log(table)
+    console.log(`getting table info for: ${table}`);
     const tableName = table.id.split(".")[1];
     //replace colon with .
     let tableId = table.id;
 
     //using regex replace the : with .
     tableId = tableId.replace(/:/g, ".");
+
+    console.log(`ratesSelected: ${ratesSelected}`);
+    console.log(`projectID: ${projectID}`);
+    console.log(`datasetId: ${datasetId}`);
+    console.log(`tablename: ${tableName}`);
+
     //query the table for the data wanted
     const tableQuery = BigQuery.Jobs.query(
       {
-        query: `SELECT role,${ratesSelected} FROM \`${projectId}.${datasetId}.${tableName}\`
+        query: `SELECT role, ${ratesSelected} FROM \`${projectID}.${datasetId}.${tableName}\`
         where ${ratesSelected} is not null
         order by role`,
         useLegacySql: false,
       },
-      projectId
+      projectID
     );
-    console.log(`tableQuery: ${tableQuery}`);
     //create array to hold the data
     let rows = [];
     //push the rows into an array
-    tableQuery.rows.forEach((row) => {
-      let rowArray = [];
-      rowArray.push(row.f[0].v); //role
-      rowArray.push(row.f[1].v); //xda_2022_standard
-      rows.push(rowArray);
-    });
+    try {
+      tableQuery.rows.forEach((row) => {
+        let rowArray = [];
+        rowArray.push(row.f[0].v); //role
+        rowArray.push(row.f[1].v); //xda_2022_standard
+        rows.push(rowArray);
+      });
+    } catch (e) {
+      console.log(`error with getting rows in current rates: ${e}`);
+    }
     //push the table name and data into an array
     tableArray.push({
       tableId: tableName,

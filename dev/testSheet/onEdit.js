@@ -1,5 +1,7 @@
 //when the sheet is changed, check if cell has dropdown menu, if so, copy the row and paste it below the current row
-function onEdit(e) {
+function onEditTrigger(e) {
+  console.log(`onEdit start time: ${new Date().getTime()}`);
+  const projectID = "xd-agency";
   // removeDeadReferences();
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const activeRange = e.range;
@@ -22,15 +24,18 @@ function onEdit(e) {
     name = "";
   }
 
+  //putting the following into a function to have it as an installable trigger and have it run only when the named range is matched
+
   //if active range name is rate_card_section, then do this
   if (activeSectionRanges[1] == "rate_card_section") {
+    // ScriptApp.
     console.log(`changing rate card`);
     //get the value of the cell
     const value = activeRange.getValue();
     console.log(`value of cell for rate card: ${value}`);
     PropertiesService.getScriptProperties().setProperty(
       "xdaRates",
-      JSON.stringify(getCurrentXdaRates(value))
+      JSON.stringify(getCurrentXdaRates(projectID, value))
     );
     return;
   }
@@ -190,4 +195,6 @@ function onEdit(e) {
   //   partition,
   //   activeCategory
   // );
+  console.log(`onEdit end time: ${new Date().getTime()}`);
+  return;
 } //end onEdit function

@@ -1,4 +1,5 @@
 function get3rdPartyCategories() {
+  console.log(`getting 3rd party categories from BigQuery`)
   let datasetId = "3rd_Party_Categories";
   let tables = getTableList(datasetId);
   //for each table query the table and return the data
