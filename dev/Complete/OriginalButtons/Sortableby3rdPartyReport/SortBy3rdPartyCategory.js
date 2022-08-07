@@ -11,12 +11,8 @@ function SortBy3rdPartyCategory() {
   //Sort by column C Ascending
   let ss = SpreadsheetApp.getActiveSpreadsheet();
   let sheet = ss.getSheetByName("SortableBy3rdPartyReport");
-  let range = sheet.getRange("A7:R8844");
+  let range = ss.getRangeByName("ThirdPartyReport");
   range.sort([
-    {
-      column: 18,
-      ascending: false,
-    },
     {
       column: 3,
       ascending: true,

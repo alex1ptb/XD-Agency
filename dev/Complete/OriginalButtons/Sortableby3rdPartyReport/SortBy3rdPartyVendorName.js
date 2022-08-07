@@ -10,17 +10,12 @@ function SortBy3rdPartyVendorName() {
   //Sort Range A7:R8844
   //Sort by column R Descending
   //Sort by column F Ascending
-
   let ss = SpreadsheetApp.getActiveSpreadsheet();
   let sheet = ss.getSheetByName("SortableBy3rdPartyReport");
-  let range = sheet.getRange("A7:R8844");
+  let range = ss.getRangeByName("ThirdPartyReport");
   range.sort([
     {
-      column: 18,
-      ascending: false,
-    },
-    {
-      column: 6,
+      column: 5,
       ascending: true,
     },
   ]);

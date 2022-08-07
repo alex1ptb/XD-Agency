@@ -8,8 +8,8 @@ function Reset3rdPartySortableReport() {
   //target sheet: SortableBy3rdPartyReport
   //target range: A7:A8844
   //Sort by column A in ascending order
+
   let ss = SpreadsheetApp.getActiveSpreadsheet();
-  let sheet = ss.getSheetByName("SortableBy3rdPartyReport");
-  let range = sheet.getRange("A7:R8844");
+  let range = ss.getRangeByName("ThirdPartyReport");
   range.sort([{ column: 1, ascending: true }]);
 }

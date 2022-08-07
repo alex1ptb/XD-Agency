@@ -13,27 +13,22 @@ function SortBy3rdPartyDeliverable() {
   //Sort by column A Ascending
   //Sort by Column B Ascending
   //Sort by Column E Ascending
-  {
-    let ss = SpreadsheetApp.getActiveSpreadsheet();
-    let sheet = ss.getSheetByName("SortableBy3rdPartyReport");
-    let range = sheet.getRange("A7:R8844");
-    range.sort([
-      {
-        column: 18,
-        ascending: false,
-      },
-      {
-        column: 1,
-        ascending: true,
-      },
-      {
-        column: 2,
-        ascending: true,
-      },
-      {
-        column: 5,
-        ascending: true,
-      },
-    ]);
-  }
+
+  let ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getSheetByName("SortableBy3rdPartyReport");
+  let range = ss.getRangeByName("ThirdPartyReport");
+  range.sort([
+    {
+      column: 1,
+      ascending: true,
+    },
+    {
+      column: 2,
+      ascending: true,
+    },
+    {
+      column: 5,
+      ascending: true,
+    },
+  ]);
 }

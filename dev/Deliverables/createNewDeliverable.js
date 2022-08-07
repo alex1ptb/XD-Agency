@@ -136,12 +136,20 @@ function testing(title, categories) {
   //ProjectInformationSummary -- Insert Sheet Title when deliverable is created
   //get values of  ProjectInformationSummary_Deliverables and check if the array contains the sheet title
   try {
-    updateRangeOfDeliverables(title);
+    let sheetName = "ProjectInformationSummary";
+    updateRangeOfDeliverables(title, sheetName);
     console.log("updated ProjectInformationSummary_Deliverables");
   } catch (error) {
     console.log(
       `error with updating ProjectInformationSummary_Deliverables: ${error}`
     );
+  }
+  try {
+    let sheetName = "PriceByDeliverable";
+    updateRangeOfDeliverables(title, sheetName);
+    console.log("updated PriceByDeliverable_Deliverables");
+  } catch (error) {
+    console.log(`error with updating PriceByDeliverables: ${error}`);
   }
 
   //add sheet name to the scriptProperties 'savedSheetNames'
@@ -176,4 +184,3 @@ function testing(title, categories) {
 
 ///////////////////////////////////////////
 // updateNamedRange("ProjectInformationSummary_Deliverables", title);
-// updateNamedRange("PriceByDeliverable_Deliverables", title);

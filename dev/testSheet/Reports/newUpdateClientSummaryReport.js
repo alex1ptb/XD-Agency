@@ -46,42 +46,43 @@ function newUpdateClientSummaryReport() {
             let rowData = [];
 
             rowData.push(sheetName);
-            rowData.push(splitName[splitName.length - 3]);
-            rowData.push(rangeValuesInNamedRange[i][1]);
-            rowData.push(rangeValuesInNamedRange[i][0]);
-            rowData.push("");
-            rowData.push("");
-            rowData.push("");
-            rowData.push(rangeValuesInNamedRange[i][8]);
-            rowData.push(rangeValuesInNamedRange[i][6]);
-            rowData.push("");
-            rowData.push("");
-            rowData.push("");
-            rowData.push(rangeValuesInNamedRange[i][13]);
-            rowData.push("");
-            rowData.push("");
-            rowData.push(rangeValuesInNamedRange[i][15]);
+            rowData.push(splitName[splitName.length - 3]); // service area category
+            rowData.push(rangeValuesInNamedRange[i][1]); // employee name
+            rowData.push(rangeValuesInNamedRange[i][0]); // role
+            rowData.push(""); // 3rd party category
+            rowData.push(""); // 3rd party description (or name)
+            rowData.push(""); // 3rd party vendor name
+            rowData.push(rangeValuesInNamedRange[i][8]); // notes
+            rowData.push(rangeValuesInNamedRange[i][6]); // xda fees
+            rowData.push(""); //3rd party fees
+            rowData.push(""); //total billing
+            rowData.push(""); //direct bill
+            rowData.push(rangeValuesInNamedRange[i][13]); // xda additional notes for client
+            rowData.push(""); //client feedback
+            rowData.push(""); //po #
+            rowData.push(rangeValuesInNamedRange[i][15]); // actual in NS
             valuesToAddToReport.push(rowData);
           }
+          //The following needs to be updated to tailor for the Third Party sections
           if (section === "ThirdParty") {
             let rowData = [];
 
             rowData.push(sheetName);
-            rowData.push(splitName[splitName.length - 3]);
-            rowData.push(rangeValuesInNamedRange[i][1]);
-            rowData.push(rangeValuesInNamedRange[i][0]);
-            rowData.push("");
-            rowData.push("");
-            rowData.push("");
-            rowData.push(rangeValuesInNamedRange[i][8]);
-            rowData.push(rangeValuesInNamedRange[i][6]);
-            rowData.push("");
-            rowData.push("");
-            rowData.push("");
-            rowData.push(rangeValuesInNamedRange[i][13]);
-            rowData.push("");
-            rowData.push("");
-            rowData.push(rangeValuesInNamedRange[i][15]);
+            rowData.push(""); // service area category
+            rowData.push(""); // employee name
+            rowData.push(""); // role
+            rowData.push(splitName[splitName.length - 3]); // 3rd party category
+            rowData.push(rangeValuesInNamedRange[i][0]); // 3rd party description (or name)
+            rowData.push(rangeValuesInNamedRange[i][2]); // 3rd party vendor name
+            rowData.push(rangeValuesInNamedRange[i][5]); // notes
+            rowData.push(""); // xda fees
+            rowData.push(rangeValuesInNamedRange[i][11]); //3rd party fees
+            rowData.push(""); //total billing
+            rowData.push(rangeValuesInNamedRange[i][13]); //direct bill
+            rowData.push(""); // xda additional notes for client
+            rowData.push(""); //client feedback
+            rowData.push(rangeValuesInNamedRange[i][14]); //po #
+            rowData.push(rangeValuesInNamedRange[i][15]); // actual in NS
             valuesToAddToReport.push(rowData);
           }
         }

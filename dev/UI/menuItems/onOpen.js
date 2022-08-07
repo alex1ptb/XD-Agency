@@ -29,7 +29,18 @@ function onOpen() {
     )
     .addToUi();
   ui.createMenu("Update")
-    .addItem("Update Client Summary Report", "newUpdateClientSummaryReport")
+    .addSubMenu(
+      ui
+        .createMenu("Update Reports")
+        // .addItem("Update All Reports", "updateReports")
+        .addItem("Update Client Summary Report", "newUpdateClientSummaryReport")
+        .addItem(
+          "Update Service Area Report",
+          "newUpdateSortableByServiceAreaReport"
+        )
+        .addItem("Update 3rd Party Report", "newUpdateSortableBy3rdPartyReport")
+    )
+    // "Update Reports")
     .addSubMenu(
       ui
         .createMenu("Update from Database")
