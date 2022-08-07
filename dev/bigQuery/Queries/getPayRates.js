@@ -1,6 +1,6 @@
 function getPayRates() {
   let datasetId = "Employee_Information";
-  let tables = getTableList("Employee_Information");
+  let tables = getTableList(projectId, "Employee_Information");
   let tableArray = [];
 
   tables.tables.forEach((table) => {

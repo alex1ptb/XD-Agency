@@ -1,4 +1,15 @@
+// updateClientSummaryReport(
+//   e,
+//   partition,
+//   sheetName,
+//  serviceCategory,
+//  jobTitle,
+//   oldValue,
+//   activeRange
+// );
+
 ////////////////////////////////////////////
+
 function updateClientSummaryReport(
   e,
   partition,
@@ -9,6 +20,14 @@ function updateClientSummaryReport(
   activeRange
 ) {
   console.log(`start updateClientSummaryReport function`);
+
+  const targetRange = ss.getRange("ClientSummaryReportRange");
+  const section = serviceCategory;
+  const currentSheet = e.range.getSheet();
+  let name = currentSheet.getRange(e.range.getRow(), 2).getValue();
+  const role = currentSheet.getRange(e.range.getRow(), 1).getValue();
+  // const row = e.range.getSheet().getRange(e.range.getRow());
+  // console.log(`row: ${row}`);
   //if value is "Pick a Job Title" then return
   if (e.value === "Pick a Job Title") {
     return;
@@ -22,29 +41,40 @@ function updateClientSummaryReport(
     //if partition is "XD" or "Freelancer" then check column 2 for match of serviceCategory
     if (partition === "XD" || partition === "Freelancer") {
       // console.log(`partition is XD or Freelancer`);
+      //The following checks if the old value existed and overwrites it with the new value
       if (reportRangeValues[i][0] === sheetName) {
+        // console.log(`sheetName: ${sheetName}`);
         if (reportRangeValues[i][1] === serviceCategory) {
+          // console.log(`found match for serviceCategory: ${serviceCategory}`);
           if (reportRangeValues[i][3] === oldValue) {
-            ss.getRangeByName("ClientSummaryReportRange")
-              .offset(i, 3, 1, 1)
-              .setValue(e.value);
-
-            return;
-          }
-          if (reportRangeValues[i][2] === oldValue) {
-            ss.getRangeByName("ClientSummaryReportRange")
-              .offset(i, 2, 1, 1)
-              .setValue(e.value);
-            return;
+            if (reportRangeValues[i][2] === name) {
+              console.log(`found match for oldValue at 3: ${oldValue}`);
+              ss.getRangeByName("ClientSummaryReportRange")
+                .offset(i, 3, 1, 1)
+                .setValue(e.value);
+              return;
+            }
+          } else if (reportRangeValues[i][2] === oldValue) {
+            if (reportRangeValues[i][3] === role) {
+              console.log(`found match for oldValue at 2: ${oldValue}`);
+              ss.getRangeByName("ClientSummaryReportRange")
+                .offset(i, 2, 1, 1)
+                .setValue(e.value);
+              return;
+            }
+          } else {
           } //end if match old value column 2
-          // } //end if jobTitle match
         } //end if serviceCategory matches column 1
       } //end if partition is XD or Freelancer
+      console.log("no match found, creating new row");
     }
     /////////////////////
     //if partition is "ThirdParty" then check column 5 for match of serviceCategory
     if (partition === "ThirdParty") {
-      let vendorName = activeRange.getSheet().getRange(row, 3).getValue();
+      let vendorName = activeRange
+        .getSheet()
+        .getRange(e.range.getRow(), 3)
+        .getValue();
       if (reportRangeValues[i][4] === serviceCategory) {
         // console.log(`service category: ${serviceCategory} found in column 4`);
         //if match, check column 4 for match of jobTitle
@@ -63,16 +93,11 @@ function updateClientSummaryReport(
   // } //end for loop
   // } //end checkRangeForMatch function
   // checkRangeForMatch(e);
-  const targetRange = ss.getRange("ClientSummaryReportRange");
   updateNamedRange("ClientSummaryReportRange");
   //clear the last row
   ss.getRangeByName("ClientSummaryReportRange")
     .offset(targetRange.getLastRow(), 0, 1, 7)
     .clearContent();
-
-  const section = serviceCategory;
-  let name = e.range.getSheet().getRange(e.range.getRow(), 2).getValue();
-  const role = e.range.getValue();
 
   //update the ClientSummaryReport with the new values
   //target first cell of named range
@@ -91,7 +116,7 @@ function updateClientSummaryReport(
     updateColumn(2, section);
     updateColumn(3, name);
     updateColumn(4, role);
-  } else {
+  } else if (partition === "ThirdParty") {
     //title
     updateColumn(1, sheetName);
     //role()

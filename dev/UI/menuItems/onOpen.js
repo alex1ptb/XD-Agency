@@ -4,6 +4,7 @@
 
 //constant variables for the entire spreadsheet
 const projectId = "xd-agency";
+const projectID = "xd-agency";
 const ss = SpreadsheetApp.getActiveSpreadsheet();
 
 ////////
@@ -25,6 +26,14 @@ function onOpen() {
           "Add 3rd Party Costs to Current Deliverable",
           "createthirdPartyCostsSidebar"
         )
+    )
+    .addToUi();
+  ui.createMenu("Update")
+    .addItem("Update Client Summary Report", "newUpdateClientSummaryReport")
+    .addSubMenu(
+      ui
+        .createMenu("Update from Database")
+        .addItem("Update Everything", "updateAll")
     )
     .addToUi();
   //I probably need to move the below funciton elsewhere

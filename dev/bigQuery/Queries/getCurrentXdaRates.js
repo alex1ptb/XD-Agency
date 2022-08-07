@@ -1,4 +1,7 @@
 function getCurrentXdaRates(projectID, ratesSelected) {
+  if (projectID == undefined) {
+    projectID = "xd-agency";
+  }
   if (
     ratesSelected == null ||
     ratesSelected == undefined ||

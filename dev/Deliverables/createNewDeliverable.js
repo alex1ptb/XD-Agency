@@ -143,6 +143,34 @@ function testing(title, categories) {
       `error with updating ProjectInformationSummary_Deliverables: ${error}`
     );
   }
+
+  //add sheet name to the scriptProperties 'savedSheetNames'
+  try {
+    //delete propeerty if it exists
+    // PropertiesService.getScriptProperties().deleteProperty("savedSheetNames");
+    let savedSheetNames =
+      PropertiesService.getScriptProperties().getProperty("savedSheetNames");
+    if (savedSheetNames == null) {
+      //create new array if it doesn't exist and add the sheet name
+      PropertiesService.getScriptProperties().setProperty(
+        "savedSheetNames",
+        title
+      );
+    } else {
+      //add the sheet name to the array
+      console.log(`entered else in setting properties`);
+      savedSheetNames = savedSheetNames.split(",");
+      console.log(`savedSheetNames: ${savedSheetNames}`);
+      savedSheetNames.push(title);
+      console.log(`savedSheetNames after push: ${savedSheetNames}`);
+      PropertiesService.getScriptProperties().setProperty(
+        "savedSheetNames",
+        JSON.stringify(savedSheetNames)
+      );
+    }
+  } catch (error) {
+    console.log(`error with adding sheet name to scriptProperties: ${error}`);
+  }
 } //end of createDeliverable
 ///////////////////////////////////////////
 

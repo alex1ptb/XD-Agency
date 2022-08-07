@@ -86,7 +86,7 @@ function onEditTrigger(e) {
         sheet.getRange(row + 1, 1).setValue("Pick a Job Title");
         //set the value of column 6 to 0
         sheet.getRange(row + 1, 6).setValue(0);
-        return;
+        // return;
       }
       //get the sale rate for the job
       console.log(`getting sale rate for job: ${jobTitle}`);
@@ -99,7 +99,7 @@ function onEditTrigger(e) {
         sheet,
         jobTitle
       );
-      return;
+      // return;
     }
   }
   ////////////////////////////////////////////
@@ -180,8 +180,19 @@ function onEditTrigger(e) {
   //   partition,
   //   activeCategory
   // );
+
   // updateClientSummaryReport(
   //   e,
+  //   partition,
+  //   sheetName,
+  //   activeCategory,
+  //   jobTitle,
+  //   oldValue,
+  //   activeRange
+  // );
+  // updateClientSummaryReport(
+  //   e,
+  //   partition,
   //   sheetName,
   //   oldValue,
   //   partition,

@@ -55,6 +55,10 @@ function updateCategoryInformation(ss, category) {
       Number = 9;
       break;
   }
+  if (Number === "") {
+    return;
+  }
+
   console.log(`updating category information for ${category}`);
   console.log(`updateBudgetHours: ${Number}`);
   //set arrays for the totals
