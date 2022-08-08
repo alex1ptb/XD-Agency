@@ -2,15 +2,12 @@
  * @OnlyCurrentDoc
  */
 function ResetSortableByServiceArea() {
-  // '
-  // ' ResetSortableByServiceArea Macro
-  // '
-
-  // '
-  sortByColumn(
-    1,
-    { ascending: true },
-    "A8:P2387",
-    "SortableByServiceAreaReport"
-  );
+  let ss = SpreadsheetApp.getActiveSpreadsheet();
+  let range = ss.getRangeByName("ServiceAreaReport");
+  range.sort([
+    {
+      column: 1,
+      ascending: true,
+    },
+  ]);
 }

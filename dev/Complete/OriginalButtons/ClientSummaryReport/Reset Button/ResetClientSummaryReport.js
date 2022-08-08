@@ -10,8 +10,7 @@ function ResetClientSummaryReport() {
   //headerRow: 6 (Row 6 is the header row)
 
   let ss = SpreadsheetApp.getActiveSpreadsheet();
-  let sheet = ss.getSheetByName("ClientSummaryReport");
-  let range = sheet.getRange("A7:R11225");
+  let range = ss.getRangeByName("ClientSummaryReportRange");
   //check if range already sorted
   range.sort({ column: 1, ascending: true });
 }
