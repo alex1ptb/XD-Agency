@@ -17,6 +17,7 @@ function onOpen() {
   var ui = SpreadsheetApp.getUi();
   ui.createMenu("Upload to BigQuery")
     .addItem("Upload Data to Bigquery", "upload_each_sheet")
+    .addItem("Upload Single Sheet to Bigquery", "upload_individual_sheet")
     .addToUi();
   //I probably need to move the below funciton elsewhere
 }

@@ -13,6 +13,31 @@
 //   }; //end schema_bq
 //   // "automatic";
 
+function upload_individual_sheet() {
+  const project_id = "xd-agency";
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  const range = sheet.getDataRange();
+  const data = range.getValues();
+  const data_set_id = SpreadsheetApp.getActiveSpreadsheet().getName();
+  const table_id = sheet.getName();
+  const writeDisposition = "WRITE_EMPTY";
+  const has_header = true;
+  // const schema_bq = {
+  //   //string Role
+  //   // fields: [{ name: "Role", type: "STRING" }],
+  // }; //end schema_bq
+
+  upload_to_BigQ(
+    range,
+    project_id,
+    data_set_id,
+    table_id,
+    writeDisposition,
+    has_header
+    // schema_bq
+  ); //end upload_to_BigQ
+}
+
 //make a function to loop through the sheets and upload them to BigQuery
 function upload_each_sheet() {
   const sheets = SpreadsheetApp.getActiveSpreadsheet().getSheets();
@@ -36,8 +61,8 @@ function upload_each_sheet() {
       data_set_id,
       table_id,
       writeDisposition,
-      has_header,
-      schema_bq
+      has_header
+      // schema_bq
     ); //end upload_to_BigQ
   } //end upload
 }
@@ -49,8 +74,10 @@ function upload_to_BigQ(
   tableId,
   writeDisposition,
   has_header,
-  schema_bq
+  // schema_bq
 ) {
+  //Delete tables then begin
+  BigQuery.Tables.remove(projectNumber, datasetId, tableId);
   console.log("uploading to BigQuery");
   if (typeof writeDisposition == "undefined") {
     writeDisposition = "WRITE_EMPTY";
@@ -113,10 +140,10 @@ function upload_to_BigQ(
         datasetId: datasetId,
         tableId: tableId,
       },
-      // schema: {
-      //   //string Role
-      //   // fields: [{ name: "Role", type: "STRING" }],
-      // },
+      schema: {
+        //string Role
+        // fields: [{ name: "Role", type: "STRING" }],
+      },
     };
     console.log(`table is: ${table}`);
     try {
@@ -143,6 +170,10 @@ function upload_to_BigQ(
               tableId: tableId,
             },
             skipLeadingRows: has_header,
+            schema: {
+              //string Role
+              fields: [{ name: "Role", type: "STRING" }],
+            },
             autodetect: true,
             writeDisposition: writeDisposition,
           },
@@ -161,7 +192,7 @@ function upload_to_BigQ(
             skipLeadingRows: has_header,
             schema: {
               //string Role
-              // fields: [{ name: "Role", type: "STRING" }],
+              fields: [{ name: "Role", type: "STRING" }],
             },
             writeDisposition: writeDisposition,
           },
@@ -170,10 +201,14 @@ function upload_to_BigQ(
     } //end if schema_bq
     try {
       job = BigQuery.Jobs.insert(job, projectId, data);
+      console.log("Job Inserted")
     } catch (e) {
       console.log(e);
     }
 
     file.setTrashed(true); // delete the file
   } //end while
+  //toast the user
+  var toast = "Data uploaded to BigQuery";
+  SpreadsheetApp.getActiveSpreadsheet().toast(toast);
 } //end upload_to_BigQ
