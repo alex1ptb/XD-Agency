@@ -8,7 +8,7 @@ function getSaleRate(
   sheet,
   jobTitle
 ) {
-  console.log("inside getSaleRate");
+  // console.log("inside getSaleRate");
   //get the row of the cell that was edited
   const value = activeRange.getValue();
 
@@ -30,7 +30,7 @@ function getSaleRate(
             if (tableData[j][0] === jobTitle) {
               //return the sale rate
               const saleRate = tableData[j][1];
-              console.log(`saleRate: ${saleRate}`);
+              // console.log(`saleRate: ${saleRate}`);
               //set the value of column 6 to the sale rate
               sheet.getRange(row, 6).setValue(saleRate);
             } //if the value is "Pick a Job Title", the display value of column 6 is 0

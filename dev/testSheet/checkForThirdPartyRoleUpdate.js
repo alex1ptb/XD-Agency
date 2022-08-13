@@ -17,7 +17,7 @@ function checkForThirdPartyRoleUpdate(category) {
       .getDisplayValue();
     //if the display value matches the tableId then return the tableData
     if (table.tableId == displayValue) {
-      console.log(`table found that matches displayValue`);
+      // console.log(`table found that matches displayValue`);
       return table.tableData;
     } else {
       return null;

@@ -5,16 +5,10 @@ function checkForRoleUpdate(category, partition) {
   let range = SpreadsheetApp.getActiveSpreadsheet().getRangeByName(
     `${sheet.getName()}_${category}_${partition}_Section`
   );
-
   if (range == null) {
     return;
-    // range = SpreadsheetApp.getActiveSpreadsheet().getRangeByName(
-    //   `${sheet.getName()}_Category_${partition}_Section`
-    // );
   }
-
   let rates = "";
-
   if (partition == "XD") {
     rates = getXdaRates();
   }

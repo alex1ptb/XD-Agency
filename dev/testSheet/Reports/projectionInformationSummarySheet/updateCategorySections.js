@@ -69,6 +69,8 @@ function updateCategoryInformation(ss, category) {
 
   //get all named ranges and filter out the ones that are not `nameOfASheet_category_XD_SubTotalSell`
   let namedRanges = ss.getNamedRanges();
+
+  //get roles that have matching category. The named range will end in `_Roles`
   let namedRangesToUpdate = namedRanges.filter(
     (namedRange) =>
       namedRange.getName().includes(`${category}_XD_SubTotalSell`) ||
@@ -78,12 +80,9 @@ function updateCategoryInformation(ss, category) {
   );
   // go through each named range and get the totals for the category and push them to the appropriate array
   for (let i = 0; i < namedRangesToUpdate.length; i++) {
-    console.log(`getting info from: ${namedRangesToUpdate[i].getName()}`);
+    // console.log(`getting info from: ${namedRangesToUpdate[i].getName()}`);
     let range = namedRangesToUpdate[i].getRange();
-    let sheetName = range.getSheet().getName();
-    // let category = sheetName.split("_")[1];
     let total = range.getValue();
-    // console.log(`${category} total: ${total}`);
     if (
       namedRangesToUpdate[i].getName().includes(`${category}_XD_SubTotalSell`)
     ) {
@@ -112,12 +111,10 @@ function updateCategoryInformation(ss, category) {
     "ProjectInformationSummary_BudgetedHours"
   );
   //now that we have the row, we need to put the XD_SubTotalSell in the appropriate columns 1 row below the topTargetRow. The column will be updateBudgetHours
-  console.log(`XD_SubTotalHour: ${XD_SubTotalHour}`);
   topRowOfBudgetHours
     .offset(1, Number, 1, 1)
     .setValue(XD_SubTotalHour.reduce((a, b) => a + b, 0));
 
-  console.log(`Freelance_SubTotalHour: ${Freelance_SubTotalHour}`);
   topRowOfBudgetHours
     .offset(2, Number, 1, 1)
     .setValue(Freelance_SubTotalHour.reduce((a, b) => a + b, 0));
@@ -133,9 +130,4 @@ function updateCategoryInformation(ss, category) {
   columnOfBudgetSell
     .offset(Number, 1, 1, 1)
     .setValue(Freelance_SubTotalSell.reduce((a, b) => a + b, 0));
-  // console.log(`Freelance_SubTotalSell: ${Freelance_SubTotalSell}`);
-  // console.log(`XD_SubTotalSell: ${XD_SubTotalSell}`);
-  //get the named ranges for the category
 }
-
-//update the totals in the named ranges

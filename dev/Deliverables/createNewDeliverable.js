@@ -45,7 +45,6 @@ function testing(title, categories) {
             range.getNumRows(),
             range.getNumColumns()
           );
-          // console.log(`namedRange is : ${namedRange.getName()}`);
           //replace named range with new range name
           newName = namedRange
             .getName()
@@ -132,7 +131,6 @@ function testing(title, categories) {
 
   ///////////////////////////////////////////
   //update ProjectInformationSummary and PriceByDeliverable named ranges to include the new sheet
-
   //ProjectInformationSummary -- Insert Sheet Title when deliverable is created
   //get values of  ProjectInformationSummary_Deliverables and check if the array contains the sheet title
   try {
@@ -154,7 +152,7 @@ function testing(title, categories) {
 
   //add sheet name to the scriptProperties 'savedSheetNames'
   try {
-    //delete propeerty if it exists
+    //delete property if it exists
     // PropertiesService.getScriptProperties().deleteProperty("savedSheetNames");
     let savedSheetNames =
       PropertiesService.getScriptProperties().getProperty("savedSheetNames");
@@ -166,11 +164,11 @@ function testing(title, categories) {
       );
     } else {
       //add the sheet name to the array
-      console.log(`entered else in setting properties`);
+      // console.log(`entered else in setting properties`);
       savedSheetNames = savedSheetNames.split(",");
-      console.log(`savedSheetNames: ${savedSheetNames}`);
+      // console.log(`savedSheetNames: ${savedSheetNames}`);
       savedSheetNames.push(title);
-      console.log(`savedSheetNames after push: ${savedSheetNames}`);
+      // console.log(`savedSheetNames after push: ${savedSheetNames}`);
       PropertiesService.getScriptProperties().setProperty(
         "savedSheetNames",
         JSON.stringify(savedSheetNames)
@@ -181,6 +179,3 @@ function testing(title, categories) {
   }
 } //end of createDeliverable
 ///////////////////////////////////////////
-
-///////////////////////////////////////////
-// updateNamedRange("ProjectInformationSummary_Deliverables", title);

@@ -23,9 +23,10 @@ function lookUpPayRate(name) {
     name === undefined ||
     name === "Insert Freelance Name"
   ) {
+    console.log(`lookUpPayRate error: ${name}`);
     return 0;
   }
-  // console.log(`lookUpPayRate: ${name}`);
+  console.log(`lookUpPayRate: ${name}`);
   //get the data from the properties
   let payRates = getPayRatesProperties();
   //find the payrate by matching the name to the first payrate array value
@@ -34,6 +35,7 @@ function lookUpPayRate(name) {
       // console.log(`found ${name}`);
       //return the data
       if (payRate[1]) {
+        console.log(`${name} has a payrate of ${payRate[1]}`);
         return payRate;
       }
     } else {
@@ -50,14 +52,14 @@ function lookUpPayRate(name) {
 
 ////////////////////////////////////////////
 multiplyPayRate = (payRate, hours) => {
-  if (payRate === 0 || hours === 0) {
+  if (hours == undefined) {
     return 0;
   }
-  if (payRate === undefined || hours === undefined) {
-    return 0;
-  }
-  if (payRate) {
+  try {
+    console.log(`multiplyPayRate: ${payRate} * ${hours}`);
     return payRate * hours;
+  } catch (error) {
+    console.log(`multiply Pay Rate error: ${error}`);
   }
 };
 ////////////////////////////////////////////
@@ -76,9 +78,6 @@ function getAllRolesForTargetPartition(targetsection, activeSheetNamedRanges) {
 
 ////////////////////////////////////////////
 //function to add up every named range that includes "SheetName_parameter_Roles"
-
-// function getTotalOfAllSections(ss,)
-
 function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {
   // console.log(`TotalCost function started for: ${targetsection}`);
   let totalPayforSection = [];
@@ -95,28 +94,21 @@ function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {
     activeSheetNamedRanges,
     ss
   ).filter((range) => {
-    // console.log(`running get all roles for ${targetsection}`);
-    //////////////////////////////////////////
     //for each range get the data
     try {
       activeRowValues = ss.getRangeByName(range.getName()).getValues();
-      // console.log(`activeRowValues found: ${activeRowValues}`);
     } catch (e) {
       console.log(`error with ${range.getName()} activeRowValues. Error: ${e}`);
       return;
     }
-
-    //////////////////////////////////////////
     //get total freelance hours
     if (range.getName().includes("Freelancer_Roles")) {
-      // console.log(`freelance found`);
       activeRowValues.map((row) => {
         freelanceHours.push(row[8]); // Total Freelance Hours
         totalFreelancePay.push(row[6]); //Total Sell
         totalPayforSection.push(row[9]); // Total Freelance Cost
       });
-    } //end if Freelancer
-    //////////////////////////////////////////
+    }
     //get total third party hours
     if (range.getName().includes("ThirdParty_Roles")) {
       activeRowValues.map((row) => {
@@ -124,35 +116,51 @@ function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {
         total3rdPartyExtendedCost.push(row[7]);
         total3rdPartyExtendedCostWithCont.push(row[9]);
       });
-    } //end if Freelancer
-    //////////////////////////////////////////
+    }
+    //get XD Roles
     if (range.getName().includes("XD_Roles")) {
-      //////////////////////////////////////////
-      //if XD
-      // console.log(`xd found`);
+      console.log(`inside target role area with issue`);
+      console.log(`${targetsection}_Roles: ${activeRowValues.length}`);
       let names = [];
       activeRowValues.map((value) => {
         totalStaffSell.push(value[6]); //Total Sell
         totalStaffHours.push(value[4]); //Total Hours
         names.push(value[1]); //Name
       });
-      //////////////////////////////////////////
+      console.log(`totalStaffSell: ${totalStaffSell}`);
+      console.log(`totalStaffHours: ${totalStaffHours}`);
+      console.log(`names: ${names}`);
       //Get Pay Rates by name
       for (i = 0; i <= names.length; i++) {
+        // if (names[i] == "Choose XD Agent Member") {
+        //   return;
+        // }
         let rate = lookUpPayRate(names[i]);
-        if (rate == undefined) {
-          return;
-        } else {
-          let pay = multiplyPayRate(rate, totalStaffHours[i]);
-          if (pay) {
-            totalPayforSection.push(pay);
-          }
-        } //end if
-      } //end for loop
-      //////////////////////////////////////////
-    } //end of else
-  }); //end of filter
+        // if (rate == undefined) {
+        //   rate = 0;
+        // }
+        let pay = multiplyPayRate(rate, totalStaffHours[i]);
+        console.log(
+          `pay for ${names[i]} is ${pay} with the current hours of ${totalStaffHours[i]}`
+        );
+        totalPayforSection.push(pay);
+      }
+      console.log(`totalPayforSection: ${totalPayforSection}`);
+    }
+  });
   //////////////////////////////////////////
+
+  //console log all the parameters for the function
+  // console.log(`targetsection: ${targetsection}`);
+  // //console log all the arrays
+  // console.log(`totalStaffSell: ${totalStaffSell}`);
+  // console.log(`total3rdPartyExtendedCost: ${total3rdPartyExtendedCost}`);
+  // console.log(
+  //   `total3rdPartyExtendedCostWithCont: ${total3rdPartyExtendedCostWithCont}`
+  // );
+  // console.log(`totalFreelancePay: ${totalFreelancePay}`);
+  // console.log(`freelanceHours: ${freelanceHours}`);
+  // console.log(`totalStaffHours: ${totalStaffHours}`);
 
   //////////////////////////////////////////
   //update total pay and hours sections
@@ -161,7 +169,6 @@ function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {
     let sSell = totalStaffSell.reduce((a, b) => {
       return a + b;
     });
-    // console.log(`sSell: ${sSell}`);
     // Test_Footer_XD_TotalStaffSell
     ss.getRangeByName(`${sheetName}_Footer_XD_TotalStaffSell`).setValue(sSell);
   }
@@ -196,17 +203,14 @@ function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {
   //// XDA Footer
   //total sell - total pay / total sell = margin
   if (totalStaffSell.length > 0 && totalPayforSection.length > 0) {
-    let sMargin = (
-      (totalStaffSell.reduce((a, b) => {
-        return a + b;
-      }) -
-        totalPayforSection.reduce((a, b) => {
-          return a + b;
-        })) /
-      totalStaffSell.reduce((a, b) => {
-        return a + b;
-      })
-    ).toFixed(2);
+    let tStaffSell = totalStaffSell.reduce((a, b) => {
+      return a + b;
+    });
+    let tPayforSection = totalPayforSection.reduce((a, b) => {
+      return a + b;
+    });
+    let sMargin = ((tStaffSell - tPayforSection) / tStaffSell).toFixed(2);
+
     //SheetName_Footer_XD_TotalStaffMargin
     ss.getRangeByName(`${sheetName}_Footer_XD_TotalStaffMargin`)
       .setValue(sMargin)
@@ -251,13 +255,14 @@ function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {
       t3rdPartyExtendedCostWithCont
     );
   }
+  //////////////////////////////////////
 
   //////////////////////////////////////////
-
   if (totalPayforSection.length > 0) {
+    console.log(`totalPayforSection: ${totalPayforSection}`);
     return (totalPayforSection = totalPayforSection.reduce((a, b) => a + b));
   } else {
     return 0;
   }
-} //end of getTargetSectionRanges
+} //end of TotalCost
 ////////////////////////////////////////////

@@ -2,10 +2,10 @@
 //we are going to make this a funciton
 
 //create a function to insert row after namedRange
-function updateNamedRange(namedRange) {
+function updateNamedRange(namedRange, ss) {
   const range = ss.getRangeByName(namedRange);
   const sheetName = range.getSheet().getName();
-  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheetName);
+  const sheet = ss.getSheetByName(sheetName);
   sheet.insertRowAfter(range.getLastRow());
   //copy the row and paste it below the current row
   sheet
