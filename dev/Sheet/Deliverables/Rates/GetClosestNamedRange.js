@@ -4,9 +4,17 @@
 
 //get the named range that the edited cell belongs to
 function GetClosestNamedRange(activeSheetNamedRanges, activeRange) {
+  console.log(`running GetClosestNamedRange`);
+  console.log(`active Range: ${JSON.stringify(activeRange)}`);
+  if (activeRange == undefined) {
+    return;
+  }
+  // console.log(`parameters: ${activeSheetNamedRanges}, ${activeRange}`);
   let run, stop;
   run = new Date();
   const range = activeRange;
+  let rowStart = range.getRow();
+  let columnStart = range.getColumn();
   const r = activeSheetNamedRanges.filter((r) => {
     const temp = r.getRange();
     const startRow = temp.getRow();
