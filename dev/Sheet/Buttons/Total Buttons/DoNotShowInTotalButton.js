@@ -1,6 +1,37 @@
 /**
  * @OnlyCurrentDoc
  */
+
+//create a function that hides the actual information inside of the properties service of the sheet.
+function hideActualInformation() {
+  let ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = SpreadsheetApp.getActiveSheet();
+  let sheetName = sheet.getName();
+  // Deliverable_Template_Header_Information
+  let range = ss.getRangeByName(`${sheetName}_Header_Information`);
+  let rangeContents = range.getFormulas();
+  let properties = PropertiesService.getScriptProperties();
+  properties.setProperty(sheetName, `${JSON.stringify(rangeContents)}`);
+  // console.log(info);
+  range.clearContent();
+}
+
+function showHiddenInformation() {
+  let ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = SpreadsheetApp.getActiveSheet();
+  let sheetName = sheet.getName();
+  // Deliverable_Template_Header_Information
+  let range = ss.getRangeByName(`${sheetName}_Header_Information`);
+  let properties = PropertiesService.getScriptProperties();
+  let targetInformation = properties.getProperty(sheetName);
+  try {
+    range.setValues(JSON.parse(targetInformation));
+    properties.deleteProperty(sheetName);
+  } catch (error) {
+    console.log(`error with showing hidden information: ${error}`);
+  }
+}
+
 function DoNotShowInTotalButton() {
   let ss = SpreadsheetApp.getActiveSpreadsheet();
   let sheet = ss.getActiveSheet();

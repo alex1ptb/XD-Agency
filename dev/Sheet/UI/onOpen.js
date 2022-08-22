@@ -26,6 +26,12 @@ function onOpen() {
           "Add 3rd Party Costs to Current Deliverable",
           "createthirdPartyCostsSidebar"
         )
+        .addSubMenu(
+          ui
+            .createMenu("Totals for Current Deliverable")
+            .addItem("Show in Totals", "showHiddenInformation")
+            .addItem("Do Not Show in Totals", "hideActualInformation")
+        )
     )
     .addToUi();
   ui.createMenu("Update")

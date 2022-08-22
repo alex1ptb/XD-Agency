@@ -1,8 +1,7 @@
 ///////////////////////////////////////////
 //This is the main function when adding a new deliverable sheet
 //I haven't changed the name of function to addDeliverable
-function testing(title, categories) {
-  // console.log(`started creating new deliverable: ${title}`);
+function newDeliverable(title, categories) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   //if title already exists, return alert, else create new sheet
   if (ss.getSheetByName(title)) {
@@ -29,35 +28,32 @@ function testing(title, categories) {
   //copy over named ranges to new sheet
   function NamedRanges(sheet) {
     //get named ranges in active sheet
-    var rangeList = SpreadsheetApp.getActive().getNamedRanges();
+    let rangeList = SpreadsheetApp.getActiveSpreadsheet()
+      .getSheetByName("Deliverable_Template")
+      .getNamedRanges();
 
     rangeList.forEach(
       function (namedRange) {
         var range = namedRange.getRange();
         //if the named range is in the sheet Deliverable_Template, then copy it to the new sheet
-        if (range.getSheet().getName() != "Deliverable_Template") {
-          return;
-        }
-        if (range.getSheet().getName() == "Deliverable_Template") {
-          newRange = sheet.getRange(
-            range.getRow(),
-            range.getColumn(),
-            range.getNumRows(),
-            range.getNumColumns()
+        newRange = sheet.getRange(
+          range.getRow(),
+          range.getColumn(),
+          range.getNumRows(),
+          range.getNumColumns()
+        );
+        //replace named range with new range name
+        newName = namedRange
+          .getName()
+          .replace("Deliverable_Template", `${title}`);
+        //try catch
+        try {
+          ss.setNamedRange(newName, newRange);
+        } catch (e) {
+          console.log(
+            `Error renaming named range: ${namedRange.getName()} to ${newName}\n${e}`
           );
-          //replace named range with new range name
-          newName = namedRange
-            .getName()
-            .replace("Deliverable_Template", `${title}`);
-          //try catch
-          try {
-            ss.setNamedRange(newName, newRange);
-          } catch (e) {
-            console.log(
-              `Error renaming named range: ${namedRange.getName()} to ${newName}\n${e}`
-            );
-          }
-        } //end of if
+        }
       } //end of forEach
     ); //end of rangeList
   } //end of NamedRanges
@@ -126,7 +122,6 @@ function testing(title, categories) {
     "Deliverable_Template_Footer_Freelancer_TotalFreelanceHours",
     `${title}_Footer_Freelancer_TotalFreelanceHours`
   );
-
   ///////////////////////////////////////////
 
   ///////////////////////////////////////////
@@ -142,6 +137,9 @@ function testing(title, categories) {
       `error with updating ProjectInformationSummary_Deliverables: ${error}`
     );
   }
+  ///////////////////////////////////////////
+
+  ///////////////////////////////////////////
   try {
     let sheetName = "PriceByDeliverable";
     updateRangeOfDeliverables(title, sheetName);
@@ -150,6 +148,7 @@ function testing(title, categories) {
     console.log(`error with updating PriceByDeliverables: ${error}`);
   }
 
+  ///////////////////////////////////////////
   //add sheet name to the scriptProperties 'savedSheetNames'
   try {
     //delete property if it exists
@@ -164,11 +163,8 @@ function testing(title, categories) {
       );
     } else {
       //add the sheet name to the array
-      // console.log(`entered else in setting properties`);
       savedSheetNames = savedSheetNames.split(",");
-      // console.log(`savedSheetNames: ${savedSheetNames}`);
       savedSheetNames.push(title);
-      // console.log(`savedSheetNames after push: ${savedSheetNames}`);
       PropertiesService.getScriptProperties().setProperty(
         "savedSheetNames",
         JSON.stringify(savedSheetNames)

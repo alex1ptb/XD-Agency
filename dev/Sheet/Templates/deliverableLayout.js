@@ -3,12 +3,9 @@
 
 //partition is where the category will be added
 function deliverableLayout(category, partition) {
-  //////////////////////////////////////////
-  console.log(`deliverableLayout: ${category}`);
   let ss = SpreadsheetApp.getActiveSpreadsheet();
   let templateSheet = ss.getSheetByName("Deliverable_Template");
   let sheet = ss.getActiveSheet();
-  console.log(`partition: ${partition}`);
   //copy range Main_Category_Template
   let copyRange = templateSheet.getRange(
     `Deliverable_Template_Category_${partition}_Section`
@@ -17,14 +14,11 @@ function deliverableLayout(category, partition) {
   let footerRange = ss.getRangeByName(
     `${sheet.getName()}_Footer_${partition}_Section`
   );
-  // console.log(`footerRange: ${JSON.stringify(footerRange)}`);
-  // console.log(`copyRange: ${JSON.stringify(copyRange)}`);
   //////////////////////////////////////////
 
   //////////////////////////////////////////
   //if footerRange exists, insert rows above the footer equal to the number of rows found in the copyRange
   if (footerRange) {
-    console.log(`footerRange exists`);
     //insert the rows above the footer and do not have merged cells
     sheet.insertRowsBefore(footerRange.getRow(), copyRange.getNumRows());
     // //get new footerRange
@@ -143,12 +137,6 @@ function deliverableLayout(category, partition) {
     sheet.getRange(thirdRow + 4, 9)
   );
   //////////////////////////////////////////
-  //update Deliverable_Template_Category_XD_TotalHours
-  //update Deliverable_Template_Category_XD_TotalSell
-  //////////////////////////////////////////
-  //set the formula for the 3rd column of the first row after named range
-  //the 6th row of pasteRange should be named {sheetName}_{category}_Freelancer_Roles
-  //////////////////////////////////////////
 
   //////////////////////////////////////////
   //set variable for 6th row of new named range
@@ -171,11 +159,6 @@ function deliverableLayout(category, partition) {
   if (deleteSection != null) {
     ss.deleteRows(deleteSection.getRow(), deleteSection.getNumRows());
   }
-  //////////////////////////////////////////
-
-  //////////////////////////////////////////
-  //hard code updating specific namedRanges
-
   //////////////////////////////////////////
 
   //////////////////////////////////////////
