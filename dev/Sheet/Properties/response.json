@@ -1,0 +1,53 @@
+Running in dev mode.
+{
+  Test: {
+    Test_Creative_Freelancer_Roles: [ [Array] ],
+    Test_Account_Freelancer_Roles: [ [Array] ],
+    Test_Account_XD_Roles: [ [Array], [Array], [Array] ],
+    Test_Creative_XD_Roles: [ [Array], [Array] ]
+  },
+  DirBill: {
+    DirBill_Logistics_Freelancer_Roles: [ [Array] ],
+    DirBill_Video_and_Photography_XD_Roles: [ [Array] ],
+    DirBill_Logistics_XD_Roles: [ [Array] ],
+    DirBill_Digital_Freelancer_Roles: [ [Array] ],
+    DirBill_Account_Freelancer_Roles: [ [Array] ],
+    DirBill_Exhibits_and_Environments_XD_Roles: [ [Array] ],
+    DirBill_Production_XD_Roles: [ [Array] ],
+    DirBill_Technical_XD_Roles: [ [Array] ],
+    DirBill_Strategy_and_Marketing_XD_Roles: [ [Array] ],
+    DirBill_Video_and_Photography_Freelancer_Roles: [ [Array] ],
+    DirBill_Digital_XD_Roles: [ [Array] ],
+    DirBill_Exhibits_and_Environments_Freelancer_Roles: [ [Array] ],
+    DirBill_Technical_Freelancer_Roles: [ [Array] ],
+    DirBill_Creative_XD_Roles: [ [Array] ],
+    DirBill_Account_XD_Roles: [ [Array] ],
+    DirBill_Measurement_XD_Roles: [ [Array] ],
+    DirBill_Creative_Freelancer_Roles: [ [Array] ],
+    DirBill_Production_Freelancer_Roles: [ [Array] ],
+    DirBill_Measurement_Freelancer_Roles: [ [Array] ],
+    DirBill_Strategy_and_Marketing_Freelancer_Roles: [ [Array] ]
+  },
+  Proposal: {
+    Proposal_Logistics_XD_Roles: [ [Array] ],
+    Proposal_Technical_XD_Roles: [ [Array] ],
+    Proposal_Technical_Freelancer_Roles: [ [Array] ],
+    Proposal_Digital_XD_Roles: [ [Array] ],
+    Proposal_Account_Freelancer_Roles: [ [Array] ],
+    Proposal_Exhibits_and_Environments_Freelancer_Roles: [ [Array] ],
+    Proposal_Logistics_Freelancer_Roles: [ [Array] ],
+    Proposal_Video_and_Photography_Freelancer_Roles: [ [Array] ],
+    Proposal_Digital_Freelancer_Roles: [ [Array] ],
+    Proposal_Creative_Freelancer_Roles: [ [Array] ],
+    Proposal_Creative_XD_Roles: [ [Array] ],
+    Proposal_Strategy_and_Marketing_XD_Roles: [ [Array] ],
+    Proposal_Measurement_XD_Roles: [ [Array] ],
+    Proposal_Video_and_Photography_XD_Roles: [ [Array] ],
+    Proposal_Exhibits_and_Environments_XD_Roles: [ [Array] ],
+    Proposal_Strategy_and_Marketing_Freelancer_Roles: [ [Array] ],
+    Proposal_Production_Freelancer_Roles: [ [Array] ],
+    Proposal_Measurement_Freelancer_Roles: [ [Array] ],
+    Proposal_Account_XD_Roles: [ [Array] ],
+    Proposal_Production_XD_Roles: [ [Array] ]
+  }
+}
