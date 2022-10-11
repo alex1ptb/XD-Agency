@@ -6,7 +6,6 @@ function deliverableLayout(category, partition) {
   let ss = SpreadsheetApp.getActiveSpreadsheet();
   let templateSheet = ss.getSheetByName("Deliverable_Template");
   let sheet = ss.getActiveSheet();
-  //copy range Main_Category_Template
   let copyRange = templateSheet.getRange(
     `Deliverable_Template_Category_${partition}_Section`
   );
@@ -38,12 +37,7 @@ function deliverableLayout(category, partition) {
     );
     //copy the rows from the copyRange to the sheet
     copyRange.copyTo(range);
-  } else {
-    //if footerRange does not exist, insert rows above the current last row equal to the number of rows found in the copyRange
-    startRow = sheet.getLastRow() + 1;
-    copyRange.copyTo(sheet.getRange(sheet.getLastRow() + 1, 1));
-  } //end of if footerRange
-  //////////////////////////////////////////
+  } //////////////////////////////////////////
 
   //////////////////////////////////////////
   //set the range name to ${sheetName}_{category}_${partition}_Category
@@ -87,68 +81,108 @@ function deliverableLayout(category, partition) {
 
   //////////////////////////////////////////
   //update Deliverable_Template_Category_Freelancer_SubTotalQty
-  ss.setNamedRange(
-    `${sheet.getName()}_${category}_${partition}_SubTotalQty`,
-    sheet.getRange(pasteRange.getLastRow(), 3)
-  );
-
-  //update Deliverable_Template_XD_SubTotalQty
-  ss.setNamedRange(
-    `${sheet.getName()}_${category}_XD_SubTotalQty`,
-    sheet.getRange(thirdRow + 1, 3)
-  );
-
-  //update Deliverable_Template_Category_XD_SubTotalHours
-  ss.setNamedRange(
-    `${sheet.getName()}_${category}_XD_SubTotalHours`,
-    sheet.getRange(thirdRow + 1, 5)
-  );
-
-  //update Deliverable_Template_Category_XD_SubTotalSell
-  ss.setNamedRange(
-    `${sheet.getName()}_${category}_XD_SubTotalSell`,
-    sheet.getRange(thirdRow + 1, 7)
-  );
-
-  //update Deliverable_Template_Category_XD_SubTotalActualHours
-  ss.setNamedRange(
-    `${sheet.getName()}_${category}_XD_SubTotalActualHours`,
-    sheet.getRange(thirdRow + 1, 16)
-  );
-
-  //update Deliverable_Template_Category_XD_SubTotalVariance
-  ss.setNamedRange(
-    `${sheet.getName()}_${category}_XD_SubTotalVariance`,
-    sheet.getRange(thirdRow + 1, 17)
-  );
-
-  ss.setNamedRange(
-    `${sheet.getName()}_${category}_XD_Freelancer_SubTotalSell`,
-    sheet.getRange(thirdRow + 4, 7)
-  );
-
-  ss.setNamedRange(
-    `${sheet.getName()}_${category}_XD_Freelancer_SubTotalQty`,
-    sheet.getRange(thirdRow + 4, 3)
-  );
-
-  ss.setNamedRange(
-    `${sheet.getName()}_${category}_XD_Freelancer_SubTotalHours`,
-    sheet.getRange(thirdRow + 4, 9)
-  );
-  //////////////////////////////////////////
-
-  //////////////////////////////////////////
-  //set variable for 6th row of new named range
-  let sixthRow = pasteRange.getRow() + 5;
-
-  //set the named range for the roles
   if (partition == "XD") {
+    ss.setNamedRange(
+      `${sheet.getName()}_${category}_${partition}_SubTotalQty`,
+      sheet.getRange(pasteRange.getLastRow(), 3)
+    );
+
+    //update Deliverable_Template_XD_SubTotalQty
+    ss.setNamedRange(
+      `${sheet.getName()}_${category}_XD_SubTotalQty`,
+      sheet.getRange(thirdRow + 1, 3)
+    );
+
+    //update Deliverable_Template_Category_XD_SubTotalHours
+    ss.setNamedRange(
+      `${sheet.getName()}_${category}_XD_SubTotalHours`,
+      sheet.getRange(thirdRow + 1, 5)
+    );
+
+    //update Deliverable_Template_Category_XD_SubTotalSell
+    ss.setNamedRange(
+      `${sheet.getName()}_${category}_XD_SubTotalSell`,
+      sheet.getRange(thirdRow + 1, 7)
+    );
+
+    //update Deliverable_Template_Category_XD_SubTotalActualHours
+    ss.setNamedRange(
+      `${sheet.getName()}_${category}_XD_SubTotalActualHours`,
+      sheet.getRange(thirdRow + 1, 16)
+    );
+
+    //update Deliverable_Template_Category_XD_SubTotalVariance
+    ss.setNamedRange(
+      `${sheet.getName()}_${category}_XD_SubTotalVariance`,
+      sheet.getRange(thirdRow + 1, 17)
+    );
+
+    ss.setNamedRange(
+      `${sheet.getName()}_${category}_Freelancer_SubTotalSell`,
+      sheet.getRange(thirdRow + 4, 7)
+    );
+
+    ss.setNamedRange(
+      `${sheet.getName()}_${category}_Freelancer_SubTotalQty`,
+      sheet.getRange(thirdRow + 4, 3)
+    );
+
+    ss.setNamedRange(
+      `${sheet.getName()}_${category}_Freelancer_SubTotalCost`,
+      sheet.getRange(thirdRow + 4, 10)
+    );
+    ss.setNamedRange(
+      `${sheet.getName()}_${category}_Freelancer_SubTotalHours`,
+      sheet.getRange(thirdRow + 4, 9)
+    );
+    ss.setNamedRange(
+      `${sheet.getName()}_${category}_Freelancer_SubTotalActualHours`,
+      sheet.getRange(thirdRow + 4, 16)
+    );
+    ss.setNamedRange(
+      `${sheet.getName()}_${category}_Freelancer_SubTotalVariance`,
+      sheet.getRange(thirdRow + 4, 17)
+    );
+    //////////////////////////////////////////
+
+    //////////////////////////////////////////
+    //set variable for 6th row of new named range
+    let sixthRow = pasteRange.getRow() + 5;
+
+    //set the named range for the roles
     ss.setNamedRange(
       `${sheet.getName()}_${category}_Freelancer_Roles`,
       sheet.getRange(sixthRow, 1, 1, pasteRange.getNumColumns())
     );
   }
+
+  if (partition == "ThirdParty") {
+    ss.setNamedRange(
+      `${sheet.getName()}_${category}_${partition}_ExtendedCostSubtotal`,
+      sheet.getRange(pasteRange.getLastRow(), 8)
+    );
+    ss.setNamedRange(
+      `${sheet.getName()}_${category}_${partition}_CostWithContSubTotal`,
+      sheet.getRange(pasteRange.getLastRow(), 10)
+    );
+    ss.setNamedRange(
+      `${sheet.getName()}_${category}_${partition}_SubtotalSell`,
+      sheet.getRange(pasteRange.getLastRow(), 12)
+    );
+    ss.setNamedRange(
+      `${sheet.getName()}_${category}_${partition}_SubtotalDirectBill`,
+      sheet.getRange(pasteRange.getLastRow(), 14)
+    );
+    ss.setNamedRange(
+      `${sheet.getName()}_${category}_${partition}_SubtotalActualAmount`,
+      sheet.getRange(pasteRange.getLastRow(), 16)
+    );
+    ss.setNamedRange(
+      `${sheet.getName()}_${category}_${partition}_SubTotalVariance`,
+      sheet.getRange(pasteRange.getLastRow(), 17)
+    );
+  }
+
   //////////////////////////////////////////
 
   //////////////////////////////////////////
@@ -164,12 +198,8 @@ function deliverableLayout(category, partition) {
   //////////////////////////////////////////
   //finding and replacing text in formulas for the new named range
   findAndReplace(
-    "Deliverable_Template_Category_XD_Roles",
-    `${sheet.getName()}_${category}_XD_Roles`
-  );
-  findAndReplace(
-    "Deliverable_Template_Category_Freelancer_Roles",
-    `${sheet.getName()}_${category}_Freelancer_Roles`
+    "Deliverable_Template_Category",
+    `${sheet.getName()}_${category}`
   );
   //////////////////////////////////////////
 }

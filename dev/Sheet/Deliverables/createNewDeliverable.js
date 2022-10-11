@@ -1,3 +1,8 @@
+/* have this scoped to this document only
+#
+
+#
+*/
 ///////////////////////////////////////////
 //This is the main function when adding a new deliverable sheet
 //I haven't changed the name of function to addDeliverable
@@ -8,7 +13,6 @@ function newDeliverable(title, categories) {
     SpreadsheetApp.getUi().alert("Deliverable Name Already Exists");
     return;
   }
-
   ss.insertSheet(title);
   let sheet = ss.getSheetByName(title);
 
@@ -26,7 +30,7 @@ function newDeliverable(title, categories) {
 
   ///////////////////////////////////////////
   //copy over named ranges to new sheet
-  function NamedRanges(sheet) {
+  function CopyNamedRangesFromDeliverable(sheet) {
     //get named ranges in active sheet
     let rangeList = SpreadsheetApp.getActiveSpreadsheet()
       .getSheetByName("Deliverable_Template")
@@ -49,6 +53,7 @@ function newDeliverable(title, categories) {
         //try catch
         try {
           ss.setNamedRange(newName, newRange);
+          //find and replace text in the new sheet with the new sheet name
         } catch (e) {
           console.log(
             `Error renaming named range: ${namedRange.getName()} to ${newName}\n${e}`
@@ -61,7 +66,7 @@ function newDeliverable(title, categories) {
 
   copyOver(title); //copy over entire template to new sheet
 
-  NamedRanges(sheet); //copy over named ranges to new sheet
+  CopyNamedRangesFromDeliverable(sheet); //copy over named ranges to new sheet
 
   ///////////////////////////////////////////
   //${title}_Title_Header set value to title
@@ -78,50 +83,8 @@ function newDeliverable(title, categories) {
   ///////////////////////////////////////////
 
   ///////////////////////////////////////////
-  //find and replace
-  findAndReplace(
-    "Deliverable_Template_Footer_ThirdParty_TotalActualAmount",
-    `${title}_Footer_ThirdParty_TotalActualAmount`
-  );
-  findAndReplace(
-    "Deliverable_Template_Footer_XD_TotalHours",
-    `${title}_Footer_XD_TotalHours`
-  );
-  findAndReplace(
-    "Deliverable_Template_Footer_XD_TotalSell",
-    `${title}_Footer_XD_TotalSell`
-  );
-
-  findAndReplace(
-    "Deliverable_Template_Footer_XD_TotalMarginPercentage",
-    `${title}_Footer_XD_TotalMarginPercentage`
-  );
-
-  findAndReplace(
-    "Deliverable_Template_Footer_XD_TotalStaffHours",
-    `${title}_Footer_XD_TotalStaffHours`
-  );
-
-  findAndReplace(
-    "Deliverable_Template_Footer_ThirdParty_DirectBillTotal",
-    `${title}_Footer_ThirdParty_DirectBillTotal`
-  );
-  findAndReplace(
-    "Deliverable_Template_Footer_ThirdParty_ExtendedCostTotal",
-    `${title}_Footer_ThirdParty_ExtendedCostTotal`
-  );
-  findAndReplace(
-    "Deliverable_Template_Footer_ThirdParty_TotalSell",
-    `${title}_Footer_ThirdParty_TotalSell`
-  );
-  findAndReplace(
-    "Deliverable_Template_ThirdParty_CostWithContTotal",
-    `${title}_ThirdParty_CostWithContTotal`
-  );
-  findAndReplace(
-    "Deliverable_Template_Footer_Freelancer_TotalFreelanceHours",
-    `${title}_Footer_Freelancer_TotalFreelanceHours`
-  );
+  //find and replace all text in the new sheet with the new sheet name
+  findAndReplace("Deliverable_Template", `${title}`);
   ///////////////////////////////////////////
 
   ///////////////////////////////////////////
@@ -173,5 +136,7 @@ function newDeliverable(title, categories) {
   } catch (error) {
     console.log(`error with adding sheet name to scriptProperties: ${error}`);
   }
+
+  updateFooter(sheet);
 } //end of createDeliverable
 ///////////////////////////////////////////

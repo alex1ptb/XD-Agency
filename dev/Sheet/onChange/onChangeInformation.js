@@ -6,20 +6,26 @@ function onChangeTrigger() {
 }
 
 function onChange(e) {
-  let activeSheetNamedRanges = e.source.getNamedRanges();
-  let ss = SpreadsheetApp.getActiveSpreadsheet();
+  /**
+   * @OnlyCurrentDoc
+   */
+
+  // let activeSheetNamedRanges = e.source.getNamedRanges();
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
   let sheet = ss.getActiveSheet();
+  let activeSheetNamedRanges = sheet.getNamedRanges();
   let sheetName = sheet.getName();
   let activeRange = sheet.getActiveRange();
   // let activeRange = e.range;
   console.log(`runing onchange for ${JSON.stringify(e)}`);
-  console.log(
-    `active sheet named ranges length: ${activeSheetNamedRanges.length}`
-  );
-  console.log(`active sheet name: ${sheetName}`);
-  console.log(`active range: ${JSON.stringify(activeRange)}`);
   console.log(`continuing to TotalCost section`);
+  //run function to update total freelance cost on jobFinancialForm
+  updateTotalPadHours();
+  updateTotalFreelanceCostOnJobFinancialForm();
   //update header sections
+  getTotalCost("XD");
+
+  return;
   let XDAStaffCost = TotalCost("XD", activeSheetNamedRanges, ss, sheetName); //in getPayRates.js
   console.log(`results of XDA Staff Cost: ${XDAStaffCost}`);
   let FreelanceCost = TotalCost(
@@ -73,41 +79,5 @@ function onChange(e) {
     console.log(`Total Margin Percentage Error: ${e}`);
   }
 
-  // const activeSectionRanges = GetClosestNamedRange(
-  //   activeSheetNamedRanges,
-  //   activeRange
-  // ).split(",");
-
-  // for (let i = 0; i < activeSectionRanges.length; i++) {
-  //   let start, end;
-  //   start = new Date();
-  //   //if the named range has Section in it then ignore it
-  //   if (activeSectionRanges[i].includes("Section")) {
-  //     //target 2nd word
-  //     activeCategory = activeSectionRanges[i].split("_")[1];
-  //     partition = activeSectionRanges[i].split("_")[2];
-  //     continue;
-  //   } else {
-  //     rangeName = activeSectionRanges[i];
-  //   }
-  //   end = new Date();
-  //   console.log(
-  //     `time to get activeCategory, partition and rangeName: ${
-  //       end.getTime() - start.getTime()
-  //     }`
-  //   );
-  // }
-  // console.log(`running updateCategoryInformation`);
-  // updateCategoryInformation(ss, activeCategory);
-  // console.log(`end run of updateCategoryInformation`);
-  //get the sheets properties that contains the sheet names that have been added to the spreadsheet
-  // const savedSheetNames =
-  //   PropertiesService.getScriptProperties().getProperty("savedSheetNames");
-  // console.log(`savedSheetNames: ${savedSheetNames}`);
-  // console.log(`onChange information: ${JSON.stringify(e)}`);
-  // console.log(`onChange source information: ${JSON.stringify(e.source)}`);
-  // console.log(
-  //   `onChange Name of the sheet: ${e.source.getActiveSheet().getName()}`
-  // );
   console.log(`onChange done`);
 }

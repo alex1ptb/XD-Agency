@@ -67,17 +67,16 @@ function updateCategoryInformation(ss, category) {
   let Freelance_SubTotalSell = [];
   let Freelance_SubTotalHour = [];
 
-  //get all named ranges and filter out the ones that are not `nameOfASheet_category_XD_SubTotalSell`
-  let namedRanges = ss.getNamedRanges();
-
   //get roles that have matching category. The named range will end in `_Roles`
-  let namedRangesToUpdate = namedRanges.filter(
-    (namedRange) =>
-      namedRange.getName().includes(`${category}_XD_SubTotalSell`) ||
-      namedRange.getName().includes(`${category}_XD_SubTotalHour`) ||
-      namedRange.getName().includes(`${category}_XD_Freelancer_SubTotalSell`) ||
-      namedRange.getName().includes(`${category}_XD_Freelancer_SubTotalHours`)
-  );
+  let namedRangesToUpdate = ss
+    .getNamedRanges()
+    .filter(
+      (namedRange) =>
+        namedRange.getName().includes(`${category}_XD_SubTotalSell`) ||
+        namedRange.getName().includes(`${category}_XD_SubTotalHour`) ||
+        namedRange.getName().includes(`${category}_Freelancer_SubTotalSell`) ||
+        namedRange.getName().includes(`${category}_Freelancer_SubTotalHours`)
+    );
   // go through each named range and get the totals for the category and push them to the appropriate array
   for (let i = 0; i < namedRangesToUpdate.length; i++) {
     // console.log(`getting info from: ${namedRangesToUpdate[i].getName()}`);
@@ -94,18 +93,18 @@ function updateCategoryInformation(ss, category) {
     } else if (
       namedRangesToUpdate[i]
         .getName()
-        .includes(`${category}_XD_Freelancer_SubTotalSell`)
+        .includes(`${category}_Freelancer_SubTotalSell`)
     ) {
       Freelance_SubTotalSell.push(total);
     } else if (
       namedRangesToUpdate[i]
         .getName()
-        .includes(`${category}_XD_Freelancer_SubTotalHours`)
+        .includes(`${category}_Freelancer_SubTotalHours`)
     ) {
       Freelance_SubTotalHour.push(total);
     }
   } //end of namedRangesToUpdate.forEach
-  //check the values of the arrays in the console
+
   //push the info below the named range "ProjectInformationSummary_BudgetedHours"
   let topRowOfBudgetHours = ss.getRangeByName(
     "ProjectInformationSummary_BudgetedHours"

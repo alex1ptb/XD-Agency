@@ -1,1 +1,78 @@
 Running in dev mode.
+{
+  SortableByServiceAreaReport: { undefined: { undefined: [Object] } },
+  ProjectInformationSummary: {
+    BudgetedSell: { ProjectInformationSummary: [Object] },
+    Deliverables: { ProjectInformationSummary: [Object] },
+    Account: { XD: [Object] },
+    contingency: { universal: [Object] },
+    BudgetedHours: { ProjectInformationSummary: [Object] },
+    XD: { XD: [Object] },
+    card: { card: [Object] },
+    ThirdParty: { ThirdParty: [Object] }
+  },
+  Test: {
+    Measurement: { Freelancer: [Object], XD: [Object] },
+    Category: { Freelancer: [Object], XD: [Object], ThirdParty: [Object] },
+    Header: {
+      Header: [Object],
+      XD: [Object],
+      Main: [Object],
+      ThirdParty: [Object]
+    },
+    Production: { Freelancer: [Object], XD: [Object] },
+    Footer: { Freelancer: [Object], XD: [Object], ThirdParty: [Object] },
+    Title: { Title: [Object] },
+    Logistics: { Freelancer: [Object], XD: [Object] }
+  },
+  ClientSummaryReport: { undefined: { undefined: [Object] } },
+  PriceByDeliverable: { Deliverables: { PriceByDeliverable: [Object] } },
+  'Budget&CostReductionsSummary': {},
+  SortableBy3rdPartyReport: { undefined: { undefined: [Object] } },
+  'Job Financial Form': { LaborCostByServiceArea: { JobFinancialForm: [Object] } },
+  Deliverable_Template: {
+    Template: {
+      Freelancer: [Object],
+      Header: [Object],
+      Title: [Object],
+      XD: [Object],
+      Main: [Object],
+      ThirdParty: [Object]
+    }
+  },
+  DirBill: {
+    Measurement: { Freelancer: [Object], XD: [Object] },
+    Account: { Freelancer: [Object], XD: [Object] },
+    Category: { ThirdParty: [Object] },
+    Title: { Title: [Object] },
+    Digital: { Freelancer: [Object], XD: [Object] },
+    Exhibits: { Freelancer: [Object], XD: [Object] },
+    Header: { XD: [Object], Main: [Object], ThirdParty: [Object] },
+    Creative: { Freelancer: [Object], XD: [Object] },
+    Technical: { Freelancer: [Object], XD: [Object] },
+    Video: { Freelancer: [Object], XD: [Object] },
+    Production: { Freelancer: [Object], XD: [Object] },
+    Footer: { Freelancer: [Object], XD: [Object], ThirdParty: [Object] },
+    Strategy: { Freelancer: [Object], XD: [Object] },
+    ThirdParty: { ThirdParty: [Object] },
+    Logistics: { Freelancer: [Object], XD: [Object] }
+  },
+  Proposal: {
+    Measurement: { Freelancer: [Object], XD: [Object] },
+    Account: { Freelancer: [Object], XD: [Object] },
+    Category: { ThirdParty: [Object] },
+    Digital: { Freelancer: [Object], XD: [Object] },
+    Title: { Title: [Object] },
+    Exhibits: { Freelancer: [Object], XD: [Object] },
+    Header: { XD: [Object], Main: [Object], ThirdParty: [Object] },
+    Creative: { Freelancer: [Object], XD: [Object] },
+    Technical: { Freelancer: [Object], XD: [Object] },
+    Video: { Freelancer: [Object], XD: [Object] },
+    Production: { Freelancer: [Object], XD: [Object] },
+    Footer: { Freelancer: [Object], XD: [Object], ThirdParty: [Object] },
+    Strategy: { Freelancer: [Object], XD: [Object] },
+    ThirdParty: { ThirdParty: [Object] },
+    Logistics: { Freelancer: [Object], XD: [Object] }
+  },
+  XDAServicesRolesRates: {}
+}

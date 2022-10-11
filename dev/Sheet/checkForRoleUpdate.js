@@ -9,12 +9,16 @@ function checkForRoleUpdate(category, partition) {
     return;
   }
   let rates = "";
-  if (partition == "XD") {
-    rates = getXdaRates();
+  //make the above 2 if statements into a switch statement
+  switch (partition) {
+    case "XD":
+      rates = getXdaRates();
+      break;
+    case "ThirdParty":
+      rates = getThirdPartyRoles();
+      break;
   }
-  if (partition == "ThirdParty") {
-    rates = getThirdPartyRoles();
-  }
+
   //go through rates and find the tableId that matches the displayValue (category) then get the data from that table (category)
   let tableData = rates.filter((table) => {
     if (table.tableId == null) {
