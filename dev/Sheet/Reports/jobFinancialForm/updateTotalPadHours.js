@@ -7,30 +7,36 @@ function updateTotalPadHours() {
     .getNamedRanges()
     .filter((namedRange) => namedRange.getName().endsWith("_Roles"));
   //get the values of each range
-  roles.forEach((role) => {
-    let range = role.getRange();
-    let values = range.getValues();
-    //push the values to the padHours array
-    values.forEach((value) => {
-      //if named range has XD in it, then look up pay rate
-      if (role.getName().includes("XD")) {
-        let name = value[1];
-        let employeePay = lookUpPayRate(name);
-        //multiply pay rate by negative of pad hours
-        let totalPad = employeePay * -value[12];
-        padPay.push(totalPad);
-      }
-      //if named range has Freelancer in it, then get the pay rate from the range
-      if (role.getName().includes("Freelancer")) {
-        let totalPad = value[12] * -value[4];
-        padPay.push(totalPad);
-      }
-      //if value[12] is a number push it to the array
-      if (typeof value[12] === "number") {
-        padHours.push(value[12]);
-      }
+  try {
+    roles.forEach((role) => {
+      let range = role.getRange();
+      let values = range.getValues();
+      // console.log(`values inside roles: ${values}`);
+      // let values = range.getValues();
+      //push the values to the padHours array
+      values.forEach((value) => {
+        //if named range has XD in it, then look up pay rate
+        if (role.getName().includes("XD")) {
+          let name = value[1];
+          let employeePay = lookUpPayRate(name);
+          //multiply pay rate by negative of pad hours
+          let totalPad = employeePay * -value[12];
+          padPay.push(totalPad);
+        }
+        //if named range has Freelancer in it, then get the pay rate from the range
+        if (role.getName().includes("Freelancer")) {
+          let totalPad = value[12] * -value[4];
+          padPay.push(totalPad);
+        }
+        //if value[12] is a number push it to the array
+        if (typeof value[12] === "number") {
+          padHours.push(value[12]);
+        }
+      });
     });
-  });
+  } catch (err) {
+    console.log(err);
+  }
   padHours = padHours.reduce((a, b) => a + b, 0);
   padPay = padPay.reduce((a, b) => a + b, 0);
   ss.getRangeByName("JobFinancialForm_TotalPadHours").setValue(padHours);

@@ -11,6 +11,10 @@ const ss = SpreadsheetApp.getActiveSpreadsheet();
 //create onOpen function to create a menu ui
 function onOpen() {
   var ui = SpreadsheetApp.getUi();
+  ui.createMenu("Totals")
+    .addItem("Show in Totals", "showHiddenInformation")
+    .addItem("Do Not Show in Totals", "hideActualInformation")
+    .addToUi();
   ui.createMenu("Deliverables")
     //create deliverable Tab
     .addItem("Create Deliverable", "createNewDeliverableUI")
@@ -25,12 +29,6 @@ function onOpen() {
         .addItem(
           "Add 3rd Party Costs to Current Deliverable",
           "createthirdPartyCostsSidebar"
-        )
-        .addSubMenu(
-          ui
-            .createMenu("Totals for Current Deliverable")
-            .addItem("Show in Totals", "showHiddenInformation")
-            .addItem("Do Not Show in Totals", "hideActualInformation")
         )
     )
     .addToUi();

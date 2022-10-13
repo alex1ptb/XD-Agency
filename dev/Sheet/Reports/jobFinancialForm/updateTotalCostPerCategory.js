@@ -10,7 +10,7 @@
 //offset by 2 to get the second column which is the Freelancer cost
 
 function updateTotalCostPerCategory(ss, category) {
-  console.log("IM IN updateTotalCostPerCategory");
+  // console.log("IM IN updateTotalCostPerCategory");
   let Number = "";
   //switch for category
   switch (category) {
@@ -75,18 +75,14 @@ function updateTotalCostPerCategory(ss, category) {
     let range = XDRangesToUpdate[i].getRange();
     let values = range.getValues();
     //cost of employee * total hours
-    console.log("values", values);
     //name is in column 1
     let name = values[0][1];
     if (values[0] === "Pick a Job Title") {
       return;
     }
-    console.log("name", name);
     let employeePay = lookUpPayRate(name);
-    console.log(`employeePay: ${employeePay}`);
     //total hours is 4th in values array
     let totalHours = values[0][4];
-    console.log(`totalHours: ${totalHours}`);
     let totalCost = employeePay * totalHours;
     let padCostofRow = values[0][12];
     XD_SubTotalSell.push(totalCost);
@@ -99,7 +95,9 @@ function updateTotalCostPerCategory(ss, category) {
   for (let i = 0; i < Freelance_RangesToUpdate.length; i++) {
     let range = Freelance_RangesToUpdate[i].getRange();
     let total = range.getValue();
-    let padCostofRow = values[0][12];
+    let rowValues = range.getValues();
+    let padCostofRow = rowValues[0][12];
+    let totalHours = rowValues[0][8];
     let totalPad = padCostofRow * totalHours;
     padCost.push(totalPad);
     Freelance_SubTotalSell.push(total);

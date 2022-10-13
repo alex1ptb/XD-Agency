@@ -18,16 +18,18 @@ function onChange(e) {
   let activeRange = sheet.getActiveRange();
   // let activeRange = e.range;
   console.log(`runing onchange for ${JSON.stringify(e)}`);
-  console.log(`continuing to TotalCost section`);
   //run function to update total freelance cost on jobFinancialForm
   updateTotalPadHours();
   updateTotalFreelanceCostOnJobFinancialForm();
   //update header sections
+  console.log(`continuing to TotalCost section`);
+  console.log(`using new total cost function for Xd`);
   getTotalCost("XD");
-
-  return;
-  let XDAStaffCost = TotalCost("XD", activeSheetNamedRanges, ss, sheetName); //in getPayRates.js
+  let XDAStaffCost = getTotalCost("XD");
+  //TotalCost("XD", activeSheetNamedRanges, ss, sheetName); //in getPayRates.js
   console.log(`results of XDA Staff Cost: ${XDAStaffCost}`);
+  console.log(`now to test for freelancer cost`);
+  // let FreelanceCost = getTotalCost("Freelancer");
   let FreelanceCost = TotalCost(
     "Freelancer",
     activeSheetNamedRanges,
@@ -37,8 +39,8 @@ function onChange(e) {
   console.log(`results of Freelance Cost: ${FreelanceCost}`);
 
   try {
-    sheet.getRange("K5").setValue(XDAStaffCost);
-    console.log(`XDAStaffCost: ${XDAStaffCost}`);
+    // sheet.getRange("K5").setValue(XDAStaffCost);
+    // console.log(`XDAStaffCost: ${XDAStaffCost}`);
     sheet.getRange("L5").setValue(FreelanceCost);
     console.log(`FreelanceCost: ${FreelanceCost}`);
   } catch (e) {
