@@ -79,6 +79,7 @@ function getAllRolesForTargetPartition(targetsection, activeSheetNamedRanges) {
 //This will go through the active spreadsheet and get each role and total up the cost for each role
 function getTotalCost(targetsection) {
   //targetsection is either "XD","Freelancer", or "ThirdParty"
+  console.log(`getTotalCost function for ${targetsection}`);
   let start, end;
   start = new Date();
   let totalCost = 0;
@@ -278,11 +279,14 @@ function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {
       return a + b;
     });
     let sMargin = ((tStaffSell - tPayforSection) / tStaffSell).toFixed(2);
-
-    //SheetName_Footer_XD_TotalStaffMargin
-    // ss.getRangeByName(`${sheetName}_Footer_XD_TotalStaffMargin`)
-    //   .setValue(sMargin)
-    //   .setNumberFormat("0.00%");
+    try {
+      SheetName_Footer_XD_TotalStaffMargin;
+      ss.getRangeByName(`${sheetName}_Footer_XD_TotalStaffMargin`)
+        .setValue(sMargin)
+        .setNumberFormat("0.00%");
+    } catch (err) {
+      console.log(`Footer_XD_TotalStaffMargin error: ${err}`);
+    }
   }
   //////////////////////////////////////////
 

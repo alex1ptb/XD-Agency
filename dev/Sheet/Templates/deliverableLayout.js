@@ -55,6 +55,7 @@ function deliverableLayout(category, partition) {
   //////////////////////////////////////////
   //add the category to the first cell of the range
   sheet.getRange(startRow, 1).setValue(category);
+
   if (partition == "XD") {
     let targetRow = startRow + 2;
     EmployeeDataValidation(targetRow, sheet);

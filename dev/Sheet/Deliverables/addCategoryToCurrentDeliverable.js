@@ -142,10 +142,27 @@ function add3rdPartyToCurrentDeliverable(category) {
   // Deliverable_Template_Category_ThirdParty_Section
   //refresh the current sheet
   update3rdPartyFooter(sheet);
+  updateJobFinancialForm(category, sheetName);
   sheet.setName(sheetName);
   console.log(`end of add3rdPartyToCurrentDeliverable function`);
 }
 
+function updateJobFinancialForm(category, sheetName) {
+  let financialSheet =
+    SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Job Financial Form");
+  //if category has / in it, replace with _
+  category = category.replace(/\//g, "_");
+  let target = SpreadsheetApp.getActiveSpreadsheet().getRangeByName(category);
+  let targetFormula = target.getFormula();
+  //add sheet named range to formula
+  let rangeNameToInsert = `${sheetName}_${category}_ThirdParty_CostWithContSubTotal`;
+  //append the range name to the formula
+  let newFormula = targetFormula + `+${rangeNameToInsert}`;
+  //set the new formula
+  SpreadsheetApp.getActiveSpreadsheet()
+    .getRangeByName(category)
+    .setFormula(newFormula);
+}
 ///WORK ON UPDATING FOOTER OF 3RD PARTY SECTION
 function update3rdPartyFooter(sheet) {
   let ThirdParty_ExtendedCostSubtotal = [];
