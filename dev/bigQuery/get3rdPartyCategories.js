@@ -35,9 +35,7 @@ function get3rdPartyCategories() {
       tableId: tableName,
       tableData: rows,
     });
-    console.log(`tableArray: ${tableArray}`);
   });
   //return each table and its data
-  console.log(tableArray);
   return tableArray;
 }

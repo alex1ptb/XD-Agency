@@ -50,23 +50,6 @@ function onChange(e) {
   ////////////////////////////////////////////
 
   ////////////////////////////////////////////
-  //update total for ThirdParty cost
-  // try {
-  //   let ThirdPartyCost = TotalCost(
-  //     "ThirdParty",
-  //     activeSheetNamedRanges,
-  //     ss,
-  //     sheetName
-  //   ); //in getPayRates.js
-  //   ss.getRangeByName(`${sheetName}_Footer_ThirdParty_TotalSell`).setValue(
-  //     ThirdPartyCost
-  //   );
-  // } catch (e) {
-  //   console.log(`ThirdPartyCost Error: ${e}`);
-  // }
-  ////////////////////////////////////////////
-
-  ////////////////////////////////////////////
   //Update total section in footer for the margin
   XDAStaffCost = XDAStaffCost.reduce((a, b) => a + b, 0);
 
@@ -90,6 +73,5 @@ function onChange(e) {
   } catch (e) {
     console.log(`Total Margin Percentage Error: ${e}`);
   }
-
   console.log(`onChange done`);
 }

@@ -1,16 +1,4 @@
 ////////////////////////////////////////////
-//This function returns the emplyee_info table data for the target partition (category)
-function getPayRatesProperties() {
-  let scriptProperties = PropertiesService.getScriptProperties();
-  if (scriptProperties.getProperty("PayRates") == null) {
-    scriptProperties.setProperty("PayRates", JSON.stringify(getPayRates()));
-  }
-  let payRates = JSON.parse(scriptProperties.getProperty("PayRates"));
-  return payRates;
-}
-////////////////////////////////////////////
-
-////////////////////////////////////////////
 function lookUpPayRate(name) {
   let start, end;
   start = new Date();

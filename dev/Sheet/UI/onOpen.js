@@ -5,7 +5,6 @@
 //constant variables for the entire spreadsheet
 const projectId = "xd-agency";
 const projectID = "xd-agency";
-const ss = SpreadsheetApp.getActiveSpreadsheet();
 
 ////////
 //create onOpen function to create a menu ui

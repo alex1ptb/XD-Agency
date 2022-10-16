@@ -54,11 +54,6 @@ function getCurrentXdaRates(projectID, ratesSelected) {
     //using regex replace the : with .
     tableId = tableId.replace(/:/g, ".");
 
-    console.log(`ratesSelected: ${ratesSelected}`);
-    console.log(`projectID: ${projectID}`);
-    console.log(`datasetId: ${datasetId}`);
-    console.log(`tablename: ${tableName}`);
-
     //query the table for the data wanted
     const tableQuery = BigQuery.Jobs.query(
       {

@@ -18,9 +18,6 @@ function updateRangeOfDeliverables(deliverableTitle, sheetName) {
       .getRange("T18")
       .insertCells(SpreadsheetApp.Dimension.ROWS)
       .setValue(`=INDIRECT("'"&B18&"'!Q5")`);
-    //   targetSheet.getRange("T18").setValue(`=INDIRECT("'"&B!18!&"'!Q5")`);
-    //   targetSheet.getRange("T19").copyTo(targetSheet.getRange("T18"));
-
     //named range that needs to be updated
     let namedRange = "ProjectInformationSummary_Deliverables";
     //get the range of the named range
@@ -39,9 +36,12 @@ function updateRangeOfDeliverables(deliverableTitle, sheetName) {
       .getRange(newRange.getRow(), newRange.getColumn())
       .setValue(deliverableTitle);
     //copy up the rest of the cells
+
+    /////////////////
+    //SHOULD UPDATE THE FOLLOWING AS IT IS A HARD CODED RANGE
+    /////////////////
     //target range pulling from is "C19:O19"
     //target range pushing to is "C18:O18"
-
     targetSheet
       .getRange("C19:O19")
       .copyTo(

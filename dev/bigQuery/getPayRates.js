@@ -22,7 +22,6 @@ function getPayRates() {
     let rows = [];
     //push the rows into an array
     tableQuery.rows.forEach((row) => {
-      let rowArray = [];
       let name = [];
       let combinedName = row.f[0].v.concat(" ", row.f[1].v);
       name.push(combinedName); //first name
