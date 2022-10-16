@@ -1,4 +1,7 @@
 function onChangeTrigger() {
+  /**
+   * @OnlyCurrentDoc
+   */
   ScriptApp.newTrigger("onChange")
     .forSpreadsheet(SpreadsheetApp.getActiveSpreadsheet())
     .onChange()
@@ -12,11 +15,9 @@ function onChange(e) {
 
   // let activeSheetNamedRanges = e.source.getNamedRanges();
   const ss = SpreadsheetApp.getActiveSpreadsheet();
-  let sheet = ss.getActiveSheet();
+  const sheet = ss.getActiveSheet();
   let activeSheetNamedRanges = sheet.getNamedRanges();
   let sheetName = sheet.getName();
-  let activeRange = sheet.getActiveRange();
-  // let activeRange = e.range;
   console.log(`runing onchange for ${JSON.stringify(e)}`);
   //run function to update total freelance cost on jobFinancialForm
   updateTotalPadHours();

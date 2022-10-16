@@ -1,5 +1,8 @@
 //when the sheet is changed, check if cell has dropdown menu, if so, copy the row and paste it below the current row
 function onEditTrigger(e) {
+  /**
+   * @OnlyCurrentDoc
+   */
   let start, end;
   start = new Date();
   console.log(

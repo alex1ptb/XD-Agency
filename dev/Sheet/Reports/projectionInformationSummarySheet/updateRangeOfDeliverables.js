@@ -52,7 +52,7 @@ function updateRangeOfDeliverables(deliverableTitle, sheetName) {
       );
   } else if (sheetName == "PriceByDeliverable") {
     //copy first row of range
-    updateNamedRange("PriceByDeliverable_Deliverables");
+    updateNamedRange("PriceByDeliverable_Deliverables", ss);
     //update first cell of the new row with the deliverable title
     let range = SpreadsheetApp.getActiveSpreadsheet().getRangeByName(
       "PriceByDeliverable_Deliverables"
