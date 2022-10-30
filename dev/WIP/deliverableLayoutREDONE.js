@@ -3,9 +3,9 @@
 
 //partition is where the category will be added
 function deliverableLayout(category, partition) {
-  let ss = SpreadsheetApp.getActiveSpreadsheet();
+  // let ss = SpreadsheetApp.getActiveSpreadsheet();
+  // let sheet = ss.getActiveSheet();
   let templateSheet = ss.getSheetByName("Deliverable_Template");
-  let sheet = ss.getActiveSheet();
   let copyRange = templateSheet.getRange(
     `Deliverable_Template_Category_${partition}_Section`
   );
@@ -40,8 +40,6 @@ function deliverableLayout(category, partition) {
   } //////////////////////////////////////////
 
   //////////////////////////////////////////
-  //set the range name to ${sheetName}_{category}_${partition}_Category
-  let rangeName = `${sheet.getName()}_${category}_${partition}_Section`;
   //get the range in the sheet to set the name
   let range = sheet.getRange(
     startRow,
@@ -49,10 +47,8 @@ function deliverableLayout(category, partition) {
     copyRange.getNumRows(),
     copyRange.getNumColumns()
   );
+  let rangeName = `${sheet.getName()}_${category}_${partition}_Section`;
   ss.setNamedRange(rangeName, range);
-  //////////////////////////////////////////
-
-  //////////////////////////////////////////
   //add the category to the first cell of the range
   sheet.getRange(startRow, 1).setValue(category);
 
@@ -60,15 +56,8 @@ function deliverableLayout(category, partition) {
     let targetRow = startRow + 2;
     EmployeeDataValidation(targetRow, sheet);
   }
-  //////////////////////////////////////////
-
-  //////////////////////////////////////////
   //get range of new named Range
-  let pasteRange = ss.getRangeByName(
-    `${sheet.getName()}_${category}_${partition}_Section`
-  );
-
-  //////////////////////////////////////////
+  let pasteRange = ss.getRangeByName(rangeName);
   //the third row of pasteRange should be named {sheetName}_{category}_XD_Roles
   //set variable for 3rd row of new named range
   let thirdRow = pasteRange.getRow() + 2;
@@ -83,6 +72,23 @@ function deliverableLayout(category, partition) {
   //////////////////////////////////////////
   //update Deliverable_Template_Category_Freelancer_SubTotalQty
   if (partition == "XD") {
+    let updatelist = [
+      "_SubTotalQty",
+      "_XD_SubTotalQty",
+      "_XD_SubTotalHours",
+      "_XD_SubTotalSell",
+      "_XD_SubTotalActualHours",
+      "_XD_SubTotalVariance",
+      "_Freelancer_SubTotalSell",
+      "_Freelancer_SubTotalQty",
+      "_Freelancer_SubTotalCost",
+      "_Freelancer_SubTotalHours",
+      "_Freelancer_SubTotalVariance",
+      "_Freelancer_SubTotalActualHours",
+    ];
+
+    let targetColumns = [3, 3, 5, 7, 16, 17, 7, 3, 10, 9, 16, 17];
+    //for the rows, XD is thirdrow + 1, freelancer is thirdrow + 4
     ss.setNamedRange(
       `${sheet.getName()}_${category}_${partition}_SubTotalQty`,
       sheet.getRange(pasteRange.getLastRow(), 3)
@@ -158,6 +164,14 @@ function deliverableLayout(category, partition) {
   }
 
   if (partition == "ThirdParty") {
+    let thirdPartyList = [
+      "_ExtendedCostSubtotal",
+      "_CostWithContSubTotal",
+      "_SubtotalSell",
+      "_SubtotalDirectBill",
+      "_SubtotalActualAmount",
+      "_SubTotalVariance",
+    ];
     ss.setNamedRange(
       `${sheet.getName()}_${category}_${partition}_ExtendedCostSubtotal`,
       sheet.getRange(pasteRange.getLastRow(), 8)
