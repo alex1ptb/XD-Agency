@@ -1,0 +1,15 @@
+{
+  "token": {
+    "access_token": "ya29.a0AVA9y1sTHn1Y8V2-E1KlBYS0I9wDo4JyxkbCHxxYnneTXNksBNDEOEn6WyukXbIy0Zhi-qhDo-yEjV3sdjSmGn6I84cHS1NyOJbWK6MwGUp5iETzNcd_VZY_XdbJ-_GIUYbrAanRN83Ulh-b3RD4PHRkc2EcEwaCgYKATASAQASFQE65dr8hLn1hLlkO_Py0Xu2vpuPJg0165",
+    "scope": "https://www.googleapis.com/auth/script.scriptapp https://www.googleapis.com/auth/script.webapp.deploy https://www.googleapis.com/auth/bigquery https://www.googleapis.com/auth/spreadsheets.currentonly https://www.googleapis.com/auth/script.container.ui",
+    "token_type": "Bearer",
+    "expiry_date": 1662437647005,
+    "refresh_token": "1//01aDBpqS_sYj9CgYIARAAGAESNwF-L9IrcbrymKhXN4u9NdaYPULz82pAeODopHJVi3DPqM5iX_bcRlHrj0L8_uHKq7H3S20oWcU"
+  },
+  "oauth2ClientSettings": {
+    "clientId": "659831782100-biinjmjfga5e14hecji99bj2r5fgn1v4.apps.googleusercontent.com",
+    "clientSecret": "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",
+    "redirectUri": "urn:ietf:wg:oauth:2.0:oob"
+  },
+  "isLocalCreds": true
+}

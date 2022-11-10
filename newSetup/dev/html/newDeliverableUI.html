@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta Data -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styling -->
+    <title>New Deliverable</title>
+  </head>
+  <body>
+    <style>
+      #submitButton {
+        position: fixed;
+        bottom: 20px;
+        right: 2%;
+      }
+      #closeButton {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+      }
+    </style>
+    <input
+      type="button"
+      id="submitButton"
+      value="Submit"
+      class="action"
+      onclick="form_data()"
+    />
+    <input
+      type="button"
+      id="closeButton"
+      value="Close"
+      onclick="google.script.host.close()"
+    />
+  </body>
+  <script>
+    function form_data() {
+      var inputs = document.getElementsByClassName("checkbox_category");
+      var arrayOfCheckedCategories = [];
+      for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].checked) {
+          arrayOfCheckedCategories.push(inputs[i].id);
+        }
+      }
+      var title = document.getElementById("deliverableName").value;
+      console.log(`title: ${title}`);
+      console.log(`array: ${arrayOfCheckedCategories}`);
+      function onFailure(error) {
+        console.log(error.message);
+      }
+      try {
+        google.script.run
+          .withSuccessHandler(console.log("success"))
+          .withFailureHandler(onFailure)
+          .newDeliverable(title, arrayOfCheckedCategories);
+        google.script.host.close();
+      } catch (e) {
+        google.script.run.withFailureHandler().logError(e);
+        console.log(e);
+      }
+    }
+  </script>
+</html>

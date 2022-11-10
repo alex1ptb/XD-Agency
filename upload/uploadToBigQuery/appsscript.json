@@ -1,0 +1,28 @@
+{
+  "timeZone": "America/New_York",
+  "dependencies": {
+    "enabledAdvancedServices": [
+      {
+        "userSymbol": "Drive",
+        "version": "v2",
+        "serviceId": "drive"
+      },
+      {
+        "userSymbol": "BigQuery",
+        "version": "v2",
+        "serviceId": "bigquery"
+      }
+    ]
+  },
+  "executionApi": {
+    "access": "ANYONE"
+  },
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/drive.readonly",
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/spreadsheets.readonly",
+    "https://www.googleapis.com/auth/bigquery"
+  ]
+}

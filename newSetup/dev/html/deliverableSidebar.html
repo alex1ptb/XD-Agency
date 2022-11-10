@@ -1,0 +1,40 @@
+<!-- html template for sidebar on deliverable sheets -->
+<html>
+  <head>
+    <script>
+      function onFailure(error) {
+        var div = document.getElementById("output");
+        div.innerHTML = "ERROR: " + error.message;
+      }
+
+      //when a category is clicked, call function to add clicked value to sheet
+      function addCategory(category) {
+        google.script.run
+          .withFailureHandler(onFailure)
+          .addDeliverableCategory(category);
+      }
+
+      document.getElementsByClassName("li_category").onclick = function () {
+        addCategory(this.innerHTML);
+      };
+    </script>
+    <title>Deliverable Sidebar</title>
+    <!-- <link rel="stylesheet" type="text/css" href="../css/deliverableSidebar.css"> -->
+
+    <style>
+      li {
+        /* no styling on links */
+        list-style: none;
+        /* add some spacing between buttons */
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Click on required category to add to current deliverable.</h3>
+    <ul class="categories">
+      <li></li>
+      <!-- call function for list -->
+    </ul>
+  </body>
+</html>
