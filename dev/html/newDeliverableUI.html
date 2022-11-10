@@ -38,22 +38,16 @@
   <script>
     function form_data() {
       var inputs = document.getElementsByClassName("checkbox_category");
-      // console.log(inputs);
       var arrayOfCheckedCategories = [];
       for (var i = 0; i < inputs.length; i++) {
         if (inputs[i].checked) {
           arrayOfCheckedCategories.push(inputs[i].id);
-          //log id of checkbox
-          // console.log(inputs[i].id);
         }
       }
       var title = document.getElementById("deliverableName").value;
-      // console.log(`title: ${title}`);
-      // console.log(`array of categories: ${arrayOfCheckedCategories}`);
       google.script.run
         .withSuccessHandler()
-        .testing(title, arrayOfCheckedCategories);
-      // .makeNewDeliverablefromUserInput(title, arrayOfCheckedCategories);
+        .newDeliverable(title, arrayOfCheckedCategories);
       google.script.host.close();
     }
   </script>
