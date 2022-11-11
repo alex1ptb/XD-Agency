@@ -16,8 +16,8 @@ function get3rdPartyCategories() {
     //query the table for the data wanted
     const tableQuery = BigQuery.Jobs.query(
       {
-        query: `SELECT Role FROM \`${projectId}.${datasetId}.${tableName}\`
-        order by role`,
+        query: `SELECT string_field_0 FROM \`${projectId}.${datasetId}.${tableName}\`
+        order by string_field_0`,
         useLegacySql: false,
       },
       projectId

@@ -1,6 +1,6 @@
 //get the names of payRates from the properties and create a validation list for the dropdown
 function EmployeeDataValidation(targetRow, sheet) {
-  // console.log(`EmployeeDataValidation`);
+  console.log(`EmployeeDataValidation`);
   let payRates = getPayRatesProperties();
   let payRateNames = [];
   for (let i = 0; i < payRates[0].tableData.length; i++) {
@@ -13,4 +13,5 @@ function EmployeeDataValidation(targetRow, sheet) {
   let cell = sheet.getRange(targetRow, 2);
   // console.log(`cell: ${cell}`);
   cell.setDataValidation(buildValidation);
+  console.log(`EmployeeDataValidation complete`);
 }

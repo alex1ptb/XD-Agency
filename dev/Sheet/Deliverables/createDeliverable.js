@@ -1,12 +1,24 @@
-/* have this scoped to this document only
-#
-
-#
-*/
 ///////////////////////////////////////////
 //This is the main function when adding a new deliverable sheet
 //I haven't changed the name of function to addDeliverable
 function newDeliverable(title, categories) {
+  //if onEdit trigger is not set, set it
+  if (ScriptApp.getProjectTriggers().length === 0) {
+    ScriptApp.newTrigger("onEditTrigger")
+      .forSpreadsheet(SpreadsheetApp.getActiveSpreadsheet())
+      .onEdit()
+      .create();
+    ScriptApp.newTrigger("onChange")
+      .forSpreadsheet(SpreadsheetApp.getActiveSpreadsheet())
+      .onChange()
+      .create();
+  }
+  console.log(
+    "Creating new deliverable sheet with title: " +
+      title +
+      " and categories: " +
+      categories
+  );
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   //if title already exists, return alert, else create new sheet
   if (ss.getSheetByName(title)) {
@@ -20,26 +32,22 @@ function newDeliverable(title, categories) {
   //FUNCTIONS
   ///////////////////////////////////////////
 
-  ///////////////////////////////////////////
   //copy over entire template to new sheet
   function copyOver(title) {
+    console.log(`inside Copy Over`);
     let templateSheet = ss
       .getSheetByName("Deliverable_Template")
       .getDataRange();
     let target = ss.getSheetByName(title).getRange(1, 1);
-    // console.log(templateSheet.getA1Notation())
     templateSheet.copyTo(target);
   }
-  ///////////////////////////////////////////
 
-  ///////////////////////////////////////////
   //copy over named ranges to new sheet
   function CopyNamedRangesFromDeliverable(sheet) {
-    //get named ranges in active sheet
+    console.log(`inside CopyNamed ranges`);
     let rangeList = SpreadsheetApp.getActiveSpreadsheet()
       .getSheetByName("Deliverable_Template")
       .getNamedRanges();
-
     rangeList.forEach((namedRange) => {
       let range = namedRange.getRange();
       newRange = sheet.getRange(
@@ -52,10 +60,10 @@ function newDeliverable(title, categories) {
       newName = namedRange
         .getName()
         .replace("Deliverable_Template", `${title}`);
+
       //try catch
       try {
         ss.setNamedRange(newName, newRange);
-        //find and replace text in the new sheet with the new sheet name
         findAndReplace("Deliverable_Template", title);
       } catch (e) {
         console.log(
@@ -64,13 +72,19 @@ function newDeliverable(title, categories) {
       }
     }); ///end of forEach
   } //End of CopyNamedRangesFromDeliverable
-  ///////////////////////////////////////////
 
   function runCreateDeliverable(title, ss) {
-    // console.log(`categories: ${categories}`);
+    console.log(`
+    Inside runCreateDeliverable with title: ${title} and categories: ${categories}`);
     copyOver(title); //copy over entire template to new sheet
     CopyNamedRangesFromDeliverable(sheet); //copy over named ranges to new sheet
-    findAndReplace("Deliverable_Template", `${title.toString()}`); //find and replace text in the new sheet with the new sheet name
+    categories.forEach((category) => {
+      console.log(`adding ${category} to ${title}`);
+      deliverableLayout(category, "XD");
+      checkForRoleUpdate(category, "XD");
+      checkForRoleUpdate(category, "ThirdParty");
+    });
+    //get named ranges of the current sheet
     ss.getRangeByName(`${title}_Title_Header`).setValue(title);
     let sheetName = "ProjectInformationSummary";
     updateRangeOfDeliverables(title, sheetName);
@@ -78,13 +92,7 @@ function newDeliverable(title, categories) {
     sheetName = "PriceByDeliverable";
     updateRangeOfDeliverables(title, sheetName);
     console.log("updated PriceByDeliverable_Deliverables");
-    //original loopty loop
-    categories.forEach((category) => {
-      console.log(`adding ${category} to ${title}`);
-      deliverableLayout(category, "XD");
-      checkForRoleUpdate(category, "XD");
-      checkForRoleUpdate(category, "ThirdParty");
-    });
+
     let grabList = [
       "XD_SubTotalHours",
       "XD_SubTotalSell",
@@ -113,6 +121,7 @@ function newDeliverable(title, categories) {
       targetNamedRangeToUpdateOnActiveSheet
     );
   }
+
   runCreateDeliverable(title, ss);
 } //end of createDeliverable
 ///////////////////////////////////////////

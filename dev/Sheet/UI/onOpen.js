@@ -3,13 +3,12 @@
  */
 
 //constant variables for the entire spreadsheet
-const projectId = "xd-agency";
-const projectID = "xd-agency";
+const projectId = "xd-agency-367108";
 
 ////////
 //create onOpen function to create a menu ui
 function onOpen() {
-  var ui = SpreadsheetApp.getUi();
+  const ui = SpreadsheetApp.getUi();
   ui.createMenu("Totals")
     .addItem("Show in Totals", "showHiddenInformation")
     .addItem("Do Not Show in Totals", "hideActualInformation")
@@ -50,5 +49,4 @@ function onOpen() {
         .addItem("Update Everything", "updateAll")
     )
     .addToUi();
-  //I probably need to move the below funciton elsewhere
 }

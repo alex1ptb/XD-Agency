@@ -3,10 +3,14 @@
 
 //partition is where the category will be added
 function deliverableLayout(category, partition) {
-  let ss = SpreadsheetApp.getActiveSpreadsheet();
-  let templateSheet = ss.getSheetByName("Deliverable_Template");
-  let sheet = ss.getActiveSheet();
-  let copyRange = templateSheet.getRange(
+  console.log(
+    `inside deliverableLayout with category: ${category} and partition: ${partition}`
+  );
+  //if category has spaces, remove them
+  category = category.replace(/\s/g, "");
+  const templateSheet = ss.getSheetByName("Deliverable_Template");
+  const sheet = ss.getActiveSheet();
+  const copyRange = templateSheet.getRange(
     `Deliverable_Template_Category_${partition}_Section`
   );
   //copy footerRange
@@ -53,8 +57,8 @@ function deliverableLayout(category, partition) {
   //////////////////////////////////////////
 
   //////////////////////////////////////////
-  //add the category to the first cell of the range
-  sheet.getRange(startRow, 1).setValue(category);
+  let categoryValue = category.split(/(?=[A-Z])/).join(" ");
+  sheet.getRange(startRow, 1).setValue(categoryValue);
 
   if (partition == "XD") {
     let targetRow = startRow + 2;
@@ -79,128 +83,96 @@ function deliverableLayout(category, partition) {
     sheet.getRange(thirdRow, 1, 1, pasteRange.getNumColumns())
   );
   //////////////////////////////////////////
-
-  //////////////////////////////////////////
-  //update Deliverable_Template_Category_Freelancer_SubTotalQty
   if (partition == "XD") {
     ss.setNamedRange(
       `${sheet.getName()}_${category}_${partition}_SubTotalQty`,
       sheet.getRange(pasteRange.getLastRow(), 3)
     );
-
-    //update Deliverable_Template_XD_SubTotalQty
-    ss.setNamedRange(
-      `${sheet.getName()}_${category}_XD_SubTotalQty`,
-      sheet.getRange(thirdRow + 1, 3)
-    );
-
-    //update Deliverable_Template_Category_XD_SubTotalHours
-    ss.setNamedRange(
-      `${sheet.getName()}_${category}_XD_SubTotalHours`,
-      sheet.getRange(thirdRow + 1, 5)
-    );
-
-    //update Deliverable_Template_Category_XD_SubTotalSell
-    ss.setNamedRange(
-      `${sheet.getName()}_${category}_XD_SubTotalSell`,
-      sheet.getRange(thirdRow + 1, 7)
-    );
-
-    //update Deliverable_Template_Category_XD_SubTotalActualHours
-    ss.setNamedRange(
-      `${sheet.getName()}_${category}_XD_SubTotalActualHours`,
-      sheet.getRange(thirdRow + 1, 16)
-    );
-
-    //update Deliverable_Template_Category_XD_SubTotalVariance
-    ss.setNamedRange(
-      `${sheet.getName()}_${category}_XD_SubTotalVariance`,
-      sheet.getRange(thirdRow + 1, 17)
-    );
-
-    ss.setNamedRange(
-      `${sheet.getName()}_${category}_Freelancer_SubTotalSell`,
-      sheet.getRange(thirdRow + 4, 7)
-    );
-
-    ss.setNamedRange(
-      `${sheet.getName()}_${category}_Freelancer_SubTotalQty`,
-      sheet.getRange(thirdRow + 4, 3)
-    );
-
-    ss.setNamedRange(
-      `${sheet.getName()}_${category}_Freelancer_SubTotalCost`,
-      sheet.getRange(thirdRow + 4, 10)
-    );
-    ss.setNamedRange(
-      `${sheet.getName()}_${category}_Freelancer_SubTotalHours`,
-      sheet.getRange(thirdRow + 4, 9)
-    );
-    ss.setNamedRange(
-      `${sheet.getName()}_${category}_Freelancer_SubTotalActualHours`,
-      sheet.getRange(thirdRow + 4, 16)
-    );
-    ss.setNamedRange(
-      `${sheet.getName()}_${category}_Freelancer_SubTotalVariance`,
-      sheet.getRange(thirdRow + 4, 17)
-    );
-    //////////////////////////////////////////
-
-    //////////////////////////////////////////
-    //set variable for 6th row of new named range
+    setNamedRangesThatEndInList(partition);
     let sixthRow = pasteRange.getRow() + 5;
-
-    //set the named range for the roles
     ss.setNamedRange(
       `${sheet.getName()}_${category}_Freelancer_Roles`,
       sheet.getRange(sixthRow, 1, 1, pasteRange.getNumColumns())
     );
   }
-
   if (partition == "ThirdParty") {
-    ss.setNamedRange(
-      `${sheet.getName()}_${category}_${partition}_ExtendedCostSubtotal`,
-      sheet.getRange(pasteRange.getLastRow(), 8)
-    );
-    ss.setNamedRange(
-      `${sheet.getName()}_${category}_${partition}_CostWithContSubTotal`,
-      sheet.getRange(pasteRange.getLastRow(), 10)
-    );
-    ss.setNamedRange(
-      `${sheet.getName()}_${category}_${partition}_SubtotalSell`,
-      sheet.getRange(pasteRange.getLastRow(), 12)
-    );
-    ss.setNamedRange(
-      `${sheet.getName()}_${category}_${partition}_SubtotalDirectBill`,
-      sheet.getRange(pasteRange.getLastRow(), 14)
-    );
-    ss.setNamedRange(
-      `${sheet.getName()}_${category}_${partition}_SubtotalActualAmount`,
-      sheet.getRange(pasteRange.getLastRow(), 16)
-    );
-    ss.setNamedRange(
-      `${sheet.getName()}_${category}_${partition}_SubTotalVariance`,
-      sheet.getRange(pasteRange.getLastRow(), 17)
-    );
+    setNamedRangesThatEndInList(partition);
   }
-
   //////////////////////////////////////////
 
   //////////////////////////////////////////
-  //This deletes the first appearance of the section, ensuring the place holder is removed. This is necessary for when a new Deliverable is created and the user is choosing new categories to add.
+  function setNamedRangesThatEndInList(partition) {
+    xdList = [
+      "_XD_SubTotalQty",
+      "_XD_SubTotalQty",
+      "_XD_SubTotalHours",
+      "_XD_SubTotalSell",
+      "_XD_SubTotalActualHours",
+      "_XD_SubTotalVariance",
+      "_Freelancer_SubTotalSell",
+      "_Freelancer_SubTotalQty",
+      "_Freelancer_SubTotalCost",
+      "_Freelancer_SubTotalHours",
+      "_Freelancer_SubTotalActualHours",
+      "_Freelancer_SubTotalVariance",
+    ];
+    //_Freelancer_Roles    -- extra may want to put in list
+    xdNumbers = [3, 3, 5, 7, 16, 17, 7, 3, 10, 9, 16, 17];
+    thirdPartyList = [
+      "_ThirdParty_Roles",
+      "_ThirdParty_SubTotalQty",
+      "_ThirdParty_SubTotalHours",
+      "_ThirdParty_SubTotalSell",
+      "_ThirdParty_SubTotalActualHours",
+      "_ThirdParty_SubTotalVariance",
+    ];
+    thirdPartyNumbers = [3, 3, 5, 7, 16, 17];
+
+    if (partition == "XD") {
+      list = xdList;
+      numbers = xdNumbers;
+      rowDefault = thirdRow + 1;
+      nameRange = `${sheet.getName()}_${category}`;
+    } else if (partition == "ThirdParty") {
+      list = thirdPartyList;
+      numbers = thirdPartyNumbers;
+      rowDefault = pasteRange.getLastRow();
+      nameRange = `${sheet.getName()}_${category}_${partition}`;
+    }
+    try {
+      for (let i = 0; i < list.length; i++) {
+        //if list name contains Freelancer, set the row to thirdRow+4
+        if (list[i].includes("Freelancer")) {
+          rowDefault = thirdRow + 4;
+        }
+
+        console.log(
+          `list: ${list[i]} numbers: ${numbers[i]} rowDefault: ${rowDefault} nameRange: ${nameRange}`
+        );
+        ss.setNamedRange(
+          `${nameRange}${list[i]}`,
+          sheet.getRange(rowDefault, numbers[i])
+        );
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  //End of setNamedRangesThatEndInList
+  //////////////////////////////////////////
+
+  //////////////////////////////////////////
+  //This deletes the first appearance of the section, ensuring the place holder is removed.
+  //This is necessary for when a new Deliverable is created and the user is choosing new categories to add.
   let deleteSection = ss.getRangeByName(
     `${sheet.getName()}_Category_${partition}_Section`
   );
   if (deleteSection != null) {
     ss.deleteRows(deleteSection.getRow(), deleteSection.getNumRows());
   }
-  //////////////////////////////////////////
-
-  //////////////////////////////////////////
-  //finding and replacing text in formulas for the new named range
   findAndReplace(
     "Deliverable_Template_Category",
     `${sheet.getName()}_${category}`
   );
-  //////////////////////////////////////////
+  console.log("end of deliverable Layout function");
 }
