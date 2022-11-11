@@ -1,12 +1,18 @@
 function checkForRoleUpdate(category, partition) {
-  console.log(`checkForRoleUpdate: ${category} ${partition}`);
+  category = category.replace(/\s/g, "");
+  console.log(
+    `checkForRoleUpdate: \n *Category:${category} \n *Partition: ${partition}`
+  );
   let sheet = SpreadsheetApp.getActiveSheet();
   //get the range by name of the ${sheetName}_${category}_Main_Category}
   let range = SpreadsheetApp.getActiveSpreadsheet().getRangeByName(
     `${sheet.getName()}_${category}_${partition}_Section`
   );
   if (range == null) {
+    console.log(`range is null inside checkForRoleUpdate: ${range}`);
     return;
+  } else if (range != null) {
+    console.log(`range is not null inside checkForRoleUpdate: ${range}`);
   }
   let rates = "";
   //make the above 2 if statements into a switch statement
@@ -22,6 +28,7 @@ function checkForRoleUpdate(category, partition) {
   //go through rates and find the tableId that matches the displayValue (category) then get the data from that table (category)
   let tableData = rates.filter((table) => {
     if (table.tableId == null) {
+      console.log("tableId is null");
       return;
     }
     //get display value of first cell of the range

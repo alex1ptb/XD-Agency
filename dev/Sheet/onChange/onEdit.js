@@ -3,12 +3,7 @@ function onEditTrigger(e) {
   /**
    * @OnlyCurrentDoc
    */
-  let start, end;
-  start = new Date();
-  console.log(
-    `all information pertaining to the edited cell: ${JSON.stringify(e)}`
-  );
-  const projectID = "xd-agency";
+  const projectId = "xd-agency-367108";
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const activeRange = e.range;
   const sheet = ss.getActiveSheet();
@@ -20,7 +15,6 @@ function onEditTrigger(e) {
   const rowValues = sheet.getRange(row, 1, 1, lastColumn).getValues();
   const jobTitle = rowValues[0][0];
   const namedRanges = sheet.getNamedRanges();
-  //////////////////////
   let info = getRangeSectionsInformation(namedRanges); //get the activeCategory, partition, and rangeName
   let [activeCategory, partition, rangeName] = info;
   const range = ss.getRangeByName(rangeName);
@@ -28,8 +22,6 @@ function onEditTrigger(e) {
   //get named ranges of active sheet from the data property
 
   function getRangeSectionsInformation(namedRanges) {
-    let end, start;
-    start = new Date();
     let activeCategory, partition, rangeName;
     //filter out Category, Footer, Header, and Title
     activeSheetNamedRanges = namedRanges.filter(function (namedRange) {
@@ -60,7 +52,6 @@ function onEditTrigger(e) {
       }
     }
     end = new Date();
-    console.log(`getRangeSectionsInformation took ${end - start} milliseconds`);
     return [activeCategory, partition, rangeName];
   }
   ////////////////////////////////////////////
@@ -70,17 +61,16 @@ function onEditTrigger(e) {
   ////////////////////////////////////////////
   //if the column is the first column, check if the cell has a dropdown menu
   if (col === 1) {
+    console.log("col is 1");
     //make sure the previous display value was "Pick a Job Title"
     if (e.range.getDataValidations().length > 0) {
       if (oldValue === "Pick a Job Title") {
-        start = new Date();
         //add new row below the current row with the same values
         sheet.insertRowAfter(row);
         sheet
           .getRange(row, 1, 1, sheet.getLastColumn())
           .copyTo(sheet.getRange(row + 1, 1, 1, sheet.getLastColumn()));
         sheet.getRange(row + 1, 1).setValue("Pick a Job Title");
-
         //set the namedRange to the new range
         let newRange = sheet.getRange(
           range.getRow(), //get first row
@@ -89,11 +79,8 @@ function onEditTrigger(e) {
           range.getNumColumns() //get last column
         );
         ss.setNamedRange(rangeName, newRange);
-        end = new Date();
-        console.log(
-          `insertRowAfter and copyTo took ${end - start} milliseconds`
-        );
       }
+      console.log(`going to getSaleRate`);
       getSaleRate(
         e,
         activeCategory,
@@ -104,6 +91,17 @@ function onEditTrigger(e) {
         jobTitle
       );
       //first cell in the row is "Pick a Job Title"
+    } else {
+      console.log(`else getSaleRate`);
+      getSaleRate(
+        e,
+        activeCategory,
+        partition,
+        row,
+        activeRange,
+        sheet,
+        jobTitle
+      );
     }
     // return;
   }
@@ -140,21 +138,13 @@ function onEditTrigger(e) {
     // console.log(`value of cell for rate card: ${value}`);
     PropertiesService.getScriptProperties().setProperty(
       "xdaRates",
-      JSON.stringify(getCurrentXdaRates(projectID, value))
+      JSON.stringify(getCurrentXdaRates(projectId, value))
     );
     return;
   }
-  //////////////////////////
+  ////////////////////////////////////////////
+  ////////////////////////////////////////////
   updateCategoryInformation(ss, activeCategory);
   updateTotalCostPerCategory(ss, activeCategory);
-  //////////////////////////
-  //was trying to see if adding this on edit would be fast but it isn't, so im going to put this elsewhere
-  // start = new Date();
-  // updateDataPropertieswithAllNamedRanges();
-  // end = new Date();
-  // console.log(
-  //   `updateDataPropertieswithAllNamedRanges took ${end - start} milliseconds`
-  // );
-  //////////////////////////
   return;
 } //end onEdit function

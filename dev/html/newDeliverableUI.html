@@ -45,10 +45,21 @@
         }
       }
       var title = document.getElementById("deliverableName").value;
-      google.script.run
-        .withSuccessHandler()
-        .newDeliverable(title, arrayOfCheckedCategories);
-      google.script.host.close();
+      console.log(`title: ${title}`);
+      console.log(`array: ${arrayOfCheckedCategories}`);
+      function onFailure(error) {
+        console.log(error.message);
+      }
+      try {
+        google.script.run
+          .withSuccessHandler(console.log("success"))
+          .withFailureHandler(onFailure)
+          .newDeliverable(title, arrayOfCheckedCategories);
+        google.script.host.close();
+      } catch (e) {
+        google.script.run.withFailureHandler().logError(e);
+        console.log(e);
+      }
     }
   </script>
 </html>

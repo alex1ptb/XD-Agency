@@ -1,6 +1,6 @@
-function getCurrentXdaRates(projectID, ratesSelected) {
-  if (projectID == undefined) {
-    projectID = "xd-agency";
+function getCurrentXdaRates(projectId, ratesSelected) {
+  if (projectId == undefined) {
+    projectId = "xd-agency-367108";
   }
   if (
     ratesSelected == null ||
@@ -38,7 +38,7 @@ function getCurrentXdaRates(projectID, ratesSelected) {
   let datasetId = "Rates";
 
   try {
-    tables = getTableList(projectID, datasetId);
+    tables = getTableList(projectId, datasetId);
   } catch (e) {
     console.log(`error with getting tables in current rates: ${e}`);
   }
@@ -57,12 +57,12 @@ function getCurrentXdaRates(projectID, ratesSelected) {
     //query the table for the data wanted
     const tableQuery = BigQuery.Jobs.query(
       {
-        query: `SELECT role, ${ratesSelected} FROM \`${projectID}.${datasetId}.${tableName}\`
+        query: `SELECT role, ${ratesSelected} FROM \`${projectId}.${datasetId}.${tableName}\`
         where ${ratesSelected} is not null
         order by role`,
         useLegacySql: false,
       },
-      projectID
+      projectId
     );
     //create array to hold the data
     let rows = [];

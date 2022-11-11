@@ -4,7 +4,7 @@
 
 function SortClientSummaryReport() {
   sortByColumn(
-    1, 
+    1,
     { ascending: true },
     "A8:R2387",
     "SortableByServiceAreaReport"

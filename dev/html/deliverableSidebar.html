@@ -2,10 +2,16 @@
 <html>
   <head>
     <script>
+      function onFailure(error) {
+        var div = document.getElementById("output");
+        div.innerHTML = "ERROR: " + error.message;
+      }
+
       //when a category is clicked, call function to add clicked value to sheet
       function addCategory(category) {
-        SpreadsheetApp.getUi().alert(category);
-        google.script.run.withSuccessHandler().addDeliverableCategory(category);
+        google.script.run
+          .withFailureHandler(onFailure)
+          .addDeliverableCategory(category);
       }
 
       document.getElementsByClassName("li_category").onclick = function () {

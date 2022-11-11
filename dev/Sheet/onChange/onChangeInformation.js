@@ -2,10 +2,6 @@ function onChangeTrigger() {
   /**
    * @OnlyCurrentDoc
    */
-  ScriptApp.newTrigger("onChange")
-    .forSpreadsheet(SpreadsheetApp.getActiveSpreadsheet())
-    .onChange()
-    .create();
 }
 
 function onChange(e) {

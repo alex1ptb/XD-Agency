@@ -73,7 +73,7 @@ function upload_to_BigQ(
   datasetId,
   tableId,
   writeDisposition,
-  has_header,
+  has_header
   // schema_bq
 ) {
   //Delete tables then begin
@@ -201,7 +201,7 @@ function upload_to_BigQ(
     } //end if schema_bq
     try {
       job = BigQuery.Jobs.insert(job, projectId, data);
-      console.log("Job Inserted")
+      console.log("Job Inserted");
     } catch (e) {
       console.log(e);
     }
