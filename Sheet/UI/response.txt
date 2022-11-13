@@ -1,0 +1,2 @@
+../../../xdAgency/Sheet/UI/deliverables.js:  let listOfCategories = filterAlreadyChoosenCategories(section); //XDA or 3rdParty
+../../../xdAgency/Sheet/UI/deliverables.js:function filterAlreadyChoosenCategories(rates) {

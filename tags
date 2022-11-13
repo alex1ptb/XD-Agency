@@ -1,0 +1,88 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CopyNamedRangesFromDeliverable	Sheet/Deliverables/createDeliverable.js	/^  function CopyNamedRangesFromDeliverable(sheet) {$/;"	f	function:newDeliverable
+DoNotShowInTotalsProposal	Sheet/Reports/ButtonActions.js	/^function DoNotShowInTotalsProposal() {$/;"	f
+EmployeeDataValidation	Sheet/Deliverables/Rates/EmployeeDataValidation.js	/^function EmployeeDataValidation(targetRow, sheet) {$/;"	f
+GetClosestNamedRange	Sheet/Deliverables/Rates/GetClosestNamedRange.js	/^function GetClosestNamedRange(activeSheetNamedRanges, activeRange) {$/;"	f
+ResetForNetSuiteData	Sheet/Reports/ButtonActions.js	/^function ResetForNetSuiteData() {$/;"	f
+ResetSortRange	Sheet/Reports/ButtonActions.js	/^function ResetSortRange(sortOptions) {$/;"	f
+ShowInTotalsProposal	Sheet/Reports/ButtonActions.js	/^function ShowInTotalsProposal() {$/;"	f
+SortBy3rdPartyCategory	Sheet/Reports/ButtonActions.js	/^function SortBy3rdPartyCategory() {$/;"	f
+SortBy3rdPartyDeliverable	Sheet/Reports/ButtonActions.js	/^function SortBy3rdPartyDeliverable() {$/;"	f
+SortBy3rdPartyDescription1	Sheet/Reports/ButtonActions.js	/^function SortBy3rdPartyDescription1() {$/;"	f
+SortBy3rdPartyDescription2	Sheet/Reports/ButtonActions.js	/^function SortBy3rdPartyDescription2() {$/;"	f
+SortBy3rdPartyVendorName	Sheet/Reports/ButtonActions.js	/^function SortBy3rdPartyVendorName() {$/;"	f
+SortByServiceAreaDeliverable	Sheet/Reports/ButtonActions.js	/^function SortByServiceAreaDeliverable() {$/;"	f
+SortByServiceAreaName	Sheet/Reports/ButtonActions.js	/^function SortByServiceAreaName() {$/;"	f
+SortByServiceAreaRole	Sheet/Reports/ButtonActions.js	/^function SortByServiceAreaRole() {$/;"	f
+SortByServiceAreaServiceArea	Sheet/Reports/ButtonActions.js	/^function SortByServiceAreaServiceArea() {$/;"	f
+SortClientSummaryReport	Sheet/Reports/ButtonActions.js	/^function SortClientSummaryReport() {$/;"	f
+SortForNetSuiteData	Sheet/Reports/ButtonActions.js	/^function SortForNetSuiteData() {$/;"	f
+TakeListAndCreateGlobalEmptyArrays	Sheet/Deliverables/updateFooterRangeWithNewFormulas.js	/^  function TakeListAndCreateGlobalEmptyArrays(list) {$/;"	f	function:updateFooterRangeWithNewFormulas
+TotalCost	Sheet/Properties/getPayRates.js	/^function TotalCost(targetsection, activeSheetNamedRanges, ss, sheetName) {$/;"	f
+UpdateFooterRangeWithSumFormulas	Sheet/Deliverables/updateFooterRangeWithNewFormulas.js	/^  function UpdateFooterRangeWithSumFormulas(targetRanges) {$/;"	f	function:updateFooterRangeWithNewFormulas
+add3rdPartyToCurrentDeliverable	Sheet/Deliverables/addCategory.js	/^function add3rdPartyToCurrentDeliverable(category) {$/;"	f
+addCategory	html/deliverableSidebar.html	/^      function addCategory(category) {$/;"	f
+addCategory	html/thirdPartyCategoriesSidebar.html	/^      function addCategory(category) {$/;"	f
+addCategoryToCurrentDeliverable	Sheet/Deliverables/addCategory.js	/^function addCategoryToCurrentDeliverable(category) {$/;"	f
+checkForRoleUpdate	Sheet/checkForRoleUpdate.js	/^function checkForRoleUpdate(category, partition) {$/;"	f
+checkForThirdPartyRoleUpdate	Sheet/checkForThirdPartyRoleUpdate.js	/^function checkForThirdPartyRoleUpdate(category) {$/;"	f
+checkResponse	Sheet/Properties/data.js	/^function checkResponse() {$/;"	f
+copyAndPaste	Sheet/Reports/ButtonActions.js	/^function copyAndPaste(copyRange, pasteRange) {$/;"	f
+copyOver	Sheet/Deliverables/createDeliverable.js	/^  function copyOver(title) {$/;"	f	function:newDeliverable
+createCategorySidebar	Sheet/UI/deliverables.js	/^function createCategorySidebar(template, title, section, func) {$/;"	f
+createDeliverableCategorySidebar	Sheet/UI/deliverables.js	/^function createDeliverableCategorySidebar() {$/;"	f
+createNewDeliverableUI	Sheet/UI/deliverables.js	/^function createNewDeliverableUI() {$/;"	f
+createthirdPartyCostsSidebar	Sheet/UI/deliverables.js	/^function createthirdPartyCostsSidebar() {$/;"	f
+deliverableLayout	Sheet/Templates/deliverableLayout.js	/^function deliverableLayout(category, partition) {$/;"	f
+deliverableLayout	Sheet/deliverableLayout.js	/^function deliverableLayout(category, partition) {$/;"	f
+filterAlreadyChoosenCategories	Sheet/UI/deliverables.js	/^  function filterAlreadyChoosenCategories(section) {$/;"	f	function:createCategorySidebar
+findAndReplace	Sheet/Deliverables/findAndReplace.js	/^function findAndReplace(word, replacement) {$/;"	f
+form_data	html/newDeliverableUI.html	/^    function form_data() {$/;"	f
+get3rdPartyCategories	bigQuery/get3rdPartyCategories.js	/^function get3rdPartyCategories() {$/;"	f
+getAllNamedRangesOfSpreadsheet	Sheet/Properties/data.js	/^function getAllNamedRangesOfSpreadsheet() {$/;"	f
+getAllRolesForTargetPartition	Sheet/Properties/getPayRates.js	/^function getAllRolesForTargetPartition(targetsection, activeSheetNamedRanges) {$/;"	f
+getCurrentXdaRates	bigQuery/getCurrentXdaRates.js	/^function getCurrentXdaRates(projectId, ratesSelected) {$/;"	f
+getDataProperty	Sheet/Properties/data.js	/^function getDataProperty() {$/;"	f
+getPayRates	bigQuery/getPayRates.js	/^function getPayRates() {$/;"	f
+getPayRatesProperties	Sheet/Properties/rates.js	/^function getPayRatesProperties() {$/;"	f
+getRangeSectionsInformation	Sheet/onChange/onEdit.js	/^  function getRangeSectionsInformation(namedRanges) {$/;"	f	function:onEditTrigger
+getSaleRate	Sheet/Deliverables/Rates/getSaleRate.js	/^function getSaleRate($/;"	f
+getTableList	bigQuery/getTableList.js	/^function getTableList(projectId, data) {$/;"	f
+getThirdPartyRoles	Sheet/Properties/rates.js	/^function getThirdPartyRoles() {$/;"	f
+getTotalCost	Sheet/Properties/getPayRates.js	/^function getTotalCost(targetsection) {$/;"	f
+getXdaRates	Sheet/Properties/rates.js	/^function getXdaRates(ratesSelected) {$/;"	f
+hideActualInformation	Sheet/Reports/ButtonActions.js	/^function hideActualInformation(ss) {$/;"	f
+lookUpPayRate	Sheet/Properties/getPayRates.js	/^function lookUpPayRate(name) {$/;"	f
+newAddCategory	Sheet/Deliverables/addCategory.js	/^function newAddCategory(category, section, list) {$/;"	f
+newDeliverable	Sheet/Deliverables/createDeliverable.js	/^function newDeliverable(title, categories) {$/;"	f
+newUpdateClientSummaryReport	Sheet/Reports/newUpdateClientSummaryReport.js	/^function newUpdateClientSummaryReport() {$/;"	f
+newUpdateSortableBy3rdPartyReport	Sheet/Reports/newUpdateSortableBy3rdPartyReport.js	/^function newUpdateSortableBy3rdPartyReport() {$/;"	f
+newUpdateSortableByServiceAreaReport	Sheet/Reports/newUpdateSortableByServiceAreaReport.js	/^function newUpdateSortableByServiceAreaReport() {$/;"	f
+onChange	Sheet/onChange/onChangeInformation.js	/^function onChange(e) {$/;"	f
+onChangeTrigger	Sheet/onChange/onChangeInformation.js	/^function onChangeTrigger() {$/;"	f
+onEditTrigger	Sheet/onChange/onEdit.js	/^function onEditTrigger(e) {$/;"	f
+onFailure	html/deliverableSidebar.html	/^      function onFailure(error) {$/;"	f
+onFailure	html/error.html	/^      function onFailure(error) {$/;"	f
+onFailure	html/newDeliverableUI.html	/^      function onFailure(error) {$/;"	f
+onOpen	Sheet/UI/onOpen.js	/^function onOpen() {$/;"	f
+runCreateDeliverable	Sheet/Deliverables/createDeliverable.js	/^  function runCreateDeliverable(title, ss) {$/;"	f	function:newDeliverable
+setNamedRangesThatEndInList	Sheet/Templates/deliverableLayout.js	/^  function setNamedRangesThatEndInList(partition) {$/;"	f
+setNamedRangesThatEndInList	Sheet/deliverableLayout.js	/^  function setNamedRangesThatEndInList(partition) {$/;"	f
+showHiddenInformation	Sheet/Reports/ButtonActions.js	/^function showHiddenInformation() {$/;"	f
+sortByColumn	Sheet/Reports/ButtonActions.js	/^function sortByColumn(column, order, range) {$/;"	f
+updateAll	bigQuery/updateAll.js	/^function updateAll(projectId) {$/;"	f
+updateCategoryInformation	Sheet/Reports/projectionInformationSummarySheet/updateCategorySections.js	/^function updateCategoryInformation(ss, category) {$/;"	f
+updateDataPropertieswithAllNamedRanges	Sheet/Properties/data.js	/^function updateDataPropertieswithAllNamedRanges() {$/;"	f
+updateEmptyArraysThatIncludesStringInList	Sheet/Deliverables/updateFooterRangeWithNewFormulas.js	/^  function updateEmptyArraysThatIncludesStringInList(list, namedRanges) {$/;"	f	function:updateFooterRangeWithNewFormulas
+updateFooterRangeWithNewFormulas	Sheet/Deliverables/updateFooterRangeWithNewFormulas.js	/^function updateFooterRangeWithNewFormulas($/;"	f
+updateJobFinancialForm	Sheet/Deliverables/jobFinForm.js	/^function updateJobFinancialForm(category, sheetName) {$/;"	f
+updateNamedRange	Sheet/Reports/projectionInformationSummarySheet/updateNamedRange.js	/^function updateNamedRange(namedRange, ss) {$/;"	f
+updateRangeOfDeliverables	Sheet/Reports/projectionInformationSummarySheet/updateRangeOfDeliverables.js	/^function updateRangeOfDeliverables(deliverableTitle, sheetName) {$/;"	f
+updateTotalCostPerCategory	Sheet/Reports/jobFinancialForm/updateTotalCostPerCategory.js	/^function updateTotalCostPerCategory(ss, category) {$/;"	f
+updateTotalFreelanceCostOnJobFinancialForm	Sheet/Reports/jobFinancialForm/updateTotalFreelanceCost.js	/^function updateTotalFreelanceCostOnJobFinancialForm() {$/;"	f
+updateTotalPadHours	Sheet/Reports/jobFinancialForm/updateTotalPadHours.js	/^function updateTotalPadHours() {$/;"	f
