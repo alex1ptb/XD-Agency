@@ -1,8 +1,20 @@
 //////////////////////////////////////////
-//This is the main function when adding a new deliverable sheet
+function addTriggers() {
+  if (ScriptApp.getProjectTriggers().length === 0) {
+    ScriptApp.newTrigger("onEditTrigger")
+      .forSpreadsheet(SpreadsheetApp.getActiveSpreadsheet())
+      .onEdit()
+      .create();
+    ScriptApp.newTrigger("onChangeTrigger")
+      .forSpreadsheet(SpreadsheetApp.getActive())
+      .onChange()
+      .create();
+  }
+}
 
 //New Deliverable Sheet
 function newDeliverable(title, categories) {
+  addTriggers();
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   if (ss.getSheetByName(title)) {
     SpreadsheetApp.getUi().alert("Deliverable Name Already Exists");

@@ -1,5 +1,6 @@
 //update the properties of the spreadsheet with the latest data from the BigQuery table
 function updateAll(projectId) {
+  addTriggers()
   const namedRangeSelectedRate =
     SpreadsheetApp.getActiveSpreadsheet().getRangeByName("rate_card_section");
   //delete properties.xdaRates;

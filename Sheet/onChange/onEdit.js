@@ -2,6 +2,9 @@
 /**
  * @OnlyCurrentDoc
  */
+//create onEdit trigger
+//create onChange Trigger
+//
 
 function onEditTrigger(e) {
   const projectId = "xd-agency-367108";
