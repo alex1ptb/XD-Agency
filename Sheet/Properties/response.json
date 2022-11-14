@@ -1,0 +1,1660 @@
+Running in dev mode.
+{
+  SortableByServiceAreaReport: {
+    ServiceAreaReport: {
+      rangeA1Notation: 'A8:N8',
+      rangeValues: '[["Test","Account","TBD Productions Coordinator","Administrative Assistant - 9513","",8712,871200,100,0,0,8712,0,871200,""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","",""]]'
+    }
+  },
+  ProjectInformationSummary: {
+    ProjectInformationSummary_BudgetedSell: {
+      rangeA1Notation: 'Q18:Q27',
+      rangeValues: '[["01  Acct Services"],["02 Strategy & Integrated Marketing"],["03  Measurement"],["04  Digital"],["05  Creative"],["06  Video Prod/Photog"],["07  Production"],["08  Technical Services"],["09  Logistics"],["10  Exhibits/Environments"]]',
+      rangeFormulas: '[[""],[""],[""],[""],[""],[""],[""],[""],[""],[""]]'
+    },
+    ProjectInformationSummary_Account_XD_TotalStaffHours: {
+      rangeA1Notation: 'E30',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    ProjectInformationSummary_ThirdParty_TotalSell: {
+      rangeA1Notation: 'C22',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=sum(OFFSET(ProjectInformationSummary_Deliverables,0,1))"]]'
+    },
+    rate_card_section: {
+      rangeA1Notation: 'L12:M12',
+      rangeValues: '[["2022 XDA Standard",""]]',
+      rangeFormulas: '[["",""]]'
+    },
+    universal_contingency: {
+      rangeA1Notation: 'L11',
+      rangeValues: '[[0.04]]',
+      rangeFormulas: '[[""]]'
+    },
+    ProjectInformationSummary_XD_TotalSell: {
+      rangeA1Notation: 'D22',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=sum(OFFSET(ProjectInformationSummary_Deliverables,0,2))"]]'
+    },
+    ProjectInformationSummary_BudgetedHours: {
+      rangeA1Notation: 'E29:N29',
+      rangeValues: '[["01  Acct Services","02 Strategy & Integrated Marketing","03  Measurement","04  Digital","05  Creative","06  Video Prod/Photog","07  Production","08  Technical Services","09  Logistics","10  Exhibits/Environments"]]',
+      rangeFormulas: '[["","","","","","","","","",""]]'
+    },
+    ProjectInformationSummary_Deliverables: {
+      rangeA1Notation: 'B18:B21',
+      rangeValues: '[["Test"],["Test"],["DirBill"],["Proposal"]]',
+      rangeFormulas: '[[""],[""],[""],[""]]'
+    }
+  },
+  ClientSummaryReport: {
+    ClientSummaryReportRange: {
+      rangeA1Notation: 'A7:P9',
+      rangeValues: '[["Test","","","","ThirdParty","","","","","","","","","","",""],["Test","","","","ThirdParty","","","","","","","","","","",""],["Test","","","","ThirdParty","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","",""]]'
+    }
+  },
+  Test: {
+    Test_CreativeServices_XD_SubTotalVariance: {
+      rangeA1Notation: 'Q29',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Test_CreativeServices_XD_Roles,,17))"]]'
+    },
+    Test_Footer_XD_TotalMarginPercentage: {
+      rangeA1Notation: 'H38',
+      rangeValues: '[["#NUM!"]]',
+      rangeFormulas: '[[""]]'
+    },
+    Test_AccountServices_Freelancer_SubTotalActualHours: {
+      rangeA1Notation: 'P24',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Test_AccountServices_Freelancer_Roles,,16))"]]'
+    },
+    Test_Category_XD_SubTotalVariance: {
+      rangeA1Notation: '#REF!',
+      rangeValues: '[]',
+      rangeFormulas: '[]'
+    },
+    Test_Category_XD_Section: {
+      rangeA1Notation: '#REF!',
+      rangeValues: '[]',
+      rangeFormulas: '[]'
+    },
+    Test_Category_XD_SubTotalSell: {
+      rangeA1Notation: '#REF!',
+      rangeValues: '[]',
+      rangeFormulas: '[]'
+    },
+    Test_Footer_XD_TotalStaffSell: {
+      rangeA1Notation: 'G36',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Test_Category_XD_SubTotalSell)"]]'
+    },
+    Test_Footer_ThirdParty_Section: {
+      rangeA1Notation: 'A48:W49',
+      rangeValues: '[["GRAND TOTAL 3RD PARTY PRODUCTION COSTS","","","","","","","Extended Cost","","Cost w/Cont","","SELL","","","","","","","","","","",""],["","","","","","","",0,"",0,"",0,"",0,"",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","=SUM(Test_Category_ThirdParty_ExtendedCostSubtotal)","","=SUM(Test_Category_ThirdParty_CostWithContSubTotal)","","","","=SUM(Test_Category_ThirdParty_SubtotalDirectBill)","","=SUM(Test_Category_ThirdParty_SubtotalActualAmount)","=iferror(SUM(Test_Category_ThirdParty_SubTotalVariance),)","","","","","",""]]'
+    },
+    Test_Footer_ThirdParty_ExtendedCostTotal: {
+      rangeA1Notation: 'H49',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Test_Category_ThirdParty_ExtendedCostSubtotal)"]]'
+    },
+    Test_AccountServices_Freelancer_SubTotalCost: {
+      rangeA1Notation: 'J24',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Test_AccountServices_Freelancer_Roles,,10))"]]'
+    },
+    Test_AccountServices_XD_SubTotalHours: {
+      rangeA1Notation: 'E21',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Test_AccountServices_XD_Roles,,5))"]]'
+    },
+    Test_Category_XD_TotalSell: {
+      rangeA1Notation: '#REF!',
+      rangeValues: '[]',
+      rangeFormulas: '[]'
+    },
+    Test_AccountServices_XD_SubTotalQty: {
+      rangeA1Notation: 'C21',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Test_AccountServices_XD_Roles,,3))"]]'
+    },
+    Test_Title_Header: {
+      rangeA1Notation: 'B3',
+      rangeValues: '[["Test"]]',
+      rangeFormulas: '[[""]]'
+    },
+    Test_Footer_Freelancer_TotalFreelanceSell: {
+      rangeA1Notation: 'G37',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Test_Category_Freelancer_SubTotalSell)"]]'
+    },
+    Test_CreativeServices_Freelancer_SubTotalQty: {
+      rangeA1Notation: 'C32',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Test_CreativeServices_Freelancer_Roles,,3))"]]'
+    },
+    Test_Category_ThirdParty_SubtotalDirectBill: {
+      rangeA1Notation: 'N47',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=iferror(SUM(INDEX(Test_Category_ThirdParty_Roles,,14)),)"]]'
+    },
+    Test_AccountServices_XD_Section: {
+      rangeA1Notation: 'A18:W25',
+      rangeValues: '[["Account Services","","QTY","Total HRS","Total HRS","Sell Rate","Total Sell","Margin","NOTES:",""," ","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Staff Name","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"","","","","",0,"","",0,0,"","","","","",""],["","Sub Total Service Area 1 Staff",0,"",0,"",0,"","","","","","","","",0,0,"","","","","",""],["FREELANCE","Freelance Name","QTY","Total Freelance Hours","HOURLY Freelance Cost ","Sell Rate","Total Sell","Margin","Total Freelance Hours","Total Freelance Cost","NOTES:","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""],["","Sub Total Service Area 1 Freelance",0,"","","",0,"",0,0,"","","","","",0,0,"","","","","",""],["End Of Section","Total Service Area 1",0,"","","",0,"","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=C20*D20","","=F20*E20","","","","","","","","","","=+P20-E20","","","","","",""],["","","=SUM(INDEX(Test_AccountServices_XD_Roles,,3))","","=SUM(INDEX(Test_AccountServices_XD_Roles,,5))","","=SUM(INDEX(Test_AccountServices_XD_Roles,,7))","=iferror(,)","","","","","","","","=SUM(INDEX(Test_AccountServices_XD_Roles,,16))","=SUM(INDEX(Test_AccountServices_XD_Roles,,17))","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","=C23*D23*F23","=iferror((G23-J23)/G23,)","=C23*D23","=I23*E23","","","","","","","=+P23-I23","","","","","",""],["","","=SUM(INDEX(Test_AccountServices_Freelancer_Roles,,3))","","","","=SUM(INDEX(Test_AccountServices_Freelancer_Roles,,7))","","=SUM(INDEX(Test_AccountServices_Freelancer_Roles,,9))","=SUM(INDEX(Test_AccountServices_Freelancer_Roles,,10))","","","","","","=SUM(INDEX(Test_AccountServices_Freelancer_Roles,,16))","=SUM(INDEX(Test_AccountServices_Freelancer_Roles,,17))","","","","","",""],["","","=SUM(INDEX(Test_AccountServices_XD_Roles,,3),INDEX(Test_AccountServices_Freelancer_Roles,,3))","","","","=SUM(INDEX(Test_AccountServices_XD_Roles,,7),INDEX(Test_AccountServices_Freelancer_Roles,,7))","","","","","","","","","","","","","","","",""]]'
+    },
+    Test_AccountServices_XD_SubTotalSell: {
+      rangeA1Notation: 'G21',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Test_AccountServices_XD_Roles,,7))"]]'
+    },
+    Test_Footer_XD_TotalStaffActualHours: {
+      rangeA1Notation: 'Q36',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Test_Category_XD_SubTotalActualHours)"]]'
+    },
+    Test_Category_XD_SubTotalActualHours: {
+      rangeA1Notation: '#REF!',
+      rangeValues: '[]',
+      rangeFormulas: '[]'
+    },
+    Test_Footer_ThirdParty_CostWithContTotal: {
+      rangeA1Notation: 'J49',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Test_Category_ThirdParty_CostWithContSubTotal)"]]'
+    },
+    Test_Footer_ThirdParty_TotalSell: {
+      rangeA1Notation: 'L49',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[[""]]'
+    },
+    Test_Footer_Freelancer_TotalFreelanceVariance: {
+      rangeA1Notation: 'R37',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Test_Category_Freelancer_SubTotalVariance)"]]'
+    },
+    Test_Category_ThirdParty_SubtotalSell: {
+      rangeA1Notation: 'L47',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=iferror(SUM(INDEX(Test_Category_ThirdParty_Roles,,12)),)"]]'
+    },
+    Test_Category_Freelancer_Roles: {
+      rangeA1Notation: '#REF!',
+      rangeValues: '[]',
+      rangeFormulas: '[]'
+    },
+    Test_Category_Freelancer_SubTotalSell: {
+      rangeA1Notation: '#REF!',
+      rangeValues: '[]',
+      rangeFormulas: '[]'
+    },
+    Test_Category_XD_SubTotalQty: {
+      rangeA1Notation: '#REF!',
+      rangeValues: '[]',
+      rangeFormulas: '[]'
+    },
+    Test_AccountServices_XD_SubTotalVariance: {
+      rangeA1Notation: 'Q21',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Test_AccountServices_XD_Roles,,17))"]]'
+    },
+    Test_Category_Freelancer_SubTotalHours: {
+      rangeA1Notation: '#REF!',
+      rangeValues: '[]',
+      rangeFormulas: '[]'
+    },
+    Test_AccountServices_Freelancer_Roles: {
+      rangeA1Notation: 'A23:W23',
+      rangeValues: '[["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","=C23*D23*F23","=iferror((G23-J23)/G23,)","=C23*D23","=I23*E23","","","","","","","=+P23-I23","","","","","",""]]'
+    },
+    Test_Category_Freelancer_SubTotalCost: {
+      rangeA1Notation: '#REF!',
+      rangeValues: '[]',
+      rangeFormulas: '[]'
+    },
+    Test_CreativeServices_XD_SubTotalHours: {
+      rangeA1Notation: 'E29',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Test_CreativeServices_XD_Roles,,5))"]]'
+    },
+    Test_AccountServices_Freelancer_SubTotalSell: {
+      rangeA1Notation: 'G24',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Test_AccountServices_Freelancer_Roles,,7))"]]'
+    },
+    Test_CreativeServices_Freelancer_SubTotalVariance: {
+      rangeA1Notation: 'Q32',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Test_CreativeServices_Freelancer_Roles,,17))"]]'
+    },
+    Test_CreativeServices_XD_SubTotalSell: {
+      rangeA1Notation: 'G29',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Test_CreativeServices_XD_Roles,,7))"]]'
+    },
+    Test_Header_ThirdParty_Section: {
+      rangeA1Notation: 'A39:W43',
+      rangeValues: '[["","","","","","","","","","","","","","","","","","","","","","",""],["XDA - 3rd Party Costs","","","","","","","","","","","","","","","","","","","","","",""],["3rd Party Quick Links","","","","","","","","","","","","","","","","","","","","","",""],["AudioCrew","","","","","","","","","","","","","","","","","","","","","",""],["End","","","","","","","","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["=HYPERLINK(\\"#gid=1161093838&range=B236\\",A44)","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""]]'
+    },
+    Test_CreativeServices_XD_SubTotalQty: {
+      rangeA1Notation: 'C29',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Test_CreativeServices_XD_Roles,,3))"]]'
+    },
+    Test_Category_ThirdParty_CostWithContSubTotal: {
+      rangeA1Notation: 'J47',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=iferror(SUM(INDEX(Test_Category_ThirdParty_Roles,,10)),)"]]'
+    },
+    Test_Header_Main_Section: {
+      rangeA1Notation: 'A1:W17',
+      rangeValues: '[["The XD Agency - LABOR SCHEDULE","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["Enter Deliverable Name >","Test","","FINANCIAL DASHBOARD","","","","","","","","","","","","","","","","","","",""],["","","","Category:","","XDA Fees Sell","3rd Party Sell","Gross Billings","3rd Party Costs","Net Revenue","XDA  Staff Cost","Freelance Cost","XDA Fees Cost","Net Profit - $$","Net Profit %","XDA Blended Rate","Direct Bill","ACTUAL 3rd Party Costs","VARIANCE","","","",""],["","","","This Deliverables:","",0,0,0,0,0,0,0,0,0,"","",0,0,0,"","","",""],["","","","Entire Project:","",0,0,0,0,0,0,0,0,0,"","","","","","","","",""],["","","","Start Date","","Delivery Date","","","","","","","","","","","","","","","","",""],["","","","GO TO  - >","Home","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","Net Rev %  Legend:","Above 25%","20% to 24%","19% and Below","","","","","","","","","","","","","","","","",""],["","","","","","","","3rd Party Sell:","",0,"","","","","","","","","","","","",""],["CLIENT NAME:","Client Name","","","","NET REV % ","","3rd Party Costs W/ Cont:","",0,"","","","","","","","","","","","",""],["PROJECT NAME:","Project Name","","","","","","3rd Party Revenue:","",0,"","","","","","","","","","","","",""],["JOB#:","","","","","","","Freelance Hours","XDA Team Hours","Total Hours","SELL","Net Profit on Fees","","","","","","","","","","",""],["VERSION #:","","","","","","",0,0,0,0,"#NUM!","","","","","","","","","","",""],["ENTER INFORMATION IN WHITE CELLS ONLY","","Net Profit Legend:","Above 30%","26 to 29 %","25% and Below","","BUDGETED","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","=Test_Footer_XD_TotalSell","=Test_Footer_ThirdParty_TotalSell","=iferror(F5+G5,)","=iferror(SUM(Test_Footer_ThirdParty_ExtendedCostTotal-Test_Footer_ThirdParty_DirectBillTotal),)","=iferror(H5-I5,)","","","=iferror(K5+L5,)","=iferror(J5-M5,)","=iferror(N5/J5,)","=iferror(F5/E38,)","=iferror(Test_Footer_ThirdParty_DirectBillTotal,)","=iferror(Test_Footer_ThirdParty_TotalActualAmount,)","=iferror(+R5-I5,)","","","",""],["","","","","","=ProjectInformationSummary!$D$22","=ProjectInformationSummary!$C$22","=iferror(F6+G6,)","=ProjectInformationSummary!$F$22","=iferror(H6-I6,)","=ProjectInformationSummary!G22","=ProjectInformationSummary!H22","=iferror(ProjectInformationSummary!$G$22+ProjectInformationSummary!$H$22,)","=iferror(J6-M6,)","=iferror(N6/J6,)","=ProjectInformationSummary!$D$27","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","=iferror(Test_Footer_ThirdParty_TotalSell,)","","","","","","","","","","","","",""],["","=ProjectInformationSummary!C8","","","","","","","","=iferror(Test_Footer_ThirdParty_CostWithContTotal,)","","","","","","","","","","","","",""],["","=ProjectInformationSummary!C9","","","","","","","","=J11-J12","","","","","","","","","","","","",""],["","=ProjectInformationSummary!C11","","","","=IFERROR(J5/H5,)","","","","","","","","","","","","","","","","",""],["","=ProjectInformationSummary!C12","","","","","","=Test_Footer_Freelancer_TotalFreelanceHours","=Test_Footer_XD_TotalStaffHours","=Test_Footer_XD_TotalHours","=Test_Footer_XD_TotalSell","=Test_Footer_XD_TotalMarginPercentage","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""]]'
+    },
+    Test_Category_XD_Roles: {
+      rangeA1Notation: '#REF!',
+      rangeValues: '[]',
+      rangeFormulas: '[]'
+    },
+    Test_AccountServices_Freelancer_SubTotalHours: {
+      rangeA1Notation: 'I24',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Test_AccountServices_Freelancer_Roles,,9))"]]'
+    },
+    Test_CreativeServices_XD_Roles: {
+      rangeA1Notation: 'A28:W28',
+      rangeValues: '[["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"","","","","",0,"","",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","=C28*D28","","=F28*E28","","","","","","","","","","=+P28-E28","","","","","",""]]'
+    },
+    Test_Footer_XD_Section: {
+      rangeA1Notation: 'A34:W38',
+      rangeValues: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","TOTAL XDA AGENCY FEES","","","Total Hours","","Total Sell","Margin %","","","","","","","","","Total ACTUAL Hours","Total VARIANCE","","","","",""],["","","Total Staff","",0,"",0,"#NUM!","","","","","","","","",0,0,"","","","",""],["","","Total Freelance","",0,"",0,"","","","","","","","","",0,0,"","","","",""],["","","Total","",0,"",0,"#NUM!","","","","","","","","",0,0,"","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=SUM(Test_Category_XD_SubTotalHours)","","=SUM(Test_Category_XD_SubTotalSell)","","","","","","","","","","=SUM(Test_Category_XD_SubTotalActualHours)","=SUM(Test_Category_XD_SubTotalVariance)","","","","",""],["","","","","=SUM(Test_Category_Freelancer_SubTotalHours)","","=SUM(Test_Category_Freelancer_SubTotalSell)","","","","","","","","","","=SUM(Test_Category_Freelancer_SubTotalActualHours)","=SUM(Test_Category_Freelancer_SubTotalVariance)","","","","",""],["","","","","=SUM(E36:E37)","","=SUM(G36:G37)","","","","","","","","","","=iferror(Q36+Q37,)","=iferror(R36+R37,)","","","","",""]]'
+    },
+    Test_Footer_Freelancer_TotalFreelanceHours: {
+      rangeA1Notation: 'E37',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Test_Category_Freelancer_SubTotalHours)"]]'
+    },
+    Test_Header_XD_StaffCost: {
+      rangeA1Notation: 'K5',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[[""]]'
+    },
+    Test_Category_ThirdParty_SubtotalActualAmount: {
+      rangeA1Notation: 'P47',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=iferror(SUM(INDEX(Test_Category_ThirdParty_Roles,,16)),)"]]'
+    },
+    Test_Footer_ThirdParty_DirectBillTotal: {
+      rangeA1Notation: 'N49',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Test_Category_ThirdParty_SubtotalDirectBill)"]]'
+    },
+    Test_Footer_Freelancer_TotalFreelanceActualHours: {
+      rangeA1Notation: 'Q37',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Test_Category_Freelancer_SubTotalActualHours)"]]'
+    },
+    Test_AccountServices_XD_Roles: {
+      rangeA1Notation: 'A20:W20',
+      rangeValues: '[["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"","","","","",0,"","",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","=C20*D20","","=F20*E20","","","","","","","","","","=+P20-E20","","","","","",""]]'
+    },
+    Test_Category_Freelancer_SubTotalVariance: {
+      rangeA1Notation: '#REF!',
+      rangeValues: '[]',
+      rangeFormulas: '[]'
+    },
+    Test_Category_ThirdParty_Section: {
+      rangeA1Notation: 'A44:W47',
+      rangeValues: `[["AudioCrew","Individual's Name","Vendor Name","Qty","Cost / Rate","Notes","","Extended Cost","Cont.","Cost w/Cont","Mark-up","SELL","Direct Bill Y/N","Direct Bill Amt","PO#","ENTER ACTUAL AMOUNT","VARIANCE ","","","","","",""],["Pick a Job Title ","","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","","",0,0,"","",0,0.04,0,"",0,"n",0,"",0,0,"","","","","",""],["Subtotal","","","","","","",0,"",0,"",0,"",0,"",0,0,"","","","","",""]]`,
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","=D46*E46","=universal_contingency","=IF(M46=\\"y\\",0,H46+(H46*I46))","=ProjectInformationSummary!G$7","=IF(M46=\\"y\\",0,J46+(J46*K46))","","=IF(M46=\\"Y\\",(H46+H46*I46),0)","","","=+P46-H46","","","","","",""],["","","","","","","","=iferror(SUM(INDEX(Test_Category_ThirdParty_Roles,,8)),)","","=iferror(SUM(INDEX(Test_Category_ThirdParty_Roles,,10)),)","","=iferror(SUM(INDEX(Test_Category_ThirdParty_Roles,,12)),)","","=iferror(SUM(INDEX(Test_Category_ThirdParty_Roles,,14)),)","","=iferror(SUM(INDEX(Test_Category_ThirdParty_Roles,,16)),)","=iferror(SUM(INDEX(Test_Category_ThirdParty_Roles,,17)),)","","","","","",""]]'
+    },
+    Test_CreativeServices_Freelancer_SubTotalHours: {
+      rangeA1Notation: 'I32',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Test_CreativeServices_Freelancer_Roles,,9))"]]'
+    },
+    Test_Footer_XD_TotalSell: {
+      rangeA1Notation: 'G38',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(G36:G37)"]]'
+    },
+    Test_Footer_XD_TotalStaffHours: {
+      rangeA1Notation: 'E36',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Test_Category_XD_SubTotalHours)"]]'
+    },
+    Test_Footer_XD_TotalStaffMargin: {
+      rangeA1Notation: 'H36',
+      rangeValues: '[["#NUM!"]]',
+      rangeFormulas: '[[""]]'
+    },
+    Test_Category_XD_TotalStaffMargin: {
+      rangeA1Notation: '#REF!',
+      rangeValues: '[]',
+      rangeFormulas: '[]'
+    },
+    Test_Category_ThirdParty_ExtendedCostSubtotal: {
+      rangeA1Notation: 'H47',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=iferror(SUM(INDEX(Test_Category_ThirdParty_Roles,,8)),)"]]'
+    },
+    Test_CreativeServices_XD_Section: {
+      rangeA1Notation: 'A26:W33',
+      rangeValues: '[["Creative Services","","QTY","Total HRS","Total HRS","Sell Rate","Total Sell","Margin","NOTES:",""," ","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Staff Name","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"","","","","",0,"","",0,0,"","","","","",""],["","Sub Total Service Area 1 Staff",0,"",0,"",0,"","","","","","","","",0,0,"","","","","",""],["FREELANCE","Freelance Name","QTY","Total Freelance Hours","HOURLY Freelance Cost ","Sell Rate","Total Sell","Margin","Total Freelance Hours","Total Freelance Cost","NOTES:","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""],["","Sub Total Service Area 1 Freelance",0,"","","",0,"",0,0,"","","","","",0,0,"","","","","",""],["End Of Section","Total Service Area 1",0,"","","",0,"","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=C28*D28","","=F28*E28","","","","","","","","","","=+P28-E28","","","","","",""],["","","=SUM(INDEX(Test_CreativeServices_XD_Roles,,3))","","=SUM(INDEX(Test_CreativeServices_XD_Roles,,5))","","=SUM(INDEX(Test_CreativeServices_XD_Roles,,7))","=iferror(,)","","","","","","","","=SUM(INDEX(Test_CreativeServices_XD_Roles,,16))","=SUM(INDEX(Test_CreativeServices_XD_Roles,,17))","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","=C31*D31*F31","=iferror((G31-J31)/G31,)","=C31*D31","=I31*E31","","","","","","","=+P31-I31","","","","","",""],["","","=SUM(INDEX(Test_CreativeServices_Freelancer_Roles,,3))","","","","=SUM(INDEX(Test_CreativeServices_Freelancer_Roles,,7))","","=SUM(INDEX(Test_CreativeServices_Freelancer_Roles,,9))","=SUM(INDEX(Test_CreativeServices_Freelancer_Roles,,10))","","","","","","=SUM(INDEX(Test_CreativeServices_Freelancer_Roles,,16))","=SUM(INDEX(Test_CreativeServices_Freelancer_Roles,,17))","","","","","",""],["","","=SUM(INDEX(Test_CreativeServices_XD_Roles,,3),INDEX(Test_CreativeServices_Freelancer_Roles,,3))","","","","=SUM(INDEX(Test_CreativeServices_XD_Roles,,7),INDEX(Test_CreativeServices_Freelancer_Roles,,7))","","","","","","","","","","","","","","","",""]]'
+    },
+    Test_CreativeServices_Freelancer_Roles: {
+      rangeA1Notation: 'A31:W31',
+      rangeValues: '[["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","=C31*D31*F31","=iferror((G31-J31)/G31,)","=C31*D31","=I31*E31","","","","","","","=+P31-I31","","","","","",""]]'
+    },
+    Test_CreativeServices_Freelancer_SubTotalSell: {
+      rangeA1Notation: 'G32',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Test_CreativeServices_Freelancer_Roles,,7))"]]'
+    },
+    Test_Category_XD_TotalHours: {
+      rangeA1Notation: '#REF!',
+      rangeValues: '[]',
+      rangeFormulas: '[]'
+    },
+    Test_Footer_ThirdParty_TotalVariance: {
+      rangeA1Notation: 'Q49',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=iferror(SUM(Test_Category_ThirdParty_SubTotalVariance),)"]]'
+    },
+    Test_Category_ThirdParty_Roles: {
+      rangeA1Notation: 'A46:W46',
+      rangeValues: '[["Pick a Job Title","","",0,0,"","",0,0.04,0,"",0,"n",0,"",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","=D46*E46","=universal_contingency","=IF(M46=\\"y\\",0,H46+(H46*I46))","=ProjectInformationSummary!G$7","=IF(M46=\\"y\\",0,J46+(J46*K46))","","=IF(M46=\\"Y\\",(H46+H46*I46),0)","","","=+P46-H46","","","","","",""]]'
+    },
+    Test_CreativeServices_Freelancer_SubTotalCost: {
+      rangeA1Notation: 'J32',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Test_CreativeServices_Freelancer_Roles,,10))"]]'
+    },
+    Test_AccountServices_XD_SubTotalActualHours: {
+      rangeA1Notation: 'P21',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Test_AccountServices_XD_Roles,,16))"]]'
+    },
+    Test_AccountServices_Freelancer_SubTotalQty: {
+      rangeA1Notation: 'C24',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Test_AccountServices_Freelancer_Roles,,3))"]]'
+    },
+    Test_Category_Freelancer_SubTotalActualHours: {
+      rangeA1Notation: '#REF!',
+      rangeValues: '[]',
+      rangeFormulas: '[]'
+    },
+    Test_Footer_XD_TotalStaffVariance: {
+      rangeA1Notation: 'R36',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Test_Category_XD_SubTotalVariance)"]]'
+    },
+    Test_Header_ThirdParty_QuickLinks: {
+      rangeA1Notation: 'A42:W42',
+      rangeValues: '[["AudioCrew","","","","","","","","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["=HYPERLINK(\\"#gid=1161093838&range=B236\\",A44)","","","","","","","","","","","","","","","","","","","","","",""]]'
+    },
+    Test_Category_Freelancer_SubTotalQty: {
+      rangeA1Notation: '#REF!',
+      rangeValues: '[]',
+      rangeFormulas: '[]'
+    },
+    Test_Footer_Freelancer_TotalFreelanceMargin: {
+      rangeA1Notation: 'H37',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    Test_CreativeServices_XD_SubTotalActualHours: {
+      rangeA1Notation: 'P29',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Test_CreativeServices_XD_Roles,,16))"]]'
+    },
+    Test_Footer_XD_TotalHours: {
+      rangeA1Notation: 'E38',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(E36:E37)"]]'
+    },
+    Test_Footer_ThirdParty_TotalActualAmount: {
+      rangeA1Notation: 'P49',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Test_Category_ThirdParty_SubtotalActualAmount)"]]'
+    },
+    Test_CreativeServices_Freelancer_SubTotalActualHours: {
+      rangeA1Notation: 'P32',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Test_CreativeServices_Freelancer_Roles,,16))"]]'
+    },
+    Test_AccountServices_Freelancer_SubTotalVariance: {
+      rangeA1Notation: 'Q24',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Test_AccountServices_Freelancer_Roles,,17))"]]'
+    },
+    Test_Header_Information: {
+      rangeA1Notation: 'F5:S5',
+      rangeValues: '[[0,0,0,0,0,0,0,0,0,"","",0,0,0]]',
+      rangeFormulas: '[["=Test_Footer_XD_TotalSell","=Test_Footer_ThirdParty_TotalSell","=iferror(F5+G5,)","=iferror(SUM(Test_Footer_ThirdParty_ExtendedCostTotal-Test_Footer_ThirdParty_DirectBillTotal),)","=iferror(H5-I5,)","","","=iferror(K5+L5,)","=iferror(J5-M5,)","=iferror(N5/J5,)","=iferror(F5/E38,)","=iferror(Test_Footer_ThirdParty_DirectBillTotal,)","=iferror(Test_Footer_ThirdParty_TotalActualAmount,)","=iferror(+R5-I5,)"]]'
+    },
+    Test_Category_ThirdParty_SubTotalVariance: {
+      rangeA1Notation: 'Q47',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=iferror(SUM(INDEX(Test_Category_ThirdParty_Roles,,17)),)"]]'
+    }
+  },
+  PriceByDeliverable: {
+    PriceByDeliverable_Deliverables: {
+      rangeA1Notation: 'B9:B10',
+      rangeValues: '[["Test"],["Test"]]',
+      rangeFormulas: '[[""],[""]]'
+    }
+  },
+  'Budget&CostReductionsSummary': {},
+  SortableBy3rdPartyReport: {
+    ThirdPartyReport: {
+      rangeA1Notation: 'A7:P9',
+      rangeValues: '[["Test","ThirdParty","","","","","","","","","","#NUM!","#NUM!","","",""],["Test","ThirdParty","","","","","","","","","","#NUM!","#NUM!","","",""],["Test","ThirdParty","","","","","","","","","","#NUM!","#NUM!","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","",""]]'
+    }
+  },
+  'Job Financial Form': {
+    VideoCrew: {
+      rangeA1Notation: 'G104',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    Rehearsals: {
+      rangeA1Notation: 'G86',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    Miscellaneous: {
+      rangeA1Notation: 'D104',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    VenueSearch: {
+      rangeA1Notation: 'G103',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    Lifts: {
+      rangeA1Notation: 'D98',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    JobFinancialForm_LaborCostByServiceArea: {
+      rangeA1Notation: 'C73:C82',
+      rangeValues: '[["01  Acct Services"],["02 Strategy"],["03  Measurement"],["04  Digital"],["05  Creative"],["06  Video Prod/Photog"],["07  Production"],["08  Technical Services"],["09  Logistics"],["10  Exhibits/Environments"]]',
+      rangeFormulas: '[[""],[""],[""],[""],[""],[""],[""],[""],[""],[""]]'
+    },
+    JobFinancialForm_TotalPadCost: {
+      rangeA1Notation: 'I42',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[[""]]'
+    },
+    Vehicles: {
+      rangeA1Notation: 'G102',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    SpecialEffects: {
+      rangeA1Notation: 'G95',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    Print: {
+      rangeA1Notation: 'D106',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    DigiProd: {
+      rangeA1Notation: 'D90',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    TrainingPersonnel: {
+      rangeA1Notation: 'G100',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    AudioCrew: {
+      rangeA1Notation: 'D86',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    Expenses_Travel: {
+      rangeA1Notation: 'D95',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    LocalLabor: {
+      rangeA1Notation: 'D101',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    SeatingRisers: {
+      rangeA1Notation: 'G92',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    Breakouts: {
+      rangeA1Notation: 'D88',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    Shipping: {
+      rangeA1Notation: 'G93',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    MeetingAppsAndHdwe: {
+      rangeA1Notation: 'D103',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    ExhibitsSetUp_TearDown: {
+      rangeA1Notation: 'D93',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    AudioEquip: {
+      rangeA1Notation: 'D87',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    House_VenueReq: {
+      rangeA1Notation: 'D97',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    VideoEquip: {
+      rangeA1Notation: 'G105',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    LightEquip: {
+      rangeA1Notation: 'D100',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    ExhibitsFab: {
+      rangeA1Notation: 'D92',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    Talent: {
+      rangeA1Notation: 'G96',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    FieldStaff: {
+      rangeA1Notation: 'D96',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    SpeakerSupport: {
+      rangeA1Notation: 'G94',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    Display_Install: {
+      rangeA1Notation: 'D91',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    ExpensesMisc: {
+      rangeA1Notation: 'D94',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    Uniforms: {
+      rangeA1Notation: 'G101',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    MeasureMent: {
+      rangeA1Notation: 'D102',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    VideoProd: {
+      rangeA1Notation: 'G106',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    Premiums: {
+      rangeA1Notation: 'D105',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    ScenicSetUp_TearDown: {
+      rangeA1Notation: 'G91',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    Teleprompter: {
+      rangeA1Notation: 'G97',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    Tents: {
+      rangeA1Notation: 'G98',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    RiggingEquip: {
+      rangeA1Notation: 'G89',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    Scenic: {
+      rangeA1Notation: 'G90',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    JobFinancialForm_Freelance_TotalCost: {
+      rangeA1Notation: 'D51',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[[""]]'
+    },
+    JobFinancialForm_TotalPadHours: {
+      rangeA1Notation: 'K42',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[[""]]'
+    },
+    TrainingElements: {
+      rangeA1Notation: 'G99',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    Catering: {
+      rangeA1Notation: 'D89',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    RideAndDrive: {
+      rangeA1Notation: 'G87',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    RiggingCrew: {
+      rangeA1Notation: 'G88',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    LightCrew: {
+      rangeA1Notation: 'D99',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    }
+  },
+  XDAServicesRolesRates: {},
+  Proposal: {
+    Proposal_Category_ThirdParty_Role: {
+      rangeA1Notation: 'A118:W118',
+      rangeValues: '[["Pick a Job Title","","",0,0,"","",0,0.04,0,"",0,"n",0,"",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","=D118*E118","=universal_contingency","=IF(M118=\\"y\\",0,H118+(H118*I118))","=ProjectInformationSummary!G$7","=IF(M118=\\"y\\",0,J118+(J118*K118))","","=IF(M118=\\"Y\\",(H118+H118*I118),0)","","","=+P118-H118","","","","","",""]]'
+    },
+    Proposal_Exhibits_and_Environments_XD_SubTotalQty: {
+      rangeA1Notation: 'C57',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Proposal_Exhibits_and_Environments_XD_Roles,,3),INDEX(Proposal_Exhibits_and_Environments_Freelancer_Roles,,3))"]]'
+    },
+    Proposal_Footer_Freelancer_TotalFreelanceSell: {
+      rangeA1Notation: 'G109',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[[""]]'
+    },
+    Proposal_Footer_Freelancer_TotalFreelanceMargin: {
+      rangeA1Notation: 'H109',
+      rangeValues: '[["NaN"]]',
+      rangeFormulas: '[[""]]'
+    },
+    Proposal_Account_XD_Section: {
+      rangeA1Notation: 'A26:W33',
+      rangeValues: '[["Account","","QTY","Total HRS","Total HRS","Sell Rate","Total Sell","Margin","NOTES:",""," ","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Staff Name","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""],["","Sub Total Service Area 1 Staff",0,"",0,"",0,"","","","","","","","",0,0,"","","","","",""],["FREELANCE","Freelance Name","QTY","Total Freelance Hours","HOURLY Freelance Cost ","Sell Rate","Total Sell","Margin","Total Freelance Hours","Total Freelance Cost","NOTES:","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""],["","Sub Total Service Area 1 Freelance",0,"","","",0,"",0,0,"","","","","",0,0,"","","","","",""],["End Of Section","Total Service Area 1",0,"","","",0,"","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=C28*D28","","=F28*E28","","","","","","","","","","=+P28-E28","","","","","",""],["","","=SUM(INDEX(Proposal_Account_XD_Roles,,3))","","=SUM(INDEX(Proposal_Account_XD_Roles,,5))","","=SUM(INDEX(Proposal_Account_XD_Roles,,7))","","","","","","","","","=SUM(INDEX(Proposal_Account_XD_Roles,,16))","=SUM(INDEX(Proposal_Account_XD_Roles,,17))","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","=C31*D31*F31","=IFERROR( SUM(G31-J31)/G31,)","=C31*D31","=I31*E31","","","","","","","=+P31-I31","","","","","",""],["","","=SUM(INDEX(Proposal_Account_Freelancer_Roles,,3))","","","","=SUM(INDEX(Proposal_Account_Freelancer_Roles,,7))","","=SUM(INDEX(Proposal_Account_Freelancer_Roles,,9))","=SUM(INDEX(Proposal_Account_Freelancer_Roles,,10))","","","","","","=SUM(INDEX(Proposal_Account_Freelancer_Roles,,16))","=SUM(INDEX(Proposal_Account_Freelancer_Roles,,17))","","","","","",""],["","","=SUM(INDEX(Proposal_Account_XD_Roles,,3),INDEX(Proposal_Account_Freelancer_Roles,,3))","","","","=SUM(INDEX(Proposal_Account_XD_Roles,,7),INDEX(Proposal_Account_Freelancer_Roles,,7))","","","","","","","","","","","","","","","",""]]'
+    },
+    Proposal_Category_ThirdParty_Section: {
+      rangeA1Notation: 'A116:W119',
+      rangeValues: `[["AudioCrew","Individual's Name","Vendor Name","Qty","Cost / Rate","Notes","","Extended Cost","Cont.","Cost w/Cont","Mark-up","SELL","Direct Bill Y/N","Direct Bill Amt","PO#","ENTER ACTUAL AMOUNT","VARIANCE ","","","","","",""],["Pick a Job Title ","","Deliverable_Template_Category_ThirdParty_Section","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","","",0,0,"","",0,0.04,0,"",0,"n",0,"",0,0,"","","","","",""],["Subtotal","","","","","","",0,"",0.04,"",0,"",0,"",0,0,"","","","","",""]]`,
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","=D118*E118","=universal_contingency","=IF(M118=\\"y\\",0,H118+(H118*I118))","=ProjectInformationSummary!G$7","=IF(M118=\\"y\\",0,J118+(J118*K118))","","=IF(M118=\\"Y\\",(H118+H118*I118),0)","","","=+P118-H118","","","","","",""],["","","","","","","","=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Section,,7))","","=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Section,,9))","","=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Section,,11))","","=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Section,,13))","","=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Roles,,16))","=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Section,,16))","","","","","",""]]'
+    },
+    Proposal_Creative_Freelancer_Roles: {
+      rangeA1Notation: 'A39:W39',
+      rangeValues: '[["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","=C39*D39*F39","=IFERROR( SUM(G39-J39)/G39,)","=C39*D39","=I39*E39","","","","","","","=+P39-I39","","","","","",""]]'
+    },
+    Proposal_Production_XD_SubTotalQty: {
+      rangeA1Notation: 'C81',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Proposal_Production_XD_Roles,,3),INDEX(Proposal_Production_Freelancer_Roles,,3))"]]'
+    },
+    Proposal_Creative_XD_Section: {
+      rangeA1Notation: 'A34:W41',
+      rangeValues: '[["Creative","","QTY","Total HRS","Total HRS","Sell Rate","Total Sell","Margin","NOTES:",""," ","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Staff Name","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""],["","Sub Total Service Area 1 Staff",0,"",0,"",0,"","","","","","","","",0,0,"","","","","",""],["FREELANCE","Freelance Name","QTY","Total Freelance Hours","HOURLY Freelance Cost ","Sell Rate","Total Sell","Margin","Total Freelance Hours","Total Freelance Cost","NOTES:","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""],["","Sub Total Service Area 1 Freelance",0,"","","",0,"",0,0,"","","","","",0,0,"","","","","",""],["End Of Section","Total Service Area 1",0,"","","",0,"","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=C36*D36","","=F36*E36","","","","","","","","","","=+P36-E36","","","","","",""],["","","=SUM(INDEX(Proposal_Creative_XD_Roles,,3))","","=SUM(INDEX(Proposal_Creative_XD_Roles,,5))","","=SUM(INDEX(Proposal_Creative_XD_Roles,,7))","","","","","","","","","=SUM(INDEX(Proposal_Creative_XD_Roles,,16))","=SUM(INDEX(Proposal_Creative_XD_Roles,,17))","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","=C39*D39*F39","=IFERROR( SUM(G39-J39)/G39,)","=C39*D39","=I39*E39","","","","","","","=+P39-I39","","","","","",""],["","","=SUM(INDEX(Proposal_Creative_Freelancer_Roles,,3))","","","","=SUM(INDEX(Proposal_Creative_Freelancer_Roles,,7))","","=SUM(INDEX(Proposal_Creative_Freelancer_Roles,,9))","=SUM(INDEX(Proposal_Creative_Freelancer_Roles,,10))","","","","","","=SUM(INDEX(Proposal_Creative_Freelancer_Roles,,16))","=SUM(INDEX(Proposal_Creative_Freelancer_Roles,,17))","","","","","",""],["","","=SUM(INDEX(Proposal_Creative_XD_Roles,,3),INDEX(Proposal_Creative_Freelancer_Roles,,3))","","","","=SUM(INDEX(Proposal_Creative_XD_Roles,,7),INDEX(Proposal_Creative_Freelancer_Roles,,7))","","","","","","","","","","","","","","","",""]]'
+    },
+    Proposal_Footer_XD_TotalStaffMargin: {
+      rangeA1Notation: 'H108',
+      rangeValues: '[["#NUM!"]]',
+      rangeFormulas: '[[""]]'
+    },
+    Proposal_Title_Header: {
+      rangeA1Notation: 'B11',
+      rangeValues: '[["Proposal"]]',
+      rangeFormulas: '[[""]]'
+    },
+    Proposal_Strategy_and_Marketing_Freelancer_Roles: {
+      rangeA1Notation: 'A87:W87',
+      rangeValues: '[["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","=C87*D87*F87","=IFERROR( SUM(G87-J87)/G87,)","=C87*D87","=I87*E87","","","","","","","=+P87-I87","","","","","",""]]'
+    },
+    Proposal_Footer_XD_TotalStaffHours: {
+      rangeA1Notation: 'E108',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[[""]]'
+    },
+    Proposal_Strategy_and_Marketing_XD_Section: {
+      rangeA1Notation: 'A82:W89',
+      rangeValues: '[["Strategy_and_Marketing","","QTY","Total HRS","Total HRS","Sell Rate","Total Sell","Margin","NOTES:",""," ","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Staff Name","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""],["","Sub Total Service Area 1 Staff",0,"",0,"",0,"","","","","","","","",0,0,"","","","","",""],["FREELANCE","Freelance Name","QTY","Total Freelance Hours","HOURLY Freelance Cost ","Sell Rate","Total Sell","Margin","Total Freelance Hours","Total Freelance Cost","NOTES:","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""],["","Sub Total Service Area 1 Freelance",0,"","","",0,"",0,0,"","","","","",0,0,"","","","","",""],["End Of Section","Total Service Area 1",0,"","","",0,"","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=C84*D84","","=F84*E84","","","","","","","","","","=+P84-E84","","","","","",""],["","","=SUM(INDEX(Proposal_Strategy_and_Marketing_XD_Roles,,3))","","=SUM(INDEX(Proposal_Strategy_and_Marketing_XD_Roles,,5))","","=SUM(INDEX(Proposal_Strategy_and_Marketing_XD_Roles,,7))","","","","","","","","","=SUM(INDEX(Proposal_Strategy_and_Marketing_XD_Roles,,16))","=SUM(INDEX(Proposal_Strategy_and_Marketing_XD_Roles,,17))","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","=C87*D87*F87","=IFERROR( SUM(G87-J87)/G87,)","=C87*D87","=I87*E87","","","","","","","=+P87-I87","","","","","",""],["","","=SUM(INDEX(Proposal_Strategy_and_Marketing_Freelancer_Roles,,3))","","","","=SUM(INDEX(Proposal_Strategy_and_Marketing_Freelancer_Roles,,7))","","=SUM(INDEX(Proposal_Strategy_and_Marketing_Freelancer_Roles,,9))","=SUM(INDEX(Proposal_Strategy_and_Marketing_Freelancer_Roles,,10))","","","","","","=SUM(INDEX(Proposal_Strategy_and_Marketing_Freelancer_Roles,,16))","=SUM(INDEX(Proposal_Strategy_and_Marketing_Freelancer_Roles,,17))","","","","","",""],["","","=SUM(INDEX(Proposal_Strategy_and_Marketing_XD_Roles,,3),INDEX(Proposal_Strategy_and_Marketing_Freelancer_Roles,,3))","","","","=SUM(INDEX(Proposal_Strategy_and_Marketing_XD_Roles,,7),INDEX(Proposal_Strategy_and_Marketing_Freelancer_Roles,,7))","","","","","","","","","","","","","","","",""]]'
+    },
+    Proposal_Measurement_Freelancer_Roles: {
+      rangeA1Notation: 'A71:W71',
+      rangeValues: '[["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","=C71*D71*F71","=IFERROR( SUM(G71-J71)/G71,)","=C71*D71","=I71*E71","","","","","","","=+P71-I71","","","","","",""]]'
+    },
+    Proposal_Category_ThirdParty_TotalVariance: {
+      rangeA1Notation: 'Q119',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Section,,16))"]]'
+    },
+    Proposal_Digital_XD_Section: {
+      rangeA1Notation: 'A42:W49',
+      rangeValues: '[["Digital","","QTY","Total HRS","Total HRS","Sell Rate","Total Sell","Margin","NOTES:",""," ","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Staff Name","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""],["","Sub Total Service Area 1 Staff",0,"",0,"",0,"","","","","","","","",0,0,"","","","","",""],["FREELANCE","Freelance Name","QTY","Total Freelance Hours","HOURLY Freelance Cost ","Sell Rate","Total Sell","Margin","Total Freelance Hours","Total Freelance Cost","NOTES:","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""],["","Sub Total Service Area 1 Freelance",0,"","","",0,"",0,0,"","","","","",0,0,"","","","","",""],["End Of Section","Total Service Area 1",0,"","","",0,"","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=C44*D44","","=F44*E44","","","","","","","","","","=+P44-E44","","","","","",""],["","","=SUM(INDEX(Proposal_Digital_XD_Roles,,3))","","=SUM(INDEX(Proposal_Digital_XD_Roles,,5))","","=SUM(INDEX(Proposal_Digital_XD_Roles,,7))","","","","","","","","","=SUM(INDEX(Proposal_Digital_XD_Roles,,16))","=SUM(INDEX(Proposal_Digital_XD_Roles,,17))","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","=C47*D47*F47","=IFERROR( SUM(G47-J47)/G47,)","=C47*D47","=I47*E47","","","","","","","=+P47-I47","","","","","",""],["","","=SUM(INDEX(Proposal_Digital_Freelancer_Roles,,3))","","","","=SUM(INDEX(Proposal_Digital_Freelancer_Roles,,7))","","=SUM(INDEX(Proposal_Digital_Freelancer_Roles,,9))","=SUM(INDEX(Proposal_Digital_Freelancer_Roles,,10))","","","","","","=SUM(INDEX(Proposal_Digital_Freelancer_Roles,,16))","=SUM(INDEX(Proposal_Digital_Freelancer_Roles,,17))","","","","","",""],["","","=SUM(INDEX(Proposal_Digital_XD_Roles,,3),INDEX(Proposal_Digital_Freelancer_Roles,,3))","","","","=SUM(INDEX(Proposal_Digital_XD_Roles,,7),INDEX(Proposal_Digital_Freelancer_Roles,,7))","","","","","","","","","","","","","","","",""]]'
+    },
+    Proposal_Production_XD_Roles: {
+      rangeA1Notation: 'A76:W76',
+      rangeValues: '[["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","=C76*D76","","=F76*E76","","","","","","","","","","=+P76-E76","","","","","",""]]'
+    },
+    Proposal_ThirdParty_CostWithContTotal: {
+      rangeA1Notation: 'J121',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Deliverable_Template_Category_ThirdParty_CostWithContSubTotal)"]]'
+    },
+    Proposal_Header_Main_Section: {
+      rangeA1Notation: 'A9:W25',
+      rangeValues: '[["The XD Agency - LABOR SCHEDULE","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["Enter Deliverable Name >","Proposal","","FINANCIAL DASHBOARD","","","","","","","","","","","","","","","","","","","Pad"],["","","","Category:","","XDA Fees Sell","3rd Party Sell","Gross Billings","3rd Party Costs","Net Revenue","XDA  Staff Cost","Freelance Cost","XDA Fees Cost","Net Profit - $$","Net Profit %","XDA Blended Rate","Direct Bill","ACTUAL 3rd Party Costs","VARIANCE","","","Pad Hours","Impact to Cost"],["","","","This Deliverables:","",0,0,0,0,0,0,0,0,0,"#DIV/0!","#DIV/0!",0,0,0,"","","","#REF!"],["",""," < ON","Entire Project:","",0,0,0,0,0,0,0,0,0,"#DIV/0!","","","","","","","",""],["","","This Deliverables ","Start Date","","Delivery Date","","","","","","","","","","","","","","","","",""],["","","","GO TO  - >","Home","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","Net Rev %  Legend:","Above 25%","20% to 24%","19% and Below","","","","","","","","","","","","","","","","",""],["","","","","","","","3rd Party Sell:","",0,"","","","","","","","","","","","",""],["CLIENT NAME:","Client Name","","","","NET REV % ","","3rd Party Costs W/ Cont:","",0,"","","","","","","","","","","","",""],["PROJECT NAME:","Project Name","","","","","","3rd Party Revenue:","",0,"","","","","","","","","","","","",""],["JOB#:","","","","","","","Freelance Hours","XDA Team Hours","Total Hours","SELL","Net Profit on Fees","","","","","","","","","","",""],["VERSION #:","","","","","","",0,0,0,0,"#NUM!","","","","","","","","","","",""],["ENTER INFORMATION IN WHITE CELLS ONLY","","Net Profit Legend:","Above 30%","26 to 29 %","25% and Below","","BUDGETED","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","","Pad"]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","=Proposal_Footer_XD_TotalHours","=Proposal_Footer_ThirdParty_TotalSell","=F13+G13","=SUM(Proposal_Footer_ThirdParty_ExtendedCostTotal-Proposal_Footer_ThirdParty_DirectBillTotal)","=H13-I13","","","=K13+L13","=J13-M13","=N13/J13","=F13/E110","=Proposal_Footer_ThirdParty_DirectBillTotal","=Proposal_Footer_ThirdParty_TotalActualAmount","=+R13-I13","","","=+N165","=+#REF!"],["","","","","","=ProjectInformationSummary!$D$22","=ProjectInformationSummary!$C$22","=F14+G14","=ProjectInformationSummary!$F$22","=H14-I14","=ProjectInformationSummary!G22","=ProjectInformationSummary!H22","=ProjectInformationSummary!$G$22+ProjectInformationSummary!$H$22","=J14-M14","=N14/J14","=ProjectInformationSummary!$D$27","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","=Proposal_Footer_ThirdParty_TotalSell","","","","","","","","","","","","",""],["","=ProjectInformationSummary!C8","","","","","","","","=Deliverable_Template_Footer_ThirdParty_CostWithContTotal","","","","","","","","","","","","",""],["","=ProjectInformationSummary!C9","","","","","","","","=J19-J20","","","","","","","","","","","","",""],["","=ProjectInformationSummary!C11","","","","=IFERROR(J13/H13,)","","","","","","","","","","","","","","","","",""],["","=ProjectInformationSummary!C12","","","","","","=Proposal_Footer_Freelancer_TotalFreelanceHours","=Proposal_Footer_XD_TotalStaffHours","=Proposal_Footer_XD_TotalHours","=Proposal_Footer_XD_TotalSell","=Proposal_Footer_XD_TotalMarginPercentage","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""]]'
+    },
+    Proposal_Header_ThirdParty_QuickLinks: {
+      rangeA1Notation: 'A114:W114',
+      rangeValues: '[["AudioCrew","","","","","","","","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["=HYPERLINK(\\"#gid=1161093838&range=B236\\",A116)","","","","","","","","","","","","","","","","","","","","","",""]]'
+    },
+    Proposal_Video_and_Photography_XD_Section: {
+      rangeA1Notation: 'A98:W105',
+      rangeValues: '[["Video_and_Photography","","QTY","Total HRS","Total HRS","Sell Rate","Total Sell","Margin","NOTES:",""," ","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Staff Name","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""],["","Sub Total Service Area 1 Staff",0,"",0,"",0,"","","","","","","","",0,0,"","","","","",""],["FREELANCE","Freelance Name","QTY","Total Freelance Hours","HOURLY Freelance Cost ","Sell Rate","Total Sell","Margin","Total Freelance Hours","Total Freelance Cost","NOTES:","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""],["","Sub Total Service Area 1 Freelance",0,"","","",0,"",0,0,"","","","","",0,0,"","","","","",""],["End Of Section","Total Service Area 1",0,"","","",0,"","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=C100*D100","","=F100*E100","","","","","","","","","","=+P100-E100","","","","","",""],["","","=SUM(INDEX(Proposal_Video_and_Photography_XD_Roles,,3))","","=SUM(INDEX(Proposal_Video_and_Photography_XD_Roles,,5))","","=SUM(INDEX(Proposal_Video_and_Photography_XD_Roles,,7))","","","","","","","","","=SUM(INDEX(Proposal_Video_and_Photography_XD_Roles,,16))","=SUM(INDEX(Proposal_Video_and_Photography_XD_Roles,,17))","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","=C103*D103*F103","=IFERROR( SUM(G103-J103)/G103,)","=C103*D103","=I103*E103","","","","","","","=+P103-I103","","","","","",""],["","","=SUM(INDEX(Proposal_Video_and_Photography_Freelancer_Roles,,3))","","","","=SUM(INDEX(Proposal_Video_and_Photography_Freelancer_Roles,,7))","","=SUM(INDEX(Proposal_Video_and_Photography_Freelancer_Roles,,9))","=SUM(INDEX(Proposal_Video_and_Photography_Freelancer_Roles,,10))","","","","","","=SUM(INDEX(Proposal_Video_and_Photography_Freelancer_Roles,,16))","=SUM(INDEX(Proposal_Video_and_Photography_Freelancer_Roles,,17))","","","","","",""],["","","=SUM(INDEX(Proposal_Video_and_Photography_XD_Roles,,3),INDEX(Proposal_Video_and_Photography_Freelancer_Roles,,3))","","","","=SUM(INDEX(Proposal_Video_and_Photography_XD_Roles,,7),INDEX(Proposal_Video_and_Photography_Freelancer_Roles,,7))","","","","","","","","","","","","","","","",""]]'
+    },
+    Proposal_Logistics_XD_Roles: {
+      rangeA1Notation: 'A60:W60',
+      rangeValues: '[["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","=C60*D60","","=F60*E60","","","","","","","","","","=+P60-E60","","","","","",""]]'
+    },
+    Proposal_Footer_ThirdParty_TotalSell: {
+      rangeA1Notation: 'L121',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[[""]]'
+    },
+    Proposal_Exhibits_and_Environments_Freelancer_Roles: {
+      rangeA1Notation: 'A55:W55',
+      rangeValues: '[["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","=C55*D55*F55","=IFERROR( SUM(G55-J55)/G55,)","=C55*D55","=I55*E55","","","","","","","=+P55-I55","","","","","",""]]'
+    },
+    Proposal_Technical_Freelancer_Roles: {
+      rangeA1Notation: 'A95:W95',
+      rangeValues: '[["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","=C95*D95*F95","=IFERROR( SUM(G95-J95)/G95,)","=C95*D95","=I95*E95","","","","","","","=+P95-I95","","","","","",""]]'
+    },
+    Proposal_Header_ThirdParty_Section: {
+      rangeA1Notation: 'A111:W115',
+      rangeValues: '[["","","Deliverable_Template_Header_ThirdParty_Section","","","","","","","","","","","","","","","","","","","",""],["XDA - 3rd Party Costs","","","","","","","","","","","","","","","","","","","","","",""],["3rd Party Quick Links","","","","","","","","","","","","","","","","","","","","","",""],["AudioCrew","","","","","","","","","","","","","","","","","","","","","",""],["End","","","","","","","","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["=HYPERLINK(\\"#gid=1161093838&range=B236\\",A116)","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""]]'
+    },
+    Proposal_Measurement_XD_Section: {
+      rangeA1Notation: 'A66:W73',
+      rangeValues: '[["Measurement","","QTY","Total HRS","Total HRS","Sell Rate","Total Sell","Margin","NOTES:",""," ","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Staff Name","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""],["","Sub Total Service Area 1 Staff",0,"",0,"",0,"","","","","","","","",0,0,"","","","","",""],["FREELANCE","Freelance Name","QTY","Total Freelance Hours","HOURLY Freelance Cost ","Sell Rate","Total Sell","Margin","Total Freelance Hours","Total Freelance Cost","NOTES:","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""],["","Sub Total Service Area 1 Freelance",0,"","","",0,"",0,0,"","","","","",0,0,"","","","","",""],["End Of Section","Total Service Area 1",0,"","","",0,"","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=C68*D68","","=F68*E68","","","","","","","","","","=+P68-E68","","","","","",""],["","","=SUM(INDEX(Proposal_Measurement_XD_Roles,,3))","","=SUM(INDEX(Proposal_Measurement_XD_Roles,,5))","","=SUM(INDEX(Proposal_Measurement_XD_Roles,,7))","","","","","","","","","=SUM(INDEX(Proposal_Measurement_XD_Roles,,16))","=SUM(INDEX(Proposal_Measurement_XD_Roles,,17))","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","=C71*D71*F71","=IFERROR( SUM(G71-J71)/G71,)","=C71*D71","=I71*E71","","","","","","","=+P71-I71","","","","","",""],["","","=SUM(INDEX(Proposal_Measurement_Freelancer_Roles,,3))","","","","=SUM(INDEX(Proposal_Measurement_Freelancer_Roles,,7))","","=SUM(INDEX(Proposal_Measurement_Freelancer_Roles,,9))","=SUM(INDEX(Proposal_Measurement_Freelancer_Roles,,10))","","","","","","=SUM(INDEX(Proposal_Measurement_Freelancer_Roles,,16))","=SUM(INDEX(Proposal_Measurement_Freelancer_Roles,,17))","","","","","",""],["","","=SUM(INDEX(Proposal_Measurement_XD_Roles,,3),INDEX(Proposal_Measurement_Freelancer_Roles,,3))","","","","=SUM(INDEX(Proposal_Measurement_XD_Roles,,7),INDEX(Proposal_Measurement_Freelancer_Roles,,7))","","","","","","","","","","","","","","","",""]]'
+    },
+    Proposal_Header_XD_StaffCost: {
+      rangeA1Notation: 'K13',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[[""]]'
+    },
+    Proposal_Footer_XD_TotalStaffSell: {
+      rangeA1Notation: 'G108',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[[""]]'
+    },
+    Proposal_Video_and_Photography_Freelancer_Roles: {
+      rangeA1Notation: 'A103:W103',
+      rangeValues: '[["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","=C103*D103*F103","=IFERROR( SUM(G103-J103)/G103,)","=C103*D103","=I103*E103","","","","","","","=+P103-I103","","","","","",""]]'
+    },
+    Proposal_Digital_XD_SubTotalQty: {
+      rangeA1Notation: 'C49',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Proposal_Digital_XD_Roles,,3),INDEX(Proposal_Digital_Freelancer_Roles,,3))"]]'
+    },
+    Proposal_Logistics_XD_SubTotalQty: {
+      rangeA1Notation: 'C65',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Proposal_Logistics_XD_Roles,,3),INDEX(Proposal_Logistics_Freelancer_Roles,,3))"]]'
+    },
+    Proposal_Production_XD_Section: {
+      rangeA1Notation: 'A74:W81',
+      rangeValues: '[["Production","","QTY","Total HRS","Total HRS","Sell Rate","Total Sell","Margin","NOTES:",""," ","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Staff Name","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""],["","Sub Total Service Area 1 Staff",0,"",0,"",0,"","","","","","","","",0,0,"","","","","",""],["FREELANCE","Freelance Name","QTY","Total Freelance Hours","HOURLY Freelance Cost ","Sell Rate","Total Sell","Margin","Total Freelance Hours","Total Freelance Cost","NOTES:","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""],["","Sub Total Service Area 1 Freelance",0,"","","",0,"",0,0,"","","","","",0,0,"","","","","",""],["End Of Section","Total Service Area 1",0,"","","",0,"","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=C76*D76","","=F76*E76","","","","","","","","","","=+P76-E76","","","","","",""],["","","=SUM(INDEX(Proposal_Production_XD_Roles,,3))","","=SUM(INDEX(Proposal_Production_XD_Roles,,5))","","=SUM(INDEX(Proposal_Production_XD_Roles,,7))","","","","","","","","","=SUM(INDEX(Proposal_Production_XD_Roles,,16))","=SUM(INDEX(Proposal_Production_XD_Roles,,17))","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","=C79*D79*F79","=IFERROR( SUM(G79-J79)/G79,)","=C79*D79","=I79*E79","","","","","","","=+P79-I79","","","","","",""],["","","=SUM(INDEX(Proposal_Production_Freelancer_Roles,,3))","","","","=SUM(INDEX(Proposal_Production_Freelancer_Roles,,7))","","=SUM(INDEX(Proposal_Production_Freelancer_Roles,,9))","=SUM(INDEX(Proposal_Production_Freelancer_Roles,,10))","","","","","","=SUM(INDEX(Proposal_Production_Freelancer_Roles,,16))","=SUM(INDEX(Proposal_Production_Freelancer_Roles,,17))","","","","","",""],["","","=SUM(INDEX(Proposal_Production_XD_Roles,,3),INDEX(Proposal_Production_Freelancer_Roles,,3))","","","","=SUM(INDEX(Proposal_Production_XD_Roles,,7),INDEX(Proposal_Production_Freelancer_Roles,,7))","","","","","","","","","","","","","","","",""]]'
+    },
+    Proposal_Measurement_XD_Roles: {
+      rangeA1Notation: 'A68:W68',
+      rangeValues: '[["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","=C68*D68","","=F68*E68","","","","","","","","","","=+P68-E68","","","","","",""]]'
+    },
+    Proposal_Category_ThirdParty_SubtotalSell: {
+      rangeA1Notation: 'L119',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Section,,11))"]]'
+    },
+    Proposal_Measurement_XD_SubTotalQty: {
+      rangeA1Notation: 'C73',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Proposal_Measurement_XD_Roles,,3),INDEX(Proposal_Measurement_Freelancer_Roles,,3))"]]'
+    },
+    Proposal_Video_and_Photography_XD_SubTotalQty: {
+      rangeA1Notation: 'C105',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Proposal_Video_and_Photography_XD_Roles,,3),INDEX(Proposal_Video_and_Photography_Freelancer_Roles,,3))"]]'
+    },
+    Proposal_Footer_ThirdParty_DirectBillTotal: {
+      rangeA1Notation: 'N121',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Deliverable_Template_Category_ThirdParty_SubtotalDirectBill)"]]'
+    },
+    Proposal_Category_ThirdParty_SubtotalDirectBill: {
+      rangeA1Notation: 'N119',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Section,,13))"]]'
+    },
+    Proposal_Footer_Freelancer_TotalFreelanceHours: {
+      rangeA1Notation: 'E109',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[[""]]'
+    },
+    Proposal_Category_ThirdParty_SubtotalActualAmount: {
+      rangeA1Notation: 'P119',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Roles,,16))"]]'
+    },
+    Proposal_Technical_XD_Roles: {
+      rangeA1Notation: 'A92:W92',
+      rangeValues: '[["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","=C92*D92","","=F92*E92","","","","","","","","","","=+P92-E92","","","","","",""]]'
+    },
+    Proposal_Account_Freelancer_Roles: {
+      rangeA1Notation: 'A31:W31',
+      rangeValues: '[["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","=C31*D31*F31","=IFERROR( SUM(G31-J31)/G31,)","=C31*D31","=I31*E31","","","","","","","=+P31-I31","","","","","",""]]'
+    },
+    Proposal_Logistics_Freelancer_Roles: {
+      rangeA1Notation: 'A63:W63',
+      rangeValues: '[["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","=C63*D63*F63","=IFERROR( SUM(G63-J63)/G63,)","=C63*D63","=I63*E63","","","","","","","=+P63-I63","","","","","",""]]'
+    },
+    Proposal_Creative_XD_Roles: {
+      rangeA1Notation: 'A36:W36',
+      rangeValues: '[["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","=C36*D36","","=F36*E36","","","","","","","","","","=+P36-E36","","","","","",""]]'
+    },
+    Proposal_Account_XD_SubTotalQty: {
+      rangeA1Notation: 'C33',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Proposal_Account_XD_Roles,,3),INDEX(Proposal_Account_Freelancer_Roles,,3))"]]'
+    },
+    Proposal_Exhibits_and_Environments_XD_Roles: {
+      rangeA1Notation: 'A52:W52',
+      rangeValues: '[["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","=C52*D52","","=F52*E52","","","","","","","","","","=+P52-E52","","","","","",""]]'
+    },
+    Proposal_Category_ThirdParty_ExtendedCostSubtotal: {
+      rangeA1Notation: 'H119',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Section,,7))"]]'
+    },
+    Proposal_Footer_ThirdParty_Section: {
+      rangeA1Notation: 'A120:W121',
+      rangeValues: '[["GRAND TOTAL 3RD PARTY PRODUCTION COSTS","","","","","","","Extended Cost","","Cost w/Cont","","SELL","","","","","","","","","","",""],["","","","","","","",0,"",0,"",0,"",0,"",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","=SUM(Deliverable_Template_Category_ThirdParty_ExtendedCostSubtotal)","","=SUM(Deliverable_Template_Category_ThirdParty_CostWithContSubTotal)","","","","=SUM(Deliverable_Template_Category_ThirdParty_SubtotalDirectBill)","","=SUM(Deliverable_Template_Category_ThirdParty_SubtotalActualAmount)","=SUM(Deliverable_Template_Category_ThirdParty_SubTotalVariance)","","","","","",""]]'
+    },
+    Proposal_Footer_ThirdParty_ExtendedCostTotal: {
+      rangeA1Notation: 'H121',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Deliverable_Template_Category_ThirdParty_ExtendedCostSubtotal)"]]'
+    },
+    Proposal_Footer_XD_TotalMarginPercentage: {
+      rangeA1Notation: 'H110',
+      rangeValues: '[["#NUM!"]]',
+      rangeFormulas: '[[""]]'
+    },
+    Proposal_Logistics_XD_Section: {
+      rangeA1Notation: 'A58:W65',
+      rangeValues: '[["Logistics","","QTY","Total HRS","Total HRS","Sell Rate","Total Sell","Margin","NOTES:",""," ","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Staff Name","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""],["","Sub Total Service Area 1 Staff",0,"",0,"",0,"","","","","","","","",0,0,"","","","","",""],["FREELANCE","Freelance Name","QTY","Total Freelance Hours","HOURLY Freelance Cost ","Sell Rate","Total Sell","Margin","Total Freelance Hours","Total Freelance Cost","NOTES:","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""],["","Sub Total Service Area 1 Freelance",0,"","","",0,"",0,0,"","","","","",0,0,"","","","","",""],["End Of Section","Total Service Area 1",0,"","","",0,"","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=C60*D60","","=F60*E60","","","","","","","","","","=+P60-E60","","","","","",""],["","","=SUM(INDEX(Proposal_Logistics_XD_Roles,,3))","","=SUM(INDEX(Proposal_Logistics_XD_Roles,,5))","","=SUM(INDEX(Proposal_Logistics_XD_Roles,,7))","","","","","","","","","=SUM(INDEX(Proposal_Logistics_XD_Roles,,16))","=SUM(INDEX(Proposal_Logistics_XD_Roles,,17))","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","=C63*D63*F63","=IFERROR( SUM(G63-J63)/G63,)","=C63*D63","=I63*E63","","","","","","","=+P63-I63","","","","","",""],["","","=SUM(INDEX(Proposal_Logistics_Freelancer_Roles,,3))","","","","=SUM(INDEX(Proposal_Logistics_Freelancer_Roles,,7))","","=SUM(INDEX(Proposal_Logistics_Freelancer_Roles,,9))","=SUM(INDEX(Proposal_Logistics_Freelancer_Roles,,10))","","","","","","=SUM(INDEX(Proposal_Logistics_Freelancer_Roles,,16))","=SUM(INDEX(Proposal_Logistics_Freelancer_Roles,,17))","","","","","",""],["","","=SUM(INDEX(Proposal_Logistics_XD_Roles,,3),INDEX(Proposal_Logistics_Freelancer_Roles,,3))","","","","=SUM(INDEX(Proposal_Logistics_XD_Roles,,7),INDEX(Proposal_Logistics_Freelancer_Roles,,7))","","","","","","","","","","","","","","","",""]]'
+    },
+    Proposal_Footer_XD_TotalHours: {
+      rangeA1Notation: 'E110',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(E108:E109)"]]'
+    },
+    Proposal_Digital_XD_Roles: {
+      rangeA1Notation: 'A44:W44',
+      rangeValues: '[["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","=C44*D44","","=F44*E44","","","","","","","","","","=+P44-E44","","","","","",""]]'
+    },
+    Proposal_Technical_XD_SubTotalQty: {
+      rangeA1Notation: 'C97',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Proposal_Technical_XD_Roles,,3),INDEX(Proposal_Technical_Freelancer_Roles,,3))"]]'
+    },
+    Proposal_Digital_Freelancer_Roles: {
+      rangeA1Notation: 'A47:W47',
+      rangeValues: '[["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","=C47*D47*F47","=IFERROR( SUM(G47-J47)/G47,)","=C47*D47","=I47*E47","","","","","","","=+P47-I47","","","","","",""]]'
+    },
+    Proposal_Strategy_and_Marketing_XD_Roles: {
+      rangeA1Notation: 'A84:W84',
+      rangeValues: '[["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","=C84*D84","","=F84*E84","","","","","","","","","","=+P84-E84","","","","","",""]]'
+    },
+    Proposal_Video_and_Photography_XD_Roles: {
+      rangeA1Notation: 'A100:W100',
+      rangeValues: '[["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","=C100*D100","","=F100*E100","","","","","","","","","","=+P100-E100","","","","","",""]]'
+    },
+    Proposal_Technical_XD_Section: {
+      rangeA1Notation: 'A90:W97',
+      rangeValues: '[["Technical","","QTY","Total HRS","Total HRS","Sell Rate","Total Sell","Margin","NOTES:",""," ","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Staff Name","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""],["","Sub Total Service Area 1 Staff",0,"",0,"",0,"","","","","","","","",0,0,"","","","","",""],["FREELANCE","Freelance Name","QTY","Total Freelance Hours","HOURLY Freelance Cost ","Sell Rate","Total Sell","Margin","Total Freelance Hours","Total Freelance Cost","NOTES:","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""],["","Sub Total Service Area 1 Freelance",0,"","","",0,"",0,0,"","","","","",0,0,"","","","","",""],["End Of Section","Total Service Area 1",0,"","","",0,"","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=C92*D92","","=F92*E92","","","","","","","","","","=+P92-E92","","","","","",""],["","","=SUM(INDEX(Proposal_Technical_XD_Roles,,3))","","=SUM(INDEX(Proposal_Technical_XD_Roles,,5))","","=SUM(INDEX(Proposal_Technical_XD_Roles,,7))","","","","","","","","","=SUM(INDEX(Proposal_Technical_XD_Roles,,16))","=SUM(INDEX(Proposal_Technical_XD_Roles,,17))","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","=C95*D95*F95","=IFERROR( SUM(G95-J95)/G95,)","=C95*D95","=I95*E95","","","","","","","=+P95-I95","","","","","",""],["","","=SUM(INDEX(Proposal_Technical_Freelancer_Roles,,3))","","","","=SUM(INDEX(Proposal_Technical_Freelancer_Roles,,7))","","=SUM(INDEX(Proposal_Technical_Freelancer_Roles,,9))","=SUM(INDEX(Proposal_Technical_Freelancer_Roles,,10))","","","","","","=SUM(INDEX(Proposal_Technical_Freelancer_Roles,,16))","=SUM(INDEX(Proposal_Technical_Freelancer_Roles,,17))","","","","","",""],["","","=SUM(INDEX(Proposal_Technical_XD_Roles,,3),INDEX(Proposal_Technical_Freelancer_Roles,,3))","","","","=SUM(INDEX(Proposal_Technical_XD_Roles,,7),INDEX(Proposal_Technical_Freelancer_Roles,,7))","","","","","","","","","","","","","","","",""]]'
+    },
+    Proposal_Strategy_and_Marketing_XD_SubTotalQty: {
+      rangeA1Notation: 'C89',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Proposal_Strategy_and_Marketing_XD_Roles,,3),INDEX(Proposal_Strategy_and_Marketing_Freelancer_Roles,,3))"]]'
+    },
+    Proposal_Footer_XD_Section: {
+      rangeA1Notation: 'A106:W110',
+      rangeValues: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","TOTAL XDA AGENCY FEES","","","Total Hours","","Total Sell","Margin %","","","","","","","","","Total ACTUAL Hours","Total VARIANCE","","","","",""],["","","Total Staff","",0,"",0,"#NUM!","","","","","","","","","#REF!","#REF!","","","","",""],["","","Total Freelance","",0,"",0,"NaN","","","","","","","","","#REF!","#REF!","","","","",""],["","","Total","",0,"",0,"#NUM!","","","","","","","","","#REF!","#REF!","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","=#REF!+#REF!+#REF!+#REF!+#REF!+#REF!+#REF!+Q13+Q21+#REF!","=#REF!+#REF!+#REF!+#REF!+#REF!+#REF!+#REF!+R13+R21+#REF!","","","","",""],["","","","","","","","","","","","","","","","","=#REF!+#REF!+#REF!+#REF!+#REF!+#REF!+#REF!+Q16+Q24+#REF!","=#REF!+#REF!+#REF!+#REF!+#REF!+#REF!+#REF!+R16+R24+#REF!","","","","",""],["","","","","=SUM(E108:E109)","","=SUM(G108:G109)","","","","","","","","","","=Q108+Q109","=R108+R109","","","","",""]]'
+    },
+    Proposal_Production_Freelancer_Roles: {
+      rangeA1Notation: 'A79:W79',
+      rangeValues: '[["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","=C79*D79*F79","=IFERROR( SUM(G79-J79)/G79,)","=C79*D79","=I79*E79","","","","","","","=+P79-I79","","","","","",""]]'
+    },
+    Proposal_Exhibits_and_Environments_XD_Section: {
+      rangeA1Notation: 'A50:W57',
+      rangeValues: '[["Exhibits_and_Environments","","QTY","Total HRS","Total HRS","Sell Rate","Total Sell","Margin","NOTES:",""," ","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Staff Name","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""],["","Sub Total Service Area 1 Staff",0,"",0,"",0,"","","","","","","","",0,0,"","","","","",""],["FREELANCE","Freelance Name","QTY","Total Freelance Hours","HOURLY Freelance Cost ","Sell Rate","Total Sell","Margin","Total Freelance Hours","Total Freelance Cost","NOTES:","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""],["","Sub Total Service Area 1 Freelance",0,"","","",0,"",0,0,"","","","","",0,0,"","","","","",""],["End Of Section","Total Service Area 1",0,"","","",0,"","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=C52*D52","","=F52*E52","","","","","","","","","","=+P52-E52","","","","","",""],["","","=SUM(INDEX(Proposal_Exhibits_and_Environments_XD_Roles,,3))","","=SUM(INDEX(Proposal_Exhibits_and_Environments_XD_Roles,,5))","","=SUM(INDEX(Proposal_Exhibits_and_Environments_XD_Roles,,7))","","","","","","","","","=SUM(INDEX(Proposal_Exhibits_and_Environments_XD_Roles,,16))","=SUM(INDEX(Proposal_Exhibits_and_Environments_XD_Roles,,17))","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","=C55*D55*F55","=IFERROR( SUM(G55-J55)/G55,)","=C55*D55","=I55*E55","","","","","","","=+P55-I55","","","","","",""],["","","=SUM(INDEX(Proposal_Exhibits_and_Environments_Freelancer_Roles,,3))","","","","=SUM(INDEX(Proposal_Exhibits_and_Environments_Freelancer_Roles,,7))","","=SUM(INDEX(Proposal_Exhibits_and_Environments_Freelancer_Roles,,9))","=SUM(INDEX(Proposal_Exhibits_and_Environments_Freelancer_Roles,,10))","","","","","","=SUM(INDEX(Proposal_Exhibits_and_Environments_Freelancer_Roles,,16))","=SUM(INDEX(Proposal_Exhibits_and_Environments_Freelancer_Roles,,17))","","","","","",""],["","","=SUM(INDEX(Proposal_Exhibits_and_Environments_XD_Roles,,3),INDEX(Proposal_Exhibits_and_Environments_Freelancer_Roles,,3))","","","","=SUM(INDEX(Proposal_Exhibits_and_Environments_XD_Roles,,7),INDEX(Proposal_Exhibits_and_Environments_Freelancer_Roles,,7))","","","","","","","","","","","","","","","",""]]'
+    },
+    Proposal_Account_XD_Roles: {
+      rangeA1Notation: 'A28:W28',
+      rangeValues: '[["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","=C28*D28","","=F28*E28","","","","","","","","","","=+P28-E28","","","","","",""]]'
+    },
+    Proposal_Footer_ThirdParty_TotalActualAmount: {
+      rangeA1Notation: 'P121',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Deliverable_Template_Category_ThirdParty_SubtotalActualAmount)"]]'
+    },
+    Proposal_Category_ThirdParty_CostWithContSubTotal: {
+      rangeA1Notation: 'J119',
+      rangeValues: '[[0.04]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Section,,9))"]]'
+    },
+    Proposal_Creative_XD_SubTotalQty: {
+      rangeA1Notation: 'C41',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Proposal_Creative_XD_Roles,,3),INDEX(Proposal_Creative_Freelancer_Roles,,3))"]]'
+    },
+    Proposal_Footer_XD_TotalSell: {
+      rangeA1Notation: 'G110',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(G108:G109)"]]'
+    }
+  },
+  DirBill: {
+    DirBill_Digital_Freelancer_Roles: {
+      rangeA1Notation: 'A39:W39',
+      rangeValues: '[["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","=C39*D39*F39","=IFERROR( SUM(G39-J39)/G39,)","=C39*D39","=I39*E39","","","","","","","=+P39-I39","","","","","",""]]'
+    },
+    DirBill_Digital_XD_SubTotalQty: {
+      rangeA1Notation: 'C41',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(DirBill_Digital_XD_Roles,,3),INDEX(DirBill_Digital_Freelancer_Roles,,3))"]]'
+    },
+    DirBill_Footer_XD_TotalHours: {
+      rangeA1Notation: 'E102',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(E100:E101)"]]'
+    },
+    DirBill_Strategy_and_Marketing_XD_Section: {
+      rangeA1Notation: 'A74:W81',
+      rangeValues: '[["Strategy_and_Marketing","","QTY","Total HRS","Total HRS","Sell Rate","Total Sell","Margin","NOTES:",""," ","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Staff Name","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""],["","Sub Total Service Area 1 Staff",0,"",0,"",0,"","","","","","","","",0,0,"","","","","",""],["FREELANCE","Freelance Name","QTY","Total Freelance Hours","HOURLY Freelance Cost ","Sell Rate","Total Sell","Margin","Total Freelance Hours","Total Freelance Cost","NOTES:","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""],["","Sub Total Service Area 1 Freelance",0,"","","",0,"",0,0,"","","","","",0,0,"","","","","",""],["End Of Section","Total Service Area 1",0,"","","",0,"","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=C76*D76","","=F76*E76","","","","","","","","","","=+P76-E76","","","","","",""],["","","=SUM(INDEX(DirBill_Strategy_and_Marketing_XD_Roles,,3))","","=SUM(INDEX(DirBill_Strategy_and_Marketing_XD_Roles,,5))","","=SUM(INDEX(DirBill_Strategy_and_Marketing_XD_Roles,,7))","","","","","","","","","=SUM(INDEX(DirBill_Strategy_and_Marketing_XD_Roles,,16))","=SUM(INDEX(DirBill_Strategy_and_Marketing_XD_Roles,,17))","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","=C79*D79*F79","=IFERROR( SUM(G79-J79)/G79,)","=C79*D79","=I79*E79","","","","","","","=+P79-I79","","","","","",""],["","","=SUM(INDEX(DirBill_Strategy_and_Marketing_Freelancer_Roles,,3))","","","","=SUM(INDEX(DirBill_Strategy_and_Marketing_Freelancer_Roles,,7))","","=SUM(INDEX(DirBill_Strategy_and_Marketing_Freelancer_Roles,,9))","=SUM(INDEX(DirBill_Strategy_and_Marketing_Freelancer_Roles,,10))","","","","","","=SUM(INDEX(DirBill_Strategy_and_Marketing_Freelancer_Roles,,16))","=SUM(INDEX(DirBill_Strategy_and_Marketing_Freelancer_Roles,,17))","","","","","",""],["","","=SUM(INDEX(DirBill_Strategy_and_Marketing_XD_Roles,,3),INDEX(DirBill_Strategy_and_Marketing_Freelancer_Roles,,3))","","","","=SUM(INDEX(DirBill_Strategy_and_Marketing_XD_Roles,,7),INDEX(DirBill_Strategy_and_Marketing_Freelancer_Roles,,7))","","","","","","","","","","","","","","","",""]]'
+    },
+    DirBill_Footer_Freelancer_TotalFreelanceSell: {
+      rangeA1Notation: 'G101',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[[""]]'
+    },
+    DirBill_Strategy_and_Marketing_XD_SubTotalQty: {
+      rangeA1Notation: 'C81',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(DirBill_Strategy_and_Marketing_XD_Roles,,3),INDEX(DirBill_Strategy_and_Marketing_Freelancer_Roles,,3))"]]'
+    },
+    DirBill_Production_XD_Roles: {
+      rangeA1Notation: 'A68:W68',
+      rangeValues: '[["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","=C68*D68","","=F68*E68","","","","","","","","","","=+P68-E68","","","","","",""]]'
+    },
+    DirBill_Strategy_and_Marketing_XD_Roles: {
+      rangeA1Notation: 'A76:W76',
+      rangeValues: '[["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","=C76*D76","","=F76*E76","","","","","","","","","","=+P76-E76","","","","","",""]]'
+    },
+    DirBill_Measurement_XD_SubTotalQty: {
+      rangeA1Notation: 'C65',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(DirBill_Measurement_XD_Roles,,3),INDEX(DirBill_Measurement_Freelancer_Roles,,3))"]]'
+    },
+    DirBill_Title_Header: {
+      rangeA1Notation: 'B3',
+      rangeValues: '[["DirBill"]]',
+      rangeFormulas: '[[""]]'
+    },
+    DirBill_Digital_XD_Roles: {
+      rangeA1Notation: 'A36:W36',
+      rangeValues: '[["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","=C36*D36","","=F36*E36","","","","","","","","","","=+P36-E36","","","","","",""]]'
+    },
+    DirBill_Footer_ThirdParty_DirectBillTotal: {
+      rangeA1Notation: 'N113',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Deliverable_Template_Category_ThirdParty_SubtotalDirectBill)"]]'
+    },
+    DirBill_Header_Main_Section: {
+      rangeA1Notation: 'A1:W17',
+      rangeValues: '[["The XD Agency - LABOR SCHEDULE","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["Enter Deliverable Name >","DirBill","","FINANCIAL DASHBOARD","","","","","","","","","","","","","","","","","","","Pad"],["","","","Category:","","XDA Fees Sell","3rd Party Sell","Gross Billings","3rd Party Costs","Net Revenue","XDA  Staff Cost","Freelance Cost","XDA Fees Cost","Net Profit - $$","Net Profit %","XDA Blended Rate","Direct Bill","ACTUAL 3rd Party Costs","VARIANCE","","","Pad Hours","Impact to Cost"],["","","","This Deliverables:","",0,0,0,0,0,0,0,0,0,"#DIV/0!","#DIV/0!",0,0,0,"","","","#REF!"],["",""," < ON","Entire Project:","",0,0,0,0,0,0,0,0,0,"#DIV/0!","","","","","","","",""],["","","This Deliverables ","Start Date","","Delivery Date","","","","","","","","","","","","","","","","",""],["","","","GO TO  - >","Home","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","Net Rev %  Legend:","Above 25%","20% to 24%","19% and Below","","","","","","","","","","","","","","","","",""],["","","","","","","","3rd Party Sell:","",0,"","","","","","","","","","","","",""],["CLIENT NAME:","Client Name","","","","NET REV % ","","3rd Party Costs W/ Cont:","",0,"","","","","","","","","","","","",""],["PROJECT NAME:","Project Name","","","","","","3rd Party Revenue:","",0,"","","","","","","","","","","","",""],["JOB#:","","","","","","","Freelance Hours","XDA Team Hours","Total Hours","SELL","Net Profit on Fees","","","","","","","","","","",""],["VERSION #:","","","","","","",0,0,0,0,"#NUM!","","","","","","","","","","",""],["ENTER INFORMATION IN WHITE CELLS ONLY","","Net Profit Legend:","Above 30%","26 to 29 %","25% and Below","","BUDGETED","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","","Pad"]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","=DirBill_Footer_XD_TotalHours","=DirBill_Footer_ThirdParty_TotalSell","=F5+G5","=SUM(DirBill_Footer_ThirdParty_ExtendedCostTotal-DirBill_Footer_ThirdParty_DirectBillTotal)","=H5-I5","","","=K5+L5","=J5-M5","=N5/J5","=F5/E102","=DirBill_Footer_ThirdParty_DirectBillTotal","=DirBill_Footer_ThirdParty_TotalActualAmount","=+R5-I5","","","=+N157","=+#REF!"],["","","","","","=ProjectInformationSummary!$D$22","=ProjectInformationSummary!$C$22","=F6+G6","=ProjectInformationSummary!$F$22","=H6-I6","=ProjectInformationSummary!G22","=ProjectInformationSummary!H22","=ProjectInformationSummary!$G$22+ProjectInformationSummary!$H$22","=J6-M6","=N6/J6","=ProjectInformationSummary!$D$27","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","=DirBill_Footer_ThirdParty_TotalSell","","","","","","","","","","","","",""],["","=ProjectInformationSummary!C8","","","","","","","","=Deliverable_Template_Footer_ThirdParty_CostWithContTotal","","","","","","","","","","","","",""],["","=ProjectInformationSummary!C9","","","","","","","","=J11-J12","","","","","","","","","","","","",""],["","=ProjectInformationSummary!C11","","","","=IFERROR(J5/H5,)","","","","","","","","","","","","","","","","",""],["","=ProjectInformationSummary!C12","","","","","","=DirBill_Footer_Freelancer_TotalFreelanceHours","=DirBill_Footer_XD_TotalStaffHours","=DirBill_Footer_XD_TotalHours","=DirBill_Footer_XD_TotalSell","=DirBill_Footer_XD_TotalMarginPercentage","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""]]'
+    },
+    DirBill_Production_XD_SubTotalQty: {
+      rangeA1Notation: 'C73',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(DirBill_Production_XD_Roles,,3),INDEX(DirBill_Production_Freelancer_Roles,,3))"]]'
+    },
+    DirBill_Creative_XD_Section: {
+      rangeA1Notation: 'A26:W33',
+      rangeValues: '[["Creative","","QTY","Total HRS","Total HRS","Sell Rate","Total Sell","Margin","NOTES:",""," ","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Staff Name","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""],["","Sub Total Service Area 1 Staff",0,"",0,"",0,"","","","","","","","",0,0,"","","","","",""],["FREELANCE","Freelance Name","QTY","Total Freelance Hours","HOURLY Freelance Cost ","Sell Rate","Total Sell","Margin","Total Freelance Hours","Total Freelance Cost","NOTES:","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""],["","Sub Total Service Area 1 Freelance",0,"","","",0,"",0,0,"","","","","",0,0,"","","","","",""],["End Of Section","Total Service Area 1",0,"","","",0,"","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=C28*D28","","=F28*E28","","","","","","","","","","=+P28-E28","","","","","",""],["","","=SUM(INDEX(DirBill_Creative_XD_Roles,,3))","","=SUM(INDEX(DirBill_Creative_XD_Roles,,5))","","=SUM(INDEX(DirBill_Creative_XD_Roles,,7))","","","","","","","","","=SUM(INDEX(DirBill_Creative_XD_Roles,,16))","=SUM(INDEX(DirBill_Creative_XD_Roles,,17))","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","=C31*D31*F31","=IFERROR( SUM(G31-J31)/G31,)","=C31*D31","=I31*E31","","","","","","","=+P31-I31","","","","","",""],["","","=SUM(INDEX(DirBill_Creative_Freelancer_Roles,,3))","","","","=SUM(INDEX(DirBill_Creative_Freelancer_Roles,,7))","","=SUM(INDEX(DirBill_Creative_Freelancer_Roles,,9))","=SUM(INDEX(DirBill_Creative_Freelancer_Roles,,10))","","","","","","=SUM(INDEX(DirBill_Creative_Freelancer_Roles,,16))","=SUM(INDEX(DirBill_Creative_Freelancer_Roles,,17))","","","","","",""],["","","=SUM(INDEX(DirBill_Creative_XD_Roles,,3),INDEX(DirBill_Creative_Freelancer_Roles,,3))","","","","=SUM(INDEX(DirBill_Creative_XD_Roles,,7),INDEX(DirBill_Creative_Freelancer_Roles,,7))","","","","","","","","","","","","","","","",""]]'
+    },
+    DirBill_Technical_Freelancer_Roles: {
+      rangeA1Notation: 'A87:W87',
+      rangeValues: '[["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","=C87*D87*F87","=IFERROR( SUM(G87-J87)/G87,)","=C87*D87","=I87*E87","","","","","","","=+P87-I87","","","","","",""]]'
+    },
+    DirBill_Creative_XD_SubTotalQty: {
+      rangeA1Notation: 'C33',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(DirBill_Creative_XD_Roles,,3),INDEX(DirBill_Creative_Freelancer_Roles,,3))"]]'
+    },
+    DirBill_Category_ThirdParty_ExtendedCostSubtotal: {
+      rangeA1Notation: 'H111',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Section,,7))"]]'
+    },
+    DirBill_Category_ThirdParty_TotalVariance: {
+      rangeA1Notation: 'Q111',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Section,,16))"]]'
+    },
+    DirBill_Creative_Freelancer_Roles: {
+      rangeA1Notation: 'A31:W31',
+      rangeValues: '[["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","=C31*D31*F31","=IFERROR( SUM(G31-J31)/G31,)","=C31*D31","=I31*E31","","","","","","","=+P31-I31","","","","","",""]]'
+    },
+    DirBill_Category_ThirdParty_SubtotalActualAmount: {
+      rangeA1Notation: 'P111',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Roles,,16))"]]'
+    },
+    DirBill_Footer_XD_TotalStaffHours: {
+      rangeA1Notation: 'E100',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[[""]]'
+    },
+    DirBill_Logistics_XD_SubTotalQty: {
+      rangeA1Notation: 'C57',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(DirBill_Logistics_XD_Roles,,3),INDEX(DirBill_Logistics_Freelancer_Roles,,3))"]]'
+    },
+    DirBill_Logistics_Freelancer_Roles: {
+      rangeA1Notation: 'A55:W55',
+      rangeValues: '[["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","=C55*D55*F55","=IFERROR( SUM(G55-J55)/G55,)","=C55*D55","=I55*E55","","","","","","","=+P55-I55","","","","","",""]]'
+    },
+    DirBill_Header_ThirdParty_Section: {
+      rangeA1Notation: 'A103:W107',
+      rangeValues: '[["","","","","","","","","","","","","","","","","","","","","","",""],["XDA - 3rd Party Costs","","","","","","","","","","","","","","","","","","","","","",""],["3rd Party Quick Links","","","","","","","","","","","","","","","","","","","","","",""],["AudioCrew","","","","","","","","","","","","","","","","","","","","","",""],["End","","","","","","","","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["=HYPERLINK(\\"#gid=1161093838&range=B236\\",A108)","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""]]'
+    },
+    DirBill_Technical_XD_Roles: {
+      rangeA1Notation: 'A84:W84',
+      rangeValues: '[["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","=C84*D84","","=F84*E84","","","","","","","","","","=+P84-E84","","","","","",""]]'
+    },
+    DirBill_Footer_ThirdParty_TotalSell: {
+      rangeA1Notation: 'L113',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[[""]]'
+    },
+    DirBill_Technical_XD_SubTotalQty: {
+      rangeA1Notation: 'C89',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(DirBill_Technical_XD_Roles,,3),INDEX(DirBill_Technical_Freelancer_Roles,,3))"]]'
+    },
+    DirBill_Footer_Freelancer_TotalFreelanceHours: {
+      rangeA1Notation: 'E101',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[[""]]'
+    },
+    DirBill_Account_XD_Section: {
+      rangeA1Notation: 'A18:W25',
+      rangeValues: '[["Account","","QTY","Total HRS","Total HRS","Sell Rate","Total Sell","Margin","NOTES:",""," ","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Staff Name","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""],["","Sub Total Service Area 1 Staff",0,"",0,"",0,"","","","","","","","",0,0,"","","","","",""],["FREELANCE","Freelance Name","QTY","Total Freelance Hours","HOURLY Freelance Cost ","Sell Rate","Total Sell","Margin","Total Freelance Hours","Total Freelance Cost","NOTES:","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""],["","Sub Total Service Area 1 Freelance",0,"","","",0,"",0,0,"","","","","",0,0,"","","","","",""],["End Of Section","Total Service Area 1",0,"","","",0,"","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=C20*D20","","=F20*E20","","","","","","","","","","=+P20-E20","","","","","",""],["","","=SUM(INDEX(DirBill_Account_XD_Roles,,3))","","=SUM(INDEX(DirBill_Account_XD_Roles,,5))","","=SUM(INDEX(DirBill_Account_XD_Roles,,7))","","","","","","","","","=SUM(INDEX(DirBill_Account_XD_Roles,,16))","=SUM(INDEX(DirBill_Account_XD_Roles,,17))","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","=C23*D23*F23","=IFERROR( SUM(G23-J23)/G23,)","=C23*D23","=I23*E23","","","","","","","=+P23-I23","","","","","",""],["","","=SUM(INDEX(DirBill_Account_Freelancer_Roles,,3))","","","","=SUM(INDEX(DirBill_Account_Freelancer_Roles,,7))","","=SUM(INDEX(DirBill_Account_Freelancer_Roles,,9))","=SUM(INDEX(DirBill_Account_Freelancer_Roles,,10))","","","","","","=SUM(INDEX(DirBill_Account_Freelancer_Roles,,16))","=SUM(INDEX(DirBill_Account_Freelancer_Roles,,17))","","","","","",""],["","","=SUM(INDEX(DirBill_Account_XD_Roles,,3),INDEX(DirBill_Account_Freelancer_Roles,,3))","","","","=SUM(INDEX(DirBill_Account_XD_Roles,,7),INDEX(DirBill_Account_Freelancer_Roles,,7))","","","","","","","","","","","","","","","",""]]'
+    },
+    DirBill_Footer_XD_Section: {
+      rangeA1Notation: 'A98:W102',
+      rangeValues: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","TOTAL XDA AGENCY FEES","","","Total Hours","","Total Sell","Margin %","","","","","","","","","Total ACTUAL Hours","Total VARIANCE","","","","",""],["","","Total Staff","",0,"",0,"#NUM!","","","","","","","","","#REF!","#REF!","","","","",""],["","","Total Freelance","",0,"",0,"NaN","","","","","","","","","#REF!","#REF!","","","","",""],["","","Total","",0,"",0,"#NUM!","","","","","","","","","#REF!","#REF!","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","=#REF!+#REF!+#REF!+#REF!+#REF!+#REF!+#REF!+Q5+Q13+#REF!","=#REF!+#REF!+#REF!+#REF!+#REF!+#REF!+#REF!+R5+R13+#REF!","","","","",""],["","","","","","","","","","","","","","","","","=#REF!+#REF!+#REF!+#REF!+#REF!+#REF!+#REF!+Q8+Q16+#REF!","=#REF!+#REF!+#REF!+#REF!+#REF!+#REF!+#REF!+R8+R16+#REF!","","","","",""],["","","","","=SUM(E100:E101)","","=SUM(G100:G101)","","","","","","","","","","=Q100+Q101","=R100+R101","","","","",""]]'
+    },
+    DirBill_Footer_XD_TotalStaffMargin: {
+      rangeA1Notation: 'H100',
+      rangeValues: '[["#NUM!"]]',
+      rangeFormulas: '[[""]]'
+    },
+    DirBill_Measurement_XD_Section: {
+      rangeA1Notation: 'A58:W65',
+      rangeValues: '[["Measurement","","QTY","Total HRS","Total HRS","Sell Rate","Total Sell","Margin","NOTES:",""," ","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Staff Name","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""],["","Sub Total Service Area 1 Staff",0,"",0,"",0,"","","","","","","","",0,0,"","","","","",""],["FREELANCE","Freelance Name","QTY","Total Freelance Hours","HOURLY Freelance Cost ","Sell Rate","Total Sell","Margin","Total Freelance Hours","Total Freelance Cost","NOTES:","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""],["","Sub Total Service Area 1 Freelance",0,"","","",0,"",0,0,"","","","","",0,0,"","","","","",""],["End Of Section","Total Service Area 1",0,"","","",0,"","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=C60*D60","","=F60*E60","","","","","","","","","","=+P60-E60","","","","","",""],["","","=SUM(INDEX(DirBill_Measurement_XD_Roles,,3))","","=SUM(INDEX(DirBill_Measurement_XD_Roles,,5))","","=SUM(INDEX(DirBill_Measurement_XD_Roles,,7))","","","","","","","","","=SUM(INDEX(DirBill_Measurement_XD_Roles,,16))","=SUM(INDEX(DirBill_Measurement_XD_Roles,,17))","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","=C63*D63*F63","=IFERROR( SUM(G63-J63)/G63,)","=C63*D63","=I63*E63","","","","","","","=+P63-I63","","","","","",""],["","","=SUM(INDEX(DirBill_Measurement_Freelancer_Roles,,3))","","","","=SUM(INDEX(DirBill_Measurement_Freelancer_Roles,,7))","","=SUM(INDEX(DirBill_Measurement_Freelancer_Roles,,9))","=SUM(INDEX(DirBill_Measurement_Freelancer_Roles,,10))","","","","","","=SUM(INDEX(DirBill_Measurement_Freelancer_Roles,,16))","=SUM(INDEX(DirBill_Measurement_Freelancer_Roles,,17))","","","","","",""],["","","=SUM(INDEX(DirBill_Measurement_XD_Roles,,3),INDEX(DirBill_Measurement_Freelancer_Roles,,3))","","","","=SUM(INDEX(DirBill_Measurement_XD_Roles,,7),INDEX(DirBill_Measurement_Freelancer_Roles,,7))","","","","","","","","","","","","","","","",""]]'
+    },
+    DirBill_Account_XD_SubTotalQty: {
+      rangeA1Notation: 'C25',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(DirBill_Account_XD_Roles,,3),INDEX(DirBill_Account_Freelancer_Roles,,3))"]]'
+    },
+    DirBill_Footer_XD_TotalMarginPercentage: {
+      rangeA1Notation: 'H102',
+      rangeValues: '[["#NUM!"]]',
+      rangeFormulas: '[[""]]'
+    },
+    DirBill_Video_and_Photography_XD_SubTotalQty: {
+      rangeA1Notation: 'C97',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(DirBill_Video_and_Photography_XD_Roles,,3),INDEX(DirBill_Video_and_Photography_Freelancer_Roles,,3))"]]'
+    },
+    DirBill_Category_ThirdParty_CostWithContSubTotal: {
+      rangeA1Notation: 'J111',
+      rangeValues: '[[0.04]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Section,,9))"]]'
+    },
+    DirBill_Digital_XD_Section: {
+      rangeA1Notation: 'A34:W41',
+      rangeValues: '[["Digital","","QTY","Total HRS","Total HRS","Sell Rate","Total Sell","Margin","NOTES:",""," ","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Staff Name","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""],["","Sub Total Service Area 1 Staff",0,"",0,"",0,"","","","","","","","",0,0,"","","","","",""],["FREELANCE","Freelance Name","QTY","Total Freelance Hours","HOURLY Freelance Cost ","Sell Rate","Total Sell","Margin","Total Freelance Hours","Total Freelance Cost","NOTES:","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""],["","Sub Total Service Area 1 Freelance",0,"","","",0,"",0,0,"","","","","",0,0,"","","","","",""],["End Of Section","Total Service Area 1",0,"","","",0,"","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=C36*D36","","=F36*E36","","","","","","","","","","=+P36-E36","","","","","",""],["","","=SUM(INDEX(DirBill_Digital_XD_Roles,,3))","","=SUM(INDEX(DirBill_Digital_XD_Roles,,5))","","=SUM(INDEX(DirBill_Digital_XD_Roles,,7))","","","","","","","","","=SUM(INDEX(DirBill_Digital_XD_Roles,,16))","=SUM(INDEX(DirBill_Digital_XD_Roles,,17))","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","=C39*D39*F39","=IFERROR( SUM(G39-J39)/G39,)","=C39*D39","=I39*E39","","","","","","","=+P39-I39","","","","","",""],["","","=SUM(INDEX(DirBill_Digital_Freelancer_Roles,,3))","","","","=SUM(INDEX(DirBill_Digital_Freelancer_Roles,,7))","","=SUM(INDEX(DirBill_Digital_Freelancer_Roles,,9))","=SUM(INDEX(DirBill_Digital_Freelancer_Roles,,10))","","","","","","=SUM(INDEX(DirBill_Digital_Freelancer_Roles,,16))","=SUM(INDEX(DirBill_Digital_Freelancer_Roles,,17))","","","","","",""],["","","=SUM(INDEX(DirBill_Digital_XD_Roles,,3),INDEX(DirBill_Digital_Freelancer_Roles,,3))","","","","=SUM(INDEX(DirBill_Digital_XD_Roles,,7),INDEX(DirBill_Digital_Freelancer_Roles,,7))","","","","","","","","","","","","","","","",""]]'
+    },
+    DirBill_Video_and_Photography_XD_Roles: {
+      rangeA1Notation: 'A92:W92',
+      rangeValues: '[["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"#NUM!","","","","",0,"","",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","=C92*D92","","=F92*E92","","","","","","","","","","=+P92-E92","","","","","",""]]'
+    },
+    DirBill_Logistics_XD_Roles: {
+      rangeA1Notation: 'A52:W52',
+      rangeValues: '[["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","=C52*D52","","=F52*E52","","","","","","","","","","=+P52-E52","","","","","",""]]'
+    },
+    DirBill_Header_XD_StaffCost: {
+      rangeA1Notation: 'K5',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[[""]]'
+    },
+    DirBill_Production_XD_Section: {
+      rangeA1Notation: 'A66:W73',
+      rangeValues: '[["Production","","QTY","Total HRS","Total HRS","Sell Rate","Total Sell","Margin","NOTES:",""," ","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Staff Name","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""],["","Sub Total Service Area 1 Staff",0,"",0,"",0,"","","","","","","","",0,0,"","","","","",""],["FREELANCE","Freelance Name","QTY","Total Freelance Hours","HOURLY Freelance Cost ","Sell Rate","Total Sell","Margin","Total Freelance Hours","Total Freelance Cost","NOTES:","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""],["","Sub Total Service Area 1 Freelance",0,"","","",0,"",0,0,"","","","","",0,0,"","","","","",""],["End Of Section","Total Service Area 1",0,"","","",0,"","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=C68*D68","","=F68*E68","","","","","","","","","","=+P68-E68","","","","","",""],["","","=SUM(INDEX(DirBill_Production_XD_Roles,,3))","","=SUM(INDEX(DirBill_Production_XD_Roles,,5))","","=SUM(INDEX(DirBill_Production_XD_Roles,,7))","","","","","","","","","=SUM(INDEX(DirBill_Production_XD_Roles,,16))","=SUM(INDEX(DirBill_Production_XD_Roles,,17))","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","=C71*D71*F71","=IFERROR( SUM(G71-J71)/G71,)","=C71*D71","=I71*E71","","","","","","","=+P71-I71","","","","","",""],["","","=SUM(INDEX(DirBill_Production_Freelancer_Roles,,3))","","","","=SUM(INDEX(DirBill_Production_Freelancer_Roles,,7))","","=SUM(INDEX(DirBill_Production_Freelancer_Roles,,9))","=SUM(INDEX(DirBill_Production_Freelancer_Roles,,10))","","","","","","=SUM(INDEX(DirBill_Production_Freelancer_Roles,,16))","=SUM(INDEX(DirBill_Production_Freelancer_Roles,,17))","","","","","",""],["","","=SUM(INDEX(DirBill_Production_XD_Roles,,3),INDEX(DirBill_Production_Freelancer_Roles,,3))","","","","=SUM(INDEX(DirBill_Production_XD_Roles,,7),INDEX(DirBill_Production_Freelancer_Roles,,7))","","","","","","","","","","","","","","","",""]]'
+    },
+    DirBill_Exhibits_and_Environments_XD_Roles: {
+      rangeA1Notation: 'A44:W44',
+      rangeValues: '[["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","=C44*D44","","=F44*E44","","","","","","","","","","=+P44-E44","","","","","",""]]'
+    },
+    DirBill_Exhibits_and_Environments_XD_SubTotalQty: {
+      rangeA1Notation: 'C49',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(DirBill_Exhibits_and_Environments_XD_Roles,,3),INDEX(DirBill_Exhibits_and_Environments_Freelancer_Roles,,3))"]]'
+    },
+    DirBill_Video_and_Photography_Freelancer_Roles: {
+      rangeA1Notation: 'A95:W95',
+      rangeValues: '[["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","=C95*D95*F95","=IFERROR( SUM(G95-J95)/G95,)","=C95*D95","=I95*E95","","","","","","","=+P95-I95","","","","","",""]]'
+    },
+    DirBill_Footer_ThirdParty_Section: {
+      rangeA1Notation: 'A112:W113',
+      rangeValues: '[["GRAND TOTAL 3RD PARTY PRODUCTION COSTS","","","","","","","Extended Cost","","Cost w/Cont","","SELL","","","","","","","","","","",""],["","","","","","","",0,"",0,"",0,"",0,"",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","=SUM(Deliverable_Template_Category_ThirdParty_ExtendedCostSubtotal)","","=SUM(Deliverable_Template_Category_ThirdParty_CostWithContSubTotal)","","","","=SUM(Deliverable_Template_Category_ThirdParty_SubtotalDirectBill)","","=SUM(Deliverable_Template_Category_ThirdParty_SubtotalActualAmount)","=SUM(Deliverable_Template_Category_ThirdParty_SubTotalVariance)","","","","","",""]]'
+    },
+    DirBill_Footer_XD_TotalSell: {
+      rangeA1Notation: 'G102',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(G100:G101)"]]'
+    },
+    DirBill_Footer_ThirdParty_ExtendedCostTotal: {
+      rangeA1Notation: 'H113',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Deliverable_Template_Category_ThirdParty_ExtendedCostSubtotal)"]]'
+    },
+    DirBill_Category_ThirdParty_Role: {
+      rangeA1Notation: 'A110:W110',
+      rangeValues: '[["Pick a Job Title","","",0,0,"","",0,0.04,0,"",0,"n",0,"",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","=D110*E110","=universal_contingency","=IF(M110=\\"y\\",0,H110+(H110*I110))","=ProjectInformationSummary!G$7","=IF(M110=\\"y\\",0,J110+(J110*K110))","","=IF(M110=\\"Y\\",(H110+H110*I110),0)","","","=+P110-H110","","","","","",""]]'
+    },
+    DirBill_Account_XD_Roles: {
+      rangeA1Notation: 'A20:W20',
+      rangeValues: '[["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","=C20*D20","","=F20*E20","","","","","","","","","","=+P20-E20","","","","","",""]]'
+    },
+    DirBill_Measurement_XD_Roles: {
+      rangeA1Notation: 'A60:W60',
+      rangeValues: '[["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","=C60*D60","","=F60*E60","","","","","","","","","","=+P60-E60","","","","","",""]]'
+    },
+    DirBill_Production_Freelancer_Roles: {
+      rangeA1Notation: 'A71:W71',
+      rangeValues: '[["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","=C71*D71*F71","=IFERROR( SUM(G71-J71)/G71,)","=C71*D71","=I71*E71","","","","","","","=+P71-I71","","","","","",""]]'
+    },
+    DirBill_Measurement_Freelancer_Roles: {
+      rangeA1Notation: 'A63:W63',
+      rangeValues: '[["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","=C63*D63*F63","=IFERROR( SUM(G63-J63)/G63,)","=C63*D63","=I63*E63","","","","","","","=+P63-I63","","","","","",""]]'
+    },
+    DirBill_Category_ThirdParty_SubtotalDirectBill: {
+      rangeA1Notation: 'N111',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Section,,13))"]]'
+    },
+    DirBill_Account_Freelancer_Roles: {
+      rangeA1Notation: 'A23:W23',
+      rangeValues: '[["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","=C23*D23*F23","=IFERROR( SUM(G23-J23)/G23,)","=C23*D23","=I23*E23","","","","","","","=+P23-I23","","","","","",""]]'
+    },
+    DirBill_Logistics_XD_Section: {
+      rangeA1Notation: 'A50:W57',
+      rangeValues: '[["Logistics","","QTY","Total HRS","Total HRS","Sell Rate","Total Sell","Margin","NOTES:",""," ","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Staff Name","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""],["","Sub Total Service Area 1 Staff",0,"",0,"",0,"","","","","","","","",0,0,"","","","","",""],["FREELANCE","Freelance Name","QTY","Total Freelance Hours","HOURLY Freelance Cost ","Sell Rate","Total Sell","Margin","Total Freelance Hours","Total Freelance Cost","NOTES:","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""],["","Sub Total Service Area 1 Freelance",0,"","","",0,"",0,0,"","","","","",0,0,"","","","","",""],["End Of Section","Total Service Area 1",0,"","","",0,"","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=C52*D52","","=F52*E52","","","","","","","","","","=+P52-E52","","","","","",""],["","","=SUM(INDEX(DirBill_Logistics_XD_Roles,,3))","","=SUM(INDEX(DirBill_Logistics_XD_Roles,,5))","","=SUM(INDEX(DirBill_Logistics_XD_Roles,,7))","","","","","","","","","=SUM(INDEX(DirBill_Logistics_XD_Roles,,16))","=SUM(INDEX(DirBill_Logistics_XD_Roles,,17))","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","=C55*D55*F55","=IFERROR( SUM(G55-J55)/G55,)","=C55*D55","=I55*E55","","","","","","","=+P55-I55","","","","","",""],["","","=SUM(INDEX(DirBill_Logistics_Freelancer_Roles,,3))","","","","=SUM(INDEX(DirBill_Logistics_Freelancer_Roles,,7))","","=SUM(INDEX(DirBill_Logistics_Freelancer_Roles,,9))","=SUM(INDEX(DirBill_Logistics_Freelancer_Roles,,10))","","","","","","=SUM(INDEX(DirBill_Logistics_Freelancer_Roles,,16))","=SUM(INDEX(DirBill_Logistics_Freelancer_Roles,,17))","","","","","",""],["","","=SUM(INDEX(DirBill_Logistics_XD_Roles,,3),INDEX(DirBill_Logistics_Freelancer_Roles,,3))","","","","=SUM(INDEX(DirBill_Logistics_XD_Roles,,7),INDEX(DirBill_Logistics_Freelancer_Roles,,7))","","","","","","","","","","","","","","","",""]]'
+    },
+    DirBill_ThirdParty_CostWithContTotal: {
+      rangeA1Notation: 'J113',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Deliverable_Template_Category_ThirdParty_CostWithContSubTotal)"]]'
+    },
+    DirBill_Exhibits_and_Environments_XD_Section: {
+      rangeA1Notation: 'A42:W49',
+      rangeValues: '[["Exhibits_and_Environments","","QTY","Total HRS","Total HRS","Sell Rate","Total Sell","Margin","NOTES:",""," ","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Staff Name","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""],["","Sub Total Service Area 1 Staff",0,"",0,"",0,"","","","","","","","",0,0,"","","","","",""],["FREELANCE","Freelance Name","QTY","Total Freelance Hours","HOURLY Freelance Cost ","Sell Rate","Total Sell","Margin","Total Freelance Hours","Total Freelance Cost","NOTES:","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""],["","Sub Total Service Area 1 Freelance",0,"","","",0,"",0,0,"","","","","",0,0,"","","","","",""],["End Of Section","Total Service Area 1",0,"","","",0,"","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=C44*D44","","=F44*E44","","","","","","","","","","=+P44-E44","","","","","",""],["","","=SUM(INDEX(DirBill_Exhibits_and_Environments_XD_Roles,,3))","","=SUM(INDEX(DirBill_Exhibits_and_Environments_XD_Roles,,5))","","=SUM(INDEX(DirBill_Exhibits_and_Environments_XD_Roles,,7))","","","","","","","","","=SUM(INDEX(DirBill_Exhibits_and_Environments_XD_Roles,,16))","=SUM(INDEX(DirBill_Exhibits_and_Environments_XD_Roles,,17))","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","=C47*D47*F47","=IFERROR( SUM(G47-J47)/G47,)","=C47*D47","=I47*E47","","","","","","","=+P47-I47","","","","","",""],["","","=SUM(INDEX(DirBill_Exhibits_and_Environments_Freelancer_Roles,,3))","","","","=SUM(INDEX(DirBill_Exhibits_and_Environments_Freelancer_Roles,,7))","","=SUM(INDEX(DirBill_Exhibits_and_Environments_Freelancer_Roles,,9))","=SUM(INDEX(DirBill_Exhibits_and_Environments_Freelancer_Roles,,10))","","","","","","=SUM(INDEX(DirBill_Exhibits_and_Environments_Freelancer_Roles,,16))","=SUM(INDEX(DirBill_Exhibits_and_Environments_Freelancer_Roles,,17))","","","","","",""],["","","=SUM(INDEX(DirBill_Exhibits_and_Environments_XD_Roles,,3),INDEX(DirBill_Exhibits_and_Environments_Freelancer_Roles,,3))","","","","=SUM(INDEX(DirBill_Exhibits_and_Environments_XD_Roles,,7),INDEX(DirBill_Exhibits_and_Environments_Freelancer_Roles,,7))","","","","","","","","","","","","","","","",""]]'
+    },
+    DirBill_Footer_Freelancer_TotalFreelanceMargin: {
+      rangeA1Notation: 'H101',
+      rangeValues: '[["NaN"]]',
+      rangeFormulas: '[[""]]'
+    },
+    DirBill_Exhibits_and_Environments_Freelancer_Roles: {
+      rangeA1Notation: 'A47:W47',
+      rangeValues: '[["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","=C47*D47*F47","=IFERROR( SUM(G47-J47)/G47,)","=C47*D47","=I47*E47","","","","","","","=+P47-I47","","","","","",""]]'
+    },
+    DirBill_Footer_XD_TotalStaffSell: {
+      rangeA1Notation: 'G100',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[[""]]'
+    },
+    DirBill_Header_ThirdParty_QuickLinks: {
+      rangeA1Notation: 'A106:W106',
+      rangeValues: '[["AudioCrew","","","","","","","","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["=HYPERLINK(\\"#gid=1161093838&range=B236\\",A108)","","","","","","","","","","","","","","","","","","","","","",""]]'
+    },
+    DirBill_Category_ThirdParty_Section: {
+      rangeA1Notation: 'A108:W111',
+      rangeValues: `[["AudioCrew","Individual's Name","Vendor Name","Qty","Cost / Rate","Notes","","Extended Cost","Cont.","Cost w/Cont","Mark-up","SELL","Direct Bill Y/N","Direct Bill Amt","PO#","ENTER ACTUAL AMOUNT","VARIANCE ","","","","","",""],["Pick a Job Title ","","Deliverable_Template_Category_ThirdParty_Section","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","","",0,0,"","",0,0.04,0,"",0,"n",0,"",0,0,"","","","","",""],["Subtotal","","","","","","",0,"",0.04,"",0,"",0,"",0,0,"","","","","",""]]`,
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","=D110*E110","=universal_contingency","=IF(M110=\\"y\\",0,H110+(H110*I110))","=ProjectInformationSummary!G$7","=IF(M110=\\"y\\",0,J110+(J110*K110))","","=IF(M110=\\"Y\\",(H110+H110*I110),0)","","","=+P110-H110","","","","","",""],["","","","","","","","=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Section,,7))","","=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Section,,9))","","=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Section,,11))","","=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Section,,13))","","=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Roles,,16))","=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Section,,16))","","","","","",""]]'
+    },
+    DirBill_Creative_XD_Roles: {
+      rangeA1Notation: 'A28:W28',
+      rangeValues: '[["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","=C28*D28","","=F28*E28","","","","","","","","","","=+P28-E28","","","","","",""]]'
+    },
+    DirBill_Category_ThirdParty_SubtotalSell: {
+      rangeA1Notation: 'L111',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_ThirdParty_Section,,11))"]]'
+    },
+    DirBill_Technical_XD_Section: {
+      rangeA1Notation: 'A82:W89',
+      rangeValues: '[["Technical","","QTY","Total HRS","Total HRS","Sell Rate","Total Sell","Margin","NOTES:",""," ","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Staff Name","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"`","","","","",0,"","",0,0,"","","","","",""],["","Sub Total Service Area 1 Staff",0,"",0,"",0,"","","","","","","","",0,0,"","","","","",""],["FREELANCE","Freelance Name","QTY","Total Freelance Hours","HOURLY Freelance Cost ","Sell Rate","Total Sell","Margin","Total Freelance Hours","Total Freelance Cost","NOTES:","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""],["","Sub Total Service Area 1 Freelance",0,"","","",0,"",0,0,"","","","","",0,0,"","","","","",""],["End Of Section","Total Service Area 1",0,"","","",0,"","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=C84*D84","","=F84*E84","","","","","","","","","","=+P84-E84","","","","","",""],["","","=SUM(INDEX(DirBill_Technical_XD_Roles,,3))","","=SUM(INDEX(DirBill_Technical_XD_Roles,,5))","","=SUM(INDEX(DirBill_Technical_XD_Roles,,7))","","","","","","","","","=SUM(INDEX(DirBill_Technical_XD_Roles,,16))","=SUM(INDEX(DirBill_Technical_XD_Roles,,17))","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","=C87*D87*F87","=IFERROR( SUM(G87-J87)/G87,)","=C87*D87","=I87*E87","","","","","","","=+P87-I87","","","","","",""],["","","=SUM(INDEX(DirBill_Technical_Freelancer_Roles,,3))","","","","=SUM(INDEX(DirBill_Technical_Freelancer_Roles,,7))","","=SUM(INDEX(DirBill_Technical_Freelancer_Roles,,9))","=SUM(INDEX(DirBill_Technical_Freelancer_Roles,,10))","","","","","","=SUM(INDEX(DirBill_Technical_Freelancer_Roles,,16))","=SUM(INDEX(DirBill_Technical_Freelancer_Roles,,17))","","","","","",""],["","","=SUM(INDEX(DirBill_Technical_XD_Roles,,3),INDEX(DirBill_Technical_Freelancer_Roles,,3))","","","","=SUM(INDEX(DirBill_Technical_XD_Roles,,7),INDEX(DirBill_Technical_Freelancer_Roles,,7))","","","","","","","","","","","","","","","",""]]'
+    },
+    DirBill_Footer_ThirdParty_TotalActualAmount: {
+      rangeA1Notation: 'P113',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Deliverable_Template_Category_ThirdParty_SubtotalActualAmount)"]]'
+    },
+    DirBill_Video_and_Photography_XD_Section: {
+      rangeA1Notation: 'A90:W97',
+      rangeValues: '[["Video_and_Photography","","QTY","Total HRS","Total HRS","Sell Rate","Total Sell","Margin","NOTES:",""," ","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Staff Name","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"#NUM!","","","","",0,"","",0,0,"","","","","",""],["","Sub Total Service Area 1 Staff",0,"",0,"",0,"","","","","","","","",0,0,"","","","","",""],["FREELANCE","Freelance Name","QTY","Total Freelance Hours","HOURLY Freelance Cost ","Sell Rate","Total Sell","Margin","Total Freelance Hours","Total Freelance Cost","NOTES:","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""],["","Sub Total Service Area 1 Freelance",0,"","","",0,"",0,0,"","","","","",0,0,"","","","","",""],["End Of Section","Total Service Area 1",0,"","","",0,"","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=C92*D92","","=F92*E92","","","","","","","","","","=+P92-E92","","","","","",""],["","","=SUM(INDEX(DirBill_Video_and_Photography_XD_Roles,,3))","","=SUM(INDEX(DirBill_Video_and_Photography_XD_Roles,,5))","","=SUM(INDEX(DirBill_Video_and_Photography_XD_Roles,,7))","","","","","","","","","=SUM(INDEX(DirBill_Video_and_Photography_XD_Roles,,16))","=SUM(INDEX(DirBill_Video_and_Photography_XD_Roles,,17))","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","=C95*D95*F95","=IFERROR( SUM(G95-J95)/G95,)","=C95*D95","=I95*E95","","","","","","","=+P95-I95","","","","","",""],["","","=SUM(INDEX(DirBill_Video_and_Photography_Freelancer_Roles,,3))","","","","=SUM(INDEX(DirBill_Video_and_Photography_Freelancer_Roles,,7))","","=SUM(INDEX(DirBill_Video_and_Photography_Freelancer_Roles,,9))","=SUM(INDEX(DirBill_Video_and_Photography_Freelancer_Roles,,10))","","","","","","=SUM(INDEX(DirBill_Video_and_Photography_Freelancer_Roles,,16))","=SUM(INDEX(DirBill_Video_and_Photography_Freelancer_Roles,,17))","","","","","",""],["","","=SUM(INDEX(DirBill_Video_and_Photography_XD_Roles,,3),INDEX(DirBill_Video_and_Photography_Freelancer_Roles,,3))","","","","=SUM(INDEX(DirBill_Video_and_Photography_XD_Roles,,7),INDEX(DirBill_Video_and_Photography_Freelancer_Roles,,7))","","","","","","","","","","","","","","","",""]]'
+    },
+    DirBill_Strategy_and_Marketing_Freelancer_Roles: {
+      rangeA1Notation: 'A79:W79',
+      rangeValues: '[["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","=C79*D79*F79","=IFERROR( SUM(G79-J79)/G79,)","=C79*D79","=I79*E79","","","","","","","=+P79-I79","","","","","",""]]'
+    }
+  },
+  Deliverable_Template: {
+    Deliverable_Template_Footer_XD_TotalHours: {
+      rangeA1Notation: 'E30',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(E28:E29)"]]'
+    },
+    Deliverable_Template_Category_ThirdParty_CostWithContSubTotal: {
+      rangeA1Notation: 'J39',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=iferror(SUM(INDEX(Deliverable_Template_Category_ThirdParty_Roles,,10)),)"]]'
+    },
+    Deliverable_Template_Footer_XD_Section: {
+      rangeA1Notation: '26:30',
+      rangeValues: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","TOTAL XDA AGENCY FEES","","","Total Hours","","Total Sell","Margin %","","","","","","","","","Total ACTUAL Hours","Total VARIANCE","","","","",""],["","","Total Staff","",0,"",0,"#NUM!","","","","","","","","",0,0,"","","","",""],["","","Total Freelance","",0,"",0,"","","","","","","","","",0,0,"","","","",""],["","","Total","",0,"",0,"#NUM!","","","","","","","","",0,0,"","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=SUM(Deliverable_Template_Category_XD_SubTotalHours)","","=SUM(Deliverable_Template_Category_XD_SubTotalSell)","","","","","","","","","","=SUM(Deliverable_Template_Category_XD_SubTotalActualHours)","=SUM(Deliverable_Template_Category_XD_SubTotalVariance)","","","","",""],["","","","","=SUM(Deliverable_Template_Category_Freelancer_SubTotalHours)","","=SUM(Deliverable_Template_Category_Freelancer_SubTotalSell)","","","","","","","","","","=SUM(Deliverable_Template_Category_Freelancer_SubTotalActualHours)","=SUM(Deliverable_Template_Category_Freelancer_SubTotalVariance)","","","","",""],["","","","","=SUM(E28:E29)","","=SUM(G28:G29)","","","","","","","","","","=iferror(Q28+Q29,)","=iferror(R28+R29,)","","","","",""]]'
+    },
+    Deliverable_Template_Category_XD_Roles: {
+      rangeA1Notation: '20:20',
+      rangeValues: '[["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"","","","","",0,"","",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","=C20*D20","","=F20*E20","","","","","","","","","","=+P20-E20","","","","","",""]]'
+    },
+    Deliverable_Template_Footer_XD_TotalStaffVariance: {
+      rangeA1Notation: 'R28',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Deliverable_Template_Category_XD_SubTotalVariance)"]]'
+    },
+    Deliverable_Template_Category_Freelancer_SubTotalCost: {
+      rangeA1Notation: 'J24',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_Freelancer_Roles,,10))"]]'
+    },
+    Deliverable_Template_Footer_XD_TotalStaffMargin: {
+      rangeA1Notation: 'H28',
+      rangeValues: '[["#NUM!"]]',
+      rangeFormulas: '[[""]]'
+    },
+    Deliverable_Template_Footer_ThirdParty_TotalActualAmount: {
+      rangeA1Notation: 'P41',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Deliverable_Template_Category_ThirdParty_SubtotalActualAmount)"]]'
+    },
+    Deliverable_Template_Footer_XD_TotalStaffHours: {
+      rangeA1Notation: 'E28',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Deliverable_Template_Category_XD_SubTotalHours)"]]'
+    },
+    Deliverable_Template_Category_ThirdParty_Roles: {
+      rangeA1Notation: '38:38',
+      rangeValues: '[["Pick a Job Title","","",0,0,"","",0,0.04,0,"",0,"n",0,"",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","=D38*E38","=universal_contingency","=IF(M38=\\"y\\",0,H38+(H38*I38))","=ProjectInformationSummary!G$7","=IF(M38=\\"y\\",0,J38+(J38*K38))","","=IF(M38=\\"Y\\",(H38+H38*I38),0)","","","=+P38-H38","","","","","",""]]'
+    },
+    Deliverable_Template_Category_Freelancer_SubTotalVariance: {
+      rangeA1Notation: 'Q24',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_Freelancer_Roles,,17))"]]'
+    },
+    Deliverable_Template_Footer_XD_TotalSell: {
+      rangeA1Notation: 'G30',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(G28:G29)"]]'
+    },
+    Deliverable_Template_Footer_ThirdParty_TotalVariance: {
+      rangeA1Notation: 'Q41',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=iferror(SUM(Deliverable_Template_Category_ThirdParty_SubTotalVariance),)"]]'
+    },
+    Deliverable_Template_Category_XD_SubTotalQty: {
+      rangeA1Notation: 'C21',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_XD_Roles,,3))"]]'
+    },
+    Deliverable_Template_Footer_Freelancer_TotalFreelanceMargin: {
+      rangeA1Notation: 'H29',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    Deliverable_Template_Header_Main_Section: {
+      rangeA1Notation: '1:17',
+      rangeValues: '[["The XD Agency - LABOR SCHEDULE","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["Enter Deliverable Name >","","","FINANCIAL DASHBOARD","","","","","","","","","","","","","","","","","","",""],["","","","Category:","","XDA Fees Sell","3rd Party Sell","Gross Billings","3rd Party Costs","Net Revenue","XDA  Staff Cost","Freelance Cost","XDA Fees Cost","Net Profit - $$","Net Profit %","XDA Blended Rate","Direct Bill","ACTUAL 3rd Party Costs","VARIANCE","","","",""],["","","","This Deliverables:","",0,0,0,0,0,0,0,0,0,"","",0,0,0,"","","",""],["","","","Entire Project:","",0,0,0,0,0,0,0,0,0,"","","","","","","","",""],["","","","Start Date","","Delivery Date","","","","","","","","","","","","","","","","",""],["","","","GO TO  - >","Home","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","Net Rev %  Legend:","Above 25%","20% to 24%","19% and Below","","","","","","","","","","","","","","","","",""],["","","","","","","","3rd Party Sell:","",0,"","","","","","","","","","","","",""],["CLIENT NAME:","Client Name","","","","NET REV % ","","3rd Party Costs W/ Cont:","",0,"","","","","","","","","","","","",""],["PROJECT NAME:","Project Name","","","","","","3rd Party Revenue:","",0,"","","","","","","","","","","","",""],["JOB#:","","","","","","","Freelance Hours","XDA Team Hours","Total Hours","SELL","Net Profit on Fees","","","","","","","","","","",""],["VERSION #:","","","","","","",0,0,0,0,"#NUM!","","","","","","","","","","",""],["ENTER INFORMATION IN WHITE CELLS ONLY","","Net Profit Legend:","Above 30%","26 to 29 %","25% and Below","","BUDGETED","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","=Deliverable_Template_Footer_XD_TotalSell","=Deliverable_Template_Footer_ThirdParty_TotalSell","=iferror(F5+G5,)","=iferror(SUM(Deliverable_Template_Footer_ThirdParty_ExtendedCostTotal-Deliverable_Template_Footer_ThirdParty_DirectBillTotal),)","=iferror(H5-I5,)","","","=iferror(K5+L5,)","=iferror(J5-M5,)","=iferror(N5/J5,)","=iferror(F5/E30,)","=iferror(Deliverable_Template_Footer_ThirdParty_DirectBillTotal,)","=iferror(Deliverable_Template_Footer_ThirdParty_TotalActualAmount,)","=iferror(+R5-I5,)","","","",""],["","","","","","=ProjectInformationSummary!$D$22","=ProjectInformationSummary!$C$22","=iferror(F6+G6,)","=ProjectInformationSummary!$F$22","=iferror(H6-I6,)","=ProjectInformationSummary!G22","=ProjectInformationSummary!H22","=iferror(ProjectInformationSummary!$G$22+ProjectInformationSummary!$H$22,)","=iferror(J6-M6,)","=iferror(N6/J6,)","=ProjectInformationSummary!$D$27","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","=iferror(Deliverable_Template_Footer_ThirdParty_TotalSell,)","","","","","","","","","","","","",""],["","=ProjectInformationSummary!C8","","","","","","","","=iferror(Deliverable_Template_Footer_ThirdParty_CostWithContTotal,)","","","","","","","","","","","","",""],["","=ProjectInformationSummary!C9","","","","","","","","=J11-J12","","","","","","","","","","","","",""],["","=ProjectInformationSummary!C11","","","","=IFERROR(J5/H5,)","","","","","","","","","","","","","","","","",""],["","=ProjectInformationSummary!C12","","","","","","=Deliverable_Template_Footer_Freelancer_TotalFreelanceHours","=Deliverable_Template_Footer_XD_TotalStaffHours","=Deliverable_Template_Footer_XD_TotalHours","=Deliverable_Template_Footer_XD_TotalSell","=Deliverable_Template_Footer_XD_TotalMarginPercentage","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""]]'
+    },
+    Deliverable_Template_Category_XD_SubTotalVariance: {
+      rangeA1Notation: 'Q21',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_XD_Roles,,17))"]]'
+    },
+    Deliverable_Template_Category_XD_TotalHours: {
+      rangeA1Notation: 'C25',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_XD_Roles,,3),INDEX(Deliverable_Template_Category_Freelancer_Roles,,3))"]]'
+    },
+    Deliverable_Template_Category_ThirdParty_ExtendedCostSubtotal: {
+      rangeA1Notation: 'H39',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=iferror(SUM(INDEX(Deliverable_Template_Category_ThirdParty_Roles,,8)),)"]]'
+    },
+    Deliverable_Template_Category_XD_SubTotalHours: {
+      rangeA1Notation: 'E21',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_XD_Roles,,5))"]]'
+    },
+    Deliverable_Template_Category_Freelancer_SubTotalHours: {
+      rangeA1Notation: 'I24',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_Freelancer_Roles,,9))"]]'
+    },
+    Deliverable_Template_Footer_ThirdParty_TotalSell: {
+      rangeA1Notation: 'L41',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[[""]]'
+    },
+    Deliverable_Template_Footer_Freelancer_TotalFreelanceSell: {
+      rangeA1Notation: 'G29',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Deliverable_Template_Category_Freelancer_SubTotalSell)"]]'
+    },
+    Deliverable_Template_Category_XD_Section: {
+      rangeA1Notation: '18:25',
+      rangeValues: '[["Measurement","","QTY","Total HRS","Total HRS","Sell Rate","Total Sell","Margin","NOTES:",""," ","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Staff Name","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","Choose XD Agent Member",0,0,0,0,0,"","","","","",0,"","",0,0,"","","","","",""],["","Sub Total Service Area 1 Staff",0,"",0,"",0,"","","","","","","","",0,0,"","","","","",""],["FREELANCE","Freelance Name","QTY","Total Freelance Hours","HOURLY Freelance Cost ","Sell Rate","Total Sell","Margin","Total Freelance Hours","Total Freelance Cost","NOTES:","","Enter Pad Hours","Notes for Rod","PO#","ENTER ACTUAL HOURS","VARIANCE ","","","","","",""],["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""],["","Sub Total Service Area 1 Freelance",0,"","","",0,"",0,0,"","","","","",0,0,"","","","","",""],["End Of Section","Total Service Area 1",0,"","","",0,"","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","=C20*D20","","=F20*E20","","","","","","","","","","=+P20-E20","","","","","",""],["","","=SUM(INDEX(Deliverable_Template_Category_XD_Roles,,3))","","=SUM(INDEX(Deliverable_Template_Category_XD_Roles,,5))","","=SUM(INDEX(Deliverable_Template_Category_XD_Roles,,7))","=iferror(,)","","","","","","","","=SUM(INDEX(Deliverable_Template_Category_XD_Roles,,16))","=SUM(INDEX(Deliverable_Template_Category_XD_Roles,,17))","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","=C23*D23*F23","=iferror((G23-J23)/G23,)","=C23*D23","=I23*E23","","","","","","","=+P23-I23","","","","","",""],["","","=SUM(INDEX(Deliverable_Template_Category_Freelancer_Roles,,3))","","","","=SUM(INDEX(Deliverable_Template_Category_Freelancer_Roles,,7))","","=SUM(INDEX(Deliverable_Template_Category_Freelancer_Roles,,9))","=SUM(INDEX(Deliverable_Template_Category_Freelancer_Roles,,10))","","","","","","=SUM(INDEX(Deliverable_Template_Category_Freelancer_Roles,,16))","=SUM(INDEX(Deliverable_Template_Category_Freelancer_Roles,,17))","","","","","",""],["","","=SUM(INDEX(Deliverable_Template_Category_XD_Roles,,3),INDEX(Deliverable_Template_Category_Freelancer_Roles,,3))","","","","=SUM(INDEX(Deliverable_Template_Category_XD_Roles,,7),INDEX(Deliverable_Template_Category_Freelancer_Roles,,7))","","","","","","","","","","","","","","","",""]]'
+    },
+    Deliverable_Template_Category_XD_TotalStaffMargin: {
+      rangeA1Notation: 'H21',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[["=iferror(,)"]]'
+    },
+    Deliverable_Template_Category_Freelancer_SubTotalSell: {
+      rangeA1Notation: 'G24',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_Freelancer_Roles,,7))"]]'
+    },
+    Deliverable_Template_Category_XD_TotalSell: {
+      rangeA1Notation: 'G25',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_XD_Roles,,7),INDEX(Deliverable_Template_Category_Freelancer_Roles,,7))"]]'
+    },
+    Deliverable_Template_Category_Freelancer_SubTotalActualHours: {
+      rangeA1Notation: 'P24',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_Freelancer_Roles,,16))"]]'
+    },
+    Deliverable_Template_Footer_ThirdParty_DirectBillTotal: {
+      rangeA1Notation: 'N41',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Deliverable_Template_Category_ThirdParty_SubtotalDirectBill)"]]'
+    },
+    Deliverable_Template_Footer_XD_TotalMarginPercentage: {
+      rangeA1Notation: 'H30',
+      rangeValues: '[["#NUM!"]]',
+      rangeFormulas: '[[""]]'
+    },
+    Deliverable_Template_Category_ThirdParty_SubtotalDirectBill: {
+      rangeA1Notation: 'N39',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=iferror(SUM(INDEX(Deliverable_Template_Category_ThirdParty_Roles,,14)),)"]]'
+    },
+    Deliverable_Template_Category_Freelancer_SubTotalQty: {
+      rangeA1Notation: 'C24',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_Freelancer_Roles,,3))"]]'
+    },
+    Deliverable_Template_Footer_ThirdParty_ExtendedCostTotal: {
+      rangeA1Notation: 'H41',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Deliverable_Template_Category_ThirdParty_ExtendedCostSubtotal)"]]'
+    },
+    Deliverable_Template_Title_Header: {
+      rangeA1Notation: 'B3',
+      rangeValues: '[[""]]',
+      rangeFormulas: '[[""]]'
+    },
+    Deliverable_Template_Category_ThirdParty_SubTotalVariance: {
+      rangeA1Notation: 'Q39',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=iferror(SUM(INDEX(Deliverable_Template_Category_ThirdParty_Roles,,17)),)"]]'
+    },
+    Deliverable_Template_Header_Information: {
+      rangeA1Notation: 'F5:S5',
+      rangeValues: '[[0,0,0,0,0,0,0,0,0,"","",0,0,0]]',
+      rangeFormulas: '[["=Deliverable_Template_Footer_XD_TotalSell","=Deliverable_Template_Footer_ThirdParty_TotalSell","=iferror(F5+G5,)","=iferror(SUM(Deliverable_Template_Footer_ThirdParty_ExtendedCostTotal-Deliverable_Template_Footer_ThirdParty_DirectBillTotal),)","=iferror(H5-I5,)","","","=iferror(K5+L5,)","=iferror(J5-M5,)","=iferror(N5/J5,)","=iferror(F5/E30,)","=iferror(Deliverable_Template_Footer_ThirdParty_DirectBillTotal,)","=iferror(Deliverable_Template_Footer_ThirdParty_TotalActualAmount,)","=iferror(+R5-I5,)"]]'
+    },
+    Deliverable_Template_Category_XD_SubTotalActualHours: {
+      rangeA1Notation: 'P21',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_XD_Roles,,16))"]]'
+    },
+    Deliverable_Template_Footer_Freelancer_TotalFreelanceActualHours: {
+      rangeA1Notation: 'Q29',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Deliverable_Template_Category_Freelancer_SubTotalActualHours)"]]'
+    },
+    Deliverable_Template_Category_XD_SubTotalSell: {
+      rangeA1Notation: 'G21',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(INDEX(Deliverable_Template_Category_XD_Roles,,7))"]]'
+    },
+    Deliverable_Template_Category_Freelancer_Roles: {
+      rangeA1Notation: '23:23',
+      rangeValues: '[["Pick a Job Title","Insert Freelance Name",0,0,0,0,0,"",0,0," ","",0,"","","",0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","=C23*D23*F23","=iferror((G23-J23)/G23,)","=C23*D23","=I23*E23","","","","","","","=+P23-I23","","","","","",""]]'
+    },
+    Deliverable_Template_Footer_ThirdParty_CostWithContTotal: {
+      rangeA1Notation: 'J41',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Deliverable_Template_Category_ThirdParty_CostWithContSubTotal)"]]'
+    },
+    Deliverable_Template_Category_ThirdParty_SubtotalSell: {
+      rangeA1Notation: 'L39',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=iferror(SUM(INDEX(Deliverable_Template_Category_ThirdParty_Roles,,12)),)"]]'
+    },
+    Deliverable_Template_Footer_Freelancer_TotalFreelanceHours: {
+      rangeA1Notation: 'E29',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Deliverable_Template_Category_Freelancer_SubTotalHours)"]]'
+    },
+    Deliverable_Template_Header_ThirdParty_Section: {
+      rangeA1Notation: '31:35',
+      rangeValues: '[["","","","","","","","","","","","","","","","","","","","","","",""],["XDA - 3rd Party Costs","","","","","","","","","","","","","","","","","","","","","",""],["3rd Party Quick Links","","","","","","","","","","","","","","","","","","","","","",""],["AudioCrew","","","","","","","","","","","","","","","","","","","","","",""],["End","","","","","","","","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["=HYPERLINK(\\"#gid=1161093838&range=B236\\",A36)","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""]]'
+    },
+    Deliverable_Template_Header_XD_StaffCost: {
+      rangeA1Notation: 'K5',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[[""]]'
+    },
+    Deliverable_Template_Category_ThirdParty_Section: {
+      rangeA1Notation: '36:39',
+      rangeValues: `[["AudioCrew","Individual's Name","Vendor Name","Qty","Cost / Rate","Notes","","Extended Cost","Cont.","Cost w/Cont","Mark-up","SELL","Direct Bill Y/N","Direct Bill Amt","PO#","ENTER ACTUAL AMOUNT","VARIANCE ","","","","","",""],["Pick a Job Title ","","","","","","","","","","","","","","","","","","","","","",""],["Pick a Job Title","","",0,0,"","",0,0.04,0,"",0,"n",0,"",0,0,"","","","","",""],["Subtotal","","","","","","",0,"",0,"",0,"",0,"",0,0,"","","","","",""]]`,
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","=D38*E38","=universal_contingency","=IF(M38=\\"y\\",0,H38+(H38*I38))","=ProjectInformationSummary!G$7","=IF(M38=\\"y\\",0,J38+(J38*K38))","","=IF(M38=\\"Y\\",(H38+H38*I38),0)","","","=+P38-H38","","","","","",""],["","","","","","","","=iferror(SUM(INDEX(Deliverable_Template_Category_ThirdParty_Roles,,8)),)","","=iferror(SUM(INDEX(Deliverable_Template_Category_ThirdParty_Roles,,10)),)","","=iferror(SUM(INDEX(Deliverable_Template_Category_ThirdParty_Roles,,12)),)","","=iferror(SUM(INDEX(Deliverable_Template_Category_ThirdParty_Roles,,14)),)","","=iferror(SUM(INDEX(Deliverable_Template_Category_ThirdParty_Roles,,16)),)","=iferror(SUM(INDEX(Deliverable_Template_Category_ThirdParty_Roles,,17)),)","","","","","",""]]'
+    },
+    Deliverable_Template_Footer_Freelancer_TotalFreelanceVariance: {
+      rangeA1Notation: 'R29',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Deliverable_Template_Category_Freelancer_SubTotalVariance)"]]'
+    },
+    Deliverable_Template_Footer_XD_TotalStaffActualHours: {
+      rangeA1Notation: 'Q28',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Deliverable_Template_Category_XD_SubTotalActualHours)"]]'
+    },
+    Deliverable_Template_Header_ThirdParty_QuickLinks: {
+      rangeA1Notation: '34:34',
+      rangeValues: '[["AudioCrew","","","","","","","","","","","","","","","","","","","","","",""]]',
+      rangeFormulas: '[["=HYPERLINK(\\"#gid=1161093838&range=B236\\",A36)","","","","","","","","","","","","","","","","","","","","","",""]]'
+    },
+    Deliverable_Template_Category_ThirdParty_SubtotalActualAmount: {
+      rangeA1Notation: 'P39',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=iferror(SUM(INDEX(Deliverable_Template_Category_ThirdParty_Roles,,16)),)"]]'
+    },
+    Deliverable_Template_Footer_ThirdParty_Section: {
+      rangeA1Notation: '40:41',
+      rangeValues: '[["GRAND TOTAL 3RD PARTY PRODUCTION COSTS","","","","","","","Extended Cost","","Cost w/Cont","","SELL","","","","","","","","","","",""],["","","","","","","",0,"",0,"",0,"",0,"",0,0,"","","","","",""]]',
+      rangeFormulas: '[["","","","","","","","","","","","","","","","","","","","","","",""],["","","","","","","","=SUM(Deliverable_Template_Category_ThirdParty_ExtendedCostSubtotal)","","=SUM(Deliverable_Template_Category_ThirdParty_CostWithContSubTotal)","","","","=SUM(Deliverable_Template_Category_ThirdParty_SubtotalDirectBill)","","=SUM(Deliverable_Template_Category_ThirdParty_SubtotalActualAmount)","=iferror(SUM(Deliverable_Template_Category_ThirdParty_SubTotalVariance),)","","","","","",""]]'
+    },
+    Deliverable_Template_Footer_XD_TotalStaffSell: {
+      rangeA1Notation: 'G28',
+      rangeValues: '[[0]]',
+      rangeFormulas: '[["=SUM(Deliverable_Template_Category_XD_SubTotalSell)"]]'
+    }
+  }
+}
