@@ -57,9 +57,7 @@ function getDataProperty() {
 }
 //////////////////////////////////////////////////////////////////////////////////////////////
 
-///I should make the following be a check for when looking up the data for calculations
-//Maybe it will speed up the process
-//when deliverable is created, add it to the deliverable property
+/* ADD */
 function addDeliverableToDataProperty(sheetName, categories) {
   if (properties.getProperty("deliverables")) {
     deliverables = JSON.parse(properties.getProperty("deliverables"));
@@ -80,18 +78,8 @@ function addDeliverableToDataProperty(sheetName, categories) {
   return deliverables;
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////
-function checkResponse() {
-  // /**
-  //  * @OnlyCurrentDoc
-  let sheetName = "Test";
-  let categories = ["Category1", "Category2"];
-  //return addDeliverableToDataProperty(sheetName, categories);
-  return deleteAllProperties();
-}
-//////////////////////////////////////////////////////////////////////////////////////////////
-//
 
+/* DELETE */
 //Delete All properties
 function deleteAllProperties() {
   try {

@@ -2,7 +2,6 @@
  * @OnlyCurrentDoc
  */
 
-const properties = PropertiesService.getScriptProperties();
 
 //lets create the function that makes the object above happen
 function getAllNamedRangesOfSpreadsheet() {
