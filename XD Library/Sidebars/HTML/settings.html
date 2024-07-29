@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        padding: 15px;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h3 class="text-center">Settings</h3>
+      <ul class="nav nav-tabs" id="settingsTabs" role="tablist">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            id="dropdown-tab"
+            data-toggle="tab"
+            href="#dropdown"
+            role="tab"
+            aria-controls="dropdown"
+            aria-selected="true"
+            >Dropdown Colors</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            id="color-scale-tab"
+            data-toggle="tab"
+            href="#color-scale"
+            role="tab"
+            aria-controls="color-scale"
+            aria-selected="false"
+            >Text Color Scale</a
+          >
+        </li>
+      </ul>
+      <div class="tab-content" id="settingsTabsContent">
+        <div
+          class="tab-pane fade show active"
+          id="dropdown"
+          role="tabpanel"
+          aria-labelledby="dropdown-tab"
+        >
+          <form id="dropdownForm">
+            <div class="form-group">
+              <label for="header">Select Dropdown Header:</label>
+              <select id="header" name="header" class="form-control"></select>
+            </div>
+            <div class="form-group">
+              <label for="targetRangeDropdown">Target Range:</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  id="targetRangeDropdown"
+                  name="targetRangeDropdown"
+                  class="form-control"
+                  placeholder="e.g., A2:A100"
+                />
+                <div class="input-group-append">
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    onclick="chooseRange('targetRangeDropdown')"
+                  >
+                    Choose Range
+                  </button>
+                </div>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="btn btn-primary btn-block"
+              onclick="applyDropdownSettings()"
+            >
+              Apply Dropdown Colors
+            </button>
+          </form>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="color-scale"
+          role="tabpanel"
+          aria-labelledby="color-scale-tab"
+        >
+          <form id="colorScaleForm">
+            <div class="form-group">
+              <label for="targetRangeColorScale">Target Range:</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  id="targetRangeColorScale"
+                  name="targetRangeColorScale"
+                  class="form-control"
+                  placeholder="e.g., A2:A100"
+                />
+                <div class="input-group-append">
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    onclick="chooseRange('targetRangeColorScale')"
+                  >
+                    Choose Range
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="startColor">Start Color:</label>
+              <input
+                type="color"
+                id="startColor"
+                name="startColor"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="midColor">Mid Color:</label>
+              <input
+                type="color"
+                id="midColor"
+                name="midColor"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="endColor">End Color:</label>
+              <input
+                type="color"
+                id="endColor"
+                name="endColor"
+                class="form-control"
+              />
+            </div>
+            <button
+              type="button"
+              class="btn btn-primary btn-block"
+              onclick="applyColorScaleSettings()"
+            >
+              Apply Text Color Scale
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+      // Apply Dropdown Colors
+      function applyDropdownSettings() {
+        var header = document.getElementById("header").value;
+        var targetRange = document.getElementById("targetRangeDropdown").value;
+        google.script.run
+          .withSuccessHandler(() => {
+            console.log(`success`);
+            google.script.host.close();
+          })
+          .applyDropdownColors(header, targetRange);
+      }
+
+      // Apply Text Color Scale
+      function applyColorScaleSettings() {
+        var targetRange = document.getElementById(
+          "targetRangeColorScale"
+        ).value;
+        var startColor = document.getElementById("startColor").value;
+        var midColor = document.getElementById("midColor").value;
+        var endColor = document.getElementById("endColor").value;
+        google.script.run
+          .withSuccessHandler(() => {
+            console.log(`success`);
+            google.script.host.close();
+          })
+          .applyTextColorScale(targetRange, startColor, midColor, endColor);
+      }
+
+      // Populate Headers
+      function populateHeaders() {
+        google.script.run
+          .withSuccessHandler(function (headers) {
+            var select = document.getElementById("header");
+            headers.forEach(function (header) {
+              var option = document.createElement("option");
+              option.text = header;
+              option.value = header;
+              select.add(option);
+            });
+          })
+          .getDropdownHeaders();
+      }
+
+      // Choose Range
+      function chooseRange(inputId) {
+        google.script.run
+          .withSuccessHandler(function (range) {
+            document.getElementById(inputId).value = range;
+          })
+          .promptRange();
+      }
+      document.addEventListener("DOMContentLoaded", populateHeaders);
+    </script>
+  </body>
+</html>

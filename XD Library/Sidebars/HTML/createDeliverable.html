@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+      label,
+      input,
+      button {
+        margin-bottom: 10px;
+      }
+      input[type="text"],
+      input[type="date"] {
+        padding: 8px;
+        font-size: 14px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      button {
+        padding: 10px;
+        font-size: 14px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      button:disabled {
+        background-color: #a5d6a7;
+        cursor: not-allowed;
+      }
+      .loading {
+        display: none;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="deliverableForm">
+      <label for="deliverableName">Deliverable Name:</label>
+      <input type="text" id="deliverableName" name="deliverableName" required />
+      <label for="startDate">Start Date:</label>
+      <input type="date" id="startDate" name="startDate" required />
+      <label for="deliveryDate">Delivery Date:</label>
+      <input type="date" id="deliveryDate" name="deliveryDate" required />
+      <input
+        type="hidden"
+        id="spreadsheetId"
+        name="spreadsheetId"
+        value="<?= spreadsheetId ?>"
+      />
+      <button type="button" onclick="submitForm()">Submit</button>
+      <div class="loading" id="loadingIndicator">Loading...</div>
+    </form>
+
+    <script>
+      function submitForm() {
+        const deliverableName =
+          document.getElementById("deliverableName").value;
+        const startDate = document.getElementById("startDate").value;
+        const deliveryDate = document.getElementById("deliveryDate").value;
+        const spreadsheetId = document.getElementById("spreadsheetId").value;
+        const submitButton = document.querySelector("button");
+        const loadingIndicator = document.getElementById("loadingIndicator");
+
+        submitButton.disabled = true;
+        loadingIndicator.style.display = "block";
+
+        google.script.run
+          .withSuccessHandler(() => {
+            google.script.host.close();
+          })
+          .withFailureHandler((error) => {
+            console.error("Error:", error.message);
+            alert("Failed to create deliverable: " + error.message);
+            submitButton.disabled = false;
+            loadingIndicator.style.display = "none";
+          })
+          .createDeliverable(
+            spreadsheetId,
+            deliverableName,
+            startDate,
+            deliveryDate
+          );
+      }
+    </script>
+  </body>
+</html>
