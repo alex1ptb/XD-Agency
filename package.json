@@ -1,0 +1,25 @@
+{
+  "name": "xd-agency",
+  "version": "1.0.0",
+  "description": "XD Agency Automation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex1ptb/XD-Agency.git"
+  },
+  "keywords": [
+    "XD",
+    "Agency",
+    "GAS",
+    "Library"
+  ],
+  "author": "Alex Howard",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alex1ptb/XD-Agency/issues"
+  },
+  "homepage": "https://github.com/alex1ptb/XD-Agency#readme"
+}

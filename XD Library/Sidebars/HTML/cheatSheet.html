@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      #accordion {
+        width: 100%;
+      }
+
+      .accordion {
+        background-color: #0288d1;
+        color: #fff;
+        cursor: pointer;
+        padding: 15px;
+        width: 100%;
+        text-align: left;
+        border: none;
+        outline: none;
+        transition: 0.4s;
+        font-size: 16px;
+        margin-top: 5px;
+        border-radius: 5px;
+      }
+
+      .active,
+      .accordion:hover {
+        background-color: #0277bd;
+      }
+
+      .panel {
+        padding: 0 18px;
+        display: none;
+        background-color: white;
+        overflow: hidden;
+        margin-bottom: 5px;
+        border-left: 4px solid #0288d1;
+        border-radius: 0 0 5px 5px;
+      }
+
+      .sub-category {
+        margin-left: 10px;
+      }
+
+      .category,
+      .sub-category {
+        margin-bottom: 10px;
+      }
+
+      .sub-category .accordion {
+        background-color: #039be5;
+      }
+
+      .sub-category .active,
+      .sub-category .accordion:hover {
+        background-color: #0288d1;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="accordion"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var acc = document.getElementsByClassName("accordion");
+        for (var i = 0; i < acc.length; i++) {
+          acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+              panel.style.display = "none";
+            } else {
+              panel.style.display = "block";
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
