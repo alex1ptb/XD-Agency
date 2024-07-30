@@ -1,0 +1,15 @@
+{
+  "timeZone": "America/New_York",
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "dependencies": {
+    "libraries": [
+      {
+        "userSymbol": "Dev_XD_Library",
+        "libraryId": "1m3EfexLf0BYLdvpYiedBe4oHoGVntFuQR5sTdea5EFq1s5dswNGJvrR3",
+        "version": "0",
+        "developmentMode": true
+      }
+    ]
+  }
+}

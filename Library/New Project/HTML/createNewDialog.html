@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Project</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+      }
+      input[type="text"],
+      input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+      }
+      input[type="button"] {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      input[type="button"]:hover {
+        background-color: #45a049;
+      }
+      #loadingIndicator {
+        display: none;
+        margin-top: 20px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="initialForm">
+      <label for="clientName">Client Name:</label>
+      <input type="text" id="clientName" name="clientName" required />
+
+      <label for="projectName">Project Name:</label>
+      <input type="text" id="projectName" name="projectName" required />
+
+      <label for="deliverableCount">Number of Deliverables:</label>
+      <input
+        type="number"
+        id="deliverableCount"
+        name="deliverableCount"
+        required
+        min="1"
+      />
+
+      <input type="button" value="Next" onclick="showDeliverableInputs()" />
+    </form>
+    <div id="deliverableInputs"></div>
+    <div id="createProjectButton"></div>
+    <div id="loadingIndicator">Loading...</div>
+
+    <script>
+      function showDeliverableInputs() {
+        const count = document.getElementById("deliverableCount").value;
+        let html = "";
+        for (let i = 1; i <= count; i++) {
+          html += `<label for="deliverable${i}">Deliverable ${i}:</label>
+                 <input type="text" id="deliverable${i}" name="deliverable${i}" required>`;
+        }
+        html +=
+          '<input type="button" value="Create Project" onclick="createProject()">';
+        document.getElementById("deliverableInputs").innerHTML = html;
+      }
+
+      function createProject() {
+        document.getElementById("loadingIndicator").style.display = "block";
+        const clientName = document.getElementById("clientName").value;
+        const projectName = document.getElementById("projectName").value;
+        const deliverableCount =
+          document.getElementById("deliverableCount").value;
+        let deliverableNames = [];
+        for (let i = 1; i <= deliverableCount; i++) {
+          deliverableNames.push(
+            document.getElementById("deliverable" + i).value
+          );
+        }
+        google.script.run
+          .withSuccessHandler((newSpreadsheetId) => {
+            onSuccess(newSpreadsheetId);
+          })
+          .createNewProject(
+            clientName,
+            projectName,
+            deliverableCount,
+            deliverableNames
+          );
+      }
+
+      function onSuccess(newSpreadsheetId) {
+        console.log(`New spreadsheet ID: ${newSpreadsheetId}`);
+        document.getElementById("loadingIndicator").style.display = "none";
+        const url = `https://docs.google.com/spreadsheets/d/${newSpreadsheetId}/edit`;
+        window.open(url, "_blank");
+      }
+    </script>
+  </body>
+</html>
